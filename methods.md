@@ -11,5 +11,13 @@ https://usaco.guide/gold/dsu
 
 
 bfs for all way search need to use dijkstra way:
-context/c59/q3 https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
+contest/c59/q3 https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
 need to accumulate ways in array and not put in priority queue. 
+
+
+dp dfs backtrack bitmap
+contst/c256/q3 https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/discuss/1431829/Python-dynamic-programming-on-subsets-explained
+
+FSM for subarray number https://leetcode.com/problems/distinct-subsequences-ii/discuss/192017
+https://leetcode.com/contest/weekly-contest-256/problems/number-of-unique-good-subsequences/
+
