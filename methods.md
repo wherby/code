@@ -21,3 +21,13 @@ contst/c256/q3 https://leetcode.com/problems/minimum-number-of-work-sessions-to-
 FSM for subarray number https://leetcode.com/problems/distinct-subsequences-ii/discuss/192017
 https://leetcode.com/contest/weekly-contest-256/problems/number-of-unique-good-subsequences/
 
+
+using different sort order contest/c257/q2:
+https://leetcode.com/contest/weekly-contest-257/problems/the-number-of-weak-characters-in-the-game/
+sorted(properties,key=lambda x : x[0]* -10000000 +x[1])
+
+
+find gcd of big numbers of big number use offline search 
+context/c256/q4 https://leetcode.com/contest/weekly-contest-257/problems/gcd-sort-of-an-array/
+
+
