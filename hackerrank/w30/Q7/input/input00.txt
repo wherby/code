@@ -1,0 +1,7 @@
+3 3
+probieren
+birkerem
+sadasment
+0 1
+1 2
+0 2

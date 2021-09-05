@@ -1,0 +1,6 @@
+3 = (65.100,25.600,-55.900)
+Point doesn't exist in the bucket.
+Point doesn't exist in the bucket.
+Point id 4 removed.
+Point id 1 removed.
+No more points can be deleted.

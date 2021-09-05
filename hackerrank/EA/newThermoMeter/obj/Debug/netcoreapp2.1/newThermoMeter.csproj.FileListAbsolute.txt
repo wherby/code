@@ -1,0 +1,12 @@
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.csprojAssemblyReference.cache
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.csproj.CoreCompileInputs.cache
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.AssemblyInfoInputs.cache
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.AssemblyInfo.cs
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.dll.config
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.deps.json
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.runtimeconfig.json
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.runtimeconfig.dev.json
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.dll
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\bin\Debug\netcoreapp2.1\newThermoMeter.pdb
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.dll
+C:\Users\where\Documents\github\hackerrank\EA\newThermoMeter\obj\Debug\netcoreapp2.1\newThermoMeter.pdb

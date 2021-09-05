@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+C:\msys64\home\Steven T Zhou\software\hackerrank\EA\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.exe
+C:\msys64\home\Steven T Zhou\software\hackerrank\EA\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.pdb
+=======
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\bin\Debug\ThermoMeter.exe.config
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\bin\Debug\ThermoMeter.exe
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\bin\Debug\ThermoMeter.pdb
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.csprojResolveAssemblyReference.cache
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.exe
+D:\我的文档\Visual Studio 2010\Projects\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.pdb
+C:\Users\where\Documents\github\hackerrank\EA\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.exe
+C:\Users\where\Documents\github\hackerrank\EA\ThermoMeter\ThermoMeter\obj\x86\Debug\ThermoMeter.pdb
+>>>>>>> f9a2fea833dd9f7e8c3c933573979ff69feea82d

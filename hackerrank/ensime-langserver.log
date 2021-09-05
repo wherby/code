@@ -1,0 +1,67 @@
+[2018-11-10 20:41:21,351] INFO org.github.dragos.vscode.Main$ - Starting server in c:\Users\where\Documents\github\hackerrank
+[2018-11-10 20:41:21,351] INFO org.github.dragos.vscode.Main$ - Starting server in c:\Users\where\Documents\github\hackerrank
+[2018-11-10 20:41:21,367] INFO org.github.dragos.vscode.Main$ - Classpath: c:\Users\where\.vscode\extensions\dragos.scala-lsp-0.2.3\coursier
+[2018-11-10 20:41:21,367] INFO org.github.dragos.vscode.Main$ - Classpath: c:\Users\where\.vscode\extensions\dragos.scala-lsp-0.2.3\coursier
+[2018-11-10 20:41:21,587] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 1221
+[2018-11-10 20:41:21,587] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 1221
+[2018-11-10 20:41:21,613] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":0,"method":"initialize","params":{"processId":37420,"rootPath":"c:\\Users\\where\\Documents\\github\\hackerrank","rootUri":"file:///c%3A/Users/where/Documents/github/hackerrank","capabilities":{"workspace":{"applyEdit":true,"didChangeConfiguration":{"dynamicRegistration":false},"didChangeWatchedFiles":{"dynamicRegistration":false},"symbol":{"dynamicRegistration":true},"executeCommand":{"dynamicRegistration":true}},"textDocument":{"synchronization":{"dynamicRegistration":true,"willSave":true,"willSaveWaitUntil":true,"didSave":true},"completion":{"dynamicRegistration":true,"completionItem":{"snippetSupport":true}},"hover":{"dynamicRegistration":true},"signatureHelp":{"dynamicRegistration":true},"references":{"dynamicRegistration":true},"documentHighlight":{"dynamicRegistration":true},"documentSymbol":{"dynamicRegistration":true},"formatting":{"dynamicRegistration":true},"rangeFormatting":{"dynamicRegistration":true},"onTypeFormatting":{"dynamicRegistration":true},"definition":{"dynamicRegistration":true},"codeAction":{"dynamicRegistration":true},"codeLens":{"dynamicRegistration":true},"documentLink":{"dynamicRegistration":true},"rename":{"dynamicRegistration":true}}},"trace":"off"}}
+[2018-11-10 20:41:21,613] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":0,"method":"initialize","params":{"processId":37420,"rootPath":"c:\\Users\\where\\Documents\\github\\hackerrank","rootUri":"file:///c%3A/Users/where/Documents/github/hackerrank","capabilities":{"workspace":{"applyEdit":true,"didChangeConfiguration":{"dynamicRegistration":false},"didChangeWatchedFiles":{"dynamicRegistration":false},"symbol":{"dynamicRegistration":true},"executeCommand":{"dynamicRegistration":true}},"textDocument":{"synchronization":{"dynamicRegistration":true,"willSave":true,"willSaveWaitUntil":true,"didSave":true},"completion":{"dynamicRegistration":true,"completionItem":{"snippetSupport":true}},"hover":{"dynamicRegistration":true},"signatureHelp":{"dynamicRegistration":true},"references":{"dynamicRegistration":true},"documentHighlight":{"dynamicRegistration":true},"documentSymbol":{"dynamicRegistration":true},"formatting":{"dynamicRegistration":true},"rangeFormatting":{"dynamicRegistration":true},"onTypeFormatting":{"dynamicRegistration":true},"definition":{"dynamicRegistration":true},"codeAction":{"dynamicRegistration":true},"codeLens":{"dynamicRegistration":true},"documentLink":{"dynamicRegistration":true},"rename":{"dynamicRegistration":true}}},"trace":"off"}}
+[2018-11-10 20:41:22,492] INFO org.github.dragos.vscode.EnsimeLanguageServer - Initialized with 37420, c:\Users\where\Documents\github\hackerrank, ClientCapabilities()
+[2018-11-10 20:41:22,492] INFO org.github.dragos.vscode.EnsimeLanguageServer - Initialized with 37420, c:\Users\where\Documents\github\hackerrank, ClientCapabilities()
+[2018-11-10 20:41:22,497] DEBUG org.github.dragos.vscode.EnsimeLanguageServer - ensime.config = "C:/Users/where/Documents/github/hackerrank/.ensime" 
+[2018-11-10 20:41:22,497] DEBUG org.github.dragos.vscode.EnsimeLanguageServer - ensime.config = "C:/Users/where/Documents/github/hackerrank/.ensime" 
+[2018-11-10 20:41:23,518] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+[2018-11-10 20:41:24,036] ERROR org.github.dragos.vscode.EnsimeLanguageServer - initializeEnsime Error: C:\Users\where\Documents\github\hackerrank\.ensime
+[2018-11-10 20:41:24,036] ERROR org.github.dragos.vscode.EnsimeLanguageServer - initializeEnsime Error: C:\Users\where\Documents\github\hackerrank\.ensime
+[2018-11-10 20:41:24,285] DEBUG langserver.core.MessageWriter - Content-Length: 146
+
+
+
+{"jsonrpc":"2.0","method":"window/showMessage","params":{"tpe":1,"message":"No .ensime file in directory. Run `sbt ensimeConfig` to create one."}}
+[2018-11-10 20:41:24,285] DEBUG langserver.core.MessageWriter - Content-Length: 146
+
+
+
+{"jsonrpc":"2.0","method":"window/showMessage","params":{"tpe":1,"message":"No .ensime file in directory. Run `sbt ensimeConfig` to create one."}}
+[2018-11-10 20:41:24,286] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","method":"window/showMessage","params":{"tpe":1,"message":"No .ensime file in directory. Run `sbt ensimeConfig` to create one."}}
+[2018-11-10 20:41:24,286] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","method":"window/showMessage","params":{"tpe":1,"message":"No .ensime file in directory. Run `sbt ensimeConfig` to create one."}}
+[2018-11-10 20:41:24,498] DEBUG langserver.core.MessageWriter - Content-Length: 441
+
+
+
+{"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-11-10 20:41:24,498] DEBUG langserver.core.MessageWriter - Content-Length: 441
+
+
+
+{"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-11-10 20:41:24,498] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-11-10 20:41:24,498] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true,"completionProvider":{"resolveProvider":false,"triggerCharacters":["."]},"definitionProvider":true,"referencesProvider":false,"documentHighlightProvider":false,"documentSymbolProvider":true,"workspaceSymbolProvider":false,"codeActionProvider":false,"documentFormattingProvider":false,"documentRangeFormattingProvider":false,"renameProvider":false}},"id":0}
+[2018-11-10 20:41:24,502] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 52
+[2018-11-10 20:41:24,502] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 52
+[2018-11-10 20:41:24,503] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"initialized","params":{}}
+[2018-11-10 20:41:24,503] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","method":"initialized","params":{}}
+[2018-11-10 20:41:24,528] ERROR org.github.dragos.vscode.EnsimeLanguageServer - Unknown notification Initialized()
+[2018-11-10 20:41:24,528] ERROR org.github.dragos.vscode.EnsimeLanguageServer - Unknown notification Initialized()
+[2018-11-11 00:01:44,193] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 58
+[2018-11-11 00:01:44,193] DEBUG langserver.core.MessageReader - Received headers:
+Content-Length: 58
+[2018-11-11 00:01:44,251] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":1,"method":"shutdown","params":null}
+[2018-11-11 00:01:44,251] DEBUG langserver.core.Connection - Received {"jsonrpc":"2.0","id":1,"method":"shutdown","params":null}
+[2018-11-11 00:01:44,455] DEBUG langserver.core.MessageWriter - Content-Length: 198
+
+
+
+{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-11-11 00:01:44,455] DEBUG langserver.core.MessageWriter - Content-Length: 198
+
+
+
+{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-11-11 00:01:44,456] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
+[2018-11-11 00:01:44,456] DEBUG langserver.core.MessageWriter - payload: {"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":{"meaning":"Invalid method parameter(s).","error":{"obj":[{"msg":["command parameters must be given"],"args":[]}]}}},"id":1}
