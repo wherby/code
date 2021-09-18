@@ -30,4 +30,8 @@ sorted(properties,key=lambda x : x[0]* -10000000 +x[1])
 find gcd of big numbers of big number use offline search 
 context/c256/q4 https://leetcode.com/contest/weekly-contest-257/problems/gcd-sort-of-an-array/
 
+If need use global int, need to wraped in reference type. int type can't be used as clousre
+context/c258/q4 
+
+
 
