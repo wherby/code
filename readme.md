@@ -67,4 +67,12 @@ TypeError: '<' not supported between instances of 'ListNode' and 'ListNode'
 改用py2 或者https://www.cnblogs.com/bonelee/p/12379914.html
 
 
+# Create array of list:
+x = [[] for i in range(n+1)]
+
+# sub sequcence of one string to string context/c259/q4/t42.py
+    def isSubsequence(self,s,t):
+        t=iter(t)
+        return all(c in t for c in s)
+
 

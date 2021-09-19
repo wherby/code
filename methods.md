@@ -34,4 +34,16 @@ If need use global int, need to wraped in reference type. int type can't be used
 context/c258/q4 
 
 
+DP using end for dp context/c61/q3/t32.py
 
+combinations and permutations mix for all possible no repeated element context/c259/q4/t42.py
+# https://docs.python.org/3/library/itertools.html#module-itertools
+# https://leetcode.com/problems/longest-subsequence-repeated-k-times/discuss/1471930/Python-Answer-is-not-so-long-explained
+        for l in range(len(hot) +1):
+            for cand in itertools.combinations(hot,l):
+                for perm in itertools.permutations(cand):
+                    comb.add("".join(perm))
+sub sequcence of one string to string context/c259/q4/t42.py
+    def isSubsequence(self,s,t):
+        t=iter(t)
+        return all(c in t for c in s)
