@@ -8,3 +8,11 @@ mask = sum(1 <<i  for i,p in enumerate(primes) if a %p ==0)
 
 # find index of value in array:
 i = nums.index(1) 
+
+
+# header
+from collections import defaultdict
+import functools
+import heapq
+from queue import Queue,LifoQueue,PriorityQueue
+from bisect import bisect_right,insort_left,bisect_left
