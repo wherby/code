@@ -18,7 +18,7 @@ class Solution(object):
                     for b in dp(m+1,end):
                         #print(a,b)
                         t = a*b if s[m] == "*" else a+b
-                        if t <1000:
+                        if t <=1000:
                             res[t] =2
                         #print(len(res))
             #print(*res.items())
