@@ -20,3 +20,7 @@ from bisect import bisect_right,insort_left,bisect_left
 # maxheap
 https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python
 simply way is ad
+
+# python if 
+
+t = a*b if s[m] == "*" else a+b
