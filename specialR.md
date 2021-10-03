@@ -7,4 +7,10 @@ https://github.com/wisdompeak/LeetCode/tree/master/Template/Inverse_Element  逆
 https://github.com/wisdompeak/LeetCode/tree/master/Math/1916.Count-Ways-to-Build-Rooms-in-an-Ant-Colony
 
 
+Game theory contest/c262/q3 -- https://leetcode.com/problems/stone-game-ix/discuss/1500245/JavaC%2B%2BPython-Easy-and-Concise-6-lines-O(n)
+
+use stack to get lexicographically  order string context/c262/q4 https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/discuss/1500303/Python3-greedy-via-stack
+
+
+
 

@@ -24,3 +24,6 @@ simply way is ad
 # python if 
 
 t = a*b if s[m] == "*" else a+b
+
+# count
+cnt =collections.Counter(a % 3 for a in stones)
