@@ -47,3 +47,15 @@ sub sequcence of one string to string context/c259/q4/t42.py
     def isSubsequence(self,s,t):
         t=iter(t)
         return all(c in t for c in s)
+
+
+binary search 二分 格式
+r = mid,l =mid +1 , mid =(l+r)>>1
+r = mid,l =mid -1 , mid=(l +r +1)>>1
+https://leetcode-cn.com/problems/find-in-mountain-array/submissions/
+
+
+parser:
+add additional bracket 
+# https://www.youtube.com/watch?v=K5nbi0CECjA
+# https://leetcode-cn.com/problems/brace-expansion-ii/
