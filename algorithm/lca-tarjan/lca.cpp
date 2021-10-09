@@ -37,3 +37,21 @@ void compute_LCAs() {
 find loerst common ancestor offline search
 https://www.geeksforgeeks.org/tarjans-off-line-lowest-common-ancestors-algorithm/
 https://www.geeksforgeeks.org/find-lca-in-binary-tree-using-rmq/
+
+
+
+
+
+//https://codeforces.com/blog/entry/53738
+   function TarjanOLCA(u)
+    	MakeSet(u);
+    	u.ancestor := u;
+    	for each v in u.children do
+    		TarjanOLCA(v);
+    		Union(u,v);
+    		Find(u).ancestor := u;
+    	u.colour := black;
+    	for each v such that {u,v} in P do	
+    		if v.colour == black
+    			print "Tarjan's Lowest Common Ancestor of " + u +
+    				" and " + v + " is " + Find(v).ancestor + ".";
