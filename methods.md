@@ -58,4 +58,10 @@ https://leetcode-cn.com/problems/find-in-mountain-array/submissions/
 parser:
 add additional bracket 
 # https://www.youtube.com/watch?v=K5nbi0CECjA
-# https://leetcode-cn.com/problems/brace-expansion-ii/
+# https://leetcode-cn.com/problems/brace-expansion-ii/ 
+
+
+# dic :
+
+ self.m.get(key,None) // getvalue of key or default 
+ self.m.pop(last.key)  //delete key from dic
