@@ -11,6 +11,14 @@ Game theory contest/c261/q3 -- https://leetcode.com/problems/stone-game-ix/discu
 
 use stack to get lexicographically  order string context/c261/q4 https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/discuss/1500303/Python3-greedy-via-stack
 
+求长度为m的窗口的最大值使用栈 https://github.com/wisdompeak/LeetCode/blob/master/Deque/1562.Find-Latest-Group-of-Size-M/1562.Find-Latest-Group-of-Size-M.cpp
+
+            while (dq.size() > 0 && day[dq.back()] < day[i])
+                dq.pop_back();
+            while (dq.size() > 0 && i - dq.front() >= m)
+                dq.pop_front();
+    https://leetcode-cn.com/problems/sliding-window-maximum/
+
 
 
 
