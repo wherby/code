@@ -65,3 +65,6 @@ add additional bracket
 
  self.m.get(key,None) // getvalue of key or default 
  self.m.pop(last.key)  //delete key from dic
+
+# c264/q2
+If use dic in inner iteration will timeout, use array will not.

@@ -27,3 +27,6 @@ t = a*b if s[m] == "*" else a+b
 
 # count
 cnt =collections.Counter(a % 3 for a in stones)
+
+# reduce
+functools.reduce(fadd,arr1) 
