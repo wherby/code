@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict,deque
 import functools
 import heapq
 from queue import Queue,LifoQueue,PriorityQueue

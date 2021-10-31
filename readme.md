@@ -76,6 +76,7 @@ x = [[] for i in range(n+1)]
         return all(c in t for c in s)
 
 
-# string isalpha
-e.isalpha()
+# char isalpha
+e.isalpha() 
+e.isdigit()
 
