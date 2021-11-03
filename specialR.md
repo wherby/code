@@ -20,5 +20,8 @@ use stack to get lexicographically  order string context/c261/q4 https://leetcod
     https://leetcode-cn.com/problems/sliding-window-maximum/
 
 
+查询线段范围，用dic记录remove操作，用重新入队列的方式pop 不合规的值(question/c239/t4 No.1851 https://leetcode-cn.com/problems/minimum-interval-to-include-each-query/)
+
+
 
 
