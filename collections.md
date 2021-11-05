@@ -30,3 +30,25 @@ cnt =collections.Counter(a % 3 for a in stones)
 
 # reduce
 functools.reduce(fadd,arr1) 
+
+
+# bfs
+q=[]
+q.pop(0)
+q.append(x)
+```
+        def bfs(start,dist, msk):
+            q = [start]
+            dist[start] = 0
+            next= start
+            while q:
+                cur =q.pop(0)
+                for n in g[cur]:
+                    if allow[n] ==0:
+                        continue
+                    if dist[n] ==-1:
+                        q.append(n)
+                        dist[n] = dist[cur] +1
+                        next =n
+            return next
+```
