@@ -49,7 +49,7 @@ sub sequcence of one string to string context/c259/q4/t42.py
         return all(c in t for c in s)
 
 
-binary search 二分 格式
+#TDK binary search 二分 格式
 r = mid,l =mid +1 , mid =(l+r)>>1
 r = mid,l =mid -1 , mid=(l +r +1)>>1
 https://leetcode-cn.com/problems/find-in-mountain-array/submissions/
@@ -68,3 +68,36 @@ add additional bracket
 
 # c264/q2
 If use dic in inner iteration will timeout, use array will not.
+
+# comb 
+from math import comb
+>>> from math import comb
+>>> comb(10,2)
+45
+
+# combination and  permutations
+>>> ls = [1,2,3,4,5] 
+>>> for cand in itertools.combinations(ls,3):
+...     print(cand)
+... 
+(1, 2, 3)
+(1, 2, 4)
+(1, 2, 5)
+(1, 3, 4)
+(1, 3, 5)
+(1, 4, 5)
+(2, 3, 4)
+(2, 3, 5)
+(2, 4, 5)
+(3, 4, 5)
+
+>>> ls =[1,2,3]
+>>> for perm in itertools.permutations(ls):   
+...     print(perm)
+... 
+(1, 2, 3)
+(1, 3, 2)
+(2, 1, 3)
+(2, 3, 1)
+(3, 1, 2)
+(3, 2, 1)

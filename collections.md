@@ -32,7 +32,7 @@ cnt =collections.Counter(a % 3 for a in stones)
 functools.reduce(fadd,arr1) 
 
 
-# bfs
+# TDK bfs
 q=[]
 q.pop(0)
 q.append(x)
@@ -52,3 +52,31 @@ q.append(x)
                         next =n
             return next
 ```
+https://www.geeksforgeeks.org/deque-in-python/
+same as :
+from collections import deque
+q = deque([1])
+deque.appendleft(q,3)
+deque.pop(q)
+
+##TDK bfs visited need to updated when inqueue 
+        def bfs(start):
+            q =[start]
+            cnt = 0
+            visited[start[0]][start[1]] =1
+            while q:
+                t =q.pop(0)
+                cnt +=1
+                a,b = t[0],t[1]
+                
+                for x in g[a][b]:
+                    if visited[x[0]][x[1]] == 0:
+                        q.append(x)
+                        visited[x[0]][x[1]] =1
+
+# int to binary 把int 转换为指定的2进制
+>>> a =2
+>>> '{:08b}'.format(a)
+'00000010'
+>>> '{:032b}'.format(a) 
+'00000000000000000000000000000010'
