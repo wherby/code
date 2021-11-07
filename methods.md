@@ -55,6 +55,7 @@ r = mid,l =mid -1 , mid=(l +r +1)>>1
 https://leetcode-cn.com/problems/find-in-mountain-array/submissions/
 
 
+
 parser:
 add additional bracket 
 # https://www.youtube.com/watch?v=K5nbi0CECjA
