@@ -102,3 +102,23 @@ from math import comb
 (2, 3, 1)
 (3, 1, 2)
 (3, 2, 1)
+
+# set
+a =set([1,2])
+>>> a.discard(3)
+>>> a
+{1, 2}
+>>> a.union(set([2,4]))
+{1, 2, 4}
+>>> a.add(5)   
+>>> a
+{1, 2, 5}
+>>> a.intersection(set([2,4])) 
+{2}
+>>> a.difference(set([2,4]))
+{1, 5}
+>>> a
+{1, 2, 5}
+>>> a.symmetric_difference(set([2,4]))
+{1, 4, 5}
+#https://realpython.com/python-sets/
