@@ -76,7 +76,7 @@ from math import comb
 >>> comb(10,2)
 45
 
-# combination and  permutations
+#TDK itertools  combination and  permutations
 >>> ls = [1,2,3,4,5] 
 >>> for cand in itertools.combinations(ls,3):
 ...     print(cand)

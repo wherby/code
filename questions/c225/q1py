@@ -1,0 +1,28 @@
+class Solution(object):
+    def maximumTime(self, time):
+        """
+        :type time: str
+        :rtype: str
+        """
+        times = time.split(":")
+        hour = times[0]
+        if hour =="??":
+            hour ="23"
+        elif hour[0] =="?" and int(hour[1])<4:
+            hour ="2" +hour[1]
+        elif hour[0] == "?" :
+            hour ="1" + hour[1]
+        elif hour[1] =="?" and int(hour[0])==2:
+            hour = hour[0]+"3"
+        elif hour[1] =="?":
+            hour = hour[0] +"9"
+        mi = times[1]
+        if mi[0] =="?":
+            mi = "5"+mi[1]
+        if mi[1] =="?":
+            mi = mi[0] + "9"
+        res= hour +":" + mi
+        return res
+         
+re =Solution().maximumTime("2?:?0")   
+print(re)       
