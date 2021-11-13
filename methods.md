@@ -122,3 +122,11 @@ a =set([1,2])
 >>> a.symmetric_difference(set([2,4]))
 {1, 4, 5}
 #https://realpython.com/python-sets/
+
+# Python字符串比较和字符串截取很快
+questions/c227/q31.py  
+https://leetcode-cn.com/problems/largest-merge-of-two-strings/submissions/
+
+# getCobination sum
+import functools
+get_subsums = lambda nums: functools.reduce(lambda s, x: s | {x + ts for ts in s}, nums, {0})
