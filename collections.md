@@ -80,3 +80,13 @@ deque.pop(q)
 '00000010'
 >>> '{:032b}'.format(a) 
 '00000000000000000000000000000010'
+
+
+# deep copy
+import copy
+copy.deepcopy(board)  # deep copy
+copy.copy(board) # shallow copy
+
+if want to change value ref out of function
+res =[[]]
+res[0] = copy.deepcopy(board)
