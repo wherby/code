@@ -22,6 +22,17 @@ use stack to get lexicographically  order string context/c261/q4 https://leetcod
 
 查询线段范围，用dic记录remove操作，用重新入队列的方式pop 不合规的值(question/c239/t4 No.1851 https://leetcode-cn.com/problems/minimum-interval-to-include-each-query/)
 
+# cache
+questions/c229 https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/submissions/
+use @functools.lru_cache(None)  will timeout 
+use @functools.lru_cache(1024) will pass which set the cache size will resolve timeout issue
+use bottom up dp will resolve the issue
+
+# match most
+contest/d65/q4 
+https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign/discuss/1575980/Python-or-Binary-Search-%2B-Check-Answer-Greedily
+
+best match => binary search => if use strength =>remove best match in target.
 
 
 
