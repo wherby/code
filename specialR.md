@@ -34,5 +34,16 @@ https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign/discuss/157
 
 best match => binary search => if use strength =>remove best match in target.
 
+# DAG
+question/c240/q42.py
+https://leetcode-cn.com/problems/largest-color-value-in-a-directed-graph/submissions/
+
+d->b
+a->b->c...->1000
+e->f->c
+
+计算DAG图不是树的时候，需要用入度为零执行bfs
+如果计算对象的值域是有限的时候，可以遍历值域计算出结果
+
 
 
