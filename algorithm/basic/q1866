@@ -1,0 +1,47 @@
+
+
+# https://www.youtube.com/watch?v=y4Pn4jxCw7E
+https://leetcode-cn.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
+
+# Using n number to construt a permutation
+n!
+123,132,213,231,312,321
+
+# Using n number to construct a circular permutation
+n! / n = (n-1)!
+123 (231,312) 132 (321,213)
+
+=> or considered as fixing the head, running permutation for the rest.
+
+
+# choose m from n number to construct a permutation
+A(n,m) = n!/(n-m)!
+
+# choose m from n number to construct a circular permutation
+A2(n,m) = n!/(n-m)! /m
+
+# Using n numbers to construct m circular permutation
+
+dp[i][j] : the number of ways that we can use first i numbers to construct j circular permutations
+
+1. if i-th element is for a new circular permutation.
+   dp[i-1][j-1]
+2. insert the i-th element to the pervious j circular permutaions
+   dp[i-1][j] * (i-1)
+
+dp[i][j] = dp[i-1][j-1] + dp[i-1][j] *(i-1)
+
+Sterling 1
+S[i][j] = S[i-1][j-1] + S[i-1][j] * (i-1)
+
+
+[a1 x ...x][a2 x...x][a3 x...x][ak x....x]  <= 用n个数字构造k个环排列,环排列的第一个元素是环的最大，并且a1 < a2 < a3 .. < ak
+
+
+# 
+dp[i][j] the number of ways that we use the first i sticks to construct a permutation with j visible sticks
+
+1. if i-th element is for a new visible stick
+ dp[i-1][j-1]
+2. if i-th element is the part of previous j intervals
+ dp[i-1][j] *(i-1)

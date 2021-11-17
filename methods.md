@@ -62,6 +62,10 @@ add additional bracket
 # https://leetcode-cn.com/problems/brace-expansion-ii/ 
 
 
+# DP don't need to search every case 
+questions/c242/q32.py 使用辅助结构直接判断dp[i]转移值
+
+
 # dic :
 
  self.m.get(key,None) // getvalue of key or default 

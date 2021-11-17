@@ -33,4 +33,4 @@ class Solution:
 
 # print(Solution().minSwaps("]]][[["))
 # print(Solution().minSwaps("][]["))
-print(Solution().minSwaps("][[]][][[][]"))
+#print(Solution().minSwaps("][[]][][[][]"))
