@@ -49,4 +49,7 @@ e->f->c
 https://www.youtube.com/watch?v=mjt_YNZzgC8
 无向图转有向图。。。
 
+# dp 用queue 记录区间最大值 questions/220/q31.py
+https://leetcode-cn.com/problems/jump-game-vi/submissions/
+
 
