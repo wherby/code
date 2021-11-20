@@ -45,5 +45,8 @@ e->f->c
 计算DAG图不是树的时候，需要用入度为零执行bfs
 如果计算对象的值域是有限的时候，可以遍历值域计算出结果
 
+# 能用数字表示map优先使用数组
+https://www.youtube.com/watch?v=mjt_YNZzgC8
+无向图转有向图。。。
 
 

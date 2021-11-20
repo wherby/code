@@ -90,3 +90,6 @@ copy.copy(board) # shallow copy
 if want to change value ref out of function
 res =[[]]
 res[0] = copy.deepcopy(board)
+
+# reduce
+functools.reduce(lambda a,b : a and b ,res)
