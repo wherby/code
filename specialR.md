@@ -52,4 +52,7 @@ https://www.youtube.com/watch?v=mjt_YNZzgC8
 # dp 用queue 记录区间最大值 questions/220/q31.py
 https://leetcode-cn.com/problems/jump-game-vi/submissions/
 
+# python reverse int
+int(str(l) +str(j) +str(j) +str(l)[::-1]) //contest/268/q4/t4.py https://leetcode-cn.com/contest/weekly-contest-268/problems/sum-of-k-mirror-numbers/
+
 
