@@ -56,3 +56,12 @@ https://leetcode-cn.com/problems/jump-game-vi/submissions/
 int(str(l) +str(j) +str(j) +str(l)[::-1]) //contest/268/q4/t4.py https://leetcode-cn.com/contest/weekly-contest-268/problems/sum-of-k-mirror-numbers/
 
 
+# （NP问题）状态转移DP 可能python不能通过， 用剪枝可以 
+https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/submissions/
+https://www.youtube.com/watch?v=vT1nhRyFfNo
+question/c223/q43.py
+q4.py 用状态压缩时 python 会超时。
+q42.py 用dfs加上记忆剪枝 可以通过。
+q43.py 把任务分给人时候剪枝新人分配路径
+
+
