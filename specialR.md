@@ -71,3 +71,11 @@ questions/c218/q2.py
 https://leetcode-cn.com/problems/max-number-of-k-sum-pairs/submissions/
 
 
+# count number of prefix 先計算數字再更新
+https://www.youtube.com/watch?v=QiiK-his0IQ
+question/c247/q3.py   https://leetcode-cn.com/problems/number-of-wonderful-substrings/submissions/
+
+# 递归树的时候，需要把中间过程存于数组
+https://leetcode-cn.com/problems/count-ways-to-build-rooms-in-an-ant-colony/submissions/
+
+
