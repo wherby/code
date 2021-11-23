@@ -63,5 +63,11 @@ question/c223/q43.py
 q4.py 用状态压缩时 python 会超时。
 q42.py 用dfs加上记忆剪枝 可以通过。
 q43.py 把任务分给人时候剪枝新人分配路径
+https://leetcode-cn.com/problems/minimum-incompatibility/submissions/
+
+
+# dic.keys() iterate will throw exception
+questions/c218/q2.py
+https://leetcode-cn.com/problems/max-number-of-k-sum-pairs/submissions/
 
 

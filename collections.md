@@ -93,3 +93,17 @@ res[0] = copy.deepcopy(board)
 
 # reduce
 functools.reduce(lambda a,b : a and b ,res)
+
+# combination
+>>> a = [1,2,3,4,5,6]
+>>> import itertools
+>>> ls = itertools.combinations(a,2)
+>>> print(list(ls))
+[(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+
+# permutetion
+>>> a =[1,2,3]
+>>> ls = itertools.permutations(a)
+>>> list(ls)
+[(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+
