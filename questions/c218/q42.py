@@ -1,3 +1,4 @@
+#https://leetcode-cn.com/problems/minimum-incompatibility/
 import collections
 class Solution(object):
     def minimumIncompatibility(self, nums, k):

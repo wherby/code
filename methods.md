@@ -53,7 +53,9 @@ sub sequcence of one string to string context/c259/q4/t42.py
 r = mid,l =mid +1 , mid =(l+r)>>1
 r = mid,l =mid -1 , mid=(l +r +1)>>1
 https://leetcode-cn.com/problems/find-in-mountain-array/submissions/
-
+如果要写成
+r=mid-1 l=mid 的情况也要转变为 r=mid, l= mid +1  最后return l-1
+写成 while l<r 的循环的时候，r的值最好是一个不能取的值，如果r的值是可以取的值，则可能需要改成 while l <=r:  #https://leetcode-cn.com/problems/maximum-number-of-removable-characters/
 
 
 parser:

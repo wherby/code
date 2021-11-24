@@ -1,3 +1,4 @@
+# https://leetcode-cn.com/problems/count-ways-to-build-rooms-in-an-ant-colony/
 import functools
 class Solution(object):
     def waysToBuildRooms(self, prevRoom):
@@ -24,7 +25,6 @@ class Solution(object):
                 x = mod%x
             return s
         def dfs(idx):
-
             if len(ls[idx]) ==0:
                 nums[idx] =1
                 dp[idx] =1
