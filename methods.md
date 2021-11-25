@@ -136,3 +136,7 @@ https://leetcode-cn.com/problems/largest-merge-of-two-strings/submissions/
 # getCobination sum
 import functools
 get_subsums = lambda nums: functools.reduce(lambda s, x: s | {x + ts for ts in s}, nums, {0})
+
+
+# hint 
+搜寻数字，范围为1000左右，用dp, 10000以上2分
