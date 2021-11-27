@@ -14,3 +14,8 @@ from math import comb // use to combination
 
 from sortedcontainers import SortedDict,SortedList
 self.ls =SortedList()
+
+
+#
+
+from math import inf

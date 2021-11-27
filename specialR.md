@@ -79,3 +79,4 @@ question/c247/q3.py   https://leetcode-cn.com/problems/number-of-wonderful-subst
 https://leetcode-cn.com/problems/count-ways-to-build-rooms-in-an-ant-colony/submissions/
 
 
+# 注意优先队列的排序条件 questions/c243/q3.py https://leetcode-cn.com/problems/process-tasks-using-servers/
