@@ -9,3 +9,16 @@ http://www.grantjenks.com/docs/sortedcontainers/sortedlist.html
 http://www.grantjenks.com/docs/sortedcontainers/introduction.html#sorted-dict
 http://www.grantjenks.com/docs/sortedcontainers/introduction.html#sorted-set
 http://www.grantjenks.com/docs/sortedcontainers/introduction.html
+
+
+#
+http://www.grantjenks.com/docs/sortedcontainers/sortedlist.html
+
+>>> sl = SortedList([1, 2, 3, 4, 5,5])  
+>>> sl.discard(5)
+>>> sl
+SortedList([1, 2, 3, 4, 5])
+>>> sl.pop(-1)
+5
+>>> sl
+SortedList([1, 2, 3, 4])

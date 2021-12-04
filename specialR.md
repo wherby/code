@@ -82,3 +82,11 @@ https://leetcode-cn.com/problems/count-ways-to-build-rooms-in-an-ant-colony/subm
 # 注意优先队列的排序条件 questions/c243/q3.py https://leetcode-cn.com/problems/process-tasks-using-servers/
 
 # time serious 时间序列图的遍历 用bfs方式 https://leetcode-cn.com/problems/find-all-people-with-secret/submissions/
+
+# random number generation q519 https://leetcode-cn.com/problems/random-flip-matrix/
+
+
+# 递归调用用self 传数组会使得时间快n倍 https://leetcode-cn.com/problems/make-the-xor-of-all-segments-equal-to-zero/submissions/
+
+# 差分法先定义差分数组记录比较简单 如果数组太大就可以用离散差分值放入heap，或者sortedlist.  https://leetcode-cn.com/problems/minimum-moves-to-make-array-complementary/   
+https://www.youtube.com/watch?v=mRvmisDyNs4

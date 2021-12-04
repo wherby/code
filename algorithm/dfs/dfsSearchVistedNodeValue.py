@@ -1,5 +1,6 @@
 # https://leetcode-cn.com/contest/weekly-contest-266/problems/maximum-path-quality-of-a-graph/
 #SPM dfs search visited node value. use visted number to calulate only once of dfs visited.
+# TDK dfs
 
 class Solution(object):
     def maximalPathQuality(self, values, edges, maxTime):

@@ -1,6 +1,7 @@
 # count number
 import collections
 count = collections.Counter(nums)
+from collections import Counter 
 
 # generate bitmap of prime for a 
 primes=[2,3,5,7,11,13,17,19,23,29]
@@ -106,4 +107,13 @@ functools.reduce(lambda a,b : a and b ,res)
 >>> ls = itertools.permutations(a)
 >>> list(ls)
 [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+
+# counter 结果特殊用法
+a= Counter({'a': 5})  b = Counter({'a': 3, 'b': 1})  a&b= Counter({'a': 3}) https://leetcode-cn.com/submissions/detail/245209397/
+
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        a = Counter(ransomNote) 
+        b = Counter(magazine)
+        return (a & b) == a
 
