@@ -2,6 +2,7 @@
 # 一笔画问题
 #https://leetcode.com/problems/valid-arrangement-of-pairs/discuss/1611983/Python-O(pairs.length)-Hierholzer's-Algorithm 
 # g: graph  start point[inbound > outbound]
+# TDK Hierholzer
 def visit(start,g):
     st = [start]
     route=[]

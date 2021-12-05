@@ -24,7 +24,7 @@ class Solution(object):
         for k,v in dic.items():
             if v[0]>v[1]:
                 cand.append(k)
-
+        #用dfs会有合并和递归数目限制问题
         def dfs(start,res):
             if len(dic2[start]) ==0:
                 return
