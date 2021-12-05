@@ -8,7 +8,7 @@ def visit(start,g):
     route=[]
     while st:
         while g[st[-1]]:
-            st.append(g[st[-1]].pop())
+            st.append(g[st[-1]].pop())   # 对于邻接点的选择可能有优先队列  #https://leetcode-cn.com/problems/reconstruct-itinerary/submissions/
         route.append(st.pop())
     route.reverse()
     return [[route[i], route[i+1]] for i in range(len(route)-1)]
