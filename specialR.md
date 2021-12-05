@@ -90,3 +90,9 @@ https://leetcode-cn.com/problems/count-ways-to-build-rooms-in-an-ant-colony/subm
 
 # 差分法先定义差分数组记录比较简单 如果数组太大就可以用离散差分值放入heap，或者sortedlist.  https://leetcode-cn.com/problems/minimum-moves-to-make-array-complementary/   
 https://www.youtube.com/watch?v=mRvmisDyNs4
+
+
+# math.pow 和pow在大数的时候会不同，要用pow
+print(math.pow(19,19)%1337)
+print(pow(19,19)%1337)
+https://leetcode-cn.com/problems/super-pow/solution/chao-ji-ci-fang-by-leetcode-solution-ow8j/

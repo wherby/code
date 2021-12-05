@@ -1,3 +1,4 @@
+# TDK Bruteforce 
 from collections import Counter 
 class Solution(object):
     def canDistribute(self, nums, quantity):

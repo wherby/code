@@ -1,3 +1,4 @@
+# TDK Bruteforce  https://leetcode-cn.com/problems/distribute-repeating-integers/submissions/
 from functools import lru_cache 
 from collections import Counter 
 class Solution(object):
