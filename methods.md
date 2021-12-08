@@ -140,3 +140,8 @@ get_subsums = lambda nums: functools.reduce(lambda s, x: s | {x + ts for ts in s
 
 # hint 
 搜寻数字，范围为1000左右，用dp, 10000以上2分
+
+# combination number
+>>> from math import comb
+>>> comb(10,3)
+120
