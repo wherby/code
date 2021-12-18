@@ -1,7 +1,8 @@
 #check if string a is sub string b in O(n) time
 # 
-# 
+# 如果求 a,b的最大公共字符串是lcs
 
+# check if stra is substring of strb => strb 包含stra的所有顺序字符
 def check(stra,strb):
     m = len(stra)
     n = len(strb)
