@@ -96,3 +96,21 @@ https://www.youtube.com/watch?v=mRvmisDyNs4
 print(math.pow(19,19)%1337)
 print(pow(19,19)%1337)
 https://leetcode-cn.com/problems/super-pow/solution/chao-ji-ci-fang-by-leetcode-solution-ow8j/
+
+
+# https://leetcode-cn.com/contest/weekly-contest-113/problems/largest-component-size-by-common-factor/
+计算公因数的时候，如果只取了sqrt 的prime 需要求得最后的余数（xt）和本身并集  
+第二个版本，我们只需要求出sqrt(100000)以内的所有质数Pi，这样预处理的规模就小了很多．但是如果继续按照上面的算法，如何保证得到a的所有质因数Pi并建立联系呢？其实我们只要将a不断除以它在sqrt(100000)以内的所有质因数，如果仍然大于1，那么剩下的必然是它唯一的一个大于sqrt(100000)的质因数．因为任何数不可能含有两个大于sqrt(100000)的质因数的．
+
+pls = getPrimes(2000)
+for x in nums:
+    xt = x
+    for p in pls:
+        if xt%p ==0:
+            if dsu.find(x) != dsu.find(p):
+                dsu.union(x,p)
+            while xt %p ==0:
+                xt = xt//p
+    if xt >1:
+        if dsu.find(x) != dsu.find(xt):
+            dsu.union(x,xt)
