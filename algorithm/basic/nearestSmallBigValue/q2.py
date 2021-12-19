@@ -1,5 +1,5 @@
 class Solution:
-    def maxSumMinProduct(self, nums: List[int]) -> int:
+    def maxSumMinProduct(self, nums: list[int]) -> int:
         MOD = 10**9+7
         nums.append(0)
         st = [-1]

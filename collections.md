@@ -121,3 +121,7 @@ class Solution:
 # sortedList 在插入的时候比用 bisect 插入快， bisect 插入的时候是O(n)
 from sortedcontainers import SortedList
 questions/c214/q4.py   https://leetcode-cn.com/problems/create-sorted-array-through-instructions/
+
+
+# list deep copy
+dp2 = list(dp1)
