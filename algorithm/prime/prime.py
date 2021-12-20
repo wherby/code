@@ -1,3 +1,4 @@
+# Not quick enough
 import math
 num=[]
 for i in range(2,100000):
@@ -8,3 +9,4 @@ for i in range(2,100000):
    else:
       num.append(i)
 print(num)
+
