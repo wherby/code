@@ -83,6 +83,9 @@ deque.pop(q)
 '00000000000000000000000000000010'
 >>> bin(35)
 '0b100011'
+format 补0
+>>> "{:02}".format(3)  
+'03'
 
 # deep copy
 import copy

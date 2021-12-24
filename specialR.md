@@ -116,5 +116,5 @@ for x in nums:
             dsu.union(x,xt)
 
 # dfs的时候把消耗品也作为独立的状态 
-https://leetcode-cn.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/  [questions/0-200/c167/q41.py]
-visited 如果不好初始化就用set
+https://leetcode-cn.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/  [questions/0-200/c167/q41.py](https://github.com/wherby/code/blob/master/questions/0-200/c167/q41.py)
+visited 如果不好初始化就用set https://github.com/wherby/code/blob/master/questions/0-200/c167/q41.py
