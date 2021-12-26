@@ -52,3 +52,7 @@ pat = "ABABCABAB"
 initial_index = kmp_string(pat, string)
 for i in initial_index:
     print('Pattern is found in the string at index number',i)
+
+s1="abcabcabcabcabc"
+n = getNext(s1)
+print(n,len(s1))
