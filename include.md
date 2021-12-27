@@ -19,3 +19,8 @@ self.ls =SortedList()
 #
 
 from math import inf
+
+# deque  https://www.geeksforgeeks.org/stack-in-python/   广度优先如果要效率可以使用
+from collections import deque
+ 
+stack = deque()
