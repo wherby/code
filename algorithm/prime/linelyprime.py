@@ -9,15 +9,16 @@ def get_prime(n):
 
     for i in range(2,n+1):
         if not st[i]:
-            cnt +=1
             prime[cnt] =i
+            cnt +=1
             
-        j = 1
+        j = 0
         while prime[j] <= n/i:
             st[prime[j]*i] =True
             if i % prime[j] ==0:
                 break
             j +=1
-    print(prime[:1000])
+    return prime[:cnt]
 
-get_prime(1000000)
+re= get_prime(1000000)
+print(len(re))
