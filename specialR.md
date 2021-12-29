@@ -118,3 +118,7 @@ for x in nums:
 # dfs的时候把消耗品也作为独立的状态 
 https://leetcode-cn.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/  [questions/0-200/c167/q41.py]
 visited 如果不好初始化就用set
+
+# 大于一定长度的max average
+在binary search 平均值的时候，快速找到一个大于L的区间的和大于0：
+![max average](pic/binarysearch/maxaverage.png)
