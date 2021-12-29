@@ -129,3 +129,5 @@ https://leetcode-cn.com/contest/biweekly-contest-18/problems/reverse-subarray-to
             low_number = min(low_number, max(nums[index], nums[index + 1])) # min of low and the max of the current and next number
             high_number = max(high_number, min(nums[index], nums[index + 1]))
             diff = max(diff, 2 * (high_number - low_number)) # This is explained in ref 1
+
+# 4数区间 https://leetcode-cn.com/submissions/detail/253029658/
