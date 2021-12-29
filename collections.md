@@ -83,6 +83,9 @@ deque.pop(q)
 '00000000000000000000000000000010'
 >>> bin(35)
 '0b100011'
+format 补0
+>>> "{:02}".format(3)  
+'03'
 
 # deep copy
 import copy
@@ -125,3 +128,20 @@ questions/c214/q4.py   https://leetcode-cn.com/problems/create-sorted-array-thro
 
 # list deep copy
 dp2 = list(dp1)
+
+# dic set compare keys
+```
+>>> dic={"a":1,"b":2,"c":3}
+>>> dic.keys()>={"a","b"}
+True
+>>> dic.keys()>={"a","d"}
+False
+>>> s1 =set(["a","b"])
+>>> s2 = set(["a","b","c"])
+>>> s1.issubset(s2)
+True
+>>> s2.issubset(s1)
+False
+>>> s1.issubset(dic.keys())
+True
+```

@@ -122,3 +122,19 @@ visited 如果不好初始化就用set
 # 大于一定长度的max average
 在binary search 平均值的时候，快速找到一个大于L的区间的和大于0：
 ![max average](pic/binarysearch/maxaverage.png)
+
+https://leetcode-cn.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/submissions/  [questions/0-200/c167/q41.py](https://github.com/wherby/code/blob/master/questions/0-200/c167/q41.py)
+visited 如果不好初始化就用set https://github.com/wherby/code/blob/master/questions/0-200/c167/q41.py
+
+# 交换子数组求得最大值 
+https://leetcode.com/problems/reverse-subarray-to-maximize-array-value/discuss/950200/3-step-python
+https://leetcode-cn.com/contest/biweekly-contest-18/problems/reverse-subarray-to-maximize-array-value/
+
+在求 l,r交换后的增益的时候 这里low_number和high_numer的计算
+        for index in range(n - 1):
+            
+            low_number = min(low_number, max(nums[index], nums[index + 1])) # min of low and the max of the current and next number
+            high_number = max(high_number, min(nums[index], nums[index + 1]))
+            diff = max(diff, 2 * (high_number - low_number)) # This is explained in ref 1
+
+# 4数区间 https://leetcode-cn.com/submissions/detail/253029658/

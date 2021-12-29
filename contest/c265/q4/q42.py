@@ -25,6 +25,7 @@ class Solution(object):
             return res
         ls1 =parseString(s1)
         ls2 =parseString(s2)
+        #print(ls1,ls2)
         
         def getNum(ls):
             res =[int(ls)]
