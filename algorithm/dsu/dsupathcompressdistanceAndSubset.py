@@ -27,6 +27,9 @@ dsu.union(98,92)
 dsu.union(92,93)
 dsu.union(93,91)
 #dsu.union(93,0)  # comment out the line to see behavior
+dsu.union(99,98)
+# 0 <-93 <-92 <-98 <-99
+# 91<-
 print(dsu.find(93),dsu.find(94),dsu.find(98))
 print(dsu.d)
 for i in range(100):
