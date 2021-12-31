@@ -1,7 +1,7 @@
 class SegTree:
     def __init__(self,n):
         self.c = [0]*(n *4)
-        self.n = n *4
+        self.n = n 
     
     def add(self,x,count):
         while x <= self.n:
