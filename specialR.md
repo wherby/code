@@ -138,3 +138,5 @@ https://leetcode-cn.com/contest/biweekly-contest-18/problems/reverse-subarray-to
             diff = max(diff, 2 * (high_number - low_number)) # This is explained in ref 1
 
 # 4数区间 https://leetcode-cn.com/submissions/detail/253029658/
+
+# https://oeis.org/  for sequence.
