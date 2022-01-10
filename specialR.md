@@ -140,3 +140,7 @@ https://leetcode-cn.com/contest/biweekly-contest-18/problems/reverse-subarray-to
 # 4数区间 https://leetcode-cn.com/submissions/detail/253029658/
 
 # https://oeis.org/  for sequence.
+
+# 判断矩形区域用2维前缀数组 https://leetcode-cn.com/contest/biweekly-contest-69/problems/stamping-the-grid/
+
+# 判断统计的输入是否有重复 https://leetcode-cn.com/contest/weekly-contest-275/problems/count-words-obtained-after-adding-a-letter/
