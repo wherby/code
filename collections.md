@@ -145,3 +145,16 @@ False
 >>> s1.issubset(dic.keys())
 True
 ```
+
+# choice
+choice() is an inbuilt function in Python programming language that returns a random item from a list, tuple, or string. https://www.geeksforgeeks.org/python-numbers-choice-function/
+# import random 
+import random
+  
+# prints a random value from the list
+list1 = [1, 2, 3, 4, 5, 6] 
+print(random.choice(list1))
+  
+# prints a random item from the string 
+string = "striver" 
+print(random.choice(string))  
