@@ -18,7 +18,7 @@ def getCircle(lst):
     for i in range(n):
         # 如果没环，前驱节点和后继节点之间的最大差值是1，如果有环，则是环的长度减一
         mx = max(mx, cnt[lst[i]]-cnt[i]+1)
-    #print(cnt)
+    print(cnt)
     return mx
 
 re = getCircle( [3,0,1,4,1])
