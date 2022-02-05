@@ -11,5 +11,6 @@ def allState(k):
         c = state &(-state)
         r = state +c
         state= (((r ^ state) >>2)//c) |r 
+        #print("New State: ", bin(state))
 
 allState(4)
