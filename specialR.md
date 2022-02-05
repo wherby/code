@@ -144,3 +144,16 @@ https://leetcode-cn.com/contest/biweekly-contest-18/problems/reverse-subarray-to
 # 判断矩形区域用2维前缀数组 https://leetcode-cn.com/contest/biweekly-contest-69/problems/stamping-the-grid/
 
 # 判断统计的输入是否有重复 https://leetcode-cn.com/contest/weekly-contest-275/problems/count-words-obtained-after-adding-a-letter/
+
+
+# Dw71
+
+## 初始值設置錯誤
+https://leetcode-cn.com/contest/biweekly-contest-71/problems/minimum-difference-in-sums-after-removal-of-elements/
+https://leetcode-cn.com/submissions/detail/265052419/
+ret = 10*100  以爲是10 **100
+
+## corner case 
+https://leetcode-cn.com/contest/biweekly-contest-71/problems/minimum-cost-to-set-cooking-time/
+https://leetcode-cn.com/submissions/detail/265051246/
+沒有考慮分鐘大於99的情況
