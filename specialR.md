@@ -157,3 +157,6 @@ ret = 10*100  以爲是10 **100
 https://leetcode-cn.com/contest/biweekly-contest-71/problems/minimum-cost-to-set-cooking-time/
 https://leetcode-cn.com/submissions/detail/265051246/
 沒有考慮分鐘大於99的情況
+
+## 左右計算，有時可以先計算左邊的最優解，從而得到整個最優
+https://leetcode-cn.com/contest/weekly-contest-279/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/
