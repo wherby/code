@@ -15,7 +15,7 @@ class DetectSquares:
 # obj.add(point)
 # param_2 = obj.count(point)
 
-作者：himymBen
-链接：https://leetcode-cn.com/problems/detect-squares/solution/pythonjavajavascriptgo-ha-xi-tong-ji-mo-uxixs/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+# 作者：himymBen
+# 链接：https://leetcode-cn.com/problems/detect-squares/solution/pythonjavajavascriptgo-ha-xi-tong-ji-mo-uxixs/
+# 来源：力扣（LeetCode）
+# 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
