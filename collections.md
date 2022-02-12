@@ -158,3 +158,11 @@ print(random.choice(list1))
 # prints a random item from the string 
 string = "striver" 
 print(random.choice(string))  
+
+# in a collection could easy get boarder of rectangle
+        for i in range(m):
+            for j in [0,n-1]:
+                pos.append((i,j))
+        for i in [0,m-1]:
+            for j in range(1,n-1):
+                pos.append((i,j))

@@ -158,5 +158,7 @@ https://leetcode-cn.com/contest/biweekly-contest-71/problems/minimum-cost-to-set
 https://leetcode-cn.com/submissions/detail/265051246/
 沒有考慮分鐘大於99的情況
 
-## 左右計算，有時可以先計算左邊的最優解，從而得到整個最優
+## 左右計算，有時可以先計算左邊的最優解，從而得到整個最優(contest/00000c275d69/c279/q4/t41.py)
 https://leetcode-cn.com/contest/weekly-contest-279/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/
+https://raw.githubusercontent.com/wherby/code/master/contest/00000c275d69/c279/q4/t41.py
+
