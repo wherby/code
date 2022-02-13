@@ -20,7 +20,7 @@ numSlots其实是2*numSlots个bit状态
 
 
 # dp bruteforce 在解决背包问题的时候可能需要两个dp数组
-
+brute force在解决背包问题的时候一般需要和 Gosoers_Hack 一起使用
 ```
 class Solution(object):
     def maximumANDSum(self, nums, numSlots):
