@@ -162,3 +162,5 @@ https://leetcode-cn.com/submissions/detail/265051246/
 https://leetcode-cn.com/contest/weekly-contest-279/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/
 https://raw.githubusercontent.com/wherby/code/master/contest/00000c275d69/c279/q4/t41.py
 
+
+# bruteforce
