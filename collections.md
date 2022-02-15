@@ -10,6 +10,8 @@ mask = sum(1 <<i  for i,p in enumerate(primes) if a %p ==0)
 # find index of value in array:
 i = nums.index(1) 
 
+# get cols of matrix  https://github.com/wherby/code/blob/master/algorithm/pythonLib/array.py
+cols = list(zip(*matrix))
 
 # header
 from collections import defaultdict,deque
