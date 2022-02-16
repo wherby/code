@@ -168,3 +168,15 @@ print(random.choice(string))
         for i in [0,m-1]:
             for j in range(1,n-1):
                 pos.append((i,j))
+
+
+# next
+>>> next((a for a in []),-1)
+-1
+>>> next((a for a in [1]),-1)
+1
+
+>>> any(x ==2  for x in [1,2])
+True
+>>> all(x==2 for x in [1,2])
+False
