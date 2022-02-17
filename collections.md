@@ -180,3 +180,6 @@ print(random.choice(string))
 True
 >>> all(x==2 for x in [1,2])
 False
+
+# sum of 2d array
+remains = sum(map(sum,dp0))
