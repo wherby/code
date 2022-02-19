@@ -9,6 +9,7 @@ class Solution(object):
         """ 
         nc = Counter(nums)
         ls =list(nc.values())
+        #print(ls)
         n = len(ls)
         dp = [[False]*1024 for _ in range(51)]
         for i in range(n+1):
@@ -43,6 +44,7 @@ class Solution(object):
 
 nums=[420,420,420,235,687,420,420,591,759,420,420,420,326,756,420,376,420,989,387,212,420,89,420,420,326,420,420,420,387,387]
 q=[1,3,1,4]
-re =Solution().canDistribute([1,2,3,3] , [2])
+#re =Solution().canDistribute([1,2,3,3] , [2])
+re =Solution().canDistribute(nums,q)
 print(re)
 
