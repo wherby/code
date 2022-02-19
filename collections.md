@@ -10,6 +10,8 @@ mask = sum(1 <<i  for i,p in enumerate(primes) if a %p ==0)
 # find index of value in array:
 i = nums.index(1) 
 
+# get cols of matrix  https://github.com/wherby/code/blob/master/algorithm/pythonLib/array.py
+cols = list(zip(*matrix))
 
 # header
 from collections import defaultdict,deque
@@ -166,3 +168,18 @@ print(random.choice(string))
         for i in [0,m-1]:
             for j in range(1,n-1):
                 pos.append((i,j))
+
+
+# next
+>>> next((a for a in []),-1)
+-1
+>>> next((a for a in [1]),-1)
+1
+
+>>> any(x ==2  for x in [1,2])
+True
+>>> all(x==2 for x in [1,2])
+False
+
+# sum of 2d array
+remains = sum(map(sum,dp0))
