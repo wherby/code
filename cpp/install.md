@@ -34,4 +34,13 @@ vscode=>teminal => configure task
 	]
 }
 ```
+## reference
 
+Learn modern C++ 20 programming in this comprehensive course.
+
+💻 Source code: https://github.com/rutura/The-C-20-Ma...
+
+✏️ Course developed by Daniel Gakwaya. Check out his YouTube channel: https://www.youtube.com/channel/UCUYU...
+🐦 Twitter: https://twitter.com/learnqtguide
+🔗 Want more from Daniel? https://www.learnqt.guide/udemy-disco...
+🔗 Join Daniel's discord server for support: https://discord.com/invite/PcATcraESW

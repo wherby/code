@@ -1,0 +1,8 @@
+# 整数因数分解
+
+t = int(math.sqrt(g1)) 
+for j in range(1,t+1):
+    if g1 %j ==0:
+        ls[j] +=1
+        if g1//j != j:
+            ls[g1//j]+=1
