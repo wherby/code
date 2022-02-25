@@ -1,4 +1,4 @@
-# https://www.hackerrank.com/contests/projecteuler/challenges/euler082/problem
+# https://www.hackerrank.com/contests/projecteuler/challenges/euler083/problem
 import os
 
 abspath = os.path.abspath(__file__)
