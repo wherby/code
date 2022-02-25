@@ -1,11 +1,11 @@
-# https://www.hackerrank.com/contests/projecteuler/challenges/euler083/problem
+# https://projecteuler.net/problem=83
 import os
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input01.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 # import os
 print(os.getcwd())
@@ -23,11 +23,11 @@ else:
 ins=[]
 for line in inputA:
     ins.append(line)
-n = len(ins)
+n = int(ins[0])
 gird = []
 for i in range(n):
-    line = ins[i]
-    line =list(map(lambda x : int(x),line.split(",")))  
+    line = ins[i+1]
+    line =list(map(lambda x : int(x),line.split(" ")))  
     gird.append(line)
 start,end=0, n*n-1
 g = [[] for _ in range(n*n+2)]
