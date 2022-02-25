@@ -52,4 +52,4 @@ for (key,value) in dic.items():
 	
 	mx =  mx +getRange(value)
 
-print m*n- mx
+print(m*n- mx)

@@ -33,9 +33,4 @@ for i in range(1,n+1):
 
     vis[d[i]] = vis[d[i]] -1
 
-for i in range(n)
 
-index =2
-for i in range(q):
-    l,m =map(int , ins[index + i].strip().split())
-    #print l,m
