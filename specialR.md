@@ -164,3 +164,7 @@ https://raw.githubusercontent.com/wherby/code/master/contest/00000c275d69/c279/q
 
 
 # bruteforce
+
+
+# DP 寻找最小循环
+https://leetcode-cn.com/problems/minimum-time-to-finish-the-race/
