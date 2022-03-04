@@ -8,6 +8,7 @@ https://leetcode-cn.com/problems/sum-of-subarray-ranges/
 
 子数组是数组中一个连续 非空 的元素序列。
 
+子数组最大值的和，就是最大值能影响前后的长度的乘积和
 https://github.com/wherby/code/blob/master/questions/000001/q2104.py
 
 
