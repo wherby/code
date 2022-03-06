@@ -183,3 +183,7 @@ False
 
 # sum of 2d array
 remains = sum(map(sum,dp0))
+
+# chr next
+nextc = lambda c : chr(ord(c)+1)
+print(nextc("a"))
