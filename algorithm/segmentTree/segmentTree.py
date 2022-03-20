@@ -5,7 +5,7 @@ from math import ceil, log2;
 # A utility function to get the
 # middle index from corner indexes.
 def getMid(s, e) :
-    return s + (e -s) // 2;
+    return s + (e -s) // 2
  
 #""" A recursive function to get the sum of values
 #    in the given range of the array. The following
