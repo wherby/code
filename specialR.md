@@ -170,3 +170,7 @@ https://raw.githubusercontent.com/wherby/code/master/contest/00000c275d69/c279/q
 https://leetcode-cn.com/problems/minimum-time-to-finish-the-race/
 https://github.com/wherby/code/blob/master/contest/00000c275d69/c282/q4/q41.py
 
+
+# Get Kth smallest lexicographical number
+https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/
+

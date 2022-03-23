@@ -9,4 +9,8 @@ class Solution:
             if i+1 >=carpetLen:
                 for j in range(1,num+1):
                     dp[i][j] = min(dp[i-1][j] + (floor[i] =="1"),dp[i-carpetLen][j-1])
+        print(dp)
         return min(dp[n-1])
+
+re =Solution().minimumWhiteTiles("1111111",2,3)
+print(re)
