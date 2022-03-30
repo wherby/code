@@ -174,3 +174,8 @@ https://github.com/wherby/code/blob/master/contest/00000c275d69/c282/q4/q41.py
 # Get Kth smallest lexicographical number
 https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/
 
+
+# 同余递增
+
+https://leetcode-cn.com/problems/find-servers-that-handled-most-number-of-requests/
+
