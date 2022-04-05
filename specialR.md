@@ -179,3 +179,11 @@ https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/
 
 https://leetcode-cn.com/problems/find-servers-that-handled-most-number-of-requests/
 
+# DFS using stack
+https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a45ef7 
+https://raw.githubusercontent.com/wherby/code/master/algorithm/dfs/dfsUsingStack.py
+
+
+# Encode and decode
+https://leetcode-cn.com/contest/weekly-contest-287/problems/encrypt-and-decrypt-strings/
+求decode的可能，可以先把可能值encode: contest\00000c275d69\c287\q4\t44.ans.py

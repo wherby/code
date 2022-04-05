@@ -1,29 +1,3 @@
-#https://usaco.guide/CPH.pdf#page=101
-# https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/
-
-def sum(a,b):
-    a += n
-    b += n
-    s =0 
-    while a<=b:
-        if a %2 ==1:
-            s+= tree[a]
-            a+=1
-        if b%2 ==1:
-            s += tree[b]
-            b -=1
-        a =a //2
-        b = b //2
-    
-def add(k, x):
-    k += n
-    tree[k] +=x
-    k=k//2
-    while k >=1:
-        tree[k] = tree[2*k] + tree[2*k+1]
-        k = k //2
-    
-
 class SegTree:
     def __init__(self, arr):
         m = len(arr)
@@ -61,13 +35,35 @@ class SegTree:
         while k >=1:
             self.tree[k] = self.tree[2*k] + self.tree[2*k+1]
             k= k//2
-
-a =SegTree([1,2,3,4,5,6])
-s = a.sum(2,6)
-print(s)
-print(a.tree)
-a.add(1, 10)
-s = a.sum(1,4)
-print(s)
-print(a.tree)
     
+    def update(self,k,x):
+        k += self.n
+        self.tree[k] =x
+        k = k //2
+        while k>=1:
+            self.tree[k] = self.tree[2*k] + self.tree[2*k+1]
+            k= k//2
+
+class NumArray:
+
+    def __init__(self, nums):
+        self.seg= SegTree(nums)
+
+    def update(self, index: int, val: int) -> None:
+        self.seg.update(index,val)
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.seg.sum(left,right)
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# obj.update(index,val)
+# param_2 = obj.sumRange(left,right)
+
+a = NumArray([1, 3, 5])
+re =a.sumRange(0,2)
+print(re)
+a.update(1,2)
+re = a.sumRange(0,2)
+print(re)

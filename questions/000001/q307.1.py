@@ -1,6 +1,6 @@
-# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
-from math import ceil, log2
-
+# https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/  
+# time cost more than q307.py
+from math import ceil, log2;
 class segment_tree:
     # merge(left, right): function used to merge the two halves
     # basef(value): function applied on individual values
@@ -50,20 +50,28 @@ class segment_tree:
 
     def update(self, x, v):
         self._update_util( 0, 0, self.n-1, x, v )   
-        self.array[x] =v         
+        self.array[x] =v
 
-print("\nRange Sum:")
-# Range Sum
-st = segment_tree([1,2,3,4,5,6,7,8])
-print(st)
-print(st.query(2,4))
-st.update(3,5)
-print(st.query(2,4))
+class NumArray:
 
-print("\nRange Max:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-print(st)
-print(st.query(2,4))
-st.update(3,6)
-print(st.query(2,4))
+    def __init__(self, nums):
+        self.seg= segment_tree(nums)
+
+    def update(self, index: int, val: int) -> None:
+        self.seg.update(index,val)
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.seg.query(left,right)
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# obj.update(index,val)
+# param_2 = obj.sumRange(left,right)
+
+a = NumArray([1, 3, 5])
+re =a.sumRange(0,2)
+print(re)
+a.update(1,2)
+re = a.sumRange(0,2)
+print(re)

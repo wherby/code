@@ -127,7 +127,8 @@ class Solution:
 from sortedcontainers import SortedList
 questions/c214/q4.py   https://leetcode-cn.com/problems/create-sorted-array-through-instructions/
 
-
+ https://leetcode-cn.com/problems/find-servers-that-handled-most-number-of-requests/
+   https://github.com/wherby/code/blob/master/questions/000001/q1606.2.py
 
 # list deep copy
 dp2 = list(dp1)
@@ -188,3 +189,8 @@ remains = sum(map(sum,dp0))
 # chr next
 nextc = lambda c : chr(ord(c)+1)
 print(nextc("a"))
+
+# count bit
+https://leetcode-cn.com/problems/prime-number-of-set-bits-in-binary-representation/submissions/
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+        return sum([(665772 >> m.bit_count()) & 1 for m in range(left, right + 1)])
