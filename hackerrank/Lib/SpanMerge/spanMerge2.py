@@ -1,5 +1,4 @@
 
-
 class Interval(object):
     def __init__(self, s=0, e=0):
         self.start = s
@@ -20,6 +19,7 @@ def insert(intervals, newInterval):
 
 
 intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
-intervals = map(lambda x: Interval(x[0],x[1]),intervals)
+intervals = [Interval(x[0],x[1]) for x in intervals]
 re=  insert(intervals,Interval(4,13))
-print map(lambda x: str(x), re)
+for a in re:
+    print(a)

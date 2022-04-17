@@ -187,3 +187,7 @@ https://raw.githubusercontent.com/wherby/code/master/algorithm/dfs/dfsUsingStack
 # Encode and decode
 https://leetcode-cn.com/contest/weekly-contest-287/problems/encrypt-and-decrypt-strings/
 求decode的可能，可以先把可能值encode: contest\00000c275d69\c287\q4\t44.ans.py
+
+# set value for range .\contest\00000c275d69\lc2022c1\q3\
+use reverse operation for final value
+https://leetcode-cn.com/contest/season/2022-spring/problems/QO5KpG/ 

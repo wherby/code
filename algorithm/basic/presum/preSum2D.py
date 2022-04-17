@@ -1,3 +1,4 @@
+# pic/presum.png
 #因为多1列表示从 [(x1,y1),(x2,y2)] 双闭区间的query
 class Presum2d:
     def __init__(self,arr):

@@ -42,4 +42,4 @@ ups=[[1,50,20],[20,51,39],[50,70,100],[20,100,230]]
 for up in ups:
 	a,b,x = up
 	sgs=updateSeg(a,b,x,sgs)
-print sgs
+print(sgs)

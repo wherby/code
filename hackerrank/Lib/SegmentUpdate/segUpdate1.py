@@ -38,8 +38,9 @@ def updateSeg(a,b,x,sgs):
 #rangeUpdate range array
 
 sgs=[[1,100,0]]
-ups=[[10,20],[50,60],[10,40],[5,15]]#,[5,10],[25,55]]
+#ups=[[10,20],[50,60],[10,40],[5,15]]#,[5,10],[25,55]]
+ups=[[10,20],[20,30],[30,40],[40,55]]#,[5,10],[25,55]]
 for up in ups:
 	a,b = up
 	sgs=updateSeg(a,b,1,sgs)
-print sgs
+print(sgs)
