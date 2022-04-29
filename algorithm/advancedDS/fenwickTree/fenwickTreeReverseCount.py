@@ -1,5 +1,7 @@
-# https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/
-# Zero-index fenwick tree
+import random
+# ./pic/fenwickUsage.png  reverse pair counting
+# When the value of scope is limited for list
+# Zero-indexed
 class FenwickTree:
     def __init__(self,arr) -> None:
         self.n =len(arr)
@@ -19,8 +21,10 @@ class FenwickTree:
             self.bit[idx] += delta
             idx =  idx | (idx +1)
             
-arr= [i for i in range(1,10)]
-ft = FenwickTree(arr)
-print(ft.sumTo(4))
-ft.add(1,10)
-print(ft.sumTo(4))
+ls = [random.randint(0,100) for i in range(10000)]
+fw= FenwickTree([0]*101)  # value of scope of ls is 0-100
+
+for i,a in enumerate(ls):
+    k = fw.sumTo(a-1)
+    fw.add(a,1)
+    print(k) # K is the number of value which is less than a when j <i

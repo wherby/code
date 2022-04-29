@@ -194,3 +194,19 @@ print(nextc("a"))
 https://leetcode-cn.com/problems/prime-number-of-set-bits-in-binary-representation/submissions/
     def countPrimeSetBits(self, left: int, right: int) -> int:
         return sum([(665772 >> m.bit_count()) & 1 for m in range(left, right + 1)])
+
+# sort
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        return sorted(range(1, n+1), key=str)
+
+
+# Array manipulation
+https://leetcode-cn.com/problems/projection-area-of-3d-shapes/
+class Solution:
+    def projectionArea(self, grid: List[List[int]]) -> int:
+        xyArea = sum(v > 0 for row in grid for v in row)
+        yzArea = sum(map(max, zip(*grid)))  # 取得每列最大值的和
+        zxArea = sum(map(max, grid))        # 取得每行最大值的和
+        return xyArea + yzArea + zxArea
+

@@ -1,6 +1,8 @@
 # 路径压缩，d为 奇偶性判断
 # pic/questionForValuePath.png
 # 也可以用扩展域解法 pic/扩展域解法.png
+# d[x]记录x到已知根节点的距离，在find 时候更新根节点的父节点距离
+# union(x,y,val): 表示从x到y的距离为val，在更新的时候更新d[x]为
 class DSU:
     def __init__(self,N):
         self.p  = list(range(N))
