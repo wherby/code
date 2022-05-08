@@ -1,4 +1,5 @@
 # 单次LCA for tree https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/discuss/1612179/Python3-lca
+# contest\c270\q3\q34.py
 class LCA:
     def getLCA(self,node,valueA,valueB):
         if not node:
@@ -10,7 +11,7 @@ class LCA:
             return node
         return left or right
 
-    def traceA(self,node,value,record):
+    def trace(self,node,value,record):
         if not node: return False
         if node.val == value:
             return True
@@ -21,7 +22,7 @@ class LCA:
         if right:
             record.append("R")
             return True
-        
+            
         
 
 

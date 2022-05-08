@@ -1,10 +1,7 @@
-#https://www.geeksforgeeks.org/strongly-connected-components/
-#
-# Python implementation of Kosaraju's algorithm to print all SCCs
-  
 from collections import defaultdict
-   
+#https://cp-algorithms.com/graph/strongly-connected-components.html 
 #This class represents a directed graph using adjacency list representation
+#This type of SSC will not work for undirected graph.. So can't be used
 class Graph:
    
     def __init__(self,vertices):
@@ -14,18 +11,20 @@ class Graph:
     # function to add an edge to graph
     def addEdge(self,u,v):
         self.graph[u].append(v)
+        #self.graph[v].append(u)
    
     # A function used by DFS
-    def DFSUtil(self,v,visited):
+    def DFSUtil(self,v,visited,tmp):
         # Mark the current node as visited and print it
         visited[v]= True
-        print(v)
+        tmp.append(v)
         #Recur for all the vertices adjacent to this vertex
         for i in self.graph[v]:
             if visited[i]==False:
-                self.DFSUtil(i,visited)
+                self.DFSUtil(i,visited,tmp)
   
-    # First do a topological sorting of the graph. store the visit order in stack
+    # First do a topological sorting of the graph.
+    # dfs and store the visit exiting order in stack
     def fillOrder(self,v,visited, stack):
         # Mark the current node as visited 
         visited[v]= True
@@ -50,8 +49,7 @@ class Graph:
    
     # The main function that finds and prints all strongly
     # connected components
-    def printSCCs(self):
-          
+    def getSSC(self):
         stack = []
         # Mark all the vertices as not visited (For first DFS)
         visited =[False]*(self.V)
@@ -66,26 +64,29 @@ class Graph:
            
          # Mark all the vertices as not visited (For second DFS)
         visited =[False]*(self.V)
-  
+
+        ssc =[]
          # Now process all vertices in order defined by Stack
         while stack:
              i = stack.pop()
              if visited[i]==False:
-                gr.DFSUtil(i, visited)
-                print("")
-   
-# Create a graph given in the above diagram
-# 2===1===0===3===4
-#  ======
-g = Graph(5)
-g.addEdge(1, 0)
-g.addEdge(0, 2)
-g.addEdge(2, 1)
-g.addEdge(0, 3)
-g.addEdge(3, 4)
-  
-   
-print ("Following are strongly connected components " +
-                           "in given graph")
-g.printSCCs()
-#This code is contributed by Neelam Yadav
+                tmp=[]
+                gr.DFSUtil(i, visited,tmp)
+                ssc.append(tmp)
+        return ssc
+
+class Solution(object):
+    def minimumCost(self, cost, roads):
+        """
+        :type cost: List[int]
+        :type roads: List[List[int]]
+        :rtype: int
+        """
+        n = len(cost)
+        g = Graph(n)
+        for a,b in roads:
+            g.addEdge(a,b)
+        ssc = g.getSSC()
+        print(ssc)
+        
+re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])

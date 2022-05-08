@@ -200,6 +200,17 @@ class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
         return sorted(range(1, n+1), key=str)
 
+## python sort with multiple index  https://leetcode-cn.com/problems/reorder-data-in-log-files/submissions/
+log1.sort(key = lambda x:(x[1],x[0]))
+
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        def trans(log: str) -> tuple:
+            a, b = log.split(' ', 1)
+            return (0, b, a) if b[0].isalpha() else (1,)
+
+        logs.sort(key=trans)  # sort 是稳定排序
+        return logs
 
 # Array manipulation
 https://leetcode-cn.com/problems/projection-area-of-3d-shapes/
