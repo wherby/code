@@ -7,6 +7,7 @@ os.chdir(dname)
 
 filename = "input/input01.txt"
 f=open(filename,'r')
+f2 = open("input/input01.out.txt", "a")
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 import sys
@@ -18,7 +19,7 @@ else:
 
 cache ={}
 def getIdx(x,mid):
-    cir = x //8
+    cir = x //8 
     remder = x%8
     if remder ==6:
         return [(mid-cir-1,mid),(mid-cir,mid)]
@@ -57,7 +58,7 @@ def createCache(n):
     k = n
     m = (n+1)//2
     acc =0
-    for i in range(m+1):
+    for i in range(1,m+1):
         t = (k+1)//2 +acc
         cache[(i,m,n)]=t
         acc += (k-1)*4
@@ -88,12 +89,18 @@ def resolve(caseidx):
     ret = []
     createCache(n)
     for t in res:
+        #f2.write(str(t))
         s,e = getIdx(t,(n+1)//2)
+        #f2.write(str(s))
+        #f2.write(str(e))
+        #f2.write("\n")
         ret.append((getRealIdex(s[0],s[1],n),getRealIdex(e[0],e[1],n)))
     print("Case #"+str(caseidx+1)+": " + str(len(ret)))
     for a,b in ret:
         #print(a)
+        #pass
         print(str(a) + " " +str(b))
+        #f2.writelines([str(a) + " " +str(b)+"\n"])
         
     
     
