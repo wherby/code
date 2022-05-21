@@ -10,19 +10,13 @@ f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 import sys
-import math
 
 if  "f" in locals():
     sys.stdin = f
 else:
     inputA=sys.stdin
 
-
-
-        
-
-
-
+import math
 def calcN1(n):
     ans =0
     nn = (n+0.5)*(n+0.5)
@@ -50,7 +44,6 @@ def resolve():
     x1=calcN1(n)
     x2=calcN2(n)
     return x1-x2
-    
 
 def op(caseidx):
     ret= resolve()
@@ -61,6 +54,3 @@ def op(caseidx):
 for i in range(int(input())):
     op(i)
     
-
-# 2 4 6
-# 8 10 12 14
