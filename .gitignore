@@ -6,3 +6,5 @@
 .idea
 
 .tmp/*
+
+**/target/
