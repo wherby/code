@@ -2,9 +2,7 @@
 # https://www.geeksforgeeks.org/hopcroft-karp-algorithm-for-maximum-matching-set-2-implementation/?ref=lbp
 
 from collections import deque
-from hashlib import sha1
 from math import inf
-from re import S
 class HopcropfKarp:
     def __init__(self,m,n,g=None) -> None:
         self.NIL = 0

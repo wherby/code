@@ -190,4 +190,7 @@ https://leetcode-cn.com/contest/weekly-contest-287/problems/encrypt-and-decrypt-
 
 # set value for range .\contest\00000c275d69\lc2022c1\q3\
 use reverse operation for final value
-https://leetcode-cn.com/contest/season/2022-spring/problems/QO5KpG/ 
+https://leetcode-cn.com/contest/season/2022-spring/problems/QO5KpG/
+
+# 小数除法改为乘法
+https://leetcode.cn/contest/weekly-contest-294/problems/minimum-lines-to-represent-a-line-chart/
