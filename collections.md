@@ -228,3 +228,20 @@ class Solution:
         zxArea = sum(map(max, grid))        # 取得每行最大值的和
         return xyArea + yzArea + zxArea
 
+# acc
+```python 
+from itertools import accumulate
+A =[1,2,3,4]
+acc1 = list(accumulate(A))
+print(acc1) 
+# [1, 3, 6, 10]
+acc4 = list(accumulate(A, initial = 0))
+print(acc4) 
+#[0, 1, 3, 6, 10]
+acc2 = list(accumulate(accumulate(A)))
+print(acc2) 
+#[1, 4, 10, 20]
+acc3 = list(accumulate(accumulate(A), initial = 0))
+print(acc3) 
+#[0, 1, 4, 10, 20]
+```

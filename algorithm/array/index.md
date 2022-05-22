@@ -12,3 +12,18 @@ https://leetcode-cn.com/problems/sum-of-subarray-ranges/
 https://github.com/wherby/code/blob/master/questions/000001/q2104.py
 
 
+## next small
+
+algorithm\array\minRange.py
+algorithm\array\nextsmall.py
+algorithm\array\nextsmall2.py
+
+在https://leetcode.cn/contest/weekly-contest-294/problems/sum-of-total-strength-of-wizards/
+nextsamll 和nextsmall2 两种写法都可以
+
+## sum of all subarray sum in range[l:r] contains specified element k 
+
+sum of all subarray wich contains nums[k] in nums[l:r]
+https://leetcode.com/problems/sum-of-total-strength-of-wizards/discuss/2062017/C%2B%2B-prefix-%2B-monotonic-stack-O(N)-solution-with-thought-process
+
+
