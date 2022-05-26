@@ -16,44 +16,45 @@ if  "f" in locals():
 else:
     inputA=sys.stdin
 
-def dfs(i,g,dp,ls,dp1,visit):
-    visit[i] =1
-    if len(g[i]) ==0:
-        dp[i] =0
-    else:
-        mn = ls[i]
-        mx = ls[i]
-        for a in g[i]:
-            dfs(a,g,dp,ls,dp1,visit)
-            mn = min(mn,dp1[a])
-            mx = max(mx,dp1[a])
-        dp[i] = mn
-        dp1[i] = mx
-    
+mod = 10**9+7
+def quickPow(x,y):
+    ret =1
+    cur = x 
+    while y >0:
+        if y & 1:
+            ret = ret * cur % mod
+        cur = cur *cur % mod
+        y = y //2
+    return ret
+def inv(x):
+    return quickPow(x,mod-2)
+N= 402
+fact =[1]*N
+invFact = [1]*N
+for i in range(2,N):
+    fact[i] = fact[i-1]*i %mod
+for i in range(1,N):
+    invFact = inv(fact[i])
+
 
 def resolve():
-    inp = int(input())
-    ls = [0]+list(map(lambda x: int(x),input().split()))
-    ls2 = list(map(lambda x: int(x),input().split()))
-    g =[[] for _ in range(inp+1)]
-    for i in range(inp):
-        if i+1 >ls2[i]:
-            g[ls2[i]].append(i+1)
-        else:
-            g[0].append(i+1)
-    #print(g)
-    sm = sum(ls)
-    dp= [0]*(inp+1)
-    dp1 = [0]*(inp+1)
-    for i in range(inp):
-        dp[i+1] =ls[i+1]
-        dp1[i+1]= ls[i+1]
-    #print(dp,dp1)
-    visit=[0]*(inp+1)
-    for i in range(inp+1):
-        if visit[i]==0:
-            dfs(i,g,dp,ls,dp1,visit)
-    #print(dp,dp1)
+    n = int(input())
+    str1= input()
+    dp = [[[0]*N for _ in range(N)] for _ in range(N)]
+    for i in range(n):
+        dp[i+1][i][0]=1
+        dp[i][i+1][1]=1
+    for le in range(2,n+1):
+        for l in range(n-le+1):
+            r = l+le
+            for plen in range(1,le):
+                dp[l][r][plen] =dp[l][r-1][plen] +dp[l+1][r][plen] - dp[l+1][r+1][plen]
+            if str1[l] == str1[r-1]:
+                dp[l][r][2]+=1
+                for plen in range(3,le+1):
+                    dp[l][r][plen] += dp[l+1][r-1][plen-2]
+     
+    
     return sm -sum(dp)
 
 def op(caseidx):

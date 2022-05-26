@@ -8,4 +8,4 @@ def isPrime(n):
 
 ls = range(2,35000)
 ls = filter(isPrime,ls)
-print ls
+print(ls)

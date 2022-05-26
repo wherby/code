@@ -13,6 +13,25 @@ i = nums.index(1)
 # get cols of matrix  https://github.com/wherby/code/blob/master/algorithm/pythonLib/array.py
 cols = list(zip(*matrix))
 
+https://leetcode.cn/problems/delete-columns-to-make-sorted/
+class Solution(object):
+    def minDeletionSize(self, strs):
+        return sum(any(x>y for x,y in pairwise(col)) for col in zip(*strs))
+pairwise to pair nearby value in list
+```python
+>>> from itertools import pairwise
+>>> a =[1,2,3,4,5]
+>>> pairwise(a)
+<itertools.pairwise object at 0x000001ACBE2AE6E0>
+>>> for a,b in pairwise(a):print(a,b)
+...
+1 2
+2 3
+3 4
+4 5
+>>>
+```
+
 # header
 from collections import defaultdict,deque
 import functools
