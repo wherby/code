@@ -1,4 +1,4 @@
-# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
+# https://leetcode.cn/problems/booking-concert-tickets-in-groups/
 from math import ceil, log2
 
 class segment_tree:
@@ -50,28 +50,13 @@ class segment_tree:
 
     def update(self, x, v):
         self._update_util( 0, 0, self.n-1, x, v )   
-        self.array[x] =v         
+        self.array[x] =v   
 
-print("\nRange Sum:")
-# Range Sum
-st = segment_tree([1,2,3,4,5,6,7,8])
-print(st)
-print(st.query(2,4))
-st.update(3,5)
-print(st.query(2,4))
-
-print("\nRange Max:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-print(st)
-print(st.query(2,4))
-st.update(3,6)
-print(st.query(2,4))
-
-print("\nRange Min:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
-print(st)
-print(st.query(2,4))
-st.update(3,1)
-print(st.query(2,4))
+class CombineSegTree():
+    def __init__(self,arr):
+        self.sumTree= segment_tree(arr)
+        self.mxTree = segment_tree(arr,max, basev=-float('inf'))
+    
+    def update(self,idx,val):
+        self.sumTree.update(idx,val)
+        self.mxTree.update(idx,val)

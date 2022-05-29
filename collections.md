@@ -108,6 +108,12 @@ format 补0
 >>> "{:02}".format(3)  
 '03'
 
+小数补0
+>>> n =0.1
+>>> format(n,'.2f')
+'0.10'
+>>>
+
 # deep copy
 import copy
 copy.deepcopy(board)  # deep copy
