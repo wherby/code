@@ -21,12 +21,14 @@ class Node:
 class SegmentTree:
     def __init__(self) -> None:
         self._root = Node()
+        self.MINV = 0
+        self.MAXV = int(1e9 + 10) ## node's max value
 
     def update(self, left: int, right: int, delta: bool) -> None:
-        self._update(left, right, 0, int(1e9 + 10), self._root, delta)
+        self._update(left, right, self.MINV, self.MAXV, self._root, delta)
 
     def query(self, left: int, right: int) -> bool:
-        return self._query(left, right, 0, int(1e9 + 10), self._root)
+        return self._query(left, right, self.MINV, self.MAXV, self._root)
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
         if L <= l <= r <= R:
@@ -56,7 +58,7 @@ class SegmentTree:
         return res
 
     def _pushUp(self, root: Node) -> None:
-        root.isTracked = not not (
+        root.isTracked = (
             root.left and root.left.isTracked and root.right and root.right.isTracked
         )
 
@@ -87,3 +89,8 @@ class RangeModule:
         """ 停止跟踪 半开区间 [left, right)"""
         self.tree.update(left, right - 1, False)
 
+
+rm = RangeModule()
+rm.addRange(4,10)
+print(rm.queryRange(4,6))
+print(rm.queryRange(2,6))

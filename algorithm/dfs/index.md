@@ -23,4 +23,6 @@
 
         First convert the given graph into a directed graph by running a series of depth first searches and making each edge directed as we go through it, in the direction we went. Second, find the strongly connected components in this directed graph. Bridges are the edges whose ends belong to different strongly connected components.
 
-# 
+## 
+
+Tarjan for search distance in tree algorithm\tree\lca\tarjan.py
