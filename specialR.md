@@ -194,3 +194,7 @@ https://leetcode-cn.com/contest/season/2022-spring/problems/QO5KpG/
 
 # 小数除法改为乘法
 https://leetcode.cn/contest/weekly-contest-294/problems/minimum-lines-to-represent-a-line-chart/
+
+# Count number 
+contest\00000c275d69\c297\q4\t4.py
+https://leetcode.cn/contest/weekly-contest-297/problems/naming-a-company/

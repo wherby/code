@@ -270,3 +270,36 @@ acc3 = list(accumulate(accumulate(A), initial = 0))
 print(acc3) 
 #[0, 1, 4, 10, 20]
 ```
+
+##  defaultdict of defaultdict 
+https://stackoverflow.com/questions/5029934/defaultdict-of-defaultdict
+dic2=defaultdict(lambda: defaultdict(int))
+
+## aToZ
+import string
+print list(string.ascii_lowercase)
+
+small_letters = map(chr, range(ord('a'), ord('z')+1))
+big_letters = map(chr, range(ord('A'), ord('Z')+1))
+digits = map(chr, range(ord('0'), ord('9')+1))
+
+import string
+string.letters
+string.uppercase
+string.digits
+
+ABC = ['abcdefghijklmnopqrstuvwxyz']
+
+from string import ascii_lowercase
+
+## set ops
+
+>>> a = {1, 2, 3, 4}
+>>> b = {2, 3, 4, 5}
+>>> c = {3, 4, 5, 6}
+>>> d = {4, 5, 6, 7}
+
+>>> a.intersection(b, c, d)
+{4}
+
+>>> a & b & c & d
