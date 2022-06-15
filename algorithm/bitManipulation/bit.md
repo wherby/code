@@ -4,3 +4,5 @@
 '00000010'
 >>> '{:032b}'.format(a) 
 '00000000000000000000000000000010'
+
+## /public/algebra/all-submasks.html
