@@ -26,8 +26,8 @@ def rollingHashDoubleHash(arr, m):
 
 s ="abcdsaasaacbd"
 s2 = "abcdsaasaabcd"
-arr =list(map(lambda x: ord(x)- ord('a'),s))
-arr2 =list(map(lambda x: ord(x)- ord('a'),s2))
+arr =list(map(lambda x: ord(x)- ord('a')+1,s))
+arr2 =list(map(lambda x: ord(x)- ord('a')+1,s2))
 re = rollingHashDoubleHash(arr,4)
 re2  = rollingHashDoubleHash(arr2,4)
 print(re,re2)
