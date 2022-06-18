@@ -1,5 +1,5 @@
 # https://cp-algorithms.com/string/z-function.html
-
+# Use zfunction2 for concise
 def calculate_z_array(s):
     N = len(s)
     Z = [0] * N

@@ -57,6 +57,6 @@ def computeLPSArray(pat, M, lps):
     #print(lps)
   
 txt = "ABABDABACDABABCABAB"
-pat = "azbazbzaz"
+pat = "ABAB"
 KMPSearch(pat, txt)
   
