@@ -9,3 +9,6 @@ https://leetcode-cn.com/problems/most-common-word/
         for word, _ in word_map:
             if word not in banned:
                 return word
+
+# aho-corosick
+https://wherby.github.io/code/string/aho_corasick.html

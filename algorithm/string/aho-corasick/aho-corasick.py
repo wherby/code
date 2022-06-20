@@ -83,6 +83,7 @@ class Automaton:
                     if not (key in result):
                         result[key] = []
                     result[key].append(i - len(key) + 1)
+        #print(self.adlist)
         return result
  
  

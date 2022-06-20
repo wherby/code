@@ -1,8 +1,4 @@
-# https://leetcode.cn/problems/range-module/solution/python-dong-tai-kai-dian-xian-duan-shu-b-jrrs/
 # https://leetcode.cn/problems/range-module/
-from typing import Optional
-
-
 class Node:
     __slots__ = ('isTracked', 'lazy', 'left', 'right')
 
@@ -74,7 +70,9 @@ class SegmentTree:
             root.lazy = False
 
 
+        
 class RangeModule:
+
     def __init__(self):
         self.tree = SegmentTree()
 
@@ -91,7 +89,10 @@ class RangeModule:
         self.tree.update(left, right - 1, False)
 
 
+
+# Your RangeModule object will be instantiated and called as such:
+# obj = RangeModule()
+# obj.addRange(left,right)
+# param_2 = obj.queryRange(left,right)
+# obj.removeRange(left,right)
 rm = RangeModule()
-rm.addRange(4,10)
-print(rm.queryRange(4,6))
-print(rm.queryRange(2,6))
