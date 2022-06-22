@@ -2,6 +2,9 @@
 
 
 
+from collections import deque
+
+
 class Vertex:
     def __init__(self,p=-1,ch ="$") -> None:
         self.K = 256
@@ -13,7 +16,7 @@ class Vertex:
         self.go = [-1]*self.K
     
     def __str__(self):
-        return "({0},{1},{2})".format(self.pch,self.next,self.leaf)
+        return "({0},{1},{2},{3})".format(self.pch,self.next,self.leaf,self.link)
     def __repr__(self):
         return self.__str__()
     
@@ -40,8 +43,8 @@ class AHOCorasick:
             else:
                 self.t[v].link = self.go(self.go_link(self.t[v].p),self.t[v].pch)
         # In go_link will add leaf check
-        # if self.t[self.t[v].link].leaf == True:
-        #     print("aaa")
+        if self.t[self.t[v].link].leaf == True:
+            print("aaa")
         return self.t[v].link
 
     def go(self,v,ch):
@@ -57,6 +60,7 @@ class AHOCorasick:
         v = 0
         for ch in strA:
             v = self.go(v,ch)
+            #print(self.t[v])
             if self.t[v].leaf == True:
                 print("AC")
                 re =""
@@ -68,10 +72,11 @@ class AHOCorasick:
                 
         
         
-        
+## This will miss some state for "ha" check
 ac = AHOCorasick()
 ac.addString("what")
-ac.addString("hat")
+ac.addString("ha")
+ac.addString("hate")
 ac.addString("ver")
 ac.addString("er")
-ac.search("whatever, err ... , wherever")
+ac.search("whatever11")
