@@ -1,6 +1,16 @@
 # windows
 https://winlibs.com/
 
+install gcc and wingw in
+and set path:
+C:\mingw64\bin
+## linux
+sudo apt-get install gcc-10
+sudo apt-get install g++-10
+sudo apt-get install gdb
+
+##  
+install C++ VS module
 
 ## configure vs code
 
@@ -17,7 +27,7 @@ vscode=>teminal => configure task
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"-std=c++20",  <== enable c++20
+				"-std=c++20",                                                     <== enable c++20
 				"${file}",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"

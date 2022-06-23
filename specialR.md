@@ -170,3 +170,31 @@ https://raw.githubusercontent.com/wherby/code/master/contest/00000c275d69/c279/q
 https://leetcode-cn.com/problems/minimum-time-to-finish-the-race/
 https://github.com/wherby/code/blob/master/contest/00000c275d69/c282/q4/q41.py
 
+
+# Get Kth smallest lexicographical number
+https://leetcode-cn.com/problems/k-th-smallest-in-lexicographical-order/
+
+
+# 同余递增
+
+https://leetcode-cn.com/problems/find-servers-that-handled-most-number-of-requests/
+
+# DFS using stack
+https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a45ef7 
+https://raw.githubusercontent.com/wherby/code/master/algorithm/dfs/dfsUsingStack.py
+
+
+# Encode and decode
+https://leetcode-cn.com/contest/weekly-contest-287/problems/encrypt-and-decrypt-strings/
+求decode的可能，可以先把可能值encode: contest\00000c275d69\c287\q4\t44.ans.py
+
+# set value for range .\contest\00000c275d69\lc2022c1\q3\
+use reverse operation for final value
+https://leetcode-cn.com/contest/season/2022-spring/problems/QO5KpG/
+
+# 小数除法改为乘法
+https://leetcode.cn/contest/weekly-contest-294/problems/minimum-lines-to-represent-a-line-chart/
+
+# Count number 
+contest\00000c275d69\c297\q4\t4.py
+https://leetcode.cn/contest/weekly-contest-297/problems/naming-a-company/

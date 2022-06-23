@@ -18,7 +18,7 @@ def getNext(str):
             j +=1
     return next
 
-n = getNext("abababaac")
+n = getNext("babab")
 print(n)
 
 

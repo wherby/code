@@ -1,4 +1,6 @@
 # ./pic/dsuwithvalue.png
+# d[x]表示x到根节点的距离
+# size[x]表示以x为根的dsu节点数目
 class DSU:
     def __init__(self,N):
         self.p  = list(range(N))
@@ -21,6 +23,13 @@ class DSU:
 
 dsu = DSU(8)
 #0<-2<-1<-3<-4<-5<-6<-7 雖然 union(1,0) 但是2已經在0集合裏面，所以會把1放在後面形成一個鏈條
+# 0<-2
+# 0<-1
+#             5<-6
+#                6<-7
+#     1<-3
+#     1<-4 
+#          4<-5
 dsu.union(2,0)
 dsu.union(1,0)
 dsu.union(6,5)

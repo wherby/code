@@ -38,6 +38,7 @@ def get_prefix_arr(pattern, b):
         else:
             prefix_arr[m] = 0
             m += 1
+    #print(prefix_arr)
     return prefix_arr
 string = "ABABDABACDABABCABABCABAB"
 pat = "ABABCABAB"

@@ -25,7 +25,7 @@ class Graph:
             if visited[i]==False:
                 self.DFSUtil(i,visited)
   
-  
+    # First do a topological sorting of the graph. store the visit order in stack
     def fillOrder(self,v,visited, stack):
         # Mark the current node as visited 
         visited[v]= True
@@ -75,6 +75,8 @@ class Graph:
                 print("")
    
 # Create a graph given in the above diagram
+# 2===1===0===3===4
+#  ======
 g = Graph(5)
 g.addEdge(1, 0)
 g.addEdge(0, 2)

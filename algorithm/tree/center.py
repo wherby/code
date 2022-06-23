@@ -1,4 +1,4 @@
-# Center of gravity ./pic/center.png
+# Center of gravity ./pic/center.png 树的重心
 
 def dfs(x):
     global ans,pos

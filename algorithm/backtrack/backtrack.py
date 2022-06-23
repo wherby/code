@@ -1,3 +1,4 @@
+# pic/backtrack.png
 cnt =0
 
 def allCombination(idx):
@@ -6,10 +7,10 @@ def allCombination(idx):
         cnt +=1
         print(res)
         return
-    allCombination(idx+1)
-    res.append(arr[idx])
-    allCombination(idx+1)
-    res.pop()
+    allCombination(idx+1) # without idx
+    res.append(arr[idx])  # add idx
+    allCombination(idx+1) # with idx
+    res.pop()             # recover back
 
 arr = [1,2,3,4,5,6,7]
 n = len(arr)

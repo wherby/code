@@ -11,3 +11,5 @@ class Solution(object):
         :type pref: str
         :rtype: int
         """
+        ls = list(filter(lambda x: x.find(pref) ==0,words))
+        return len(ls)

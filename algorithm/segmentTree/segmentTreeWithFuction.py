@@ -1,3 +1,4 @@
+# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
 from math import ceil, log2
 
 class segment_tree:
@@ -65,4 +66,12 @@ st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
 print(st)
 print(st.query(2,4))
 st.update(3,6)
+print(st.query(2,4))
+
+print("\nRange Min:")
+# Range Max
+st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
+print(st)
+print(st.query(2,4))
+st.update(3,1)
 print(st.query(2,4))

@@ -163,3 +163,11 @@
 6、 window + f 快速打开搜索窗口
 
 7、 alt + tab 快速查看打开的应用与窗口
+
+
+https://blog.csdn.net/qazwsxrx/article/details/119955392
+参考：Vscode怎么分屏在两个独立窗口中? - 李永江的回答 - 知乎
+
+ctrl + shift + P
+输入下面内容即可
+Workspace: Duplicate As Workspace in New Window

@@ -11,3 +11,7 @@ https://en.wikipedia.org/wiki/Tarjan%27s_off-line_lowest_common_ancestors_algori
 find loerst common ancestor offline search
 https://www.geeksforgeeks.org/tarjans-off-line-lowest-common-ancestors-algorithm/
 https://www.geeksforgeeks.org/find-lca-in-binary-tree-using-rmq/
+
+
+# SegmentTree
+./segmentTree

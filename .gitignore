@@ -5,3 +5,7 @@
 .metals
 .idea
 
+.tmp/*
+
+**/target/
+**/*.exe

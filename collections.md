@@ -13,6 +13,25 @@ i = nums.index(1)
 # get cols of matrix  https://github.com/wherby/code/blob/master/algorithm/pythonLib/array.py
 cols = list(zip(*matrix))
 
+https://leetcode.cn/problems/delete-columns-to-make-sorted/
+class Solution(object):
+    def minDeletionSize(self, strs):
+        return sum(any(x>y for x,y in pairwise(col)) for col in zip(*strs))
+pairwise to pair nearby value in list
+```python
+>>> from itertools import pairwise
+>>> a =[1,2,3,4,5]
+>>> pairwise(a)
+<itertools.pairwise object at 0x000001ACBE2AE6E0>
+>>> for a,b in pairwise(a):print(a,b)
+...
+1 2
+2 3
+3 4
+4 5
+>>>
+```
+
 # header
 from collections import defaultdict,deque
 import functools
@@ -89,6 +108,12 @@ format 补0
 >>> "{:02}".format(3)  
 '03'
 
+小数补0
+>>> n =0.1
+>>> format(n,'.2f')
+'0.10'
+>>>
+
 # deep copy
 import copy
 copy.deepcopy(board)  # deep copy
@@ -107,6 +132,13 @@ functools.reduce(lambda a,b : a and b ,res)
 >>> ls = itertools.combinations(a,2)
 >>> print(list(ls))
 [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+ 
+class Solution:
+    def largestTriangleArea(self, points: List[List[int]]) -> float:
+        def triangleArea(x1: int, y1: int, x2: int, y2: int, x3: int, y3: int) -> float:
+            return abs(x1 * y2 + x2 * y3 + x3 * y1 - x1 * y3 - x2 * y1 - x3 * y2) / 2
+        return max(triangleArea(x1, y1, x2, y2, x3, y3) for (x1, y1), (x2, y2), (x3, y3) in combinations(points, 3))
+https://leetcode.cn/problems/largest-triangle-area/
 
 # permutetion
 >>> a =[1,2,3]
@@ -127,6 +159,8 @@ class Solution:
 from sortedcontainers import SortedList
 questions/c214/q4.py   https://leetcode-cn.com/problems/create-sorted-array-through-instructions/
 
+ https://leetcode-cn.com/problems/find-servers-that-handled-most-number-of-requests/
+   https://github.com/wherby/code/blob/master/questions/000001/q1606.2.py
 
 # list deep copy
 dp2 = list(dp1)
@@ -183,3 +217,89 @@ False
 
 # sum of 2d array
 remains = sum(map(sum,dp0))
+
+# chr next
+nextc = lambda c : chr(ord(c)+1)
+print(nextc("a"))
+
+# count bit
+https://leetcode-cn.com/problems/prime-number-of-set-bits-in-binary-representation/submissions/
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+        return sum([(665772 >> m.bit_count()) & 1 for m in range(left, right + 1)])
+
+# sort
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        return sorted(range(1, n+1), key=str)
+
+## python sort with multiple index  https://leetcode-cn.com/problems/reorder-data-in-log-files/submissions/
+log1.sort(key = lambda x:(x[1],x[0]))
+
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        def trans(log: str) -> tuple:
+            a, b = log.split(' ', 1)
+            return (0, b, a) if b[0].isalpha() else (1,)
+
+        logs.sort(key=trans)  # sort 是稳定排序
+        return logs
+
+# Array manipulation
+https://leetcode-cn.com/problems/projection-area-of-3d-shapes/
+class Solution:
+    def projectionArea(self, grid: List[List[int]]) -> int:
+        xyArea = sum(v > 0 for row in grid for v in row)
+        yzArea = sum(map(max, zip(*grid)))  # 取得每列最大值的和
+        zxArea = sum(map(max, grid))        # 取得每行最大值的和
+        return xyArea + yzArea + zxArea
+
+# acc
+```python 
+from itertools import accumulate
+A =[1,2,3,4]
+acc1 = list(accumulate(A))
+print(acc1) 
+# [1, 3, 6, 10]
+acc4 = list(accumulate(A, initial = 0))
+print(acc4) 
+#[0, 1, 3, 6, 10]
+acc2 = list(accumulate(accumulate(A)))
+print(acc2) 
+#[1, 4, 10, 20]
+acc3 = list(accumulate(accumulate(A), initial = 0))
+print(acc3) 
+#[0, 1, 4, 10, 20]
+```
+
+##  defaultdict of defaultdict 
+https://stackoverflow.com/questions/5029934/defaultdict-of-defaultdict
+dic2=defaultdict(lambda: defaultdict(int))
+
+## aToZ
+import string
+print list(string.ascii_lowercase)
+
+small_letters = map(chr, range(ord('a'), ord('z')+1))
+big_letters = map(chr, range(ord('A'), ord('Z')+1))
+digits = map(chr, range(ord('0'), ord('9')+1))
+
+import string
+string.letters
+string.uppercase
+string.digits
+
+ABC = ['abcdefghijklmnopqrstuvwxyz']
+
+from string import ascii_lowercase
+
+## set ops
+
+>>> a = {1, 2, 3, 4}
+>>> b = {2, 3, 4, 5}
+>>> c = {3, 4, 5, 6}
+>>> d = {4, 5, 6, 7}
+
+>>> a.intersection(b, c, d)
+{4}
+
+>>> a & b & c & d

@@ -24,8 +24,8 @@ def minSpanTree(lines,n):
     rk = [1]*n
     for line in lines:
         a,b = line
-        print join(a,b)
-    print rk,col
+        print(join(a,b))
+    print(rk,col)
 
 
 lines = [[0,1],[0,2],[1,2],[1,3],[2,3],[0,3]]
@@ -35,4 +35,4 @@ minSpanTree(lines,4)
 
 col=[]
 rk=[]
-print rk,col
+print(rk,col)

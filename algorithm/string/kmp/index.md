@@ -1,0 +1,1 @@
+# 字符串最小表示 pic/minimunAlpha.png
