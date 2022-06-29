@@ -17,7 +17,7 @@ def arrDiff2(ls):
     return res
 
 
-
+# 把队列的值变成对应下标数字所需要的cost
 ls =[1,2,3,4,5,6,7,8]
 res1 = arrDiff(ls)
 print(res1)

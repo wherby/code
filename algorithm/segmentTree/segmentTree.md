@@ -17,3 +17,7 @@ Usage:
 contest\00000c275d69\d79\q4\q42.py
 
 
+## SegmentTree with merge funciton 
+求更新字符串之后最大连续字符串的长度
+
+algorithm\segmentTree\segTreeWithNode\segTreeWithNodeMerge.py https://leetcode-cn.com/contest/weekly-contest-285/problems/longest-substring-of-one-repeating-character/

@@ -1,5 +1,7 @@
 # https://leetcode-cn.com/contest/weekly-contest-285/problems/longest-substring-of-one-repeating-character/
 
+## 求更新字符串之后最大连续字符串的长度
+
 # use node in segment_tree
 from math import ceil, log2
 
