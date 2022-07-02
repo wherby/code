@@ -54,3 +54,8 @@ Learn modern C++ 20 programming in this comprehensive course.
 🐦 Twitter: https://twitter.com/learnqtguide
 🔗 Want more from Daniel? https://www.learnqt.guide/udemy-disco...
 🔗 Join Daniel's discord server for support: https://discord.com/invite/PcATcraESW
+
+
+## links
+
+https://cppinsights.io/

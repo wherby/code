@@ -1,3 +1,10 @@
+# https://leetcode.cn/contest/weekly-contest-284/problems/minimum-weighted-subgraph-with-the-required-paths/
+#给你一个整数 n ，它表示一个 带权有向 图的节点数，节点编号为 0 到 n - 1 。
+#同时给你一个二维整数数组 edges ，其中 edges[i] = [fromi, toi, weighti] ，表示从 fromi 到 toi 有一条边权为 weighti 的 有向 边。
+#最后，给你三个 互不相同 的整数 src1 ，src2 和 dest ，表示图中三个不同的点。
+#请你从图中选出一个 边权和最小 的子图，使得从 src1 和 src2 出发，在这个子图中，都 可以 到达 dest 。如果这样的子图不存在，请返回 -1 。
+#子图 中的点和边都应该属于原图的一部分。子图的边权和定义为它所包含的所有边的权值之和。
+
 import heapq
 class Solution(object):
     def minimumWeight(self, n, edges, src1, src2, dest):
@@ -31,6 +38,3 @@ class Solution(object):
         cc =[a[i]+b[i] +c[i] for i in range(n) ]
         ans = min(cc)
         return -1 if ans >= float('inf') else ans
-    
-re =Solution().minimumWeight(8,[[4,7,24],[1,3,30],[4,0,31],[1,2,31],[1,5,18],[1,6,19],[4,6,25],[5,6,32],[0,6,50]],4,1,6)
-print(re)

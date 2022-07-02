@@ -17,3 +17,9 @@ contest\00000c275d69\lc2022c1\q5\q5.2.py
 https://leetcode.cn/contest/weekly-contest-299/problems/minimum-score-after-removals-on-a-tree/
 
 algorithm\graph\dfsVisitingOrder\VisitingOrder.py
+
+
+## 多源路径子图，用反图求路径和
+https://leetcode.cn/contest/weekly-contest-284/problems/minimum-weighted-subgraph-with-the-required-paths/
+contest\00000c275d69\c284\q4\q4.2.py
+algorithm\graph\reverseGraph\multiSourcePath.py
