@@ -11,4 +11,5 @@ class Solution:
 
 matrix =[[10*i+j for j in range(10) ] for i  in range(10)]
 print(matrix)
+#print(zip(*matrix))
 print(list(zip(*matrix)))

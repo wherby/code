@@ -198,3 +198,9 @@ https://leetcode.cn/contest/weekly-contest-294/problems/minimum-lines-to-represe
 # Count number 
 contest\00000c275d69\c297\q4\t4.py
 https://leetcode.cn/contest/weekly-contest-297/problems/naming-a-company/
+
+
+# Code can pass in china site not us site
+
+https://leetcode.com/submissions/detail/731443898/
+https://leetcode.cn/problems/minimum-score-after-removals-on-a-tree/

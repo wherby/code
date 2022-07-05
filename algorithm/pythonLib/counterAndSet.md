@@ -15,3 +15,16 @@ class Solution:
         res = filter(lambda x: ls11[x] ==1 or ls21[x] ==1,res)
         return list(res)
 ```
+
+## Counter
+https://leetcode.cn/submissions/detail/324447394/
+class Solution(object):
+    def distinctNames(self, A) -> int:
+        m, A = defaultdict(Counter), set(A)
+        for w in A:
+            m[w[0]] += Counter(x for x in ascii_lowercase if x + w[1:] not in A)
+        return sum(m[x][y] * m[y][x] for x in m for y in m)
+
+>>> a = Counter(x for x in "abc")
+>>> a
+Counter({'a': 1, 'b': 1, 'c': 1})
