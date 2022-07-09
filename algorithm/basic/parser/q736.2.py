@@ -30,6 +30,7 @@ class Solution:
             for _ in range(word.count(')')):
                 obj = parents.pop()
                 parents[-1].append(obj)
+        #print(parents)
         return cal(parents[0])
     
 re = Solution().evaluate(expression = "(let x 2 (mult x (let x 3 y 4 (add x y))))")
