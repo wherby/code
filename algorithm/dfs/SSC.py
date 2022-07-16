@@ -3,15 +3,17 @@ from collections import defaultdict
 #This class represents a directed graph using adjacency list representation
 class Graph:
    
-    def __init__(self,vertices):
+    def __init__(self,vertices,g =None):
         self.V= vertices #No. of vertices
-        self.graph = defaultdict(list) # default dictionary to store graph
+        self.graph =g if g!=None else  [[] for _ in range(self.V)] # default dictionary to store graph
    
     # function to add an edge to graph
     def addEdge(self,u,v):
         self.graph[u].append(v)
    
     # A function used by DFS
+    # Will [maximum recursion depth exceeded in comparison] when recursive call 
+    # https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76db9#problem
     def DFSUtil(self,v,visited,tmp):
         # Mark the current node as visited and print it
         visited[v]= True
@@ -38,7 +40,7 @@ class Graph:
         g = Graph(self.V)
   
         # Recur for all the vertices adjacent to this vertex
-        for i in self.graph:
+        for i in range(self.V):
             for j in self.graph[i]:
                 g.addEdge(j,i)
         return g

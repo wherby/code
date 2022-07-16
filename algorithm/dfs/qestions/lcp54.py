@@ -66,13 +66,14 @@ class Solution(object):
         deg =[0 for _ in range(g.cnt+1)]
         for i in range(g.cnt+1):
             deg[i] = len(g.T[i])
-        print(deg,g.T)
+        print(deg,g.T,g.cnt)
         for i in range(n):
-            if deg[i] ==1:
+            if deg[i] ==1:  # if def[i] !=1 说明这个点是强连通区域的边界点
                 for a in g.T[i]:
                     ww[a] = min(ww[a],cost[i])
                     deg[a] -=1
         mx,ans =0,0
+        print(deg)
         for i in range(n,g.cnt+1):
             if deg[i]==1:
                 ans += ww[i]
@@ -81,6 +82,6 @@ class Solution(object):
         return ans-mx
                     
         
-re = Solution().minimumCost(cost = [1,2,3,4],roads = [[0,1],[0,2],[0,3]])
-#re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])
+#re = Solution().minimumCost(cost = [1,2,3,4],roads = [[0,1],[0,2],[0,3]])
+re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])
 print(re)

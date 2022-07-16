@@ -5,7 +5,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input00.txt"
+filename = "input/ts1_input.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -16,46 +16,51 @@ if  "f" in locals():
 else:
     inputA=sys.stdin
 
-mod = 10**9+7
-def quickPow(x,y):
-    ret =1
-    cur = x 
-    while y >0:
-        if y & 1:
-            ret = ret * cur % mod
-        cur = cur *cur % mod
-        y = y //2
-    return ret
-def inv(x):
-    return quickPow(x,mod-2)
-N= 402
-fact =[1]*N
-invFact = [1]*N
-for i in range(2,N):
-    fact[i] = fact[i-1]*i %mod
-for i in range(1,N):
-    invFact = inv(fact[i])
+import math
+import itertools
 
+visit ={}
+g =[]
+s =set()
 
-def resolve():
-    n = int(input())
-    str1= input()
-    dp = [[[0]*N for _ in range(N)] for _ in range(N)]
-    for i in range(n):
-        dp[i+1][i][0]=1
-        dp[i][i+1][1]=1
-    for le in range(2,n+1):
-        for l in range(n-le+1):
-            r = l+le
-            for plen in range(1,le):
-                dp[l][r][plen] =dp[l][r-1][plen] +dp[l+1][r][plen] - dp[l+1][r+1][plen]
-            if str1[l] == str1[r-1]:
-                dp[l][r][2]+=1
-                for plen in range(3,le+1):
-                    dp[l][r][plen] += dp[l+1][r-1][plen-2]
-     
+acc =0
+
+def dfs(x):
+    global g,visit,acc
+    visit[x]=1
+    acc +=1
+    #print(acc)
+    for a in g[x]:
+        if a not in visit:
+            if acc  >20:
+                break
+            dfs(a)
+            
+    return acc
     
-    return sm -sum(dp)
+def verify(i,k):
+    global visit,s,g
+    cnt = dfs(i)   
+    #print(comb,s)
+    #print(cnt)
+    return cnt >k 
+        
+def resolve():
+    global g,visit,acc
+    n,m,k = tuple(list(map(lambda x: int(x),input().split())))
+    ls =[]
+    g=[[] for _ in range(n+1)]
+    for i in range(m):
+        a,b =  tuple(list(map(lambda x: int(x),input().split())))
+        g[b].append(a)
+    cand = [i for i in range(1,n+1)]
+    cnt =0
+    for i in range(1,n+1):
+        visit={}
+        acc =0
+        if verify(i,k):
+            cnt +=1
+    return str(cnt)
 
 def op(caseidx):
     cnt = resolve()

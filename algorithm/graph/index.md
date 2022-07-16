@@ -23,3 +23,8 @@ algorithm\graph\dfsVisitingOrder\VisitingOrder.py
 https://leetcode.cn/contest/weekly-contest-284/problems/minimum-weighted-subgraph-with-the-required-paths/
 contest\00000c275d69\c284\q4\q4.2.py
 algorithm\graph\reverseGraph\multiSourcePath.py
+
+## 双连通分量
+https://oi-wiki.org/graph/bcc/
+https://blog.51cto.com/u_15127597/3992474
+
