@@ -1,5 +1,25 @@
-#https://leetcode-cn.com/problems/s5kipK/ 
-# https://leetcode-cn.com/contest/season/2022-spring/problems/EJvmW4/
+# Using Tarjan will have same issue of [maximum recursion depth exceeded in comparison]
+#https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a45ef7
+import os
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
+filename = "input/ts1_input.txt"
+f=open(filename,'r')
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+
+if  "f" in locals():
+    sys.stdin = f
+else:
+    inputA=sys.stdin
+
+#import sys
+#sys.setrecursionlimit(5000)
+
 from collections import defaultdict
 class Graph:
     def __init__(self, vertices,g=None):
@@ -44,44 +64,32 @@ class Graph:
                     self.T[self.cnt].append(u)
                     self.T[u].append(self.cnt)
             else:
-                self.low[u] = min(self.low[u],self.dfn[v])
-                
-class Solution(object):
-    def minimumCost(self, cost, roads):
-        """
-        :type cost: List[int]
-        :type roads: List[List[int]]
-        :rtype: int
-        """
-        n = len(cost)
-        g = Graph(n)
-        for a,b in roads:
-            g.addEdge(a,b)
-        for i in range(n):
-            if not g.dfn[i]:
-                g.tarjan(i)
-        if g.cnt == n:
-            return min(cost)
-        ww=[10**8 for _ in range(g.cnt+1)]
-        deg =[0 for _ in range(g.cnt+1)]
-        for i in range(g.cnt+1):
-            deg[i] = len(g.T[i])
-        print(deg,g.T,g.cnt)
-        for i in range(n):
-            if deg[i] ==1:  # if def[i] !=1 说明这个点是强连通区域的边界点
-                for a in g.T[i]:
-                    ww[a] = min(ww[a],cost[i])
-                    deg[a] -=1
-        mx,ans =0,0
-        print(deg)
-        for i in range(n,g.cnt+1):
-            if deg[i]==1:
-                ans += ww[i]
-                mx = max(mx,ww[i])
-        print(deg,ww)
-        return ans-mx
-                    
+                self.low[u] = min(self.low[u],self.dfn[v]) 
+
+
+
+
+    
         
-#re = Solution().minimumCost(cost = [1,2,3,4],roads = [[0,1],[0,2],[0,3]])
-re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])
-print(re)
+def resolve(idx):
+    n,m,k = tuple(list(map(lambda x: int(x),input().split())))
+    g=[[] for _ in range(n)]
+    for i in range(m):
+        a,b =  tuple(list(map(lambda x: int(x),input().split())))
+        g[b-1].append(a-1)
+    if idx !=6:
+        return 0
+    g = Graph(n,g)
+    for i in range(n):
+        g.tarjan(i)
+    #print(g.T)
+    return 0
+
+def op(caseidx):
+    cnt =0
+    #if caseidx ==6:
+    cnt = resolve(caseidx)
+    print("Case #"+str(caseidx+1)+": "+str(cnt))
+
+for i in range(int(input())):
+    op(i)

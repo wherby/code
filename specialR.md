@@ -204,3 +204,21 @@ https://leetcode.cn/contest/weekly-contest-297/problems/naming-a-company/
 
 https://leetcode.com/submissions/detail/731443898/
 https://leetcode.cn/problems/minimum-score-after-removals-on-a-tree/
+
+
+# some times the distra will takes more time for insert
+Use pypy in  https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76f44
+https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae
+will success, use python3.7 will TLE
+
+contest\gcj2022\ks\rd\q3\q3.py use dijstra will TLE
+contest\gcj2022\ks\rd\q3\q31.py  use deque will AC
+
+Use dfs will WA
+https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/0000000000b76fae
+
+use bfs will not have stackoverflow
+
+
+
+
