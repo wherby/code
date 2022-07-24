@@ -253,6 +253,11 @@ class Solution:
         zxArea = sum(map(max, grid))        # 取得每行最大值的和
         return xyArea + yzArea + zxArea
 
+list(zip(*grid)) 矩阵列排列，列数据是tuple
+>>> grid = [[3,2,1],[1,7,6],[2,7,7]]
+>>> list(zip(*grid))
+[(3, 1, 2), (2, 7, 7), (1, 6, 7)]
+
 # acc
 ```python 
 from itertools import accumulate
@@ -274,6 +279,10 @@ print(acc3)
 ##  defaultdict of defaultdict 
 https://stackoverflow.com/questions/5029934/defaultdict-of-defaultdict
 dic2=defaultdict(lambda: defaultdict(int))
+
+## defaultdict with sortedList for key pair 
+contest\00000c275d69\c303\q3\t3.3.py
+self.sl =defaultdict(lambda: SortedList(key= lambda x:(-x[0],x[1])))
 
 ## aToZ
 import string
