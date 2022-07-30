@@ -13,6 +13,16 @@ i = nums.index(1)
 # get cols of matrix  https://github.com/wherby/code/blob/master/algorithm/pythonLib/array.py
 cols = list(zip(*matrix))
 
+list(zip(*grid)) 矩阵列排列，列数据是tuple
+>>> grid = [[3,2,1],[1,7,6],[2,7,7]]
+>>> list(zip(*grid))
+[(3, 1, 2), (2, 7, 7), (1, 6, 7)]
+
+>>> grid = [[3,2,1],[1,7,6],[2,7,7]]
+>>> rg= [[ls[i] for ls in grid] for i,_ in enumerate(grid)]  
+>>> rg
+[[3, 1, 2], [2, 7, 7], [1, 6, 7]]
+
 https://leetcode.cn/problems/delete-columns-to-make-sorted/
 class Solution(object):
     def minDeletionSize(self, strs):
@@ -113,6 +123,16 @@ format 补0
 >>> format(n,'.2f')
 '0.10'
 >>>
+
+## count in iterator
+>>> bin(123)      
+'0b1111011'
+>>> bin(123).count("1")
+6
+>>> "123123".count("1")
+2
+>>> [1,2,3,2,3,5].count(2)
+2
 
 # deep copy
 import copy
@@ -257,6 +277,11 @@ list(zip(*grid)) 矩阵列排列，列数据是tuple
 >>> grid = [[3,2,1],[1,7,6],[2,7,7]]
 >>> list(zip(*grid))
 [(3, 1, 2), (2, 7, 7), (1, 6, 7)]
+
+>>> grid = [[3,2,1],[1,7,6],[2,7,7]]
+>>> rg= [[ls[i] for ls in grid] for i,_ in enumerate(grid)]  
+>>> rg
+[[3, 1, 2], [2, 7, 7], [1, 6, 7]]
 
 # acc
 ```python 
