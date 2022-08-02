@@ -53,30 +53,26 @@ class Graph:
     # dfs and store the visit exiting order in stack
     def fillOrder(self,v,visited, stack):
         st =[v]
-        visited[v] =1
         inOd={}
         rg ={}
         while st:
             a = st.pop()
-            if visited[a] ==False:
-                visited[a] =True
+            if visited[a] !=2:
+                visited[a] =2
                 cnt =0
-                for i in self.graph[v]:
+                for i in self.graph[a]:
                     if visited[i] ==False:
+                        visited[i] =1
                         cnt +=1
                         st.append(i)
                         rg[i] = a
                 inOd[a] =cnt 
-                if inOd[a]==0:
+                while a in rg and inOd[a]==0 :
                     stack.append(a)
-                    while a in rg:
-                        b = rg[a]
+                    b = rg[a]
+                    if b in inOd:
                         inOd[b] -=1
-                        if inOd[b] ==0:
-                            stack.append(b)
-                            a =b
-            print(stack)
-        print(stack)
+                    a=b
                 
         
         # # Mark the current node as visited 
@@ -128,6 +124,14 @@ class Graph:
         return ssc
     
     def getNewGraph(self,ssc):
+        if len(ssc) ==0:
+            dic ={}
+            for i in range(self.V):
+                dic[i] =i
+            self.dic = dic
+            self.w =[1]*self.V
+            self.sw = [-1]*self.V
+            return self
         n = len(ssc)
         newG = Graph(n)
         newG.w =[0]*n
@@ -162,8 +166,6 @@ def resolve(idx):
     for i in range(m):
         a,b =  tuple(list(map(lambda x: int(x),input().split())))
         g[b-1].append(a-1)
-    if idx !=6:
-        return 0
     g = Graph(n,g)
     newG = g.getNewGraph(g.getSSC())
     cnt = 0 
