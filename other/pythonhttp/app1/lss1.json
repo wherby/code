@@ -1,0 +1,770 @@
+[
+    {
+        "6dadb5e7-770c-4fc4-85fc-e70a6696a61a": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:24:23.947Z",
+                "end": "2022-07-28T07:32:02.498Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:32:02.498Z",
+                "end": "2022-07-28T07:32:07.817Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:32:07.817Z",
+                "end": "2022-07-28T07:32:44.597Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:32:44.597Z",
+                "end": "2022-07-28T07:33:14.707Z"
+            }
+        ]
+    },
+    {
+        "73cee47e-94df-4429-a41c-d55dd798f133": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T09:29:28.222Z",
+                "end": "2022-07-28T09:36:12.082Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T09:36:12.082Z",
+                "end": "2022-07-28T09:36:13.326Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T09:36:13.326Z",
+                "end": "2022-07-28T09:36:14.476Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T09:36:14.476Z",
+                "end": "2022-07-28T09:36:15.035Z"
+            }
+        ]
+    },
+    {
+        "91641a4c-507e-4f1d-9eab-217737ef6efd": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:40:19.244Z",
+                "end": "2022-07-28T06:43:02.187Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:43:02.188Z",
+                "end": "2022-07-28T06:43:03.997Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:43:03.998Z",
+                "end": "2022-07-28T06:43:05.096Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:43:05.097Z",
+                "end": "2022-07-28T06:43:05.767Z"
+            }
+        ]
+    },
+    {
+        "805b439c-c9e5-4003-8f9a-e5b9e618a69b": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:54.610Z",
+                "end": "2022-07-29T02:06:21.303Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:06:21.304Z",
+                "end": "2022-07-29T02:06:24.542Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:06:24.542Z",
+                "end": "2022-07-29T02:06:26.782Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:06:26.782Z",
+                "end": "2022-07-29T02:06:26.992Z"
+            }
+        ]
+    },
+    {
+        "32a890b3-2be0-4012-a832-47a8cf033b7d": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:25:47.688Z",
+                "end": "2022-07-28T07:38:02.457Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:38:02.457Z",
+                "end": "2022-07-28T07:38:38.716Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:38:38.716Z",
+                "end": "2022-07-28T07:39:09.227Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:39:09.227Z",
+                "end": "2022-07-28T07:39:28.476Z"
+            }
+        ]
+    },
+    {
+        "c7d10628-e02b-45db-be02-2e43cec428c3": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:41:49.001Z",
+                "end": "2022-07-28T06:49:18.018Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:49:18.018Z",
+                "end": "2022-07-28T06:49:41.697Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:49:41.697Z",
+                "end": "2022-07-28T06:50:11.176Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:50:11.177Z",
+                "end": "2022-07-28T06:50:27.557Z"
+            }
+        ]
+    },
+    {
+        "f1b966e6-999b-405b-ba23-b67465f0576e": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:56.182Z",
+                "end": "2022-07-29T01:59:05.156Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T01:59:05.157Z",
+                "end": "2022-07-29T01:59:07.362Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T01:59:07.363Z",
+                "end": "2022-07-29T01:59:09.112Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T01:59:09.113Z",
+                "end": "2022-07-29T01:59:10.252Z"
+            }
+        ]
+    },
+    {
+        "dee421ed-2147-4497-9707-72958fbbf13b": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:32:06.598Z",
+                "end": "2022-07-28T07:38:58.030Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:38:58.030Z",
+                "end": "2022-07-28T07:39:15.507Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:39:15.507Z",
+                "end": "2022-07-28T07:39:53.936Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:39:53.936Z",
+                "end": "2022-07-28T07:40:30.556Z"
+            }
+        ]
+    },
+    {
+        "f93d8bf5-4a69-4dfc-ae27-ff34f68e5bca": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:43:35.589Z",
+                "end": "2022-07-28T06:50:08.437Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:50:08.437Z",
+                "end": "2022-07-28T06:50:26.326Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:50:26.327Z",
+                "end": "2022-07-28T06:50:57.187Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:50:57.188Z",
+                "end": "2022-07-28T06:51:32.817Z"
+            }
+        ]
+    },
+    {
+        "dacdd1f9-9ee9-40ec-adce-0491d82d28e8": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:57.059Z",
+                "end": "2022-07-29T02:00:24.024Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:00:24.024Z",
+                "end": "2022-07-29T02:00:25.663Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:00:25.663Z",
+                "end": "2022-07-29T02:00:27.002Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:00:27.003Z",
+                "end": "2022-07-29T02:00:27.202Z"
+            }
+        ]
+    },
+    {
+        "9df964d7-4bc1-4eef-9063-b38c526ac50f": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:44:43.088Z",
+                "end": "2022-07-28T06:52:41.907Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:52:41.908Z",
+                "end": "2022-07-28T06:52:54.736Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:52:54.737Z",
+                "end": "2022-07-28T06:52:59.576Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:52:59.576Z",
+                "end": "2022-07-28T06:53:01.477Z"
+            }
+        ]
+    },
+    {
+        "a2e5f39d-e4b5-4e33-891d-1f26a9c3b1e3": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:32:15.157Z",
+                "end": "2022-07-28T07:41:52.188Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:41:52.188Z",
+                "end": "2022-07-28T07:42:20.467Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:42:20.467Z",
+                "end": "2022-07-28T07:42:55.136Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:42:55.137Z",
+                "end": "2022-07-28T07:43:42.256Z"
+            }
+        ]
+    },
+    {
+        "cbfb9c64-e019-4116-94d2-83952304abaa": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:45:56.957Z",
+                "end": "2022-07-28T06:54:59.717Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:54:59.718Z",
+                "end": "2022-07-28T06:55:31.877Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:55:31.877Z",
+                "end": "2022-07-28T06:56:00.177Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:56:00.177Z",
+                "end": "2022-07-28T06:56:28.657Z"
+            }
+        ]
+    },
+    {
+        "de5ed617-ba6f-4805-acec-cc6642f8837a": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:32:17.497Z",
+                "end": "2022-07-28T07:44:38.897Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:44:38.897Z",
+                "end": "2022-07-28T07:45:57.976Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:45:57.976Z",
+                "end": "2022-07-28T07:46:34.937Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:46:34.937Z",
+                "end": "2022-07-28T07:47:04.197Z"
+            }
+        ]
+    },
+    {
+        "0ca7a70e-ec70-41ca-b707-4d2eed755c28": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:47:50.639Z",
+                "end": "2022-07-28T06:58:29.877Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:58:29.877Z",
+                "end": "2022-07-28T06:59:12.157Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T06:59:12.158Z",
+                "end": "2022-07-28T06:59:43.397Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T06:59:43.397Z",
+                "end": "2022-07-28T07:00:22.837Z"
+            }
+        ]
+    },
+    {
+        "c4463d69-aa15-4b14-8105-af040f810488": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:36:05.344Z",
+                "end": "2022-07-28T07:44:51.627Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:44:51.627Z",
+                "end": "2022-07-28T07:45:59.897Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:45:59.897Z",
+                "end": "2022-07-28T07:46:35.957Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:46:35.957Z",
+                "end": "2022-07-28T07:47:04.316Z"
+            }
+        ]
+    },
+    {
+        "3e092520-cb54-4435-b276-3631b5c8b4bb": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:39:28.477Z",
+                "end": "2022-07-28T07:48:20.557Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:48:20.557Z",
+                "end": "2022-07-28T07:49:17.957Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:49:17.957Z",
+                "end": "2022-07-28T07:49:46.777Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:49:46.777Z",
+                "end": "2022-07-28T07:50:43.937Z"
+            }
+        ]
+    },
+    {
+        "5ee9e209-6c43-4e9d-b5a1-b0f03fc3e798": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:50:27.558Z",
+                "end": "2022-07-28T07:01:09.857Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:01:09.858Z",
+                "end": "2022-07-28T07:01:39.007Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:01:39.007Z",
+                "end": "2022-07-28T07:02:21.986Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:02:21.987Z",
+                "end": "2022-07-28T07:02:39.087Z"
+            }
+        ]
+    },
+    {
+        "4462c2f7-be9e-401e-878e-420cc1caee63": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:40:30.557Z",
+                "end": "2022-07-28T07:47:38.917Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:47:38.918Z",
+                "end": "2022-07-28T07:49:12.677Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:49:12.677Z",
+                "end": "2022-07-28T07:49:40.377Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:49:40.377Z",
+                "end": "2022-07-28T07:50:26.077Z"
+            }
+        ]
+    },
+    {
+        "e919c91b-6d99-43ce-a4c7-37c9ed30cb40": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T06:51:32.818Z",
+                "end": "2022-07-28T06:59:42.378Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T06:59:42.378Z",
+                "end": "2022-07-28T07:00:22.717Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:00:22.717Z",
+                "end": "2022-07-28T07:00:46.817Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:00:46.817Z",
+                "end": "2022-07-28T07:01:31.237Z"
+            }
+        ]
+    },
+    {
+        "a3f9edd1-a0ff-454c-a8cb-85c79d78184f": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:58.783Z",
+                "end": "2022-07-29T02:08:56.543Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:08:56.544Z",
+                "end": "2022-07-29T02:08:59.662Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:08:59.662Z",
+                "end": "2022-07-29T02:09:01.613Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:09:01.613Z",
+                "end": "2022-07-29T02:09:01.762Z"
+            }
+        ]
+    },
+    {
+        "58783ffb-5e2c-4087-9fdd-4ce0f913d6ad": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:59.449Z",
+                "end": "2022-07-29T02:08:21.445Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:08:21.446Z",
+                "end": "2022-07-29T02:08:23.402Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:08:23.402Z",
+                "end": "2022-07-29T02:08:24.803Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:08:24.803Z",
+                "end": "2022-07-29T02:08:25.222Z"
+            }
+        ]
+    },
+    {
+        "0e391d14-a69a-4f2e-b4de-f33675731c69": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:00:22.838Z",
+                "end": "2022-07-28T07:05:19.747Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:05:19.748Z",
+                "end": "2022-07-28T07:05:22.087Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:05:22.087Z",
+                "end": "2022-07-28T07:05:31.727Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:05:31.727Z",
+                "end": "2022-07-28T07:05:33.887Z"
+            }
+        ]
+    },
+    {
+        "b9f915d4-80ca-498e-8dfa-917c498d8e2c": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:49.421Z",
+                "end": "2022-07-29T02:03:17.662Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:03:17.663Z",
+                "end": "2022-07-29T02:03:23.643Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:03:23.643Z",
+                "end": "2022-07-29T02:03:31.183Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:03:31.183Z",
+                "end": "2022-07-29T02:03:32.952Z"
+            }
+        ]
+    },
+    {
+        "9f067cdf-8892-445b-ae8d-240bf20f0ffc": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:48.516Z",
+                "end": "2022-07-29T02:06:22.003Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T02:06:22.003Z",
+                "end": "2022-07-29T02:06:23.642Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T02:06:23.642Z",
+                "end": "2022-07-29T02:06:24.832Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T02:06:24.832Z",
+                "end": "2022-07-29T02:06:25.062Z"
+            }
+        ]
+    },
+    {
+        "5b4eb7cf-accc-47d2-9d15-7cbf5d8b55bc": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-29T01:47:47.869Z",
+                "end": "2022-07-29T01:54:14.404Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-29T01:54:14.404Z",
+                "end": "2022-07-29T01:54:16.242Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-29T01:54:16.243Z",
+                "end": "2022-07-29T01:54:17.663Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-29T01:54:17.663Z",
+                "end": "2022-07-29T01:54:17.882Z"
+            }
+        ]
+    },
+    {
+        "de4b2c12-deb1-4d63-a442-163a958cdead": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:11:05.529Z",
+                "end": "2022-07-28T07:23:41.658Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:23:41.658Z",
+                "end": "2022-07-28T07:23:50.777Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:23:50.777Z",
+                "end": "2022-07-28T07:24:14.667Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:24:14.667Z",
+                "end": "2022-07-28T07:24:23.946Z"
+            }
+        ]
+    },
+    {
+        "303362bd-4b55-4c11-b72e-9fd4877bc628": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:12:06.549Z",
+                "end": "2022-07-28T07:23:16.067Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:23:16.067Z",
+                "end": "2022-07-28T07:23:23.097Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:23:23.097Z",
+                "end": "2022-07-28T07:23:34.017Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:23:34.017Z",
+                "end": "2022-07-28T07:23:46.336Z"
+            }
+        ]
+    },
+    {
+        "bdfdb76a-c949-42fa-849e-e347654c9ab3": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:17:06.489Z",
+                "end": "2022-07-28T07:24:41.257Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:24:41.257Z",
+                "end": "2022-07-28T07:24:56.887Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:24:56.887Z",
+                "end": "2022-07-28T07:25:17.036Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:25:17.037Z",
+                "end": "2022-07-28T07:25:47.687Z"
+            }
+        ]
+    },
+    {
+        "dd1c3751-057b-484f-92b4-77f49d2b38e6": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:17:13.099Z",
+                "end": "2022-07-28T07:31:17.238Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:31:17.238Z",
+                "end": "2022-07-28T07:31:49.318Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:31:49.318Z",
+                "end": "2022-07-28T07:32:05.457Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:32:05.457Z",
+                "end": "2022-07-28T07:32:15.156Z"
+            }
+        ]
+    },
+    {
+        "65db7781-1c63-4389-9c36-8e529008c56c": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:17:20.409Z",
+                "end": "2022-07-28T07:29:59.777Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:29:59.777Z",
+                "end": "2022-07-28T07:31:41.657Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:31:41.657Z",
+                "end": "2022-07-28T07:31:55.136Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:31:55.137Z",
+                "end": "2022-07-28T07:32:06.597Z"
+            }
+        ]
+    },
+    {
+        "780a7e1d-67c6-49e4-95a3-8a42f9341174": [
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+                "start": "2022-07-28T07:23:46.337Z",
+                "end": "2022-07-28T07:31:28.498Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+                "start": "2022-07-28T07:31:28.498Z",
+                "end": "2022-07-28T07:31:52.196Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+                "start": "2022-07-28T07:31:52.197Z",
+                "end": "2022-07-28T07:32:06.477Z"
+            },
+            {
+                "name": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+                "start": "2022-07-28T07:32:06.477Z",
+                "end": "2022-07-28T07:32:17.497Z"
+            }
+        ]
+    }
+]

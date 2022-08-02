@@ -1,0 +1,12 @@
+{'com.pwc.ds.cidr.project.creditreview.processors.PageMakerProcessor': 11641,
+ 'com.pwc.ds.cidr.project.creditreview.processors.OcrPlusProcessor': 55514, 
+ 'com.pwc.ds.cidr.project.creditreview.processors.TableDetectionProcessor': 10429, 
+ 'com.pwc.ds.cidr.project.creditreview.processors.DisplayMakerProcessor': 0, 
+ 'com.pwc.ds.cidr.project.creditreview.processors.DocumentMakerProcessor2': 7765, 
+ 'com.pwc.ds.cidr.project.creditreview.processors.ExtractionProcessor': 16922, 
+ 'com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1': 20286,
+  'com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor': 797,
+   'com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor': 594,
+    'com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor': 568, 
+    'com.pwc.ds.cidr.project.creditreview.processors.PdfMakerProcessor': 580, 
+    'com.pwc.ds.cidr.project.creditreview.processors.ExcelMakerProcessor': 1})

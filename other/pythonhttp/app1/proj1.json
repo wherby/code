@@ -1,0 +1,81 @@
+[
+    {
+        "processorStatus": {
+            "classType": "com.pwc.ds.cidr.project.creditreview.processors.DocumentDispatcherProcessorType1",
+            "uuid": "adc30862-fb81-4a13-9cc2-2dafe5d600fd",
+            "name": "document",
+            "isGood": true,
+            "subJobid": [
+                "7adf93fc-ebb1-47f0-bac1-375dbcda2458",
+                "99e488ff-04a7-4151-9d2f-a857595f4357",
+                "1e449825-8cb9-4110-8a9d-cdefae3fff35",
+                "649f234e-7bd8-4933-b199-358787102a1f",
+                "7198b4af-df65-4d1a-b8da-472a557fa15e",
+                "917ac712-0429-45ab-bb03-9af1051244e0",
+                "0e208f33-e917-420f-a61c-bc036cab1a13"
+            ],
+            "workingDir": "/tmp/ds-cidr/PROJ_4375/processors/6e14b31c-3d80-40bc-87f1-8a3db369ca86/",
+            "startTime": "2022-07-27T07:02:35.806Z",
+            "endTime": "2022-07-27T07:06:36.599Z"
+        },
+        "files": []
+    },
+    {
+        "processorStatus": {
+            "classType": "com.pwc.ds.cidr.project.creditreview.processors.NlpAggregatorProcessor",
+            "uuid": "d5a7ebd6-8a04-40ce-a2b9-aedace816d4d",
+            "name": "aggregator",
+            "isGood": true,
+            "workingDir": "/tmp/ds-cidr/PROJ_4375/processors/cd0b77f4-3925-4b0b-9364-f19e6f21d03c/",
+            "startTime": "2022-07-27T07:06:36.599Z",
+            "endTime": "2022-07-27T07:06:45.138Z"
+        },
+        "files": [
+            {
+                "filename": "output.json",
+                "size": 9838419,
+                "path": "/tmp/ds-cidr/PROJ_4375/processors/cd0b77f4-3925-4b0b-9364-f19e6f21d03c/output.json"
+            },
+            {
+                "filename": "trace-aggregator-d6553e9b-8d56-4421-b68e-5ce562155193.txt",
+                "size": 2178,
+                "path": "/tmp/ds-cidr/PROJ_4375/processors/cd0b77f4-3925-4b0b-9364-f19e6f21d03c/trace-aggregator-d6553e9b-8d56-4421-b68e-5ce562155193.txt"
+            }
+        ]
+    },
+    {
+        "processorStatus": {
+            "classType": "com.pwc.ds.cidr.project.creditreview.processors.AssembleProcessor",
+            "uuid": "60783ffe-9e34-4d9c-9fce-e0308ff11465",
+            "name": "assemble",
+            "isGood": true,
+            "workingDir": "/tmp/ds-cidr/PROJ_4375/processors/139be702-e615-47de-ab60-fdec85da75a2/",
+            "startTime": "2022-07-27T07:06:45.138Z",
+            "endTime": "2022-07-27T07:07:10.998Z"
+        },
+        "files": [
+            {
+                "filename": "trace-assemble-2407e162-5c18-4821-b238-3bfdef51f109.txt",
+                "size": 490,
+                "path": "/tmp/ds-cidr/PROJ_4375/processors/139be702-e615-47de-ab60-fdec85da75a2/trace-assemble-2407e162-5c18-4821-b238-3bfdef51f109.txt"
+            },
+            {
+                "filename": "output.json",
+                "size": 1632412,
+                "path": "/tmp/ds-cidr/PROJ_4375/processors/139be702-e615-47de-ab60-fdec85da75a2/output.json"
+            }
+        ]
+    },
+    {
+        "processorStatus": {
+            "classType": "com.pwc.ds.cidr.project.creditreview.processors.TempFileCleanProcessor",
+            "uuid": "d4c257f1-0748-46d6-b9ad-7bfb6615ce62",
+            "name": "PROCID_c4125d44-a423-4405-a625-d87159d70069",
+            "isGood": true,
+            "workingDir": "/tmp/ds-cidr/PROJ_4375/processors/2229069e-6d94-4168-ab60-55ecd26289bc/",
+            "startTime": "2022-07-27T07:07:10.999Z",
+            "endTime": "2022-07-27T07:07:18.257Z"
+        },
+        "files": []
+    }
+]

@@ -1,0 +1,18 @@
+[
+  action1: true/false
+
+]
+
+status["TB"]["Valuation Report(SR1000EN) / Trial Balance Report(SR1001C01)"]["Upload"] ="True"
+
+
+Web:
+ action: true
+
+
+
+123:True
+345:True
+
+
+action:true

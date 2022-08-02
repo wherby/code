@@ -20,5 +20,5 @@ def get_prime(n):
             j +=1
     return prime[:cnt]
 
-re= get_prime(1000000)
+re= get_prime(10**5)
 print(len(re))
