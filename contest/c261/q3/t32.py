@@ -18,3 +18,7 @@ print(re) #[1,2,2,2,1,2]
 print(re ,True)
 re = Solution().stoneGameIX( [2,2,2])
 print(re) #[1,2,2,2,1,2]
+
+
+2,2,1,2,1,2,1
+1,1,2,1,2,1
