@@ -1,8 +1,3 @@
-
-
-import math
-#https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb33e/00000000009e73ea#problem
-# count all number which product(digital(x))// sum(digital(x)) ==0
 class NumCount:
     def __init__(self,N):
         self.ls =[]
@@ -11,7 +6,7 @@ class NumCount:
             N = N//10
         self.ls=self.ls[::-1]
     
-    def countfunction(self,l):
+    def countfunction(self,l,idx):
         return 10**l
     
     ## count all combination with lenth L
@@ -43,7 +38,16 @@ class NumCount:
             count += self.countWithNumberOfDigital(L)
         count += self.countNumberWithPrefix(0,True)
         return count
-            
-nc = NumCount(20)
-print(nc.count())
-        
+
+class Solution(object):
+    def countSpecialNumbers(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+
+
+
+re =Solution()
+print(re)
