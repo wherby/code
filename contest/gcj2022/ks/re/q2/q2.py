@@ -1,4 +1,5 @@
-#https://codingcompetitions.withgoogle.com/codejam/round/0000000000876ff1/0000000000a4672b
+#https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb0f5/0000000000ba84ae
+# 
 import os
 
 abspath = os.path.abspath(__file__)
