@@ -9,4 +9,5 @@ object Main extends App {
   val ret = Person("Dave", "dave@example.com").toJson
   println(ret)
   println("Hello " |+| "Cats!")
+  println(Json.toJson(Option("A string")))
 }
