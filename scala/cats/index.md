@@ -13,3 +13,8 @@ code2
 ```
     sbt new typelevel/sbt-catalysts.g8
 ```
+
+##
+
+set http_proxy=http://localhost:1080
+set https_proxy=http://localhost:1080
