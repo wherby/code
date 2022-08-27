@@ -19,4 +19,6 @@ object PrintableInstances {
       s"$name is a $age year-old $color cat."
     }
   }
+
+
 }

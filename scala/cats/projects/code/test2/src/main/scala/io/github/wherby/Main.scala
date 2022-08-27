@@ -4,6 +4,9 @@ import cats.implicits._
 import JsonWriterInstances._
 import JsonSyntax._
 
+import cats.instances.string._
+import cats.syntax.show._
+
 // Define a very simple JSON AST
 sealed trait Json
 final case class JsObject(get: Map[String, Json]) extends Json
@@ -51,6 +54,7 @@ object JsonSyntax {
 }
 
 object Main extends App {
+  println("abc".show)
   val res = Person("Dave", "dave@example.com").toJson
   println("Hello " |+| "Cats!")
   println(res)
