@@ -3,7 +3,6 @@
 class DSU:
     def __init__(self,N):
         self.p  = list(range(N))
-        self.rank = [1]*N
     
     def find(self,x):
         if self.p[x] != x:
