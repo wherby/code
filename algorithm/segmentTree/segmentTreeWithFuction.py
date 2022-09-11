@@ -6,7 +6,7 @@ class segment_tree:
     # basef(value): function applied on individual values
     # basev: identity for merge function, merger(value, basev) = value
     # update(node_value, old, new): function to update the nodes
-    def __init__(self, array, merge=lambda x,y:x+y, basef=lambda x:x, basev = 0):
+    def __init__(self, array, merge=lambda x,y:x+y, basev = 0, basef=lambda x:x):
         self.merge = merge
         self.basef = basef
         self.basev = basev
