@@ -85,7 +85,25 @@ class SegmentTree:
                 left=mid+1
             else:
                 right = mid 
+        if left ==self.MAXV+1:
+            left = -1
         return left 
+    
+    def queryFirst2(self,target):
+        node = self._root
+        l,r = self.MINV,self.MAXV
+        while l <r:
+            if node.isTracked <target:
+                return -1
+            mid = (l + r) >> 1
+            self._pushDown(node)
+            if node.left.isTracked < target:
+                node = node.right
+                l,r = mid + 1, r
+            else:
+                node = node.left
+                l,r = l,mid
+        return l
 
     
 
@@ -94,8 +112,12 @@ class SegmentTree:
 
 st = SegmentTree(merge=max,basev=0)
 print(st.queryFirst(2))
+print(st.queryFirst2(2))
 st.update(2,2,4)
 st.update(299,299,2999)
 print(st.queryFirst(2))
 print(st.queryFirst(2989))
 print(st.queryFirst(29829))
+print(st.queryFirst2(2))
+print(st.queryFirst2(2989))
+print(st.queryFirst2(29829))
