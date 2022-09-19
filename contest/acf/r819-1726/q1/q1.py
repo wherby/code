@@ -1,4 +1,4 @@
-
+#https://codeforces.com/contests/1726
 import os
 
 abspath = os.path.abspath(__file__)
@@ -16,10 +16,8 @@ if  "f" in locals():
 else:
     inputA=sys.stdin
 
-############ ---- Input Functions ---- ############
-import sys
-input = sys.stdin.readline
 
+############ ---- Input Functions ---- ############
 def inp():
     return (int(input()))
 def inlt():
@@ -31,10 +29,17 @@ def invr():
     return list((map(int,input().split())))
 
 def resolve():
-    n,m,k = tuple(list(map(lambda x: int(x),input().split())))
-    ret =0
-
-    return str(ret)
+    n,= tuple(list(map(lambda x: int(x),input().split())))
+    ls= list(map(lambda x: int(x),input().split()))
+    if n <=1:
+        return 0
+    mx = ls[-1]-ls[0]
+    #print(ls,n)
+    mx = max(mx,max(ls[1:]) -ls[0],ls[n-1]-min(ls[:n-1]))
+    ls= ls +ls 
+    for i in range(n):
+        mx = max(mx,ls[i]-ls[i+1])
+    return mx
     
 
 def op(caseidx):

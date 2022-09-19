@@ -17,6 +17,8 @@ else:
     inputA=sys.stdin
 
 ############ ---- Input Functions ---- ############
+import sys
+input = sys.stdin.readline
 def inp():
     return (int(input()))
 def inlt():

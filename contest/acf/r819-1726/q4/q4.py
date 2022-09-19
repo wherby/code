@@ -17,9 +17,6 @@ else:
     inputA=sys.stdin
 
 ############ ---- Input Functions ---- ############
-import sys
-input = sys.stdin.readline
-
 def inp():
     return (int(input()))
 def inlt():
@@ -29,6 +26,7 @@ def insr():
     return (list(s[:len(s) - 1]))
 def invr():
     return list((map(int,input().split())))
+
 
 def resolve():
     n,m,k = tuple(list(map(lambda x: int(x),input().split())))

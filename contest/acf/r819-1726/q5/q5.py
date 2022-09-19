@@ -16,10 +16,8 @@ if  "f" in locals():
 else:
     inputA=sys.stdin
 
-############ ---- Input Functions ---- ############
-import sys
-input = sys.stdin.readline
 
+############ ---- Input Functions ---- ############
 def inp():
     return (int(input()))
 def inlt():

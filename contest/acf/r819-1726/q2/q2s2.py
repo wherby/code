@@ -17,9 +17,6 @@ else:
     inputA=sys.stdin
 
 ############ ---- Input Functions ---- ############
-import sys
-input = sys.stdin.readline
-
 def inp():
     return (int(input()))
 def inlt():
@@ -31,16 +28,28 @@ def invr():
     return list((map(int,input().split())))
 
 def resolve():
-    n,m,k = tuple(list(map(lambda x: int(x),input().split())))
-    ret =0
+	n,m = tuple(map(int, input().split()))
+	if m>=n:
+		if n%2==1:
+			s = '1 '*(n-1)
+			s+=str(m-(n-1))
+			ans.append("Yes\n"+s)
+		elif n%2==0 and m%2==0:
+			s = '1 '*(n-2)
+			s+= str((m-(n-2))//2) + ' ' + str((m-(n-2))//2)
+			ans.append("Yes\n"+s)
+		else:
+			ans.append("No")
+	else:
+		ans.append("No")
 
-    return str(ret)
     
 
 def op(caseidx):
-    ret= resolve()
-    print(ret)
+    resolve()
     
-
+ans =[]
 for i in range(int(input())):
     op(i)
+for a in ans:
+    print(a)

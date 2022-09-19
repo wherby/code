@@ -8,15 +8,14 @@ def doSomething(state):
     cnt +=1
     print(cnt)
 
-def allState(k):
-    m=8
+def allState(k,m=8):
     state = (1<<k) -1
     while (state <(1<<m)):
         doSomething(state)
         c = state &(-state)
         r = state +c
         state= (((r ^ state) >>2)//c) |r 
-        #print("New State: ", bin(state))
+        #print("New State: ", bin(state),state <(1<<m),state,1<<m)
 
 allState(2)
 print(res)

@@ -1,3 +1,5 @@
+# https://leetcode.cn/contest/weekly-contest-310/problems/longest-increasing-subsequence-ii/
+
 # # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
 from math import ceil, log2
 
@@ -6,7 +8,7 @@ class segment_tree:
     # basef(value): function applied on individual values
     # basev: identity for merge function, merger(value, basev) = value
     # update(node_value, old, new): function to update the nodes
-    def __init__(self, array, merge=lambda x,y:x+y, basev = 0, basef=lambda x:x):
+    def __init__(self, array, merge=lambda x,y:x+y, basev = 0 , basef=lambda x:x):
         self.merge = merge
         self.basef = basef
         self.basev = basev
@@ -51,27 +53,20 @@ class segment_tree:
     def update(self, x, v):
         self._update_util( 0, 0, self.n-1, x, v )   
         self.array[x] =v         
-
-print("\nRange Sum:")
-# Range Sum
-st = segment_tree([1,2,3,4,5,6,7,8])
-print(st)
-print(st.query(2,4))
-st.update(3,5)
-print(st.query(2,4))
-
-print("\nRange Max:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-print(st)
-print(st.query(2,4))
-st.update(3,6)
-print(st.query(2,4))
-
-print("\nRange Min:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
-print(st)
-print(st.query(2,4))
-st.update(3,1)
-print(st.query(2,4))
+class Solution(object):
+    def lengthOfLIS(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        n = max(nums)
+        mx=0
+        st = segment_tree([0]*(n+2), max, basev=0)
+        for a in nums:
+            m= st.query(a-k,a-1)
+            st.update(a,m+1)
+            mx = max(mx,m+1)
+        return mx
+re =Solution().lengthOfLIS(nums = [4,2,1,4,3,4,5,8,15], k = 3)
+print(re)
