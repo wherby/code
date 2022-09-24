@@ -1,3 +1,6 @@
+## Algorithms for Competitive Programming- [Divide and Conquer DP](https://cp-algorithms.com/dynamic_programming/divide-and-conquer-dp.html#generic-implementation)
+contest/acf/test/q1/q1.py
+
 
 
 ## 2D dp 物品可以直接先放入DP 再计算
