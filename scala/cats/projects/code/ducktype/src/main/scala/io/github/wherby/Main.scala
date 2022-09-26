@@ -10,7 +10,7 @@ object Main extends App {
   val writer = new FileWriter(new File("Main.scala"))
   Resources.clouseResource(writer)
   println("Hello " |+| "Cats!")
-
+  
 }
 
 object Resources{
