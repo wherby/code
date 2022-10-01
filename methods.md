@@ -63,6 +63,9 @@ l = mid, r=mid -1  , mid = (l+r+1) >>1  while l <r
 mid = (l+r)>>1 不会取到r  
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
+## contest\d65\q4\t4.py
+l =mid ; r = mid-1 ; mid = (l+r+1)>>1 while l <r ; return l ;
+
 ![binary search](pic/binarysearch/binarysearch.png)
 
 parser:
