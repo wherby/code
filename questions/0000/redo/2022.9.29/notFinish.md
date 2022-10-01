@@ -24,4 +24,9 @@ https://leetcode.com/contest/weekly-contest-267/problems/reverse-nodes-in-even-l
 ## redo 
 https://leetcode.com/contest/weekly-contest-270/problems/step-by-step-directions-from-a-binary-tree-node-to-another/
 
+https://leetcode.com/contest/weekly-contest-295/problems/steps-to-make-array-non-decreasing/
+
+https://leetcode.com/contest/weekly-contest-294/problems/sum-of-total-strength-of-wizards/
+
+https://leetcode.com/contest/biweekly-contest-77/problems/escape-the-spreading-fire/
 
