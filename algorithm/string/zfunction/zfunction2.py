@@ -15,5 +15,6 @@ def calculate_z_array(s):
     return Z
 
 a = "aabxaabx"
+a = "aaabaab"
 za =calculate_z_array(a)
 print(za)

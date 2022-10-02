@@ -1,3 +1,4 @@
+# https://leetcode.com/contest/weekly-contest-261/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/
 class Solution(object):
     def smallestSubsequence(self, s, k, letter, repetition):
         """

@@ -1,4 +1,3 @@
-# https://leetcode.cn/contest/weekly-contest-293/problems/count-integers-in-intervals/
 from sortedcontainers import SortedList
 from bisect import bisect_right,bisect_left
 class Span():
@@ -22,13 +21,40 @@ class Span():
             self.span.remove(item)
         self.span.add((newLeft,newRight))
         
+class LUPrefix(object):
+
+    def __init__(self, n):
+        """
+        :type n: int
+        """
+        self.sp = Span()
 
 
-re =Span()
-re.add(1,1)
-re.add(2,2)
-re.add(3,3)
-re.add(5,8)
-re.add(7,10)
-print(re.span)
-        
+    def upload(self, video):
+        """
+        :type video: int
+        :rtype: None
+        """
+        self.sp.add(video,video)
+
+
+    def longest(self):
+        """
+        :rtype: int
+        """
+        if self.sp.span[1][0] != 1:
+            return 0
+        return self.sp.span[1][1] - self.sp.span[1][0] +1
+
+
+
+# Your LUPrefix object will be instantiated and called as such:
+# obj = LUPrefix(n)
+# obj.upload(video)
+# param_2 = obj.longest()
+
+
+
+a = LUPrefix(4)
+re =a.upload(3)
+print(a.longest())

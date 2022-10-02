@@ -1,14 +1,18 @@
 # 
 
-https://leetcode.com/contest/biweekly-contest-64/problems/number-of-valid-move-combinations-on-chessboard/
-
-https://leetcode.com/contest/weekly-contest-261/problems/stone-game-ix/
 
 
 
 ## Not finish
 
 https://leetcode.com/contest/weekly-contest-261/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/
+
+https://leetcode.com/contest/weekly-contest-261/problems/stone-game-ix/
+
+
+
+### Hard
+https://leetcode.com/contest/biweekly-contest-64/problems/number-of-valid-move-combinations-on-chessboard/
 
 #### 双向hash contest\c262\q4\q42.py
 https://leetcode.com/contest/weekly-contest-262/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
