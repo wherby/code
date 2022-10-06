@@ -12,3 +12,4 @@
 **/*.cfg
 
 **/.bsp
+**/node_modules/*

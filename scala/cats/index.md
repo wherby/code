@@ -18,3 +18,6 @@ code2
 
 set http_proxy=http://localhost:1080
 set https_proxy=http://localhost:1080
+
+set http_proxy=http://localhost:1081
+set https_proxy=http://localhost:1081
