@@ -8,3 +8,4 @@ https://codeforces.com/blog/entry/77298
 
 https://www.cnblogs.com/wyzwyz/p/14038855.html
 
+https://codeforces.com/blog/entry/77298
