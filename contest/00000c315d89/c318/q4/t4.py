@@ -1,7 +1,7 @@
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
-from functools import cache
+from functools import lru_cache
 import heapq
 from sortedcontainers import SortedDict,SortedList
 

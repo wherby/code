@@ -3,18 +3,5 @@
     "files.watcherExclude": {
         "**/target": true
     },
-    "java.project.sourcePaths": [
-        "51",
-        "49",
-        "48",
-        "47",
-        "46",
-        "45",
-        "44",
-        "42",
-        "41",
-        "39",
-        "_100/52"
-    ],
     "python.formatting.provider": "black"
 }

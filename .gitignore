@@ -13,3 +13,4 @@
 
 **/.bsp
 **/node_modules/*
+.venv/*
