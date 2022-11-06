@@ -29,8 +29,3 @@ class Solution(object):
             ret = min(ret,dfs(idx, faidx+1,0))
             return ret
         return dfs(0,0,0)
-
-
-
-re =Solution().minimumTotalDistance(robot = [0,4,6], factory = [[2,2],[6,2]])
-print(re)

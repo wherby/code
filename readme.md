@@ -80,3 +80,9 @@ x = [[] for i in range(n+1)]
 e.isalpha() 
 e.isdigit()
 
+
+## setup env:
+
+python3.10 -m venv .venv
+
+source .venv/bin/activate
