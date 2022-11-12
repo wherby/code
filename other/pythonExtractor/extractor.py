@@ -4,10 +4,10 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename ="t1.txt.cfg"
+#filename ="t1.txt.cfg"
 filename = "t2.txt.cfg"
-filename = "t3.txt.cfg"
-filename = "t6.txt.cfg"
+#filename = "t3.txt.cfg"
+#filename = "t6.txt.cfg"
 f=open(filename,'r')
 
 import math
@@ -122,6 +122,8 @@ def readFileAndExtract(ins):
     #print(record[-4:])
     print(len(record))
     print(record[-1])
+    print("("*100)
+    print(record[:10])
     # for i,re in enumerate(record):
     #     for li in re:
     #         print(i)
