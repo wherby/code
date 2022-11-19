@@ -47,7 +47,7 @@ class Solution(object):
 
 
 
-#re =Solution().idealArrays(n = 5878, maxValue = 5606)
-re =Solution().idealArrays(n = 37, maxValue = 71)
+re =Solution().idealArrays(n = 5878, maxValue = 5606)
+#re =Solution().idealArrays(n = 37, maxValue = 71)
 #re =Solution().idealArrays(n =2, maxValue = 5)
 print(re)

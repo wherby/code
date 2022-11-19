@@ -15,14 +15,37 @@ class Solution:
             st1 =  "".join(s)
             cnt = len(st1) + 3*k  + len(str(k))*k  + n 
             return cnt <= limit*k
-        while l<r:
-            mid = (l+r)>>1
-            if getCap(mid):
-                r =mid 
+        def verify(l,r):
+            while l<r:
+                mid = (l+r)>>1
+                if getCap(mid):
+                    r =mid 
+                else:
+                    l = mid +1
+            return l
+        l = verify(1,9)
+        fd =-1
+        if getCap(l):
+            fd = l 
+        else:
+            l  = verify(1,99)
+            if getCap(l):
+                fd = l 
             else:
-                l = mid +1
-        if l > n:
+                l = verify(1,999)
+                if getCap(l):
+                    fd = l 
+                else:
+                    l= verify(1,9999)
+                    if getCap(l):
+                        fd = l 
+                    else:
+                        l = verify(1,99999)
+                        if getCap(l):
+                            fd = l
+        if not getCap(fd):
             return []
+        l = fd
         # if l == 1:
         #     return [message+"<1/1>"]
         ret = []

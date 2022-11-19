@@ -14,6 +14,14 @@ class Solution(object):
         sm =0
         for key in dic:
             values = dic[key]
+            for a in values:
+                for b in cs:
+                    if b in values: continue
+                    sm += cts[a][b]
+            for a in values:
+                for b in cs:
+                    if b in values: continue
+                    cts[b][a] +=1
             
         return sm*2
     

@@ -10,4 +10,5 @@ def get_prime(n):
     return res
 
 re =get_prime(1000000)
+print(re[:10])
 print(len(re))

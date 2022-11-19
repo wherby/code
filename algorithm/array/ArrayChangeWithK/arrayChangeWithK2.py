@@ -1,6 +1,5 @@
 # https://leetcode.cn/contest/biweekly-contest-82/problems/minimum-sum-of-squared-difference/
 
-from turtle import right
 
 
 def arrayChangeWithK(ls,k):

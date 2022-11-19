@@ -324,7 +324,7 @@ string.digits
 
 ABC = ['abcdefghijklmnopqrstuvwxyz']
 
-from string import ascii_lowercase
+from string import ascii_lowercase   [contest/00000c275d69/c297/q4/t44.py]
 
 ## set ops
 

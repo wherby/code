@@ -1,3 +1,8 @@
+# https://leetcode.cn/contest/biweekly-contest-91/problems/split-message-based-on-limit/
+#  contest/00000c315d89/d91/q4/t4.py 直接2分会出错
+## Wrong ans
+## correct : contest/00000c315d89/d91/q4/t4.3.py
+
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -33,11 +38,6 @@ class Solution:
             ret.append(tmp)
             idx = idx +res
         return ret
-            
-        
-
-
-
-
+    
 re =Solution().splitMessage(message = "baaaababab aabaaba", limit =7)
 print(re)

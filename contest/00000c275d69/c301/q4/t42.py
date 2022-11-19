@@ -1,3 +1,4 @@
+## TIMEOUT
 from functools import cache
 class Solution(object):
     def idealArrays(self, n, maxValue):
@@ -22,8 +23,7 @@ class Solution(object):
         mod = 10**9+7
         return sm %mod
 
-
-#re =Solution().idealArrays(n = 5878, maxValue = 2900)
-re =Solution().idealArrays(n = 37, maxValue = 71)
+re =Solution().idealArrays(n = 5878, maxValue = 2900)
+#re =Solution().idealArrays(n = 37, maxValue = 71)
 #re = Solution().idealArrays(n = 2, maxValue = 5)
 print(re)
