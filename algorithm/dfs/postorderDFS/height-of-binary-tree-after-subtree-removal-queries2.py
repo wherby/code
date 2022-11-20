@@ -35,6 +35,6 @@ class Solution:
                 ans.append(depth - 1)
             elif cousins[depth][0][1] == q:  # The removed node has the largest height, look for the node with 2nd largest height.
                 ans.append(-cousins[depth][1][0] + depth)
-			else:   # Look for the node with the largest height.
+            else:   # Look for the node with the largest height.
                 ans.append(-cousins[depth][0][0] + depth)
         return ans
