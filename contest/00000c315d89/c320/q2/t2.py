@@ -24,15 +24,15 @@ class Solution:
         ret =[]
         for a in queries:
             k = bisect_left(ls,a)
-            if ls[k] == a :
+            if k<len(ls) and ls[k] == a :
                 ret.append([a,a])
             else:
                 if k ==0:
                     ret.append([-1,ls[0]])
                 elif k == len(ls):
-                    ret.append[ls[-1],-1]
+                    ret.append([ls[-1],-1])
                 else:
-                    ret.append(ls[k-1],ls[k])
+                    ret.append([ls[k-1],ls[k]])
         return ret
 
 
