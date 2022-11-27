@@ -1,5 +1,7 @@
 # pic/presum.png
 #因为多1列表示从 [(x1,y1),(x2,y2)] 双闭区间的query
+#对于m*n矩阵 第i行 query(i,0,i,n-1) 
+#           第j列 query(0,j,m-1,j) contest/00000c315d89/d92/q2/t2.py
 class Presum2d:
     def __init__(self,arr):
         m,n = len(arr),len(arr[0])
@@ -16,6 +18,7 @@ class Presum2d:
         return self.pre[x2+1][y2+1] -a -b +c
 
 arr = [[1+i]*10 for i in range(12) ]
+print(arr)
 pre= Presum2d(arr)
 print(pre.pre)
-print(pre.query(0,0,3,3))
+print(pre.query(0,0,0,9))
