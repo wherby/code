@@ -11,4 +11,4 @@ class Solution:
                     cur = 0 
                 res += cur
             return res
-        return count(right) - count(left)
+        return count(right) - count(left-1)
