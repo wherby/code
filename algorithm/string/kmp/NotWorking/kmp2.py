@@ -1,4 +1,5 @@
 #https://www.codespeedy.com/kmp-string-matching-algorithm-in-python/ 
+# Not working
 def KMP_String(pattern, text):
     a = len(text)
     b = len(pattern)
