@@ -18,6 +18,6 @@ def getSubListUnderN(n):
             visited[j].append(i)
     return dic
 
-d = getSubListUnderN(10000)
+d = getSubListUnderN(100000)
 print(d[100])
     

@@ -1,7 +1,7 @@
 from math import sqrt
 
 class PrimeOfNumber:
-    ## set the prime to n
+    ## set the prime to n (Will timeout for 10**6)
     def __init__(self,n) -> None:
         primes = set(range(2, n + 1))
         for i in range(2, n):
@@ -31,6 +31,6 @@ class PrimeOfNumber:
 
         return ret
 
-pls = PrimeOfNumber(10**5)
+pls = PrimeOfNumber(10**6)
 #print(pls.primes)
 print(pls.getPrimeFactors(16000))

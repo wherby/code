@@ -19,6 +19,9 @@ from sortedcontainers import SortedDict,SortedList
 self.ls =SortedList()
 
 
+from itertools import pairwise
+
+
 ## 
 #TDK binary search 二分 格式
 r = mid,l =mid +1 , mid =(l+r)>>1
@@ -34,6 +37,10 @@ l = mid, r=mid -1  , mid = (l+r+1) >>1  while l <r
 mid = (l+r)>>1 不会取到r  
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
+### 返回时候需要对l的值进行判断
+https://leetcode.cn/contest/weekly-contest-325/problems/take-k-of-each-character-from-left-and-right/
+contest/00000c315d89/c325/q2/t2.py  
+        return l if verify(l) else -1
 #
 
 from math import inf
