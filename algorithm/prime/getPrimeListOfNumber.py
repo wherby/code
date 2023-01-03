@@ -1,7 +1,8 @@
 from math import sqrt
 
-class Solution:
-    def primesUpTo(self, n):
+class PrimeOfNumber:
+    ## set the prime to n
+    def __init__(self,n) -> None:
         primes = set(range(2, n + 1))
         for i in range(2, n):
             if i in primes:
@@ -10,14 +11,14 @@ class Solution:
                     if it in primes:
                         primes.remove(it)
                     it += i
-        return primes
-
-    def getPrimeFactors(self, n, primes):
+        self.primes = primes
+        
+    def getPrimeFactors(self, n):
         ret = {}
-        sq = int(sqrt(n))
+        sq = int(sqrt(n)) # could use to accelarate the prime selection
 
-        for p in primes:
-            if n in primes:
+        for p in self.primes:
+            if n in self.primes:
                 ret[n] = 1
                 break
 
@@ -29,9 +30,7 @@ class Solution:
                 break
 
         return ret
-        
-        
-so = Solution()
-primes= so.primesUpTo(10000)
-re = so.getPrimeFactors(1000,primes)
-print(re,len(primes))
+
+pls = PrimeOfNumber(10**5)
+#print(pls.primes)
+print(pls.getPrimeFactors(16000))
