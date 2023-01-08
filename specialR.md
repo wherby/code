@@ -220,5 +220,10 @@ https://codingcompetitions.withgoogle.com/kickstart/round/00000000008caea6/00000
 use bfs will not have stackoverflow
 
 
+# Y path for two source to one dest
+questions/000001/q2203.py
+https://leetcode.cn/problems/minimum-weighted-subgraph-with-the-required-paths/solution/de-dao-yao-qiu-lu-jing-de-zui-xiao-dai-q-mj2c/
+
+
 
 

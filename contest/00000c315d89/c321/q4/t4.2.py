@@ -21,7 +21,11 @@ class Solution(object):
         for i in range(idx+1):
             dic[pre[i]+ n] +=1
         cnt =0 
-        #print(dic,pre)
+        print(dic,pre)
         for i in range(idx+1,n +1):
             cnt  += dic[pre[i]+n] + dic[pre[i]+n-1]
+            #print(cnt)
         return cnt
+
+re =Solution().countSubarrays([3,2,1,4,5],4)
+print(re)
