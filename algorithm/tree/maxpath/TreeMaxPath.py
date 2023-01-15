@@ -13,7 +13,7 @@ def TreeMaxPath(g):
             ans = max(ans,d[x] + d[y]  + c)
             d[x] = max(d[x], d[y] + c)
         print(x, d,ans)
-    dfs(4) # The node is root node<= hard code and only applied to one root tree
+    dfs(5) # The node is root node<= hard code and only applied to one root tree
     return ans
 # ./pic/tree.jpg
 g = [[(1,3),(2,4),[5,11]],[(3,5),(0,3)],[(4,3),(0,4)],[(1,5)],[(2,3)],[(0,11)]]

@@ -17,8 +17,8 @@ class Presum2d:
         c = self.pre[x1][y1]
         return self.pre[x2+1][y2+1] -a -b +c
 
-arr = [[1+i]*10 for i in range(12) ]
+arr = [[1+i]*10 for i in range(10) ]
 print(arr)
 pre= Presum2d(arr)
 print(pre.pre)
-print(pre.query(0,0,0,9))
+print(pre.query(0,0,9,9))
