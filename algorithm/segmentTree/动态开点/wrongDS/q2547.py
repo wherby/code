@@ -1,7 +1,8 @@
 # https://leetcode.cn/problems/range-module/solution/python-dong-tai-kai-dian-xian-duan-shu-b-jrrs/
 # https://leetcode.cn/problems/range-module/
-# only for true or false 判断
-from typing import Optional
+
+## wrong ans
+from typing import List, Tuple, Optional
 
 
 class Node:
@@ -37,7 +38,7 @@ class SegmentTree:
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
         if L <= l <= r <= R:
-            root.isTracked = delta
+            root.isTracked = self.merge(root.isTracked,delta)
             root.lazy = True
             return
 
@@ -55,7 +56,7 @@ class SegmentTree:
 
         self._pushDown(root)
         mid = (l + r) >> 1
-        res = True
+        res = self.basev
         if L <= mid:
             res =self.merge(res, self._query(L, R, l, mid, root.left))
         if R >= mid + 1:
@@ -63,9 +64,7 @@ class SegmentTree:
         return res
 
     def _pushUp(self, root: Node) -> None:
-        root.isTracked = (
-            root.left and root.left.isTracked and root.right and root.right.isTracked
-        )
+        root.isTracked = self.merge(root.left.isTracked,root.right.isTracked)
 
     def _pushDown(self, root: Node) -> None:
         if not root.left:
@@ -74,28 +73,51 @@ class SegmentTree:
             root.right = Node(isTracked=self.basev)
         if root.lazy:
             root.left.lazy = root.right.lazy = True
-            root.left.isTracked = root.right.isTracked = root.isTracked
+            root.left.isTracked = self.merge(root.left.isTracked,root.isTracked)
+            root.right.isTracked = self.merge(root.right.isTracked,root.isTracked)
             root.lazy = False
 
 
-class RangeModule:
-    def __init__(self):
-        self.tree = SegmentTree(merge=lambda a,b:a and b,basev=False)
-
-    def addRange(self, left: int, right: int) -> None:
-        """添加 半开区间 [left, right)"""
-        self.tree.update(left, right - 1, True)
-
-    def queryRange(self, left: int, right: int) -> bool:
-        """ 只有在当前正在跟踪区间 [left, right) 中的每一个实数时，才返回 true"""
-        return self.tree.query(left, right - 1)
-
-    def removeRange(self, left: int, right: int) -> None:
-        """ 停止跟踪 半开区间 [left, right)"""
-        self.tree.update(left, right - 1, False)
 
 
-rm = RangeModule()
-rm.addRange(4,10)
-print(rm.queryRange(4,6))
-print(rm.queryRange(2,6))
+class Solution(object):
+    def lengthOfLIS(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        mx=0
+        st = SegmentTree(merge=max,basev=0)
+        for a in nums:
+            m= st.query(a-k,a-1)
+            #print(m,a,mx)
+            st.update(a,a,m+1)
+            mx = max(mx,m+1)
+        return mx
+re =Solution().lengthOfLIS(nums = [4,2,1,4,3,4,5,8,15], k = 3)
+print(re)
+
+from collections import defaultdict,deque
+class Solution:
+    def minCost(self, nums: List[int], k: int) -> int:
+        ans = 0 
+        last = defaultdict(int)
+        last2 = defaultdict(int)
+        st = SegmentTree(merge=min)
+        for i,x in enumerate(nums,1):
+            st.update(i,i,ans)
+            st.update(last[x]+1,i,-1)
+            if last[x]:
+                st.update(last2[x]+1,last[x],1)
+            ans = k + st.query(1,i)
+            last2[x] = last[x]
+            last[x] = i 
+        #print(ans)
+        return ans +len(nums)
+
+
+#re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
+
+re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
+print(re)
