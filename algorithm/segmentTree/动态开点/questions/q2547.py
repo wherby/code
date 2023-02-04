@@ -1,33 +1,36 @@
-# https://leetcode.cn/problems/range-module/solution/python-dong-tai-kai-dian-xian-duan-shu-b-jrrs/
-# https://leetcode.cn/problems/range-module/
-# only for true or false 判断
-from typing import Optional
+# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
+# https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
+# https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
+from typing import List, Tuple, Optional
 
 
 class Node:
-    __slots__ = ('isTracked', 'lazy', 'left', 'right')
+    __slots__ = ('isTracked','value', 'lazy', 'left', 'right')
 
     def __init__(
         self,
-        isTracked=False,  
+        isTracked=0,  
+        value =0,
         lazy=False,
         left: Optional['Node'] = None,
         right: Optional['Node'] = None,
     ) -> None:
         self.isTracked = isTracked
+        self.value = value
         self.lazy = lazy
         self.left = left
         self.right = right
 
 
 class SegmentTree:
-    def __init__(self,merge=lambda x,y:x+y, basev = 0, basef=lambda x:x) -> None:
-        self._root = Node(isTracked=basev)
+    def __init__(self,merge=lambda x,y:x+y, basev = 0, basef=lambda x:x,ret=10**9) -> None:
+        self._root = Node()
         self.merge = merge
         self.basef = basef
         self.basev = basev
         self.MINV = 0
         self.MAXV = int(1e9 + 10) ## node's max value
+        self.ret = ret
 
     def update(self, left: int, right: int, delta: bool) -> None:
         self._update(left, right, self.MINV, self.MAXV, self._root, delta)
@@ -37,7 +40,7 @@ class SegmentTree:
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
         if L <= l <= r <= R:
-            root.isTracked = delta
+            root.isTracked += delta
             root.lazy = True
             return
 
@@ -51,11 +54,11 @@ class SegmentTree:
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) -> bool:
         if L <= l <= r <= R:
-            return root.isTracked
+            return root.value + root.isTracked
 
         self._pushDown(root)
         mid = (l + r) >> 1
-        res = True
+        res = self.ret
         if L <= mid:
             res =self.merge(res, self._query(L, R, l, mid, root.left))
         if R >= mid + 1:
@@ -63,39 +66,41 @@ class SegmentTree:
         return res
 
     def _pushUp(self, root: Node) -> None:
-        root.isTracked = (
-            root.left and root.left.isTracked and root.right and root.right.isTracked
-        )
+        root.value = self.merge(root.left.isTracked+root.left.value,root.right.isTracked+root.right.value)
 
     def _pushDown(self, root: Node) -> None:
         if not root.left:
-            root.left = Node(isTracked=self.basev)
+            root.left = Node()
         if not root.right:
-            root.right = Node(isTracked=self.basev)
+            root.right = Node()
         if root.lazy:
             root.left.lazy = root.right.lazy = True
-            root.left.isTracked = root.right.isTracked = root.isTracked
+            root.left.isTracked = root.left.isTracked +root.isTracked
+            root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
+            root.value = root.value + root.isTracked
+            root.isTracked =0
+            
+
+from collections import defaultdict,deque
+class Solution:
+    def minCost(self, nums: List[int], k: int) -> int:
+        ans = 0 
+        last = defaultdict(int)
+        last2 = defaultdict(int)
+        st = SegmentTree(merge=min)
+        for i,x in enumerate(nums,1):
+            st.update(i,i,ans)
+            st.update(last[x]+1,i,-1)
+            if last[x]:
+                st.update(last2[x]+1,last[x],1)
+            ans = k + st.query(1,i)
+            last2[x] = last[x]
+            last[x] = i 
+        #print(ans)
+        return ans +len(nums)
 
 
-class RangeModule:
-    def __init__(self):
-        self.tree = SegmentTree(merge=lambda a,b:a and b,basev=False)
-
-    def addRange(self, left: int, right: int) -> None:
-        """添加 半开区间 [left, right)"""
-        self.tree.update(left, right - 1, True)
-
-    def queryRange(self, left: int, right: int) -> bool:
-        """ 只有在当前正在跟踪区间 [left, right) 中的每一个实数时，才返回 true"""
-        return self.tree.query(left, right - 1)
-
-    def removeRange(self, left: int, right: int) -> None:
-        """ 停止跟踪 半开区间 [left, right)"""
-        self.tree.update(left, right - 1, False)
-
-
-rm = RangeModule()
-rm.addRange(4,10)
-print(rm.queryRange(4,6))
-print(rm.queryRange(2,6))
+#re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
+re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
+print(re)
