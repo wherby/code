@@ -16,7 +16,8 @@ isDig =any(c.isdigit() for c in password)
 
 ## aToZ
 import string
-print list(string.ascii_lowercase)
+print(list(string.ascii_lowercase))
+print(list(string.ascii_uppercase))
 
 small_letters = list(map(chr, range(ord('a'), ord('z')+1)))
 big_letters = list(map(chr, range(ord('A'), ord('Z')+1)))
