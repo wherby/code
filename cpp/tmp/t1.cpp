@@ -12,6 +12,6 @@ int main(){
         ++result;
         ++iterations;
     }
-    std::cout << "iterations: " << iterations << std::etndl;
+    std::cout << "iterations: " << iterations << std::endl;
     std::cout << result << std::endl;
 }
