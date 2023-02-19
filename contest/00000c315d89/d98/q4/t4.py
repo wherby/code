@@ -1,3 +1,4 @@
+# https://leetcode.cn/problems/handling-sum-queries-after-update/
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -63,23 +64,26 @@ class SegmentTree:
     
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) -> bool:
-        if l>R or r<L:
-            return 0
+        # if l>R or r<L:
+        #     return 0
         if L <= l <= r <= R:
             return root.value
 
         self._pushDown(root,L,R)
         mid = (l + r) >> 1
+        ## ## need to be changed, how to merge left,right value 
+        ## set the initial res value for merge
         res = 0
         #print(res)
         if L <= mid:
-            res += self._query(L, R, l, mid, root.left)
+            res =self.merge(res, self._query(L, R, l, mid, root.left))
         if R >= mid + 1:
-            res +=self._query(L, R, mid + 1, r, root.right)
+            res = self.merge(res,self._query(L, R, mid + 1, r, root.right))
         #print(res)
         return res
 
     def _pushUp(self, root: Node) -> None:
+        ## ## need to be changed, how to merge left,right value
         root.value = root.left.value+root.right.value
 
     def _pushDown(self, root: Node,l,r) -> None:
@@ -93,10 +97,7 @@ class SegmentTree:
             root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
             mid = (l + r) >> 1
-            # if root.isTracked%2 ==0:
-            #     pass 
-            # else:
-            #     root.value =R-L+1- root.value
+            ## ## need to be changed, of how to applied the tracked value
             if root.isTracked%2 ==1:
                 root.left.value = mid-l+1-root.left.value
                 root.right.value = r-mid -root.right.value
@@ -105,7 +106,7 @@ class SegmentTree:
 class Solution:
     def handleQuery(self, nums1: List[int], nums2: List[int], queries: List[List[int]]) -> List[int]:
         acc = sum(nums2)
-        st = SegmentTree(nums1)
+        st = SegmentTree()
         for i,a in enumerate(nums1):
             st.update(i,i,a)
         res =[]
