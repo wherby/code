@@ -1,3 +1,4 @@
+# https://leetcode.cn/problems/handling-sum-queries-after-update/
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
