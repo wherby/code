@@ -1,28 +1,6 @@
 #https://usaco.guide/CPH.pdf#page=101
 # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/
 
-def sum(a,b):
-    a += n
-    b += n
-    s =0 
-    while a<=b:
-        if a %2 ==1:
-            s+= tree[a]
-            a+=1
-        if b%2 ==1:
-            s += tree[b]
-            b -=1
-        a =a //2
-        b = b //2
-    
-def add(k, x):
-    k += n
-    tree[k] +=x
-    k=k//2
-    while k >=1:
-        tree[k] = tree[2*k] + tree[2*k+1]
-        k = k //2
-    
 
 class SegTree:
     def __init__(self, arr):

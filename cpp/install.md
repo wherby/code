@@ -5,6 +5,8 @@ install gcc and wingw in
 and set path:
 C:\mingw64\bin
 ## linux
+sudo apt-get install build-essential
+
 sudo apt-get install gcc-10
 sudo apt-get install g++-10
 sudo apt-get install gdb
@@ -59,3 +61,11 @@ Learn modern C++ 20 programming in this comprehensive course.
 ## links
 
 https://cppinsights.io/
+
+
+#
+https://www.youtube.com/watch?v=9pjBseGfEPU&ab_channel=CodeVault
+ctrl+shift+B : Build
+
+https://stackoverflow.com/questions/56344186/unable-to-start-debugging-the-value-of-midebuggerpath-is-invalid
+sudo apt-get install gdb

@@ -1,3 +1,6 @@
+## see the change:
+## https://github.com/wherby/code/commit/4c1356ffb171077688d777926124969e9f5db881
+
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
@@ -41,10 +44,8 @@ class SegmentTree:
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
         if L <= l <= r <= R:
-            # applied the delta to current node to update value and set lazy flag
             root.isTracked += delta
-            root.lazy = True
-            root.value +=delta
+            root.lazy = True  ## !!!should update root.value here
             return
 
         self._pushDown(root)
@@ -57,7 +58,7 @@ class SegmentTree:
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) -> bool:
         if L <= l <= r <= R:
-            return root.value
+            return root.value + root.isTracked  ## !!!should return root.value
 
         self._pushDown(root)
         mid = (l + r) >> 1
@@ -69,7 +70,7 @@ class SegmentTree:
         return res
 
     def _pushUp(self, root: Node) -> None:
-        root.value = self.merge(root.left.value,root.right.value)
+        root.value = self.merge(root.left.isTracked+root.left.value,root.right.isTracked+root.right.value)
 
     def _pushDown(self, root: Node) -> None:
         if not root.left:
@@ -77,14 +78,11 @@ class SegmentTree:
         if not root.right:
             root.right = Node()
         if root.lazy:
-            # push down change and update the left and right node with pushDown value
-            # and set flag
             root.left.lazy = root.right.lazy = True
             root.left.isTracked = root.left.isTracked +root.isTracked
             root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
-            root.left.value += root.isTracked
-            root.right.value += root.isTracked
+            root.value = root.value + root.isTracked  ## !!!SHould not update root value here ,should update left,right 's value
             root.isTracked =0
             
 
