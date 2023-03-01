@@ -6,3 +6,5 @@
 '00000000000000000000000000000010'
 
 ## [All bit state for DP](https://wherby.github.io/code/algebra/all-submasks.html)
+
+
