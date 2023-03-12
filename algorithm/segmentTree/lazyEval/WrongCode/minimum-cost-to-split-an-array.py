@@ -1,6 +1,5 @@
-# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
-
-
+# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
+# This wrong code could pass while line 39 has bug
 class segment_tree:
     # merge(left, right): function used to merge the two halves
     # basef(value): function applied on individual values
@@ -32,17 +31,13 @@ class segment_tree:
     def build(self, a):
         self._build_util(0, len(a)-1, 0, a)
 
-    def _query_util(self,  L, R, l, r,i):
-        if L <=l <=r<=R:
+    def _query_util(self, i, ln, rn, l, r):
+        if ln>=l and rn<=r:
             return self.tree[i]
-        if L>r or R<l:
+        if ln>r or rn<l:
             return self.basev
-        self.__pushDown(i,l,r) ## this code need to be fix for wrong
-        mid = (l+r)>>1
-        return self.merge(self._query_util(L,R,l, mid ,2*i+1),
-                          self._query_util( L,R,mid+1, r,2*i+2))
-     
-                
+        self.__pushDown(i,l,r)  ## Wrong code should be  self.__pushDown(i,ln,rn)
+        return self.merge( self._query_util( 2*i+1, ln, (ln+rn)//2, l, r ), self._query_util( 2*i+2, (ln+rn)//2+1, rn, l, r ) )
     def __pushDown(self,i,l,r):
         if self.lazy[i]:
             self.lazy[2*i+1]= self.lazy[2*i+2] =True
@@ -54,8 +49,8 @@ class segment_tree:
             self.tree[i*2+2] += self.tracted[i]
             self.tracted[i]  =0
             
-    def query(self, left, right):
-        return self._query_util(left,right,0,self.n-1,0)
+    def query(self, l, r):
+        return self._query_util( 0, 0, self.n-1, l, r )
 
     def _update_util(self, i, ln, rn, x, v):
         if x>=ln and x<=rn:
@@ -90,28 +85,30 @@ class segment_tree:
         if R >= mid +1:
             self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
-    
+        
 
-print("\nRange Sum:")
-# Range Sum
-st = segment_tree([1,2,3,4,5,6,7,8])
-print(st)
-print(st.query(2,4))
-st.updateTo(3,5)
-print(st.query(2,4))
+from typing import List, Tuple, Optional
+from collections import defaultdict,deque
+class Solution:
+    def minCost(self, nums: List[int], k: int) -> int:
+        ans = 0 
+        last = defaultdict(int)
+        last2 = defaultdict(int)
+        n = len(nums)
+        ls = [0]*(n+1)
+        st = segment_tree(ls, merge=min)
+        for i,x in enumerate(nums,1):
+            st.updateRange(i,i,ans)
+            st.updateRange(last[x]+1,i,-1)
+            if last[x]:
+                st.updateRange(last2[x]+1,last[x],1)
+            ans = k + st.query(1,i)
+            last2[x] = last[x]
+            last[x] = i 
+        #print(ans)
+        return ans +len(nums)
 
-print("\nRange Max:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-print(st)
-print(st.query(2,4))
-st.updateTo(3,6)
-print(st.query(2,4))
 
-print("\nRange Min:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
-print(st)
-print(st.query(2,4))
-st.updateTo(3,1)
-print(st.query(2,4))
+#re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
+re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
+print(re)

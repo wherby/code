@@ -1,4 +1,4 @@
-# Not finished
+# Verified
 # https://leetcode.cn/contest/weekly-contest-336/problems/minimum-time-to-complete-all-tasks/
 
 from typing import List, Tuple, Optional
@@ -51,16 +51,18 @@ class segment_tree:
             self.tree[i*2+2] += self.tracted[i]
             self.tracted[i]  =0
 
-    def _query_util(self, i, ln, rn, l, r):
-        if ln>=l and rn<=r:
+    def _query_util(self,  L, R, l, r,i):
+        if L <=l <=r<=R:
             return self.tree[i]
-        if ln>r or rn<l:
+        if L>r or R<l:
             return self.basev
-        self.__pushDown(i,l,r)
-        return self.merge( self._query_util( 2*i+1, ln, (ln+rn)//2, l, r ), self._query_util( 2*i+2, (ln+rn)//2+1, rn, l, r ) )
-                
-    def query(self, l, r):
-        return self._query_util( 0, 0, self.n-1, l, r )
+        self.__pushDown(i,l,r) ## this code need to be fix for wrong
+        mid = (l+r)>>1
+        return self.merge(self._query_util(L,R,l, mid ,2*i+1),
+                          self._query_util( L,R,mid+1, r,2*i+2))
+
+    def query(self, left, right):
+        return self._query_util(left,right,0,self.n-1,0)
 
     def _update_util(self, i, ln, rn, x, v):
         if x>=ln and x<=rn:

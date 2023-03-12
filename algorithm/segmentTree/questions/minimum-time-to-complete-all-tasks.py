@@ -1,3 +1,6 @@
+#https://leetcode.cn/contest/weekly-contest-336/problems/minimum-time-to-complete-all-tasks/
+
+
 # Not finished
 # https://leetcode.cn/contest/weekly-contest-336/problems/minimum-time-to-complete-all-tasks/
 
@@ -185,3 +188,4 @@ class Solution:
 #re =Solution().findMinimumTime(tasks = [[1,10,7],[4,11,1],[3,19,7],[10,15,2]])
 re =Solution().findMinimumTime([[14,17,2],[2,15,11],[5,18,2]])
 print(re)
+
