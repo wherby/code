@@ -37,6 +37,13 @@ l = mid, r=mid -1  , mid = (l+r+1) >>1  while l <r
 mid = (l+r)>>1 不会取到r  
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
+### https://leetcode.cn/contest/biweekly-contest-100/problems/minimum-time-to-repair-cars/
+class Solution:
+    def repairCars(self, ranks: List[int], cars: int) -> int:
+        s = lambda x: sum(int(math.sqrt((x//r))) for r in ranks)
+        return bisect_left(range(min(ranks) * cars * cars),cars,key=s)
+
+
 ### 返回时候需要对l的值进行判断
 https://leetcode.cn/contest/weekly-contest-325/problems/take-k-of-each-character-from-left-and-right/
 contest/00000c315d89/c325/q2/t2.py  
