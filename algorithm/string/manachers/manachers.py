@@ -30,6 +30,6 @@ class Solution:
         
 
 
-s="ccaacabacb"
+s="ccaaaccabacb"
 re = Solution().minCut(s)
 print(re)
