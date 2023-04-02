@@ -225,6 +225,12 @@ questions/000001/q2203.py
 https://leetcode.cn/problems/minimum-weighted-subgraph-with-the-required-paths/solution/de-dao-yao-qiu-lu-jing-de-zui-xiao-dai-q-mj2c/
 
 
+##
+https://leetcode.cn/contest/weekly-contest-339/problems/minimum-reverse-operations/
+https://leetcode.cn/circle/discuss/K0dVcY/
+奇偶性判断和左右值计算 contest/00000c315d89/c339/q4/t43.py
+
+
 
 
 
