@@ -1,3 +1,5 @@
+# WA greedy will not work
+# https://leetcode.cn/submissions/detail/422613003/
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
