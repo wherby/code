@@ -235,6 +235,10 @@ https://leetcode.cn/circle/discuss/K0dVcY/
 sortedlist remove optimizated will work : contest\00000c315d89\c340\q4\t4.4.py
 sortedlist remove not optimizated will OT:  contest\00000c315d89\c340\q4\t4.3.py
 
+## online-majority-element-in-subarray
+概率求解
+algorithm/etcs/questions/online-majority-element-in-subarray.py 
+
 
 
 
