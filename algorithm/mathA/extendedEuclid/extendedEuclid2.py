@@ -30,3 +30,4 @@ if __name__ == "__main__":
           modInverse(A, M))
  
 # This code is contributed by Nikita tiwari.
+#print(modInverse(1432,123211))
