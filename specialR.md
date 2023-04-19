@@ -231,6 +231,15 @@ https://leetcode.cn/circle/discuss/K0dVcY/
 奇偶性判断和左右值计算 contest/00000c315d89/c339/q4/t43.py
 
 
+## sortedlist delete optimization
+sortedlist remove optimizated will work : contest\00000c315d89\c340\q4\t4.4.py
+sortedlist remove not optimizated will OT:  contest\00000c315d89\c340\q4\t4.3.py
+
+## online-majority-element-in-subarray
+概率求解
+algorithm/etcs/questions/online-majority-element-in-subarray.py 
+
+
 
 
 
