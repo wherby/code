@@ -1,6 +1,7 @@
 #  https://leetcode.cn/problems/make-array-strictly-increasing/
 from typing import List, Tuple, Optional
 from bisect import bisect_right,insort_left,bisect_left
+from functools import cache
 class Solution:
     def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
         arr2.sort()
