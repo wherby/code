@@ -1,0 +1,60 @@
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from sortedcontainers import SortedDict,SortedList
+from collections import defaultdict,deque
+class Solution:
+    def challengeOfTheKeeper(self, mz: List[str]) -> int:
+        m,n = len(mz),len(mz[0])
+        st=[0]
+        visit={}
+        ddx,ddy = -1,-1
+        sx,xy = -1,-1
+        for i in range(m):
+            for j in range(n):
+                if mz[i][j]=="T":
+                    ddx,ddy = i,j 
+                if mz[i][j] =="S":
+                    sx,sy = i,j
+        st = deque([(ddx,ddy,0)])
+        dirs = [(0,1),(0,-1),(1,0),(-1,0)]
+        while st:
+            x,y,c = st.popleft()
+            visit[(x,y)] = c
+            for dx,dy in dirs:
+                nx,ny = x+dx,y+dy 
+                if 0<=nx<m and 0<=ny<n and mz[nx][ny] !="#" and (nx,ny) not in visit:
+                    st.append((nx,ny,c+1))
+        mp = [[0]*n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if mz[i][j] == ".":
+                    if mz[m-1-i][j] ==".":
+                        mp[i][j] = max(mp[i][j],visit.get((m-1-i,j), 10**9))
+                    if mz[i][n-1-j] == ".":
+                        mp[i][j] = max(mp[i][j],visit.get((i,n-1-j),10**9))
+        kvisit = {}
+        #print(mp)
+        sst =deque([(ddx,ddy,0)])
+        mm = 10**9
+        while sst:
+            x,y,c = sst.popleft()
+            #print(x,y,c)
+            if x== sx and y==sy:
+                mm = min(mm,c)
+            if kvisit.get((x,y),10**9) <= c: continue
+            kvisit[(x,y)] =c
+            for dx,dy in dirs:
+                nx,ny = x+dx,y+dy 
+                if 0<=nx<m and 0<=ny<n and mz[nx][ny] !="#" :
+                    sst.append((nx,ny,max(c,mp[nx][ny])))
+        return mm if mm < 10**8 else -1
+        
+
+
+
+
+re =Solution().challengeOfTheKeeper(mz = ["S###.","..###","#..##","##..#","###.T"])
+print(re)
