@@ -8,6 +8,7 @@ from sortedcontainers import SortedDict,SortedList
 
 class Solution:
     def getSchemeCount(self, n: int, m: int, cb: List[str]) -> int:
+        pass
         
 
 
