@@ -11,6 +11,9 @@ from itertools import chain,product
 from collections import Counter
 from functools import lru_cache
 from functools import cache
+
+from math import gcd
+
 ##  @functools.lru_cache(None) 
 
 from math import comb // use to combination
