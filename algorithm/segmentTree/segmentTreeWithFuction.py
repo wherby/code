@@ -52,9 +52,17 @@ class segment_tree:
         self._update_util( 0, 0, self.n-1, x, v )   
         self.array[x] =v         
 
-print("\nRange Sum:")
+print("\nRange Sum with 8 node:")
 # Range Sum
 st = segment_tree([1,2,3,4,5,6,7,8])
+print(st)
+print(st.query(2,4))
+st.update(3,5)
+print(st.query(2,4))
+
+print("\nRange Sum with 9 node:")
+# Range Sum
+st = segment_tree([1,2,3,4,5,6,7,8,9])
 print(st)
 print(st.query(2,4))
 st.update(3,5)

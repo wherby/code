@@ -13,7 +13,7 @@ class FenwickTree:
         ret = 0
         while r >0:
             ret += self.bit[r]
-            r -= r&(-r)
+            r -= r&(-r) # equal to [r&= r-1] https://www.bilibili.com/video/BV1Ez4y1Y7Az/
         return ret
     
     def add(self,idx,delta):
