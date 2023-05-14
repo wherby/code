@@ -1,10 +1,6 @@
+# https://leetcode.cn/contest/biweekly-contest-104/problems/power-of-heroes/
+# https://leetcode.cn/circle/discuss/OMJd2e/
 from typing import List, Tuple, Optional
-
-from collections import defaultdict,deque
-from functools import cache
-import heapq
-from sortedcontainers import SortedDict,SortedList
-
 
 class Solution:
     def sumOfPower(self, nums: List[int]) -> int:
@@ -17,9 +13,3 @@ class Solution:
             b = b*2+a
             b,ret = b%mod,ret %mod
         return ret
-
-
-
-
-re =Solution().sumOfPower([2,1,4])
-print(re)
