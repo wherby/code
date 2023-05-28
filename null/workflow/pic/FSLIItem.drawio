@@ -1,0 +1,150 @@
+<mxfile host="app.diagrams.net" modified="2023-05-15T09:32:00.672Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="J9F2dUIiexVCKb4TPCVt" version="21.2.7" type="device">
+  <diagram name="第 1 页" id="afqvJ6ffdAANsOt6FBdh">
+    <mxGraphModel dx="1194" dy="633" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-27" target="-7IikVYD1-gj7gkQPiEw-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="590" y="580" />
+              <mxPoint x="590" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-27" value="" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="540" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="TLmcaVTqbXL3qQg19JHb-1" target="-7IikVYD1-gj7gkQPiEw-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TLmcaVTqbXL3qQg19JHb-1" value="Global" style="shape=datastore;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="120" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-1" value="Los" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="120" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-2" target="-7IikVYD1-gj7gkQPiEw-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-2" value="Engagement" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="120" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-5" target="-7IikVYD1-gj7gkQPiEw-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-5" value="Items" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="330" y="360" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-6" value="Current Assets" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-5">
+          <mxGeometry y="28" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-7" value="Interest receivable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-5">
+          <mxGeometry y="58" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-8" value="Other receivables and prepayments" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-5">
+          <mxGeometry y="98" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-14" value="Items" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="30" y="360" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-15" value="Current Assets" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-14">
+          <mxGeometry y="28" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-16" value="Interest receivable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-14">
+          <mxGeometry y="58" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-17" value="Other receivables and prepayments" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-14">
+          <mxGeometry y="98" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-8" target="TLmcaVTqbXL3qQg19JHb-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-22" target="-7IikVYD1-gj7gkQPiEw-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-22" value="Items" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="610" y="350" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-23" value="Current Assets" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-22">
+          <mxGeometry y="28" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-24" value="Interest receivable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-22">
+          <mxGeometry y="58" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-25" value="Other receivables and prepayments" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-22">
+          <mxGeometry y="98" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-26" value="Cash and cash equivalents" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="625" y="580" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-29" target="-7IikVYD1-gj7gkQPiEw-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-29" value="" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="540" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-30" value="Cash and cash equivalents" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="345" y="560" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-31" value="" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="540" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-32" value="Cash and cash equivalents" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="562" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-35" value="" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="540" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-37" target="-7IikVYD1-gj7gkQPiEw-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-37" value="Company" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="120" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-38" value="Items" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry x="920" y="350" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-39" value="Current Assets" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-38">
+          <mxGeometry y="28" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-40" value="Interest receivable" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-38">
+          <mxGeometry y="58" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-41" value="Other receivables and prepayments" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="-7IikVYD1-gj7gkQPiEw-38">
+          <mxGeometry y="98" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-42" value="Cash and cash equivalents" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="935" y="580" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-48" target="-7IikVYD1-gj7gkQPiEw-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-48" value="Other receivables and prepayments" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="620" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-49" target="-7IikVYD1-gj7gkQPiEw-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-49" value="Other receivables and prepayments" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="620" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="-7IikVYD1-gj7gkQPiEw-50" target="-7IikVYD1-gj7gkQPiEw-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-50" value="Other receivables and prepayments" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="620" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-7IikVYD1-gj7gkQPiEw-51" value="Other receivables and prepayments" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="620" width="210" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
