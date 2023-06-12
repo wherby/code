@@ -240,6 +240,10 @@ sortedlist remove not optimizated will OT:  contest\00000c315d89\c340\q4\t4.3.py
 algorithm/etcs/questions/online-majority-element-in-subarray.py 
 
 
+## using dictionary will timeout,use array will accept
+https://leetcode.cn/contest/weekly-contest-349/problems/collecting-chocolates/submissions/
+
+
 
 
 
