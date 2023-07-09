@@ -1,5 +1,6 @@
 # https://leetcode.cn/problems/range-module/solution/python-dong-tai-kai-dian-xian-duan-shu-b-jrrs/
 # https://leetcode.cn/problems/range-module/
+# Query => bool <- wrong version
 from typing import Optional
 
 
