@@ -8,3 +8,7 @@ GHCi, version 8.10.4: https://www.haskell.org/ghc/  :? for help
 Prelude> 1+1
 2
 ```
+
+
+## book
+http://learnyouahaskell.com/chapters
