@@ -8,7 +8,7 @@ class Solution:
         ret = 0
         b = 0
         mod = 10**9+7
-        for i, a in enumerate(nums):
+        for _, a in enumerate(nums):
             ret += a*a *(b+a)
             b = b*2+a
             b,ret = b%mod,ret %mod
