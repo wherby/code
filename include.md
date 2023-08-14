@@ -14,6 +14,8 @@ from functools import cache
 
 from math import gcd
 
+from heapq import heapify,heappop,heappush 
+
 ##  @functools.lru_cache(None) 
 
 from math import comb // use to combination

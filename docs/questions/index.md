@@ -11,3 +11,8 @@ https://leetcode.cn/submissions/detail/441444088/
 ## prefix and suffix search
 https://leetcode.cn/problems/prefix-and-suffix-search/submissions/
 
+## find the n sum question
+https://leetcode.cn/problems/4sum/submissions/
+
+submission in 2017 is general way of n sum 
+
