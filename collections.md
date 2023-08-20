@@ -339,3 +339,6 @@ from string import ascii_lowercase   [contest/00000c275d69/c297/q4/t44.py]
 {4}
 
 >>> a & b & c & d
+
+## need initalize in gloabl scope to save time 
+contest/00000c315d89/c358/q4/t4 copy 2.py
