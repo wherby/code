@@ -244,6 +244,11 @@ algorithm/etcs/questions/online-majority-element-in-subarray.py
 https://leetcode.cn/contest/weekly-contest-349/problems/collecting-chocolates/submissions/
 
 
+## 倍增法
+contest\00000c315d89\c360\q4\t4 copy.py
+https://leetcode.cn/circle/discuss/VghzJ4/
+图上倍增法
+
 
 
 

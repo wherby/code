@@ -16,3 +16,11 @@ https://leetcode.cn/problems/4sum/submissions/
 
 submission in 2017 is general way of n sum 
 
+## write concise code 
+
+https://leetcode.cn/problems/merge-intervals/submissions/460316711/
+
+## double method
+
+https://leetcode.cn/problems/maximize-value-of-function-in-a-ball-passing-game/submissions/
+
