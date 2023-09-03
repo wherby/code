@@ -1,12 +1,16 @@
 # Not verified
+# Verified in https://leetcode.cn/contest/weekly-contest-361/problems/minimum-edge-weight-equilibrium-queries-in-a-tree/
+# contest\00000c361d112\c361\q4\t4.py
+# node number ==0 is not valid node number in LCA graph
+# node number ==0 is for the virtual node
 from collections import defaultdict, deque
 class LCA:
     def __init__(self,root,g,edges={}):
         self.n = len(g)
         self.d =[0]*self.n
         self.g=g
-        self.t = 10 # the 2**t layer depth of tree 
-        self.f=[[0]*self.t for _ in range(self.n)]
+        self.t = 20 # the 2**t layer depth of tree 
+        self.f=[[0]*self.t for _ in range(self.n)]  # node number ==0 is for vitual node link
         self.dist=defaultdict(int)
         self.edges =edges
         self.bfs(root)

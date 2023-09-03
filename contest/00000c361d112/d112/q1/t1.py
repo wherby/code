@@ -11,11 +11,20 @@ from queue import Queue,LifoQueue,PriorityQueue
 
 
 class Solution:
-    pass
+    def canBeEqual(self, s1: str, s2: str) -> bool:
+        dic = {}
+        dic[s1] = 1
+        t2 = s1[2] + s1[1] + s1[0] + s1[3]
+        t3 = s1[2] + s1[3] + s1[0] + s1[1]
+        t4 = s1[0] + s1[3] + s1[2] + s1[1]
+        dic[t2]=1
+        dic[t3]=1
+        dic[t4]=1
+        return s2 in dic
 
 
 
 
 
-re =Solution()
+re =Solution().canBeEqual(s1 = "abcd", s2 = "cdab")
 print(re)
