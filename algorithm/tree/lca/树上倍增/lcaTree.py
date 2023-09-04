@@ -45,8 +45,10 @@ class LCA:
         return self.f[x][0]
     
 # algorithm\tree\lca\pic\tree.png tree graph
-gf =[[1,2],[3,4],[5,6],[],[],[7],[],[]]
-lca = LCA(0,gf)
+#gf =[[1,2],[3,4],[5,6],[],[],[7],[],[]]
+#lca = LCA(0,gf)  # in the LCA data structure node 0 is the virtual node which should not be root 
+gf =[[],[1,2],[3,4],[5,6],[],[],[7],[],[]]
+lca = LCA(1,gf)
 print(lca.lca(3,4))
 print(lca.lca(3,6))
 print(lca.lca(3,7))
