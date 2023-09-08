@@ -15,3 +15,5 @@
 **/node_modules/*
 .venv/*
 **/*.dSYM
+.conda/*
+.venv/*
