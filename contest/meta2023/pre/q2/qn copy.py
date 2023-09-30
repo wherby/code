@@ -26,7 +26,7 @@ def resolve():
         #print("X",l,r)
     #print(l,r)
     mx = 0 
-    for i in range(-1000,1000):
+    for i in range(-10000,10000):
         mx =max(mx,findX(l+i))
     return mx
     

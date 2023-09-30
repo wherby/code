@@ -7,7 +7,7 @@ os.chdir(dname)
 
 #filename = "input/cheeseburger_corollary_2_validation_input.txt"
 
-filename = "input/cheeseburger_corollary_2_input.txt"
+filename = "input/cheeseburger_corollary_2_input (1).txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -46,7 +46,7 @@ def resolve():
         #print("X",l,r)
     #print(l,r)
     mx = 0 
-    for i in range(-1000,1000):
+    for i in range(-10000,10000):
         mx =max(mx,findX(l+i))
     return mx
     
