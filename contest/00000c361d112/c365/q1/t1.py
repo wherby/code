@@ -11,16 +11,7 @@ from queue import Queue,LifoQueue,PriorityQueue
 
 
 class Solution:
-    def minOperations(self, nums: List[int], k: int) -> int:
-        dic ={}
-        for i,a in enumerate(nums[::-1]):
-            dic[a] = 1
-            isG = True
-            for j in range(1,k+1):
-                if j not in dic:
-                    isG = False
-            if isG:
-                return i +1
+    pass
 
 
 

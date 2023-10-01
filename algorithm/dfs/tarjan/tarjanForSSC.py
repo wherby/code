@@ -2,6 +2,7 @@
 # https://leetcode-cn.com/contest/season/2022-spring/ranking/solo/
 # https://leetcode-cn.com/contest/season/2022-spring/problems/s5kipK/
 # https://leetcode-cn.com/problems/s5kipK/
+# algorithm\dfs\qestions\lcp54.py
 from collections import defaultdict
 class Graph:
     def __init__(self, vertices,g=None):
@@ -73,6 +74,9 @@ g.addEdge(3, 0)
 for i in range(5):
     if not g.dfn[i]:
         g.tarjan(i)
+# [[7], [5], [5], [6, 7], [5, 6], [2, 1, 4], [4, 3], [3, 0], [], []]
+# 前N个数组表示每个点所在的强连通区域，N-[g.cnt] 的数组表示强连通区域包含的点
 print(g.T)
+
 print(g.cnt)
                     
