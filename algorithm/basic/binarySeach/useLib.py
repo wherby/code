@@ -20,4 +20,23 @@ class Solution:
 # which is not the answer we want, if use bisect_right, then the budget could create 2.1, then k is 3, if the budget could create 3, then k is 4 , then we could use -1 to get the real k value
 #  the meaning of the create 2.1:
 #  getCost(2,com) < budget < getCost(3,com) which means the buget could more than afford 2 item but less than 3.
-#  
+#
+
+#https://leetcode.cn/problems/house-robber-iv/
+from typing import List, Tuple, Optional
+class Solution:
+    def minCapability(self, nums: List[int], k: int) -> int:
+        def verify(mid):
+            cnt =0
+            last = -2
+            for i,a in enumerate(nums):
+                if a <= mid and i != last+1:
+                    cnt +=1
+                    last = i 
+            return cnt
+        return bisect_left(range(10**9), k, key = lambda x:verify(x))  
+
+re = Solution().minCapability(nums = [2,3,5,9], k = 2)
+print(re)
+# in this problem, we can't use bisect_right as above, because for any value of mid, the return value is 2 
+# we need to use bisect_left, for value below 5, the return value is 1, and for value is 5, the return value is 2
