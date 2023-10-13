@@ -6,7 +6,6 @@ from typing import List, Tuple, Optional
 from collections import defaultdict,deque
 from functools import cache
 import heapq
-from sortedcontainers import SortedDict,SortedList
 
 class segment_tree:
     # merge(left, right): function used to merge the two halves
