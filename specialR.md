@@ -249,7 +249,10 @@ contest\00000c315d89\c360\q4\t4 copy.py
 https://leetcode.cn/circle/discuss/VghzJ4/
 图上倍增法
 
+## 多重背包化简 -滑动窗口优化的多重背包
+https://leetcode.cn/circle/discuss/maICM3/
 
+algorithm\dp\多重背包化简\t4 copy 2.py
 
 
 
