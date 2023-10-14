@@ -33,8 +33,8 @@ class segment_tree:
         self.tree = [0] * self.n4
         self.lazy = [False] * self.n4
         self.tracted= [0] * self.n4
-        self.toggledValue =[[0,0] for _ in range(self.n4)]
-        self.build(array)
+        self.toggledValue =[[0,0,0] for _ in range(self.n4)]
+        self.build()
     
     def __str__(self):
         return ' '.join([str(x) for x in self.tree])
@@ -42,15 +42,21 @@ class segment_tree:
     def _build_util(self, l, r, i, a):
         if(l==r):
             self.tree[i] = self.basef(a[l])
-            self.toggledValue[i] = [self.tree[i], mod - self.tree[i]]
+            self.toggledValue[i] = [self.tree[i], mod - self.tree[i],self.tree[i],mod-self.tree[i]]
             return self.tree[i]
         mid = (l+r)//2
         self.tree[i] = self.merge(self._build_util(l,mid, 2*i+1, a), self._build_util(mid+1, r, 2*i+2, a))
-        self.toggledValue[i] = [self.tree[i], mod - self.tree[i]]
+        self.toggledValue[i] = [self.tree[i], mod - min(self.toggledValue[2*i+1][2],self.toggledValue[2*i+2][2]),
+                                                        min(self.toggledValue[2*i+1][2],self.toggledValue[2*i+2][2]),
+                                                        min(self.toggledValue[2*i+1][3],self.toggledValue[2*i+2][3])]
         return self.tree[i]
 
-    def build(self, a):
-        self._build_util(0, len(a)-1, 0, a)
+    def build(self):
+        self._build_util(0, self.n-1, 0, self.array)
+
+
+    def query(self, left, right):
+        return self._query_util(left,right,0,self.n-1,0)
 
     def _query_util(self,  L, R, l, r,i):
         if L <=l <=r<=R:
@@ -74,8 +80,7 @@ class segment_tree:
             self.tree[i*2+2] = self.toggledValue[i*2+2][self.tracted[i*2+2] %2]
             self.tracted[i]  =0
             
-    def query(self, left, right):
-        return self._query_util(left,right,0,self.n-1,0)
+
     
     # value must be in between the left and right
     def queryFirst_Max(self,left,right,value):
@@ -141,12 +146,13 @@ def resolve():
     ret = []
     for _ in range(n):
         l,r=tuple(map(lambda x: int(x),input().split())) 
-        print(st.query(0,inp-1),st.query(0,0),"####",st.query(0,0),st.query(0,1),st.query(0,2))
+        print( st.query(0,inp-1),st.query(0,0),"####",st.query(0,0),st.query(0,1),st.query(0,2),st.query(2,2),st.query(0,2))
         st.updateRange(l-1,r-1,1)
         mxv = st.query(0,inp-1)
         idx = st.queryFirst_Max(0,inp-1,mxv)
-        print(idx,mxv,l,r,st.query(0,0),st.query(0,1),st.query(0,2))
+        print(idx,"aaaaa",mxv,l,r,st.query(0,0),st.query(0,1),st.query(0,2))
         ret.append(idx)
+    print(ret)
     return -1
 
 def op(caseidx):
