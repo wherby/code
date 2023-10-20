@@ -123,7 +123,9 @@ class segment_tree:
         #self.tracted[root] =0
 
     def __update(self,L,R,l,r,root,delta):
-        if r <= L or R <=l:
+        #self.__pushDown(root,r,l)
+        self.__pushDown(root,l,r)
+        if r < L or R <l:
             return
         if L <=l <=r<=R:
             self.lazy[root] = True
@@ -131,14 +133,13 @@ class segment_tree:
             self.tracted[root] %=2
             ## need to change
             #self.tree[root] =self.toggledValue[root][self.tracted[root] %2]
-            self.__pushDown(root,r,l)
+            self.__pushDown(root,l,r)
             return 
-        self.__pushDown(root,l,r)
         mid = (l+r) >>1
-        if L <= mid:
-            self.__update(L,R,l,mid,2*root+1,delta)
-        if R >= mid +1:
-            self.__update(L,R,mid+1,r,2*root+2,delta)
+        #if L > mid:
+        self.__update(L,R,l,mid,2*root+1,delta)
+        #if R > mid +1:
+        self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
             
 
@@ -146,7 +147,7 @@ class segment_tree:
 
 def resolve():
     inp = int(input())
-    ls = list(map(lambda x: int(x),input().split()))
+    ls = list(map(lambda x: int(x)%mod,input().split()))
     n = int(input()) 
     st= segment_tree(ls,min)
     ret = []
