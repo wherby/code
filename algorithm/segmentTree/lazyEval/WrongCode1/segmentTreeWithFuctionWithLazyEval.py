@@ -1,5 +1,7 @@
 # # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
 
+# code with Bug for https://www.facebook.com/codingcompetitions/hacker-cup/2023/round-1/problems/D/my-submissions?source=facebook
+# contest\meta2023\r1\q4\qn copy.py
 
 class segment_tree:
     # merge(left, right): function used to merge the two halves
@@ -45,17 +47,14 @@ class segment_tree:
                 
     def __pushDown(self,i,l,r):
         if self.lazy[i]:
-            if l != r:
-                self.lazy[2*i+1]= self.lazy[2*i+2] =True
-                self.tracted[2*i+1] += self.tracted[i]
-                self.tracted[2*i+2] += self.tracted[i]
-            ## need to be changed
-            #self.tree[i*2+1] += self.tracted[i]
-            #self.tree[i*2+2] += self.tracted[i]
+            self.lazy[2*i+1]= self.lazy[2*i+2] =True
+            self.tracted[2*i+1] += self.tracted[i]
+            self.tracted[2*i+2] += self.tracted[i]
             self.lazy[i] = False
-            self.tree[i] +=self.tracted[i]
+            ## need to be changed
+            self.tree[i*2+1] += self.tracted[i]
+            self.tree[i*2+2] += self.tracted[i]
             self.tracted[i]  =0
-            
             
     def query(self, left, right):
         return self._query_util(left,right,0,self.n-1,0)
@@ -80,20 +79,17 @@ class segment_tree:
         self.tree[root] = self.merge(self.tree[2*root+1],self.tree[2*root+2])        
 
     def __update(self,L,R,l,r,root,delta):
-        self.__pushDown(root,l,r)
-        if r < L or R <l:
-            return
         if L <=l <=r<=R:
             self.lazy[root] = True
             self.tracted[root] += delta
             ## need to change
-            self._pushDown(root,l,r)
+            self.tree[root] +=delta
             return 
-        
+        self.__pushDown(root,l,r)
         mid = (l+r) >>1
-        if L <= mid:
+        if L <= mid:  # BUG
             self.__update(L,R,l,mid,2*root+1,delta)
-        if R >= mid +1:
+        if R >= mid +1:  # BUG
             self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
     

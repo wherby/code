@@ -40,20 +40,23 @@ class SegmentTree:
         return self._query(left, right, self.MINV, self.MAXV, self._root)
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
+        self._pushDown(root,l,r)
+        if r < L or R <l:
+            return
         if L <= l <= r <= R:
             root.isTracked += delta
             root.lazy = True
             ## need to be changed
             # applied the delta to current node to update value and set lazy flag.
-            root.value +=delta
+            self._pushDown(root,l,r)
             return
 
         self._pushDown(root,l,r)
         mid = (l + r) >> 1
-        if L <= mid:
-            self._update(L, R, l, mid, root.left, delta)
-        if R >= mid + 1:
-            self._update(L, R, mid + 1, r, root.right, delta)
+        #if L <= mid:
+        self._update(L, R, l, mid, root.left, delta)
+        #if R >= mid + 1:
+        self._update(L, R, mid + 1, r, root.right, delta)
         self._pushUp(root)
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) :
@@ -84,13 +87,13 @@ class SegmentTree:
             ## need to be changed
             # push down change and update the left and right node with pushDown value
             # and set flag
-            root.left.lazy = root.right.lazy = True
-            root.left.isTracked = root.left.isTracked +root.isTracked
-            root.right.isTracked = root.right.isTracked+root.isTracked
+            if l !=r:
+                root.left.lazy = root.right.lazy = True
+                root.left.isTracked = root.left.isTracked +root.isTracked
+                root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
             ## ## need to be changed, of how to applied the tracked value
-            root.left.value += root.isTracked
-            root.right.value += root.isTracked
+            root.value +=root.isTracked
             root.isTracked =0
             
 

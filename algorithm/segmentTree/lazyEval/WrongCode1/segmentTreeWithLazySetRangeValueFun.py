@@ -1,6 +1,9 @@
 # Verified
 # https://leetcode.cn/contest/weekly-contest-336/problems/minimum-time-to-complete-all-tasks/
 
+# code with Bug for https://www.facebook.com/codingcompetitions/hacker-cup/2023/round-1/problems/D/my-submissions?source=facebook
+# contest\meta2023\r1\q4\qn copy.py
+
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -41,15 +44,13 @@ class segment_tree:
 
     def __pushDown(self,i,l,r):
         if self.lazy[i]:
-            if l != r:
-                self.lazy[2*i+1]= self.lazy[2*i+2] =True
-                self.tracted[2*i+1] += self.tracted[i]
-                self.tracted[2*i+2] += self.tracted[i]
-            ## need to be changed
-            #self.tree[i*2+1] += self.tracted[i]
-            #self.tree[i*2+2] += self.tracted[i]
+            self.lazy[2*i+1]= self.lazy[2*i+2] =True
+            self.tracted[2*i+1] += self.tracted[i]
+            self.tracted[2*i+2] += self.tracted[i]
             self.lazy[i] = False
-            self.tree[i] +=self.tracted[i]
+            ## need to be changed
+            self.tree[i*2+1] += self.tracted[i]
+            self.tree[i*2+2] += self.tracted[i]
             self.tracted[i]  =0
 
     def _query_util(self,  L, R, l, r,i):
@@ -85,15 +86,13 @@ class segment_tree:
         self.tree[root] = self.merge(self.tree[2*root+1],self.tree[2*root+2])        
 
     def __update(self,L,R,l,r,root,delta):
-        self.__pushDown(root,l,r)
-        if r < L or R <l:
-            return
         if L <=l <=r<=R:
             self.lazy[root] = True
             self.tracted[root] += delta
             ## need to change
-            self.__pushDown(root,l,r)
+            self.tree[root] +=delta
             return 
+        self.__pushDown(root,l,r)
         mid = (l+r) >>1
         if L <= mid:
             self.__update(L,R,l,mid,2*root+1,delta)

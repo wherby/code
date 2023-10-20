@@ -1,5 +1,6 @@
 #https://codingcompetitions.withgoogle.com/codejam/round/000000000043580a/00000000006d0a5c
 # Not finished Bug 
+# with Bugs
 import os
 
 abspath = os.path.abspath(__file__)
@@ -133,9 +134,9 @@ class segment_tree:
             return 
         self.__pushDown(root,l,r)
         mid = (l+r) >>1
-        if L <= mid:
+        if L <= mid: # bug
             self.__update(L,R,l,mid,2*root+1,delta)
-        if R >= mid +1:
+        if R >= mid +1:  # bug
             self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
             
