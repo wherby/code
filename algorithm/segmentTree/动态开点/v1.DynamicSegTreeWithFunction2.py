@@ -40,15 +40,16 @@ class SegmentTree:
         return self._query(left, right, self.MINV, self.MAXV, self._root)
 
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
-        self._pushDown(root)
+        self._pushDown(root,l,r)
+        if r < L or R <l:
+            return
         if L <= l <= r <= R:
             # applied the delta to current node to update value and set lazy flag
             root.isTracked += delta
             root.lazy = True
-            self._pushDown(root)
+            self._pushDown(root,l,r)
             return
-        if r < L or R <l:
-            return
+        
         
         mid = (l + r) >> 1
         #if L <= mid: Bug version  algorithm\segmentTree\lazyEval\WrongCode1\segmentTreeWithFuctionWithLazyEval.py
@@ -61,7 +62,7 @@ class SegmentTree:
         if L <= l <= r <= R:
             return root.value
 
-        self._pushDown(root)
+        self._pushDown(root,l,r)
         mid = (l + r) >> 1
         res = self.ret
         if L <= mid:
@@ -73,7 +74,7 @@ class SegmentTree:
     def _pushUp(self, root: Node) -> None:
         root.value = self.merge(root.left.value,root.right.value)
 
-    def _pushDown(self, root: Node) -> None:
+    def _pushDown(self, root: Node,l,r) -> None:
         if not root.left:
             root.left = Node()
         if not root.right:
@@ -81,12 +82,12 @@ class SegmentTree:
         if root.lazy:
             # push down change and update the left and right node with pushDown value
             # and set flag
-            root.left.lazy = root.right.lazy = True
-            root.left.isTracked = root.left.isTracked +root.isTracked
-            root.right.isTracked = root.right.isTracked+root.isTracked
+            if l != r:
+                root.left.lazy = root.right.lazy = True
+                root.left.isTracked = root.left.isTracked +root.isTracked
+                root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
-            root.left.value += root.isTracked
-            root.right.value += root.isTracked
+            root.value += root.isTracked
             root.isTracked =0
             
 
