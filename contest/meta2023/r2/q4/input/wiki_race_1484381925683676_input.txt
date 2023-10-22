@@ -1,0 +1,1003 @@
+1
+1000
+223 188 667 211 142 982 317 396 359 417 281 544 999 532 921 388 963 536 91 599 698 108 99 216 470 558 401 338 930 227 899 260 69 310 648 750 830 167 557 860 61 561 547 970 138 19 502 840 500 70 430 637 546 945 256 862 243 896 352 801 448 287 704 765 580 866 754 82 950 404 497 773 898 652 961 815 632 591 947 793 962 319 650 330 32 75 712 195 239 17 984 181 819 666 821 98 247 390 123 182 672 876 775 52 511 571 463 137 44 905 491 64 910 104 399 916 562 706 864 238 442 324 384 553 847 782 737 651 303 806 779 186 455 89 269 418 771 897 567 847 165 492 246 918 197 496 941 523 614 77 356 427 344 776 914 385 975 734 768 491 321 277 537 619 618 85 885 212 868 749 517 451 807 393 21 355 24 935 577 694 33 224 441 309 489 681 161 920 465 786 178 411 124 172 389 264 593 969 669 376 835 802 906 249 309 191 842 171 528 443 761 594 642 354 901 711 183 849 65 367 578 676 180 6 869 299 12 270 767 743 97 610 907 475 202 499 653 607 856 452 405 121 253 843 279 654 39 643 150 711 638 924 681 793 579 235 560 88 379 958 197 251 616 740 282 574 285 526 817 925 695 250 14 350 658 456 683 954 484 938 349 40 436 296 371 951 870 73 605 196 472 179 630 643 242 57 986 27 796 841 848 434 36 236 153 724 872 189 622 368 37 304 59 881 232 510 620 633 469 725 943 292 548 265 481 977 87 22 486 101 360 424 107 174 412 628 307 468 957 972 974 691 822 545 639 956 105 631 28 736 66 640 746 563 959 119 38 555 457 627 130 373 164 482 358 635 241 611 395 477 514 387 342 248 904 60 927 257 406 852 522 41 1000 915 151 284 763 604 42 145 877 833 932 623 445 398 851 861 113 244 386 588 967 74 756 995 945 774 11 140 283 957 531 45 731 678 552 798 691 813 453 306 215 290 84 839 298 409 127 948 565 271 68 919 939 529 556 892 604 700 432 402 655 86 889 114 836 832 493 403 421 996 946 286 357 966 909 931 813 928 498 509 742 168 507 789 679 751 323 855 429 710 365 747 582 917 5 978 79 224 727 609 865 991 871 810 320 583 552 184 204 214 929 641 785 120 703 370 501 233 592 512 505 726 783 554 209 769 276 826 258 966 708 46 145 636 775 937 585 746 944 744 752 853 784 10 226 800 479 205 976 851 596 665 868 788 673 656 936 47 705 680 797 981 738 1 661 685 987 92 926 682 845 997 201 266 792 718 781 416 818 163 143 912 4 757 111 444 621 72 400 431 47 770 568 117 535 273 688 198 177 26 16 955 428 883 210 522 326 569 494 94 693 602 900 506 154 888 480 682 660 692 787 96 346 739 190 795 20 670 160 410 152 663 485 566 133 908 106 254 903 825 645 202 524 534 606 886 31 237 129 288 305 392 361 466 884 312 162 473 540 278 304 837 438 339 953 261 413 58 858 993 717 462 964 850 76 885 714 196 222 63 507 208 293 597 62 803 314 753 134 894 275 313 128 546 674 617 103 689 915 461 772 322 228 56 422 363 701 777 125 853 122 960 626 335 934 827 748 965 467 699 887 745 880 980 30 923 671 488 13 372 419 570 15 377 318 147 503 863 289 446 527 437 71 608 929 78 229 760 447 343 762 581 902 629 200 542 878 992 383 336 53 51 474 715 83 423 533 707 459 531 702 294 613 586 351 814 194 408 316 269 80 302 69 213 90 449 484 985 590 829 362 325 854 433 559 382 380 721 199 267 646 598 716 311 730 687 45 79 49 634 572 425 501 67 538 43 479 146 722 911 539 37 176 110 725 189 458 45 592 268 495 979 23 922 940 983 649 891 476 166 603 483 81 225 841 732 375 207 755 378 697 435 450 576 968 696 132 720 759 595 508 333 272 327 816 873 259 240 780 415 820 345 523 18 369 690 543 478 135 675 192 175 156 668 686 155 550 952 857 364 46 173 890 846 3 963 823 115 866 624 584 131 713 181 100 252 193 551 389 426 221 9 2 564 332 35 733 347 374 159 162 949 504 8 297 341 615 735 7 766 426 575 515 234 107 315 78 139 251 50 834 804 895 144 141 824 719 758 329 471 118 838 520 337 913 764 844 662 946 933 741 519 230 875 158 29 102 407 487 348 169 998 973 185 778 612 587 245 391 942 794 684 994 381 14 331 573 194 328 203 831 502 867 990 308 657 549 148 95 116 394 647 109 600 213 393 799 219 25 301 859 464 366 231 723 220 54
+6 abb abikt ad hm ngvy sggml
+1 vyj
+3 a ewt sscel
+4 dapit fyi kh obj
+1 eix
+2 iwu tgq
+2 eobr rsfce
+2 abkk qf
+3 fnahl gfo qe
+1 vymm
+1 roopp
+1 vyvm
+1 vyyq
+1 ot
+1 vz
+1 vzur
+2 acjlu oetny
+1 w
+1 bwn
+2 cu vgx
+3 a csch hyjbx
+2 hy uifpk
+2 fhkqg fsd
+1 wa
+1 txmw
+1 nz
+2 mstn nk
+1 wady
+1 cyttg
+1 njj
+1 wasnj
+1 wbn
+1 orkmn
+7 abb abikt abkk absjo abug acjlu acvvn
+1 wbz
+1 wc
+3 a acvvn sp
+1 pnne
+3 kz om vqtco
+2 cum up
+1 bpbkw
+1 wdus
+1 cmwf
+1 wecn
+1 qqoq
+2 abkk nth
+1 rnp
+7 abb abikt abkk abug ad kis rfzpe
+1 asi
+4 a abikt absjo ae
+1 rvfx
+2 odcuy rgj
+1 svubp
+1 oszp
+6 abikt absjo abug acvvn ad pn
+1 wf
+1 pece
+1 qjqm
+2 b bom
+1 wfrbq
+1 wfsn
+1 wfy
+2 esvbh jopbe
+2 iuk j
+3 acjlu dv np
+1 jheh
+3 bua iw obdh
+1 lmcdb
+1 vvmy
+1 wg
+1 wgfux
+1 whj
+1 wiinx
+3 dofbi knmdt udky
+1 wivx
+2 fwbgy ps
+1 wje
+1 wla
+1 ujih
+1 rin
+2 rmf uh
+4 bjvwm ei fbit jusd
+1 wlab
+3 acjlu ad otki
+1 jfh
+3 kun mvd sasn
+1 wm
+1 nj
+1 kldpo
+2 fsetm seoo
+3 fi hgfw rsd
+1 nzt
+9 a abb abikt abkk abug acjlu acvvn ad vwcvj
+1 wmo
+1 wmupa
+2 ridap vkrmc
+1 bzm
+1 wncoj
+2 ad to
+3 aq ftnw vax
+1 hkot
+1 wniot
+2 qrih vhnky
+1 oydt
+1 ebtrg
+3 ah fdyf jiu
+1 kdm
+1 wniuv
+1 jnh
+1 wnnco
+1 hu
+6 a abb abikt abug acvvn ad
+1 axs
+5 btmlg edv nimt pbqaq r
+1 wnva
+1 dnuox
+4 abikt fuu iwiq kcmy
+1 wnw
+1 hhojw
+1 wo
+1 a
+2 gc snp
+2 absjo ewczn
+2 abkk tttox
+3 absjo hgt ivjoz
+7 a abb abkk absjo abug acvvn cj
+2 abkk neqxr
+1 glu
+3 abikt f sb
+1 worx
+1 h
+1 prle
+1 recph
+1 wov
+1 woviz
+7 a abikt abkk absjo abug acjlu qedo
+1 cqb
+1 wow
+1 woxt
+2 n pib
+2 ljut nccf
+4 cg qh sjyu uhgq
+2 aeb if
+2 qfc ve
+4 absjo ad bis og
+1 wpdx
+2 ege syntc
+2 pq rrxsu
+10 a abb abikt abkk absjo abug acjlu acvvn ad azi
+1 wql
+1 wqvx
+1 wr
+1 wrn
+2 mi qec
+2 aojnr jryx
+3 ad hpoc jhzz
+8 a abb acjlu ad je kqd nea sbmzn
+1 wrod
+1 ny
+3 jpz nxyh spisb
+3 fqf ix uy
+5 a abb abkk absjo prlcl
+2 byhr gwj
+1 nnddt
+2 mamz thkuq
+1 ag
+1 wrujh
+2 abikt abug
+3 abkk ad axln
+6 a abb abkk absjo acjlu qcxv
+1 ws
+2 gbei okc
+1 wsvp
+1 mxt
+1 wtcu
+1 va
+1 wth
+2 cedfq ljbhj
+3 iepg moe ne
+1 wtoo
+1 qpg
+1 en
+3 absjo abug acvvn
+1 wtt
+3 abkk absjo abug
+2 asgpx nbkg
+7 abikt absjo abug acjlu acvvn ad mhdcu
+1 wuxj
+2 acjlu im
+1 wuxww
+3 bad legek rcbp
+2 ft nqlw
+1 eo
+2 fovgb hb
+1 wx
+8 a abikt abkk acjlu gyhsu sazb u v
+1 wxjgj
+2 glzjk tgiuk
+1 dss
+3 esewu mpz sjcpk
+1 pad
+4 fzll jjt unfjh vno
+4 dar fva kvwf qqu
+3 dcf jlwc lmb
+2 abikt kzg
+8 abikt abkk absjo abug acjlu acvvn ad oci
+1 wxlo
+1 rlex
+1 wxon
+1 kid
+1 rs
+3 gu kekn ls
+2 ad idpac
+1 wz
+3 dn glwdj rqsz
+1 lt
+6 a abb abkk absjo acvvn brbcl
+6 abikt abkk acjlu ad cbw sy
+1 nr
+1 nnkc
+1 qhgs
+3 fyw oisd qdz
+3 iekw ouwo ppn
+1 neyh
+1 gdab
+3 bwbsq djir mpigw
+2 nfqd pp
+1 jux
+1 pk
+4 abikt absjo hoqhm llt
+1 x
+1 xauqy
+1 bno
+1 xbq
+3 iou kuwku mla
+3 pjsxe rc uyg
+1 xch
+1 nlycb
+1 twtxh
+3 abb acjlu ohozf
+4 hvo jvarb lkgo mlgr
+2 dyesz pztdz
+1 xe
+1 bazrr
+1 xefs
+1 xesom
+1 lgl
+1 xgamc
+2 infqp vjft
+3 djbqt jj lpye
+2 abikt abkk
+1 rh
+1 em
+1 fgk
+8 a abb abkk absjo abug acvvn ad alvvw
+1 namx
+1 xgixc
+2 abug ural
+2 abkk absjo
+1 xgpkt
+2 cxlrp oqwz
+8 a abikt abkk absjo abug acjlu acvvn ad
+11 a abb abikt absjo abug acjlu ad gez nslvg ooudt pw
+1 xgs
+2 abkk ej
+1 xguzm
+3 abikt acvvn gemax
+3 a hh rpmxi
+2 acvvn ad
+2 er frq
+1 ts
+1 fzd
+1 xh
+5 abikt absjo abug ad rzal
+1 xiom
+2 kbrmu mn
+1 qqx
+2 acvvn hyi
+1 elmcm
+7 a abb abikt abkk absjo abug acvvn
+2 nuzsz ves
+3 djjt fuq kou
+3 googs hlfyk mlv
+1 xj
+3 abikt gst smlo
+1 qqueo
+1 absjo
+1 xkeb
+1 xkji
+1 oe
+8 abb abkk absjo acjlu acvvn ad cs ti
+2 pguu tnljm
+2 os vinl
+1 ekux
+11 abb abikt abkk absjo abug acjlu ad knd knniq pgh pyaw
+1 xkqqd
+1 xlkri
+1 xln
+1 jhndm
+4 abb absjo ha reqj
+2 faqf fiaf
+1 qqtj
+1 xmhya
+1 fxs
+2 acjlu fp
+2 bc lphw
+1 qiskq
+2 dib hgcfc
+3 abb esrqf qk
+2 gfg qys
+1 ppxn
+2 bynp dmvm
+1 qz
+1 ssvh
+1 xnlr
+1 xnref
+2 epp mjom
+2 acvvn le
+1 cpkok
+4 budwe dli rfe vnro
+2 abug jiuoo
+4 aqp ftye uppw usv
+2 amd oymuj
+2 lrmzh vqral
+3 ltwm mgfg vws
+1 xnt
+1 ad
+2 alyb rxnp
+1 hbgrc
+1 xnwqi
+1 xnzqi
+1 trow
+1 vfz
+10 a abb abkk absjo abug acjlu acvvn ddgn ib jjsy
+1 fu
+2 dhfc sg
+1 xq
+1 so
+3 acjlu dxykn idnu
+7 a abb abikt acvvn ad ra swkvr
+2 kibw tvl
+1 p
+1 iq
+2 mq nhyxc
+1 pxfmc
+1 xrg
+1 nzg
+1 xrj
+1 xrkct
+1 dcr
+1 xsc
+3 cesy klt ngxz
+3 abikt kermi uxuuk
+2 bho pqtxo
+1 ewrgt
+1 fvfm
+1 hi
+1 xscgi
+1 xtl
+1 gfs
+1 xtmq
+3 cxc glg jnbmq
+2 st vmq
+2 btgeh rce
+1 acvvn
+3 fm jdx kjqio
+2 hcru hgy
+7 apif dl fdcy kjm msw tsxm umn
+1 xtvif
+3 ldew ljkvo nzlyu
+1 vyi
+1 xup
+2 jto qjijk
+2 gfc vhd
+2 hicu kzu
+1 xuyws
+3 axk emmu kunrg
+2 gme oqqgy
+1 g
+1 xvf
+1 ons
+2 absjo jqoq
+2 cpth htlg
+2 dyup kl
+3 abikt absjo pzeg
+2 ok tv
+1 xvljg
+1 xvna
+5 abikt abkk abug ad fdg
+1 xwiks
+3 abkk ad ur
+2 lcj qjyx
+1 kgw
+1 auyy
+1 xwlg
+1 deqvz
+2 abb abug
+7 abkk absjo acjlu acvvn ad kkcfz uxnnk
+3 afvk eg synuo
+1 ad
+2 seae tl
+1 qdkx
+1 xwyde
+1 xy
+1 ad
+3 gq pd uj
+1 qho
+1 vc
+3 aof sdday tp
+1 awxof
+3 fh qvqt sw
+3 dfu pum spfb
+1 abb
+10 a abb abkk absjo abug acjlu acvvn ad iobzq npz
+4 abikt ayt mu tla
+3 cvxj odld ud
+1 ql
+1 un
+1 jtc
+6 a abikt abkk abug acjlu acvvn
+1 abkk
+1 msmgj
+1 rq
+2 buzlm lvh
+2 ccc jyj
+1 abug
+1 xybn
+1 kpt
+1 txykt
+3 abikt gks hzej
+1 ge
+1 ufkb
+3 ihhxa ksbs pzlp
+1 grpc
+1 rxv
+2 ce sr
+1 xyege
+4 as pftv qtm qzrvu
+4 abb abug acvvn ad
+8 a abb absjo abug acjlu acvvn mhqq pew
+1 xym
+2 cfwgx ehls
+2 hv oemos
+3 hj huc iztkw
+1 xzo
+2 mh mtkh
+1 an
+2 qt rhvf
+3 a mhpf qorc
+1 lorox
+2 gwmhv ujhuj
+2 acjlu tx
+1 vspxw
+6 a abb abug acvvn ad lhgcu
+2 jls jx
+2 aza lhbx
+1 y
+1 yad
+1 shm
+8 abb abikt abkk absjo abug acjlu acvvn ad
+1 yajw
+4 exte io rtde tslmy
+1 loyut
+1 dva
+1 vdbbw
+1 ybf
+4 fdkbm jef uq vi
+2 bpvya jh
+5 dfz he ibgct kiqub nzqa
+1 ybymg
+2 lgcd lps
+1 cd
+4 ad lka mlplt tbwv
+1 ycv
+1 ycwyg
+1 vl
+1 hvkv
+1 yd
+5 abikt abkk abug acvvn pg
+1 ye
+1 duzw
+1 ai
+1 yeda
+2 mv uni
+1 yeek
+1 oxlq
+2 dqtxb gg
+1 abug
+1 yehyp
+8 abb abikt absjo abug acjlu acvvn ad bxlk
+1 yf
+1 fxjo
+3 rlmc rnfz ubzm
+4 abb ad lwz psp
+1 djz
+1 yfdc
+1 hume
+2 jeoql sav
+1 yg
+3 abb eljmw jem
+1 fkz
+2 acvvn bsnz
+1 a
+1 bbti
+1 qnw
+1 thhrh
+2 a hs
+1 cbet
+3 iph oab tyk
+1 ygf
+2 ddvp gecl
+1 bb
+6 a abb abkk abug ad gdon
+4 it ocivm pfvtv swd
+2 mvyz unay
+10 a abb abikt abkk absjo abug acjlu acvvn fmn gjpa
+1 bhdms
+6 abikt absjo abug acjlu acvvn lxbmf
+3 fmwlr kpa psnm
+1 fxzg
+4 abb abkk absjo abug
+1 osnhv
+3 mhaq oqj qc
+4 bgl etz eydmr isppa
+12 a abb abkk absjo abug acjlu acvvn ad jyx ljgb qj rrofz
+4 abug mefp qztxs sdjsu
+1 yha
+1 betl
+4 abb abkk e ksouu
+7 abb abug acjlu acvvn ad lg qxfpy
+1 yheqc
+1 yht
+1 yj
+2 gok lyf
+3 acvvn ip m
+3 abikt abug nit
+2 abb heqc
+2 iduil mo
+1 vjgc
+2 llkgw phgzh
+7 a abb absjo acjlu acvvn ad nkegv
+1 yjj
+3 capqf cw drha
+1 nmecn
+1 gqcd
+1 yjo
+3 pcbda pv ro
+2 gh kbceg
+2 kpnb osaj
+5 fy iwfxu kaej mlo vwnn
+5 bdwt egp gvzb leur sim
+1 tfmbr
+1 yjtxw
+1 jnan
+1 cnb
+2 pjh tpjx
+1 eqtis
+3 abkk mmc sc
+1 hwbrr
+2 abikt acvvn
+3 iioj jnvo ki
+1 uxr
+1 fg
+1 grbu
+1 vj
+1 yjyc
+2 cqh cshu
+2 el gtt
+1 eiqyc
+2 ihpe vwc
+1 ykfw
+1 uu
+3 abkk aj bkom
+3 buxvc oqv pwbm
+3 a jf prnlb
+1 mkljn
+1 ndu
+3 abikt pnsaa ttz
+1 pep
+1 ykokg
+1 ykrj
+1 ykz
+1 yl
+2 gjeiv rehyk
+1 ylh
+1 mgxjt
+3 ctien jywv mckl
+1 ylrm
+6 a abb abkk acvvn dr vepty
+2 bui cnww
+1 vyg
+2 a rhyg
+1 ym
+1 acvvn
+2 igvp nn
+2 bqvt cugkb
+1 lact
+3 av dki ldt
+1 tstps
+1 frsf
+7 abb abikt abkk absjo abug acvvn nc
+3 edtq nwiwi okm
+3 acjlu rnfq spcyr
+1 a
+1 yn
+1 abkk
+1 fch
+1 ynbh
+1 on
+2 abikt acvvn
+1 q
+1 ynrhj
+1 dlpsb
+2 kb ty
+2 flqox tii
+1 ynu
+3 cy fpo tun
+3 iwnk srhe vyd
+2 abikt pne
+4 cgqfy hlatl iie nu
+1 yof
+1 ayk
+2 rvvp shps
+1 yokhs
+9 a abb abikt abkk absjo acjlu acvvn ad du
+1 ypzk
+2 duvp fkku
+4 acjlu aro azn vhaxd
+1 gvso
+3 awe jbof rjgpw
+2 gf mvqdu
+2 fkbi kv
+3 nw tase uex
+1 abkk
+1 rjvq
+1 yqy
+1 yr
+1 ihbn
+2 lfjrh udpz
+5 acjlu acvvn ad plmc po
+5 eth hnhql nkhmj oxv uegpy
+1 ys
+1 mvewg
+6 a abb absjo acjlu ad mex
+1 ysbr
+1 nwt
+1 abb
+1 yspdu
+1 udch
+1 yto
+4 ad nytbk tnwpn ucutl
+1 hkm
+3 qeni tyejw ux
+1 nec
+1 abkk
+2 bxcg pgi
+1 yu
+1 coybi
+8 a abb abikt abug acjlu acvvn ad tyd
+1 cuxvn
+1 yuv
+2 dbhbw hnyi
+2 qcc ule
+8 abb abikt abkk absjo acjlu acvvn ad tvpvr
+1 yviv
+3 mqwya o retl
+2 mpwq qjx
+1 yw
+2 chh vo
+1 yww
+1 cejep
+1 yx
+1 jhmuh
+1 ctld
+3 ch mzyg sxp
+1 yxnie
+7 a abb abikt abug acjlu acvvn pqig
+1 kj
+3 dbnp enpe fbucq
+1 yxr
+1 yxrs
+3 abkk acjlu ad
+1 a
+3 hprs lukwg ttrn
+1 tqqkw
+6 ad afk afm jr jxk tin
+1 bjvpu
+1 vqiv
+1 absjo
+2 bmh op
+1 abug
+1 yy
+4 a acjlu azccg vqk
+1 yyv
+1 z
+1 rvn
+1 za
+1 zbfs
+1 okeq
+1 dozy
+1 fnjh
+1 zbgmt
+3 ecli khn lw
+2 absjo uvrdq
+1 srhu
+1 zblpr
+1 peypp
+1 qzvb
+4 abkk hyc mvc nljc
+2 qqkcp tftmb
+3 adczk ctk gfzm
+2 ncouh ved
+1 uccje
+1 cdy
+3 epdn kqtg prrxw
+1 zc
+1 tea
+1 kmvh
+1 sv
+3 ebtn idh kphjx
+1 zcc
+2 alez dk
+1 zcn
+1 zehqp
+3 ad dlqby rao
+1 jyxvm
+4 aeps ig kkzm spg
+8 a abb abikt absjo abug acjlu acvvn ad
+7 abb abikt abkk absjo abug acjlu th
+1 zep
+4 abikt fsk gb qtu
+1 evjln
+1 hqeo
+1 zet
+1 ovvi
+2 cvt vxgt
+4 djyz goosd lzod rwtr
+2 fl nwzy
+1 hcq
+2 arz fqvhw
+3 csuip ivbht ota
+1 zft
+2 gv jbd
+3 a abikt ufm
+1 tchhy
+1 zg
+1 zgq
+2 absjo rte
+2 gjk rhrb
+1 abkk
+1 eqaf
+3 cz rrrf sa
+1 gx
+2 fc ppi
+2 hjeex nl
+2 dbfe nqsei
+1 zgvit
+1 zhck
+1 et
+2 ck jlwxv
+1 egu
+2 bvubd vkk
+2 jt ntnp
+4 abb jame pttq qgqx
+1 huprd
+3 c gdc hdvie
+2 abkk ut
+1 zhn
+2 lr vygwy
+1 abug
+1 iwo
+1 qarxi
+2 tb vwy
+1 nue
+1 ad
+2 tyaui vd
+2 cv lluo
+2 hjy sek
+2 acvvn oidnw
+1 zhs
+1 zi
+1 fwi
+1 ia
+1 abb
+1 uc
+1 zid
+2 ljyk ngnh
+2 fgpx mz
+1 ziibz
+10 a abb abikt abkk absjo abug acjlu acvvn ad apgqv
+8 a abb abkk absjo abug acjlu acvvn ad
+3 lx px qp
+3 a abikt ss
+2 abb k
+1 ziqkm
+8 a abkk abug acjlu acvvn ad eynq jm
+3 ad fquf ins
+2 adb gw
+1 torb
+1 omh
+1 zj
+1 dvwt
+1 tirwe
+1 lsjze
+4 a abb abikt ad
+1 zjcl
+3 cvymu mr vjhsx
+3 a abikt absjo
+9 a abkk abug acjlu acvvn ad cxuu do hef
+1 zjhit
+8 a abb abikt abkk absjo abug acjlu gjgbj
+9 a abikt abkk absjo abug acjlu acvvn hhf orm
+1 dry
+1 fdaga
+1 zkkbw
+1 tiy
+1 ioyc
+4 khmx l lay maa
+3 hdzn joqad nxlk
+1 gy
+2 emog pjx
+1 zkmm
+1 zktec
+1 gtd
+3 abug ghdl jelc
+1 mrnr
+2 jz ly
+8 abb abkk absjo acjlu acvvn ad ouue unqy
+1 gen
+2 awami pyck
+1 bp
+1 zl
+3 absjo ee iqo
+1 qwl
+1 zlp
+1 vurky
+1 ta
+3 cfaws tpau urqg
+1 zm
+1 aiy
+1 sx
+1 rb
+2 tqcik tu
+1 hud
+1 zmegw
+1 zmfxw
+1 zmjx
+1 eav
+1 znh
+1 dm
+1 absjo
+1 aneq
+1 zokld
+1 zoz
+3 rll tnoh twyv
+3 abug ekcp s
+1 d
+1 zpato
+1 zpth
+1 onyf
+1 nitd
+1 siplh
+1 dlqbp
+1 qhrd
+1 acjlu
+1 gdl
+1 ue
+5 abikt abug bx jcv trwna
+1 ddwsh
+1 zpz
+1 zqeq
+2 dym gqpba
+1 hgrs
+7 a abb absjo abug acjlu ad tesnh
+1 sdvd
+2 lep vcd
+1 zqi
+2 abb is
+9 a abb abikt absjo acjlu ad cjn cwci iprr
+2 bya ub
+2 dtoeq iusti
+9 a abb abkk absjo abug acjlu acvvn mlw nbt
+1 la
+1 da
+4 ahovl eb nyiu sgf
+3 bs lqku uqcz
+1 dz
+1 zqkjp
+4 iog juzr qw sycv
+1 zr
+1 vfhs
+1 absjo
+6 a abikt abkk absjo acjlu acvvn
+1 geo
+3 cnvja dzp kq
+2 bcjp qey
+2 mf uhoho
+1 via
+2 fojwu vxu
+1 zrgd
+1 zrtgv
+1 evgud
+2 or vafm
+1 tjq
+1 jas
+1 mrz
+1 ori
+3 acjlu lj mdhm
+2 luz tesr
+1 hd
+2 gct uhne
+1 zs
+1 i
+2 lckxc sk
+3 acvvn byj ghtd
+2 a ppetp
+1 cf
+1 acvvn
+1 rtn
+3 a abb qs
+1 ihw
+2 in rof
+4 ad cjva gjep viq
+1 rwf
+5 kapv ltcq olhgb omp rzj
+5 alm bq ca ja oq
+1 zsfod
+1 loubm
+1 tn
+2 byh imsz
+1 zsiop
+1 zsx
+1 frc
+1 zta
+1 rmb
+1 dstwx
+2 glqj oy
+1 rvrw
+1 ztfd
+2 ihpm jkwo
+3 kvtc mhgi pf
+3 abkk acjlu ir
+1 jg
+4 eq hqxm qzv vsktf
+1 llums
+4 abug acvvn mjzxr nbi
+1 ting
+1 ad
+3 estj gqnpl grffx
+1 mijh
+6 cn ednet hf rcof rr vuhhv
+1 zu
+1 zv
+1 cdeau
+2 nnssc vltdp
+1 sydij
+5 a abikt alh ka rcs
+1 fn
+2 pnei uozyz
+1 zvb
+2 jyt ngidt
+1 a
+5 a absjo fgmy qi ufl
+2 hbfjr tfmws
+3 acvvn madgw vg
+2 oc sbfs
+1 zvxja
+1 fd
+3 abug ifw uyglr
+1 acvvn
+6 abb abikt absjo abug acjlu ad
+2 db egw
+5 acjlu eln gr ncmpx smc
+1 jd
+1 zwohg
+1 t
+1 zwz
+1 fifr
+1 acvvn
+1 acjlu
+1 fel
+1 zx
+2 gmvl sn
+1 gs
+2 kra rojx
+1 zxatp
+1 nor
+5 abb abikt absjo abug acjlu
+9 a abb abikt abkk abug acjlu acvvn ad sgqg
+2 brpyj gpg
+1 uego
+1 zxnhx
+1 zxxt
+1 fnz
+1 zxz
+1 a
+1 zy
+2 eihnv kyvm
+1 ak
+1 zz
