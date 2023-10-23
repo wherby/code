@@ -1,4 +1,4 @@
-#https://codingcompetitions.withgoogle.com/codejam/round/000000000043580a/00000000006d0a5c
+# 
 import os
 
 abspath = os.path.abspath(__file__)

@@ -1,25 +1,9 @@
-#https://codingcompetitions.withgoogle.com/codejam/round/000000000043580a/00000000006d0a5c
-import os
 
-abspath = os.path.abspath(__file__)
-dname = os.path.dirname(abspath)
-os.chdir(dname)
-
-filename = "input/wiki_race_input.txt"
-f=open(filename,'r')
-
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-import sys
-
-if  "f" in locals():
-    sys.stdin = f
-else:
-    inputA=sys.stdin
 
 
 from collections import defaultdict,deque
 import sys
-sys.setrecursionlimit(10000000)
+sys.setrecursionlimit(1000000)
 
 def resolve():
     n = int(input())
@@ -70,12 +54,15 @@ def resolve():
         for a in ls:
             dc[a] +=1
 
+
     def verify(i,word):
         acc= word in sst[i]
+        cd =0
         for a in g[i]:
-            acc+= verify(a,word)
-        if acc < len(g[i]) and len(g[i])>1:
+            cd+= verify(a,word)
+        if cd+1 < len(g[i]) :
             return -10**10
+        acc +=cd
         #print(i,word,acc,len(g[i]),acc < len(g[i]))
         return acc if acc<=1 else 1
     #isG = True
@@ -84,6 +71,8 @@ def resolve():
         if v >=leves:
             #print(k)
             #print(verify(0,k))
+            #print(g)
+            #print(sst)
             if verify(0,k) >=0 :
                 cnt +=1
                 #print(k)

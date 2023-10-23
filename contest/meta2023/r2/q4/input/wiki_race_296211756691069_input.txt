@@ -1,0 +1,9 @@
+1
+6
+1 1 2 2 5
+4 mozzarella cheddar gouda edam
+5 gouda gjetost mozzarella cheddar edam
+3 gruyere mozzarella edam
+1 gouda
+1 edam
+3 cheddar gruyere edam
