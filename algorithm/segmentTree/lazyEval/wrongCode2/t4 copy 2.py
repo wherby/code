@@ -1,5 +1,12 @@
-## https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
-## will timeout in https://leetcode.cn/contest/biweekly-contest-116/problems/subarrays-distinct-element-sum-of-squares-ii/
+# https://leetcode.cn/contest/biweekly-contest-116/problems/subarrays-distinct-element-sum-of-squares-ii/
+# 2023/10/29
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
 
 
 class segment_tree:
@@ -20,7 +27,7 @@ class segment_tree:
         self.build(array)
     
     def __str__(self):
-        return ' '.join([str(x) for x in self.tree])
+        return ' '.join([str(x)  for x in self.tree])
 
     def _build_util(self, l, r, i, a):
         if(l==r):
@@ -28,18 +35,19 @@ class segment_tree:
             return self.tree[i]
         mid = (l+r)//2
         self.tree[i] = self.merge(self._build_util(l,mid, 2*i+1, a), self._build_util(mid+1, r, 2*i+2, a))
+        #print(i,self.tree[i])
         return self.tree[i]
 
     def build(self, a):
         self._build_util(0, len(a)-1, 0, a)
 
     def _query_util(self,  L, R, l, r,i):
-        self.__pushDown(i,l,r) ## this code fixed
+        # self.__pushDown(i,l,r) ## this code need to be fix for wrong   correct is put here
         if L <=l <=r<=R:
             return self.tree[i]
         if L>r or R<l:
             return self.basev
-        
+        self.__pushDown(i,l,r) ## this code need to be fix for wrong  
         mid = (l+r)>>1
         return self.merge(self._query_util(L,R,l, mid ,2*i+1),
                           self._query_util( L,R,mid+1, r,2*i+2))
@@ -51,9 +59,11 @@ class segment_tree:
                 self.lazy[2*i+1]= self.lazy[2*i+2] =True
                 self.tracted[2*i+1] += self.tracted[i]
                 self.tracted[2*i+2] += self.tracted[i]
-            ## need to be changed]
+            ## need to be changed
+            #self.tree[i*2+1] += self.tracted[i]
+            #self.tree[i*2+2] += self.tracted[i]
             self.lazy[i] = False
-            self.tree[i] +=self.tracted[i]
+            self.tree[i] +=self.tracted[i]*(r-l+1)
             self.tracted[i]  =0
             
             
@@ -96,28 +106,35 @@ class segment_tree:
         if R >= mid +1:
             self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
-    
 
-print("\nRange Sum:")
-# Range Sum
-st = segment_tree([1,2,3,4,5,6,7,8])
-print(st)
-print(st.query(2,4))
-st.updateTo(3,5)
-print(st.query(2,4))
+class Solution:
+    def sumCounts(self, nums: List[int]) -> int:
+        mod = 10**9+7
+        dic ={}# defaultdict(lambda:-1)
+        n = len(nums)
+        sm =0
+        sg = segment_tree([0]*n)
+        acc = 0
+        for i,a in enumerate(nums):
+            k= dic.get(a,-1)
+            c = sg.query(k+1,i)
+            sg.updateRange(k+1,i,1)
+            b = sg.query(k+1,i)
+            acc +=c+b 
+            sm +=acc
+            
+            sm%=mod
+            dic[a] =i
+            print(dic[a],b,c,sm,dic,a,k+1,i,"AA",sg)
+            
+        
+        return (sm+mod)%mod
 
-print("\nRange Max:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-print(st)
-print(st.query(2,4))
-st.updateTo(3,6)
-print(st.query(2,4))
+#2,2,1,1
+#16 + 9+ 4+1 =30
 
-print("\nRange Min:")
-# Range Max
-st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
-print(st)
-print(st.query(2,4))
-st.updateTo(3,1)
-print(st.query(2,4))
+
+
+re =Solution().sumCounts( [1,2,1])
+# result should be 15
+print(re)

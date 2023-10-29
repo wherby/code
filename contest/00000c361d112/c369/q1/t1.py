@@ -8,12 +8,20 @@ from sortedcontainers import SortedDict,SortedList
 
 from bisect import bisect_right,insort_left,bisect_left
 from queue import Queue,LifoQueue,PriorityQueue
-import math
-INF  = math.inf
 
 
 class Solution:
-    pass
+    def findKOr(self, nums: List[int], k: int) -> int:
+        ls= [0]*33
+        for i in range(32):
+            for a in nums:
+                if a&(1<<i):
+                    ls[i]+=1
+        acc =0
+        for i in range(32):
+            if ls[i] >=k:
+                acc +=1<<i
+        return acc
 
 
 

@@ -46,17 +46,18 @@ class segment_tree:
                 self.tracted[2*i+1] += self.tracted[i]
                 self.tracted[2*i+2] += self.tracted[i]
             ## need to be changed
+            #self.tree[i*2+1] += self.tracted[i]
+            #self.tree[i*2+2] += self.tracted[i]
             self.lazy[i] = False
-            self.tree[i] +=self.tracted[i]*(r-l+1)
+            self.tree[i] +=self.tracted[i]
             self.tracted[i]  =0
 
     def _query_util(self,  L, R, l, r,i):
-        self.__pushDown(i,l,r) ## this code fixed
         if L <=l <=r<=R:
             return self.tree[i]
         if L>r or R<l:
             return self.basev
-        
+        self.__pushDown(i,l,r) ## this code need to be fix for wrong
         mid = (l+r)>>1
         return self.merge(self._query_util(L,R,l, mid ,2*i+1),
                           self._query_util( L,R,mid+1, r,2*i+2))
@@ -159,21 +160,21 @@ class segment_tree:
         return r-l +1 -self.querySetValue(l,r)
         
         
-# class Solution:
-#     def findMinimumTime(self, tasks: List[List[int]]) -> int:
-#         ls=[0]*2002
-#         sg =segment_tree(ls)
-#         tasks.sort(key=lambda x: x[1])
-#         for s,e,c in tasks:
-#             val = sg.querySetValue(s,e)
-#             #print(val,s,e)
-#             if val >=c:continue
-#             id = sg.bound(c-val,s,e)
-#             sg.updateRangeSetValue(id,e,1)
-#             #print(s,e,c,id,sg.querySetValue(0,2000),sg.querySetValue(9,15))
-#             #print(s,e,c,id)
-#             #print(sg.tree[0])
-#         return sg.query(0,2000)
+class Solution:
+    def findMinimumTime(self, tasks: List[List[int]]) -> int:
+        ls=[0]*2002
+        sg =segment_tree(ls)
+        tasks.sort(key=lambda x: x[1])
+        for s,e,c in tasks:
+            val = sg.querySetValue(s,e)
+            #print(val,s,e)
+            if val >=c:continue
+            id = sg.bound(c-val,s,e)
+            sg.updateRangeSetValue(id,e,1)
+            #print(s,e,c,id,sg.querySetValue(0,2000),sg.querySetValue(9,15))
+            #print(s,e,c,id)
+            #print(sg.tree[0])
+        return sg.query(0,2000)
         
         
         
@@ -186,9 +187,9 @@ class segment_tree:
 
 
 
-# #re =Solution().findMinimumTime(tasks = [[1,10,7],[4,11,1],[3,19,7],[10,15,2]])
-# re =Solution().findMinimumTime([[14,17,2],[2,15,11],[5,18,2]])
-# print(re)
+#re =Solution().findMinimumTime(tasks = [[1,10,7],[4,11,1],[3,19,7],[10,15,2]])
+re =Solution().findMinimumTime([[14,17,2],[2,15,11],[5,18,2]])
+print(re)
 
 
 class Solution:
@@ -209,7 +210,7 @@ class Solution:
             
             sm%=mod
             dic[a] =i
-            #print(dic[a],b,c,sm,dic,a,k+1,i,"AA",sg)
+            print(dic[a],b,c,sm,dic,a,k+1,i,"AA",sg)
             
         
         return (sm+mod)%mod

@@ -5,12 +5,14 @@ from functools import cache
 import heapq
 from heapq import heappop,heappush 
 from sortedcontainers import SortedDict,SortedList
-
-import math
-INF  = math.inf
-
 class Solution:
-    pass
+    def minChanges(self, s: str) -> int:
+        n = len(s)
+        acc =0
+        for i in range(0,n,2):
+            if s[i] != s[i+1]:
+                acc +=1
+        return acc
 
 
 

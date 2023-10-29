@@ -1,5 +1,4 @@
-## https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
-## will timeout in https://leetcode.cn/contest/biweekly-contest-116/problems/subarrays-distinct-element-sum-of-squares-ii/
+# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
 
 
 class segment_tree:
@@ -34,12 +33,11 @@ class segment_tree:
         self._build_util(0, len(a)-1, 0, a)
 
     def _query_util(self,  L, R, l, r,i):
-        self.__pushDown(i,l,r) ## this code fixed
         if L <=l <=r<=R:
             return self.tree[i]
         if L>r or R<l:
             return self.basev
-        
+        self.__pushDown(i,l,r) ## this code need to be fix for wrong
         mid = (l+r)>>1
         return self.merge(self._query_util(L,R,l, mid ,2*i+1),
                           self._query_util( L,R,mid+1, r,2*i+2))
@@ -51,7 +49,9 @@ class segment_tree:
                 self.lazy[2*i+1]= self.lazy[2*i+2] =True
                 self.tracted[2*i+1] += self.tracted[i]
                 self.tracted[2*i+2] += self.tracted[i]
-            ## need to be changed]
+            ## need to be changed
+            #self.tree[i*2+1] += self.tracted[i]
+            #self.tree[i*2+2] += self.tracted[i]
             self.lazy[i] = False
             self.tree[i] +=self.tracted[i]
             self.tracted[i]  =0
