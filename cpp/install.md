@@ -138,3 +138,8 @@ ctrl+shift+B : Build
 
 https://stackoverflow.com/questions/56344186/unable-to-start-debugging-the-value-of-midebuggerpath-is-invalid
 sudo apt-get install gdb
+
+
+## code runner settigs
+
+https://stackoverflow.com/questions/51046803/visual-studio-code-c11-extension-warning
