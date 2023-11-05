@@ -91,7 +91,7 @@ class segment_tree:
         self.tree[root] = self.merge(self.tree[2*root+1],self.tree[2*root+2])        
 
     def __update(self,L,R,l,r,root,delta):
-        self.__pushDown(root,l,r)
+        
         if r < L or R <l:
             return
         if L <=l <=r<=R:
@@ -101,6 +101,7 @@ class segment_tree:
             self.tree[root] += delta*(self.right[root] - self.left[root] +1)
             #self.__pushDown(root,l,r)
             return 
+        self.__pushDown(root,l,r)
         mid = (l+r) >>1
         if L <= mid:
             self.__update(L,R,l,mid,2*root+1,delta)
