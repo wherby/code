@@ -56,10 +56,9 @@ class SegmentTree:
         self._pushUp(root)
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) -> bool:
+        self._pushDown(root)
         if L <= l <= r <= R:
             return root.value
-
-        self._pushDown(root)
         mid = (l + r) >> 1
         res = self.ret
         if L <= mid:
