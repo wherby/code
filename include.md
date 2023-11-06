@@ -91,3 +91,14 @@ stack = deque()
 
 # format 
 return [f"{j}/{i}" for i in range(2, n + 1) for j in range(1, i) if gcd(i, j) == 1]
+
+
+# time function 
+
+import time
+
+start = time.time()
+re =Solution().sumCounts( test)
+print(re)
+end = time.time()
+print(end - start)

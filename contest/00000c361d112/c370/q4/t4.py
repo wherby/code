@@ -1,8 +1,13 @@
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
-# will timeout for https://leetcode.cn/contest/weekly-contest-370/problems/maximum-balanced-subsequence-sum/
 from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+import math
+INF  = math.inf
 
 
 class Node:
@@ -31,7 +36,7 @@ class SegmentTree:
         self.basef = basef
         self.basev = basev
         self.MINV = 0
-        self.MAXV = int(1e9 + 10) ## node's max value
+        self.MAXV = int(2e9 + 10) ## node's max value
         self.ret = ret
 
     def update(self, left: int, right: int, delta: bool) -> None:
@@ -63,6 +68,8 @@ class SegmentTree:
         self._pushDown(root,l,r)
         if L <= l <= r <= R:
             return root.value
+
+        
         mid = (l + r) >> 1
         res = self.ret
         if L <= mid:
@@ -89,27 +96,27 @@ class SegmentTree:
             root.lazy = False
             root.value += root.isTracked
             root.isTracked =0
-            
 
-from collections import defaultdict,deque
 class Solution:
-    def minCost(self, nums: List[int], k: int) -> int:
-        ans = 0 
-        last = defaultdict(int)
-        last2 = defaultdict(int)
-        st = SegmentTree(merge=min)
-        for i,x in enumerate(nums,1):
-            st.update(i,i,ans)
-            st.update(last[x]+1,i,-1)
-            if last[x]:
-                st.update(last2[x]+1,last[x],1)
-            ans = k + st.query(1,i)
-            last2[x] = last[x]
-            last[x] = i 
-        #print(ans)
-        return ans +len(nums)
+    def maxBalancedSubsequenceSum(self, nums: List[int]) -> int:
+        mx = 0
+        sg = SegmentTree(merge=max,ret=0)
+        start = 10**9+2
+        mmx = max(nums)
+        if mmx<=0:
+            return mmx
+        for i,a in enumerate(nums):
+            if a <=0:continue
+            tm = sg.query(0,start+a-i)
+            mx =max(mx,tm + a )
+            tp = sg.query(start+a-i,start+a-i)
+            if tp < tm+a:
+                sg.update(start+a-i,start+a-i,tm+a-tp)
+        return mx
+        
 
 
-#re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
-re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
+
+
+re =Solution().maxBalancedSubsequenceSum([3,3,5,6])
 print(re)
