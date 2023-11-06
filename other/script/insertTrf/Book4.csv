@@ -1,0 +1,31 @@
+﻿axios,1.2.1,https://www.npmjs.com/package/axios,MIT
+BSON parser,4.6.5,https://www.npmjs.com/package/bson,Apache-2.0
+cheerio,1.0.0-rc.12,https://www.npmjs.com/package/cheerio,MIT
+compressing,1.8.0,https://www.npmjs.com/package/compressing,MIT
+crypto-js,4.1.1,https://www.npmjs.com/package/crypto-js,MIT
+dayjs,1.11.3,https://www.npmjs.com/package/dayjs,MIT
+Handlebars.js,4.7.7,https://www.npmjs.com/package/handlebars,MIT
+handlebars-helpers ,0.10.0,https://www.npmjs.com/package/handlebars-helpers,MIT
+JSZip,3.10.1,https://www.npmjs.com/package/jszip,MIT
+knex.js,2.4.2,https://www.npmjs.com/package/knex,MIT
+knex-schema-inspector,3.0.1,https://www.npmjs.com/package/knex-schema-inspector,MIT
+Koa middleware framework for nodejs,2.13.4,https://www.npmjs.com/package/koa,MIT
+koa-body,5.0.0,https://www.npmjs.com/package/koa-body,MIT
+koa-mount,4.0.0,https://www.npmjs.com/package/koa-mount,MIT
+koa-pino-logger,4.0.0,https://www.npmjs.com/package/koa-pino-logger,MIT
+koa-static,5.0.0,https://www.npmjs.com/package/koa-static,MIT
+lodash v4.17.21,4.17.21,https://www.npmjs.com/package/lodash,MIT
+Mime,3.0.0,https://www.npmjs.com/package/mime,MIT
+Moment.js,2.29.3,https://www.npmjs.com/package/moment,MIT
+MongoDB Node.js Driver,4.7.0,https://www.npmjs.com/package/mongodb,Apache-2.0
+Mongoose,6.3.8,https://www.npmjs.com/package/mongoose,MIT
+mongoose-autopopulate,1.0.0,https://www.npmjs.com/package/mongoose-autopopulate,Apache 2.0
+MySQL 2,3.2.4,https://www.npmjs.com/package/mysql2,MIT
+Nano ID,4.0.0,https://www.npmjs.com/package/nanoid,MIT
+Nodemailer,6.8.0,https://www.npmjs.com/package/nodemailer,MIT-0
+openid-client,5.4.0,https://www.npmjs.com/package/openid-client,MIT
+Passport,0.6.0,https://www.npmjs.com/package/passport,MIT
+node-postgres,8.10.0,https://www.npmjs.com/package/pg,MIT
+node-sqlite3,5.1.6,https://www.npmjs.com/package/sqlite3,BSD-3-Clause
+Tedious (node implementation of TDS),16.0.0,https://www.npmjs.com/package/tedious,MIT
+SheetJS,0.18.5,https://www.npmjs.com/package/xlsx,Apache-2.0

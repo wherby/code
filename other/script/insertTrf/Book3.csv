@@ -1,0 +1,7 @@
+﻿.NET Core,6,https://dotnet.microsoft.com/en-us/download,MIT
+GemBox.Document,35.0.1538,https://www.nuget.org/packages/GemBox.Document,Commercial
+GemBox.Email,17.0.1163,https://www.nuget.org/packages/GemBox.Email,Commercial
+GemBox.Pdf,17.0.1438,https://www.nuget.org/packages/GemBox.Pdf,Commercial
+GemBox.Spreadsheet,49.0.1509,https://www.nuget.org/packages/GemBox.Spreadsheet,Commercial
+HarfBuzzSharp,7.3.0,https://www.nuget.org/packages/HarfBuzzSharp,MIT
+HarfBuzzSharp.NativeAssets.Linux,7.3.0,https://www.nuget.org/packages/HarfBuzzSharp.NativeAssets.Linux,MIT

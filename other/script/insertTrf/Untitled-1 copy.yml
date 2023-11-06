@@ -1,0 +1,21 @@
+curl 'https://cnshaapppwv314.asia.pwcinternal.com/trf/api/oss/Insert' \
+  -H 'authority: cnshaapppwv314.asia.pwcinternal.com' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'authorization: Bearer 4,,,U' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json;charset=UTF-8' \
+  -H 'dnt: 1' \
+  -H 'origin: https://apphkdm470.digitalmaker.asia.pwcinternal.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://apphkdm470.digitalmaker.asia.pwcinternal.com/' \
+  -H 'sec-ch-ua: "Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36' \
+  -H 'x-request-with: axios' \
+  --data-raw '{"docID":"3224,,,819be96dc","name":"zustand","version":"4.4.1","license":[],"linkTo":"https://www.npmjs.com/package/zustand","itemID":"","isModified":0,"isDiff":0}' \
+  --compressed
