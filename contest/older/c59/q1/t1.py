@@ -13,7 +13,12 @@ class Solution:
                 cnt = cnt +26 -t +1
         return cnt
 
-
+record=[{"a1":1},{"a1":2,"b":3},{"d":2},{"e":3},{"a2":3}]
+dic ={}
+for a in record:
+    for k,v in a.items():
+        dic[k]= dic.get(k,0) +v
+print(dic)
 
 a= Solution().minTimeToType("bza")
 print(a)
