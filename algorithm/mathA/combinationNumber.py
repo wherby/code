@@ -46,6 +46,6 @@ def comb2(n,m, mod= 10**9+7):
     cnt = cnt* inv(acc)%mod
     return cnt
 
-print(comb2(10000,200))
+print(comb2(100000,20000))
 import math # use default lib
 print(math.comb(10000,200)%mod)
