@@ -1,3 +1,5 @@
+#   https://leetcode.cn/contest/biweekly-contest-119/problems/number-of-possible-sets-of-closing-branches/submissions/
+# 错误提交，floyd 中k 没有放最外层
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
