@@ -1,4 +1,5 @@
 #https://leetcode.cn/problems/count-integers-in-intervals/solution/chun-er-fen-by-migeater-t5kh/
+# https://leetcode.cn/contest/weekly-contest-375/problems/count-the-number-of-good-partitions/
 from bisect import bisect_right,bisect_left
 class Span:
     def __init__(self):
@@ -19,6 +20,8 @@ class Span:
 spn = Span()
 print(spn.span)
 spn.add(2,3)
+spn.add(4,4)
+spn.add(5,5)
 print(spn.span)
 spn.add(7,10)
 spn.add(5,8)
