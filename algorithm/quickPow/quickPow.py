@@ -10,3 +10,6 @@ def quickPow(x,y):
     return ret
 
 print(quickPow(2, 100000002))
+
+# Using pow lib
+print(pow(2,100000002,mod))
