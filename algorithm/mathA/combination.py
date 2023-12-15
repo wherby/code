@@ -22,7 +22,7 @@ class Comb():
         return self.comb[m][n]
 
 
-comb = Comb(1000,1000)
+comb = Comb(10000,1000)
 re = comb.getComb(100,400)
 print(re)
 #print(comb) 
