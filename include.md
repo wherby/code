@@ -27,7 +27,7 @@ self.ls =SortedList()
 from itertools import pairwise
 
 
-## 
+## #BS
 #TDK binary search 二分 格式
 r = mid,l =mid +1 , mid =(l+r)>>1
 r = mid,l =mid -1 , mid=(l +r +1)>>1
