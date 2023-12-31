@@ -16,6 +16,10 @@ from math import gcd
 
 from heapq import heapify,heappop,heappush 
 
+## accumulation
+from itertools import accumulate
+list(accumulate((x!=y for x,y in zip(s,t)),initial =0))
+
 ##  @functools.lru_cache(None) 
 
 from math import comb // use to combination
