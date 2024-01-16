@@ -16,3 +16,4 @@ class StringHash:
 sh = StringHash("abcdefg")
 print(sh.query(0,7))
 print(sh.hls,sh.pls)
+print(sh.query(0,1))
