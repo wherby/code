@@ -13,3 +13,19 @@ def getNumber(x):
 getNumber(2023)
 #print(res)    
 print(res.count(3),res.count(2))    
+
+
+
+
+
+ls = [[1],[2],[3],[4],[5],[6]]
+def getSnap(idx):
+    mx = max(ls[:idx])
+    return mx 
+
+
+
+print(getSnap(3))
+print(getSnap(-1))
+print(getSnap(-4))
+print()
