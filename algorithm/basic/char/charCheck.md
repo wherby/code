@@ -32,3 +32,10 @@ ABC = ['abcdefghijklmnopqrstuvwxyz']
 
 from string import ascii_lowercase
 
+## idxAtoZ
+dc ={}
+rdc={}
+for i,a in enumerate('abcdefghijklmnopqrstuvwxyz'):
+    dc[a] = i
+    rdc[i] =a
+
