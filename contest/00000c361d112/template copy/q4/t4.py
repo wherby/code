@@ -1,0 +1,54 @@
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+#from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+import math
+INF  = math.inf
+
+
+def calculate_z_array(s):
+    N = len(s)
+    Z = [0] * N
+    L, R = 0, 0
+    for i in range(1, N):
+        if i > R:
+            L = R = i
+            while R < N and s[R - L] == s[R]:
+                R += 1
+            R -= 1
+            Z[i] = R - L + 1
+        else:
+            k = i - L
+            if Z[k] + i <= R:
+                Z[i] = Z[k]
+            else:
+                L = i
+                while R < N and s[R - L] == s[R]:
+                    R += 1
+                R -= 1
+                Z[i] = R - L + 1
+        #print(i,L,R,Z)
+    return Z
+class Solution:
+    def countPrefixSuffixPairs(self, words: List[str]) -> int:
+        dic = defaultdict(int)
+        cnt = 0 
+        for word in words:
+            m = len(word)
+            zls = calculate_z_array(word)
+            for i in range(m):
+                if zls[i]+ i == m:
+                    cnt += dic[word[:zls[i]]]
+            cnt += dic[word]
+            dic[word] +=1 
+        return cnt
+
+
+
+
+re =Solution().countPrefixSuffixPairs(["a","aba","ababa","aa"])
+print(re)

@@ -24,6 +24,8 @@ class StringHash:
                 ret.append(i)
         return ret
 
+sh = StringHash("a")
+print(sh.query(0,1))
 
 class Solution:
     def beautifulIndices(self, s: str, a: str, b: str, k: int) -> List[int]:
@@ -41,3 +43,4 @@ class Solution:
             if abs(ai - bidx[l]) <= k or abs(bidx[l+1] -ai) <=k:
                 ret.append(ai)
         return ret
+    
