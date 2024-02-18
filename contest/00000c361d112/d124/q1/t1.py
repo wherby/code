@@ -13,7 +13,15 @@ INF  = math.inf
 
 
 class Solution:
-    pass
+    def maxOperations(self, nums: List[int]) -> int:
+        n =len(nums)
+        cnt = 1
+        sm = nums[0]+nums[1]
+        for i in range(3,n,2):
+            if nums[i] + nums[i-1] == sm:
+                cnt +=1
+            else:
+                return cnt
 
 
 
