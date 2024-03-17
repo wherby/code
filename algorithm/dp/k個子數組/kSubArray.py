@@ -13,8 +13,8 @@ class Solution:
             # dp1 表示该位置第 i 个数组已经截断的情况下的最大价值
             for i in range(k, 0, -1):
                 dp0[i] = max(dp0[i], dp1[i-1]) # 因爲 dp1，dp0 初始狀態是 -inf 所以可以直接選擇最大值
-                dp0[i] += (1 if i % 2 else -1) * num * (k - i + 1)
-                dp1[i] = max(dp1[i], dp0[i])
+                dp0[i] += (1 if i % 2 else -1) * num * (k - i + 1)  ##對與連續的狀態轉移一定是直接加
+                dp1[i] = max(dp1[i], dp0[i])  ##對與非連續的狀態轉移
         return dp1[-1]
 
 
