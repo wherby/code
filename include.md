@@ -16,6 +16,8 @@ from math import gcd
 
 from heapq import heapify,heappop,heappush 
 
+from math import inf
+
 ## accumulation
 from itertools import accumulate
 list(accumulate((x!=y for x,y in zip(s,t)),initial =0))
