@@ -1,0 +1,24 @@
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+from bisect import bisect_right,insort_left,bisect_left
+from queue import Queue,LifoQueue,PriorityQueue
+import math
+INF  = math.inf
+
+class Solution:
+    def sumOfTheDigitsOfHarshadNumber(self, x: int) -> int:
+        t = sum([int(a) for a in str(x)])
+        return t if x%t==0 else  -1
+
+
+
+
+
+re =Solution()
+print(re)
