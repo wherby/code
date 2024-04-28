@@ -260,5 +260,10 @@ contest\00000c361d112\d119\q4\t4.py
 https://leetcode.cn/contest/biweekly-contest-119/problems/number-of-possible-sets-of-closing-branches/submissions/
 algorithm\graph\floyd\floyd.md
 
+## DFS (i,j) 不能在循環裏再循環k
+https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/
+contest\00000c361d112\c393\q4\t4.py  裏面有k 會timeout
+contest\00000c361d112\c393\q4\t4 copy.py
+
 
 
