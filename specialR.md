@@ -266,4 +266,7 @@ contest\00000c361d112\c393\q4\t4.py  裏面有k 會timeout
 contest\00000c361d112\c393\q4\t4 copy.py
 
 
+## 连续限制dp
 
+https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-i/description/
+https://leetcode.cn/circle/discuss/SZyTo4/

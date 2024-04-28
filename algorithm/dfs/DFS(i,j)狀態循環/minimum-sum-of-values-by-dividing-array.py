@@ -17,6 +17,8 @@ class Solution:
     def minimumValueSum(self, nums: List[int], andValues: List[int]) -> int:
         n = len(nums)
         m = len(andValues)
+        # return value 才是對（i =》n） 尾序列的狀態壓縮，
+        #
         @cache
         def dfs(i,j,acc):
             ret = 10**10
