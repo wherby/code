@@ -9,6 +9,7 @@ from sortedcontainers import SortedDict,SortedList
 
 import math
 INF  = math.inf
+# Cache clear 
 
 class Solution:
     def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
@@ -33,9 +34,10 @@ class Solution:
                 #ls.append(1)
                 res += dfs(zeroleft,oneleft -1,min(-1,state-1))
                 #ls.pop()
-            return res
-                    
-        return dfs(zero,one,0)%mod
+            return res%mod
+        ans =  dfs(zero,one,0)%mod
+        dfs.cache_clear()
+        return ans
 
 
 

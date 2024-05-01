@@ -108,3 +108,13 @@ re =Solution().sumCounts( test)
 print(re)
 end = time.time()
 print(end - start)
+
+
+## Cache clear
+
+@cache
+def dfs(zeroleft,oneleft,state):
+    ...
+    return res%mod
+ans =  dfs(zero,one,0)%mod
+dfs.cache_clear()
