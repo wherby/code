@@ -17,7 +17,7 @@ class Solution:
         suf = costs[-candidates:]
         heapify(pre)
         heapify(suf)
-        print(pre,costs)
+        #print(pre,costs)
 
         ans = 0
         i = candidates
