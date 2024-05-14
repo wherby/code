@@ -12,11 +12,12 @@ import math
 INF  = math.inf
 
 class Solution:
-    pass
+    def findPermutationDifference(self, s: str, t: str) -> int:
+        return sum([abs(s.find(a) -t.find(a)) for a in s])
 
 
 
 
 
-re =Solution()
+re =Solution().findPermutationDifference("rwohu","rwuoh")
 print(re)

@@ -12,11 +12,15 @@ import math
 INF  = math.inf
 
 class Solution:
-    pass
+    def findPermutation(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ret = [-1]*n
+        for i in range(n):
+            ret[nums[(i+1+n)%n]] = nums[i]
+             
+        print(ret)
 
+# nums[0] = perm[nums[-1]]
 
-
-
-
-re =Solution()
+re =Solution().findPermutation(  [0,2,1])
 print(re)

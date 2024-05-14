@@ -11,8 +11,18 @@ from queue import Queue,LifoQueue,PriorityQueue
 import math
 INF  = math.inf
 
+import string
+from collections import Counter
 class Solution:
-    pass
+    def numberOfSpecialChars(self, word: str) -> int:
+        c = Counter(word)
+        cnt = 0
+        atoz = list(string.ascii_lowercase)
+        atoz2 = list(string.ascii_uppercase)
+        for i,a in enumerate(atoz):
+            if a in c and atoz2[i] in c:
+                cnt +=1
+        return cnt
 
 
 
