@@ -277,3 +277,38 @@ https://leetcode.cn/circle/discuss/SZyTo4/
 
 https://leetcode.cn/problems/find-the-minimum-cost-array-permutation/description/
 
+为什么用状态压缩？
+原始状态是 14！=87178291200 个可能状态
+
+但是估值函数是仅仅与前一个值有关的，虽然是循环相关，但是可以使用一个值固定的方式获取仅与前值相关的估值函数，而且第一个值一定为0，所以复杂度变为 2^13 * 14的复杂度
+
+## 获取最佳路径
+
+class Solution:
+    def findPermutation(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        @cache
+        def calc(state,pre):
+            if state== (1<<n) -1:
+                return abs(pre-nums[0])
+            res = 10**10
+            for i in range(n):
+                if (1<<i)&state == 0:
+                    res = min(res,calc(state| 1<<i,i) + abs(pre-nums[i]))
+            return res
+        calc(1,0)
+        ## 获取最佳路径
+        ret = []
+        def getPath(state,pre):
+            ret.append(pre)
+            if state== (1<<n) -1:
+                return 
+            finalAns = calc(state,pre)  ##获取最佳答案
+            for i in range(n):
+                if (1<<i)&state == 0:
+                    if calc(state| 1<<i,i) + abs(pre-nums[i]) == finalAns:   ## 比较选择路径是否最佳答案
+                        getPath(state | 1<<i,i) 
+                        break
+        getPath(1,0)
+        return ret
