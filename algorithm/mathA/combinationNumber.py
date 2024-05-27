@@ -17,8 +17,11 @@ def comb2(n,m):
     return cnt
 
 print(comb2(100,2))
+
+## Using Lib
 import math
 print(math.comb(100,2))
+print(comb2(1234,23) == math.comb(1234,23))
 
 # combination number
 #>>> from math import comb

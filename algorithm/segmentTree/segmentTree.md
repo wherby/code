@@ -27,3 +27,12 @@ algorithm\segmentTree\segTreeWithNode\segTreeWithNodeMerge.py https://leetcode-c
 https://leetcode.cn/contest/biweekly-contest-98/problems/handling-sum-queries-after-update/
 https://leetcode.cn/contest/biweekly-contest-98/ranking/1/
 
+
+## Different state of Node merge
+
+https://leetcode.cn/contest/weekly-contest-399/problems/maximum-sum-of-subsequence-with-non-adjacent-elements/
+
+algorithm\segmentTree\segmentTreeNodeWithMerge.py
+algorithm\segmentTree\SegmentTreeMultiState\NodeHoldState.py
+
+
