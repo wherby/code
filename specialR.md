@@ -260,5 +260,55 @@ contest\00000c361d112\d119\q4\t4.py
 https://leetcode.cn/contest/biweekly-contest-119/problems/number-of-possible-sets-of-closing-branches/submissions/
 algorithm\graph\floyd\floyd.md
 
+## DFS (i,j) 不能在循環裏再循環k
+https://leetcode.cn/problems/minimum-sum-of-values-by-dividing-array/
+contest\00000c361d112\c393\q4\t4.py  裏面有k 會timeout
+contest\00000c361d112\c393\q4\t4 copy.py
 
 
+## 连续限制dp
+
+https://leetcode.cn/problems/find-all-possible-stable-binary-arrays-i/description/
+https://leetcode.cn/circle/discuss/SZyTo4/
+
+## N<15 状压DP
+
+复杂度 O(2^N * N * N)
+
+https://leetcode.cn/problems/find-the-minimum-cost-array-permutation/description/
+
+为什么用状态压缩？
+原始状态是 14！=87178291200 个可能状态
+
+但是估值函数是仅仅与前一个值有关的，虽然是循环相关，但是可以使用一个值固定的方式获取仅与前值相关的估值函数，而且第一个值一定为0，所以复杂度变为 2^13 * 14的复杂度
+
+## 获取最佳路径
+
+class Solution:
+    def findPermutation(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        @cache
+        def calc(state,pre):
+            if state== (1<<n) -1:
+                return abs(pre-nums[0])
+            res = 10**10
+            for i in range(n):
+                if (1<<i)&state == 0:
+                    res = min(res,calc(state| 1<<i,i) + abs(pre-nums[i]))
+            return res
+        calc(1,0)
+        ## 获取最佳路径
+        ret = []
+        def getPath(state,pre):
+            ret.append(pre)
+            if state== (1<<n) -1:
+                return 
+            finalAns = calc(state,pre)  ##获取最佳答案
+            for i in range(n):
+                if (1<<i)&state == 0:
+                    if calc(state| 1<<i,i) + abs(pre-nums[i]) == finalAns:   ## 比较选择路径是否最佳答案
+                        getPath(state | 1<<i,i) 
+                        break
+        getPath(1,0)
+        return ret

@@ -4,6 +4,7 @@ from typing import List, Tuple, Optional
 from collections import defaultdict,deque
 import functools
 import heapq
+from sortedcontainers import SortedDict,SortedList
 from queue import Queue,LifoQueue,PriorityQueue
 from bisect import bisect_right,insort_left,bisect_left
 
@@ -15,6 +16,8 @@ from functools import cache
 from math import gcd
 
 from heapq import heapify,heappop,heappush 
+
+from math import inf
 
 ## accumulation
 from itertools import accumulate
@@ -106,3 +109,13 @@ re =Solution().sumCounts( test)
 print(re)
 end = time.time()
 print(end - start)
+
+
+## Cache clear
+
+@cache
+def dfs(zeroleft,oneleft,state):
+    ...
+    return res%mod
+ans =  dfs(zero,one,0)%mod
+dfs.cache_clear()
