@@ -24,6 +24,6 @@ def calculate_z_array(s):
         #print(i,L,R,Z)
     return Z
 
-a = "aabxaabx"
+a = "aabxaabxaabx"
 za =calculate_z_array(a)
 print(za)

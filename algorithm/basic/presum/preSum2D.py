@@ -22,3 +22,6 @@ print(arr)
 pre= Presum2d(arr)
 print(pre.pre)
 print(pre.query(0,0,9,9))
+arr =[[1,0],[0,1]]
+pre = Presum2d(arr)
+print(pre.query(0,0,0,1))
