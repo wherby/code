@@ -13,3 +13,19 @@ ny9.mscchat.com
 
 /root/.acme.sh/ny9.mscchat.com_ecc/ny9.mscchat.com.cer
 /root/.acme.sh/ny9.mscchat.com_ecc/ny9.mscchat.com.key
+
+
+tracert 45.77.220.113
+
+
+
+
+## dos.mscchat.com
+syd.mscchat.com
+/root/.acme.sh/syd.mscchat.com_ecc/syd.mscchat.com.cer
+/root/.acme.sh/syd.mscchat.com_ecc/syd.mscchat.com.key
+
+
+
+
+
