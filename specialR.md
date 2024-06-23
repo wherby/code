@@ -312,3 +312,7 @@ class Solution:
                         break
         getPath(1,0)
         return ret
+
+## 贪心反悔
+
+algorithm\greedy\贪心反悔法
