@@ -34,3 +34,4 @@ class PrimeOfNumber:
 pls = PrimeOfNumber(10**6)
 #print(pls.primes)
 print(pls.getPrimeFactors(16000))
+print(pls.getPrimeFactors(187225577))

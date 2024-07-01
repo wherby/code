@@ -17,3 +17,5 @@ def get_prime_factor(num):
     return res
 
 print(get_prime_factor(124888000))
+
+print(get_prime_factor(13917501265))
