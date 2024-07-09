@@ -13,8 +13,8 @@ import math
 INF  = math.inf
 
 
-
-
+# 绝对值记号计算
+# 最大曼哈顿距离一定是在测量度(x+y,x-y)的两个维度的端点
 def maxManhattan(ps):
     ls = []
     for i,(x,y) in enumerate(ps):

@@ -316,3 +316,8 @@ class Solution:
 ## 贪心反悔
 
 algorithm\greedy\贪心反悔法
+
+
+## 绝对值计算
+
+algorithm/mathA/最大曼哈顿距离/manhatton-Chebyshev.py
