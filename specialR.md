@@ -316,3 +316,7 @@ class Solution:
 ## 贪心反悔
 
 algorithm\greedy\贪心反悔法
+
+## 2维 10**5 贪心
+
+https://leetcode.cn/contest/weekly-contest-406/problems/minimum-cost-for-cutting-cake-ii/description/
