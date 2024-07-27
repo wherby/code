@@ -317,13 +317,10 @@ class Solution:
 
 algorithm\greedy\贪心反悔法
 
-<<<<<<< HEAD
 ## 2维 10**5 贪心
 
 https://leetcode.cn/contest/weekly-contest-406/problems/minimum-cost-for-cutting-cake-ii/description/
-=======
 
 ## 绝对值计算
 
 algorithm/mathA/最大曼哈顿距离/manhatton-Chebyshev.py
->>>>>>> df6ef5c1f813cd14d94e827b884530a22a3bff23
