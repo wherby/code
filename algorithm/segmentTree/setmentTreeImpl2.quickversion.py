@@ -1,5 +1,8 @@
 #https://usaco.guide/CPH.pdf#page=101
 # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/
+# This version will pass other may OT  https://leetcode.cn/contest/weekly-contest-411/problems/count-substrings-that-satisfy-k-constraint-ii/submissions/556410951/
+# algorithm/segmentTree/quickVersion
+#https://leetcode.cn/contest/weekly-contest-411/problems/count-substrings-that-satisfy-k-constraint-ii/submissions/556410951/
 
 
 class SegTree:
