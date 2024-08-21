@@ -119,3 +119,5 @@ def dfs(zeroleft,oneleft,state):
     return res%mod
 ans =  dfs(zero,one,0)%mod
 dfs.cache_clear()
+
+如果不清楚cache， 会超出内存错误 https://leetcode.cn/problems/student-attendance-record-ii/submissions/
