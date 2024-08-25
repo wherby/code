@@ -39,7 +39,7 @@ class Solution:
             n = num >> i
             while n:
                 res += (n // 2) << i  ##高位
-                if n % 2:
+                if n % 2:  ## 必须高一位的数字是1才开始计算  max(0, n %(1<<(i+1)) - (1<<i)+1)  algorithm/mathA/bit/countBitSumUnderN/find-products-of-elements-of-big-array.py 
                     mask = (1 << i) - 1
                     res += (num & mask) + 1 ## 低位累计
                 i += x
@@ -53,7 +53,7 @@ class Solution:
 #著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     
 
-#试填法
+#试填法 
 class Solution3:
     def findMaximumNumber(self, k: int, x: int) -> int:
         num = pre1 = 0

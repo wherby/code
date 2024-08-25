@@ -13,3 +13,12 @@ algorithm\array\subarray\AndOrToK\number-of-subarrays-with-and-value-of-k.py
 https://leetcode.cn/contest/biweekly-contest-134/problems/number-of-subarrays-with-and-value-of-k/submissions/
 contest\00000c397d130\d134\q4
 
+
+## And Or trick
+
+求子数组的时候，以当前元素为结尾元素，然后 algorithm/array/subarray/AndOrToK/number-of-subarrays-with-and-value-of-k.2.py 这样循环
+因为对前序序列和的改变只能有32次，所以看起来是N**2的复杂度，只有N*32 的复杂度
+
+https://leetcode.cn/problems/number-of-subarrays-with-and-value-of-k/solutions/2833497/jian-ji-xie-fa-o1-kong-jian-pythonjavacg-u7fv/
+
+
