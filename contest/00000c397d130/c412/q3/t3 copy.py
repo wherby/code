@@ -87,3 +87,4 @@ print(pow(3,18))
 print(math.log(387420489//3,3))
 print(math.log(387420489/3,3.0))
 print(math.log(pow(3,18),3.0)) # 18
+print(math.log(pow(3,18)//3,3)) # 18

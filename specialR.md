@@ -328,18 +328,20 @@ algorithm/mathA/最大曼哈顿距离/manhatton-Chebyshev.py
 
 ## 用math.log计算整数会出错
 contest/00000c397d130/c412/q3/t3.py
-https://leetcode.cn/problems/final-array-state-after-k-multiplication-operations-ii/description/
+https://leetcode.cn/contest/weekly-contest-412/problems/final-array-state-after-k-multiplication-operations-ii/submissions/
 
 print(pow(3,18))
 print(math.log(387420489//3,3))
 print(math.log(387420489/3,3.0))
-print(math.log(pow(3,18),3.0)) 
+print(math.log(pow(3,18),3.0)) # 18
+print(math.log(pow(3,18)//3,3)) # 16.999999999999996
 
 tao@MacBook-Pro code % /usr/local/bin/python3 "/Users/tao/software/code/contest/00000c397d130/c412/q3/t3 copy.py"
 387420489
 16.999999999999996
-16.999999999999996 
+16.999999999999996
 18.0
+16.999999999999996
 
 math.log 会出现精度问题，需要用算法实现log整数计算
 
