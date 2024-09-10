@@ -49,6 +49,19 @@ l = mid, r=mid -1  , mid = (l+r+1) >>1  while l <r
 mid = (l+r)>>1 不会取到r  
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
+### 二分开区间写法 https://live.bilibili.com/1315966?broadcast_type=0&is_room_feed=1&spm_id_from=333.999.live_users_card.0.click&live_from=86001
+https://leetcode.cn/problems/maximize-score-of-numbers-in-ranges/solutions/2908931/er-fen-da-an-zui-da-hua-zui-xiao-zhi-pyt-twe2/
+
+left = 0, right = max(value) +1 ; check(left) == True, check(right) == False
+while left +1 < right:
+    mid=(left +right) >>1
+    if check(mid):
+        left = mid
+    else:
+        right = mid 
+return left
+
+
 ### use lib
 ``` python
 # https://leetcode.cn/problems/maximum-number-of-alloys/submissions/
