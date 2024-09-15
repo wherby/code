@@ -61,6 +61,29 @@ while left +1 < right:
         right = mid 
 return left
 
+#### ！！！如果2分开区间，right的值是需要不能取的值
+https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/?envType=daily-question&envId=2024-09-12
+class Solution:
+    def maxNumOfMarkedIndices(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        l,r =0,n//2+1  ##开区间写法，r的值不能取
+        
+        def verify(mid):
+            for i in range(mid):
+                if nums[i]*2> nums[n-mid +i]:
+                    return False
+            return True
+ 
+        while l +1<r:
+            mid = (l+r)>>1
+            if verify(mid):
+                l = mid 
+            else:
+                r = mid
+            #print(mid,verify(mid),l,r,mid)
+        return l*2
+
 
 ### use lib
 ``` python

@@ -2,3 +2,10 @@
 https://www.youtube.com/watch?v=CpZh4eF8QBw&ab_channel=TusharRoy-CodingMadeSimple
 https://cp-algorithms.com/string/z-function.html
 
+
+
+## Z 函数
+
+求当前子串与prefix匹配的数量
+
+https://leetcode.cn/contest/weekly-contest-415/problems/minimum-number-of-valid-strings-to-form-target-ii/description/

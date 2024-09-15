@@ -12,3 +12,6 @@ https://leetcode-cn.com/problems/most-common-word/
 
 # aho-corosick
 https://wherby.github.io/code/string/aho_corasick.html
+
+
+# Zfunction 前缀字符串匹配
