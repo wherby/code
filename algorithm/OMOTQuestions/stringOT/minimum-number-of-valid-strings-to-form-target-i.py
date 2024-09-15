@@ -1,4 +1,5 @@
 # https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-i/submissions/564866595/
+# contest/00000c397d130/c415/q3
 
 from typing import List, Tuple, Optional
 

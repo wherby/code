@@ -9,3 +9,8 @@ https://cp-algorithms.com/string/z-function.html
 求当前子串与prefix匹配的数量
 
 https://leetcode.cn/contest/weekly-contest-415/problems/minimum-number-of-valid-strings-to-form-target-ii/description/
+
+
+## questions
+
+https://leetcode.cn/contest/weekly-contest-415/problems/minimum-number-of-valid-strings-to-form-target-ii/submissions/564938556/

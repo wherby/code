@@ -1,10 +1,11 @@
 # # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
+# reset basev when for merge =min
 from math import ceil, log2
 
 class segment_tree:
     # merge(left, right): function used to merge the two halves
     # basef(value): function applied on individual values
-    # basev: identity for merge function, merger(value, basev) = value
+    # basev: identity for merge function, merger(value, basev) = value 
     # update(node_value, old, new): function to update the nodes
     def __init__(self, array, merge=lambda x,y:x+y, basev = 0, basef=lambda x:x):
         self.merge = merge

@@ -11,8 +11,11 @@ from queue import Queue,LifoQueue,PriorityQueue
 import math
 INF  = math.inf
 
+from collections import Counter
 class Solution:
-    pass
+    def getSneakyNumbers(self, nums: List[int]) -> List[int]:
+        c = Counter(nums)
+        return [k for k,v in c.items() if v >1]
 
 
 

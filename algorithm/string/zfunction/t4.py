@@ -21,14 +21,14 @@ def calculate_z_array(s):
     Z = [0] * N
     L, R = 0, 0
     for i in range(1,N):
-        if i < R:
-            Z[i] = min(R-i,Z[i-L])
-
-        while i+ Z[i]< N and s[Z[i]]  == s[i+ Z[i]]:
-            Z[i] +=1
-        if i + Z[i]>R:
-            L = i 
-            R = i +Z[i] 
+        if i <= R:
+            Z[i] = min(R-i+1,Z[i-L])
+        else:
+            L = R = i
+            while R < N and s[R - L] == s[R]:
+                R += 1
+            R -= 1
+            Z[i] = R - L + 1
     return Z
 
 
@@ -110,21 +110,21 @@ class Solution:
         for word in words:
             m = len(word)
             zls = calculate_z_array(word +"#" +target)
-            #zls = z_algorithm(word +"#" +target)
+            zls2 = z_algorithm(word +"#" +target)
             for i in range(n):
                 ls[i+zls[m+1+i]] = max(ls[i+zls[m+1+i]],zls[m+1+i])
-            #print(zls,word,ls,zls2)
-        #print(ls,"a")
+            print(zls,word,ls,zls2)
+        print(ls,"a")
         for i in range(n,1,-1):
             ls[i-1] = max(ls[i-1],ls[i]-1)
-        #print(ls)
+        print(ls)
         seg = segment_tree(dp,merge=min,basev=10**10)
         for i in range(1,n+1):
             #print(i,ls[i])
             dp[i] = seg.query(i-ls[i],i) +1
-            #print(seg.query(i-ls[i],i) ,i-ls[i],i,)
+            print(seg.query(i-ls[i],i) ,i-ls[i],i,)
             seg.update(i,dp[i])
-            #print(dp)
+            print(dp)
         return dp[-1] if dp[-1]< 10**10 else -1
         
 
@@ -134,6 +134,5 @@ class Solution:
 
 
 #re =Solution().minValidStrings(words = ["abc","aaaaa","bcdef"], target = "aabcdabc")
-#re = Solution().minValidStrings(["b","ccacc","a"],"cccaaaacba")
-re = Solution().minValidStrings(["aaaaac","cc","bbbacb","aaabbaccbbcbcacabacacaccbcaacccaacbaacccabbcaacababcaaabcbabcaaaccccabacaccbcaaaabcbcccaccabccababacbabbabababbaaaccaabbbcbbbabbaaccbbababaacbaccbccabaaaabcbaabcabcccbcbabcbccabbaaacabcbbcaaaabcabcbcc"],"cbaaaaaaacbb")
+re = Solution().minValidStrings(["b","ccacc","a"],"cccaaaacba")
 print(re)
