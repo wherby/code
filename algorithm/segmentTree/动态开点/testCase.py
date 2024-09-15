@@ -1,7 +1,8 @@
 # https://leetcode.cn/contest/biweekly-contest-139/problems/length-of-the-longest-increasing-path/description/
-# 动态开点的setment tree都不能运行 《-- 如果left是0的话
-# https://leetcode.cn/contest/biweekly-contest-139/problems/length-of-the-longest-increasing-path/submissions/564946585/
-# 动态开点会超时
+# 动态开点的setment tree都不能运行 需要把left点移动到1
+# 这里把点移动到0就会一直循环
+# contest/00000c397d130/d139/q4/t4.py 改好了也会超时 https://leetcode.cn/contest/biweekly-contest-139/problems/length-of-the-longest-increasing-path/submissions/564946585/
+# 
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -113,7 +114,7 @@ class Solution:
             dic = defaultdict(list)
             for x,y in lls:
                 dic[x].append(y)
-            seg = SegmentTree(merge=max,basev=0,ret=0)
+            seg = SegmentTree(merge=max,basev=10**10)
             ret = 0
             key =sorted(dic.keys())
             for k in key:
@@ -121,14 +122,12 @@ class Solution:
                 ls= list(set(ls))
                 ls.sort(reverse=True)
                 for b in ls:
-                    c = seg.query(1,b)
-                    d = seg.query(b+1,b+1)
-                    #print(c,d,b)
-                    if d< c+1:
-                        seg.update(b+1,b+1,c+1 -d)
+                    c = seg.query(0,b-1)
+                    d = seg.query(0,b)
+                    if c==d:
+                        seg.update(b,c,1)
                     ret =max(ret,c+1)
             return ret
-        #print(getNum(lls1),getNum(lls2))
         return getNum(lls1) + getNum(lls2)-1
 
 
@@ -137,5 +136,5 @@ class Solution:
 
 
 
-re =Solution().maxPathLength(coordinates = [[2,1],[5,4],[9,8]], k = 0)
+re =Solution().maxPathLength(coordinates = [[3,1],[2,2],[4,1],[0,0],[5,3]], k = 1)
 print(re)
