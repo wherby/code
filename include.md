@@ -86,6 +86,15 @@ class Solution:
 
 
 ### use lib
+[minimum-number-of-valid-strings-to-form-target-ii](https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-ii/solutions/2917929/ac-zi-dong-ji-pythonjavacgo-by-endlessch-hcqk/)
+contest/00000c397d130/c415/q3/t3.binarySearch.py 
+``` python 
+        for i in range(n):
+            check = lambda sz: sub_hash(i, i + sz + 1) not in sets[sz]
+            sz = bisect_left(range(min(n - i, max_len)), True, key=check)
+```
+
+
 ``` python
 # https://leetcode.cn/problems/maximum-number-of-alloys/submissions/
 # https://leetcode.cn/circle/discuss/SwCGEn/
