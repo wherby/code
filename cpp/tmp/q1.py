@@ -77,8 +77,9 @@ A = [1 + 2*i for i in range(21)]
 print(func1(A,1,2))
 print(func2(A,1,2))
 print(func3(A,1,2))
+A =[8 +9*i for i in range(5)]
 
-
+print(func3(A,8,9))
 
 
 
