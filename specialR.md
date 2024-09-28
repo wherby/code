@@ -349,3 +349,14 @@ logls= [pow(mul,i) for i in range(40)]
 #print(logls)
 def getLog(a):
     return bisect_left(logls,a)
+
+## Use INF
+
+class Solution:
+    def maxScore(self, a: List[int], b: List[int]) -> int:
+        dp=[-10**10]*5  ##Not working https://leetcode.cn/contest/weekly-contest-415/problems/maximum-multiplication-score/description/
+        dp[0] = 0
+        for c in b:
+            for j in range(4,0,-1):
+                dp[j] = max(dp[j],dp[j-1]+ a[j-1]*c)
+        return dp[-1]
