@@ -31,3 +31,29 @@ class Solution(object):
             else:
                 r = mid-1
         return l 
+
+## 求刚好有k个就等价于 求多余k - 多余k+1
+N(K)= O(n>=k) - O(n>=(k+1))
+
+https://leetcode.cn/contest/weekly-contest-417/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/description/
+
+class Solution:
+    def countOfSubstrings(self, w: str, k: int) -> int:
+        def solve(w, k):
+            c = Counter()
+            j = 0
+            z = 0
+            for i in range(len(w)):
+                if w[i] in 'aeiou':
+                    c[w[i]] += 1
+                else:
+                    c['_'] += 1
+                while c['a'] > 0 and c['e'] > 0 and c['i'] > 0 and c['o'] > 0 and c['u'] > 0 and c['_'] >= k:
+                    if w[j] in 'aeiou':
+                        c[w[j]] -= 1
+                    else:
+                        c['_'] -= 1
+                    j += 1
+                z += j
+            return z
+        return solve(w, k) - solve(w, k + 1)

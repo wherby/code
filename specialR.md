@@ -360,3 +360,9 @@ class Solution:
             for j in range(4,0,-1):
                 dp[j] = max(dp[j],dp[j-1]+ a[j-1]*c)
         return dp[-1]
+
+## 等价代换 求 K = N(n>=k) - N(n>=(k+1)) 用双指针解决
+
+algorithm/array/countSubArrayNumbers/count-of-substrings-containing-every-vowel-and-k-consonants-ii/count-of-substrings-containing-every-vowel-and-k-consonants-ii.py
+/Users/tao/software/code/algorithm/array/countSubArrayNumbers/index.md
+
