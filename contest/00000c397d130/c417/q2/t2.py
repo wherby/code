@@ -17,6 +17,7 @@ class Solution:
         c = defaultdict(int)
         l = 0
         ret = 0
+
         for i,a in enumerate(word):
             if a in vowls:
                 c[a]+=1

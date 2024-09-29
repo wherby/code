@@ -33,6 +33,9 @@ class Solution(object):
         return l 
 
 ## 求刚好有k个就等价于 求多余k - 多余k+1
+这个题目有两个现在 all(c[a]>0 for a in vowels) 和 c["_"] ==k 所以直接用双指针不能把两个特性（大于和等于）一起计算，
+所以需要把等于的计算条件转换为大于的计算条件
+
 N(K)= O(n>=k) - O(n>=(k+1))
 
 https://leetcode.cn/contest/weekly-contest-417/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/description/
