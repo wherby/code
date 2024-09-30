@@ -1,4 +1,5 @@
-# from ./pic/stringHash.png not verified
+# from ./pic/stringHash.png 
+# Verified in contest/00000c397d130/c415/q3/t3.binarySearch.py
 class StringHash:
     def __init__(self,s1):
         n =len(s1)
@@ -16,4 +17,5 @@ class StringHash:
 sh = StringHash("abcdefg")
 print(sh.query(0,7))
 print(sh.hls,sh.pls)
+# 左闭右开
 print(sh.query(0,1))

@@ -49,7 +49,52 @@ l = mid, r=mid -1  , mid = (l+r+1) >>1  while l <r
 mid = (l+r)>>1 不会取到r  
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
+### 二分开区间写法 https://live.bilibili.com/1315966?broadcast_type=0&is_room_feed=1&spm_id_from=333.999.live_users_card.0.click&live_from=86001
+https://leetcode.cn/problems/maximize-score-of-numbers-in-ranges/solutions/2908931/er-fen-da-an-zui-da-hua-zui-xiao-zhi-pyt-twe2/
+
+left = 0, right = max(value) +1 ; check(left) == True, check(right) == False
+while left +1 < right:
+    mid=(left +right) >>1
+    if check(mid):
+        left = mid
+    else:
+        right = mid 
+return left
+
+#### ！！！如果2分开区间，right的值是需要不能取的值
+https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/?envType=daily-question&envId=2024-09-12
+class Solution:
+    def maxNumOfMarkedIndices(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        l,r =0,n//2+1  ##开区间写法，r的值不能取
+        
+        def verify(mid):
+            for i in range(mid):
+                if nums[i]*2> nums[n-mid +i]:
+                    return False
+            return True
+ 
+        while l +1<r:
+            mid = (l+r)>>1
+            if verify(mid):
+                l = mid 
+            else:
+                r = mid
+            #print(mid,verify(mid),l,r,mid)
+        return l*2
+
+
 ### use lib
+[minimum-number-of-valid-strings-to-form-target-ii](https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-ii/solutions/2917929/ac-zi-dong-ji-pythonjavacgo-by-endlessch-hcqk/)
+contest/00000c397d130/c415/q3/t3.binarySearch.py 
+``` python 
+        for i in range(n):
+            check = lambda sz: sub_hash(i, i + sz + 1) not in sets[sz]
+            sz = bisect_left(range(min(n - i, max_len)), True, key=check)
+```
+
+
 ``` python
 # https://leetcode.cn/problems/maximum-number-of-alloys/submissions/
 # https://leetcode.cn/circle/discuss/SwCGEn/
@@ -119,3 +164,5 @@ def dfs(zeroleft,oneleft,state):
     return res%mod
 ans =  dfs(zero,one,0)%mod
 dfs.cache_clear()
+
+如果不清楚cache， 会超出内存错误 https://leetcode.cn/problems/student-attendance-record-ii/submissions/

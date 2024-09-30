@@ -88,19 +88,19 @@ class AHOCorasick:
 
 
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
-else:
-    ac = AHOCorasick()
-    ac.addString("what")
-    ac.addString("ha")
-    ac.addString("hate")
-    ac.addString("er")
-    ac.addString("ver")
-    ac.set_fail_transitions()
-    re =ac.search_in("whatever, err ... , wherever")
-    print(re)
+# if __name__ == "__main__":
+#     import doctest
+#     doctest.testmod()
+# else:
+ac = AHOCorasick()
+ac.addString("what")
+ac.addString("ha")
+ac.addString("hate")
+ac.addString("er")
+ac.addString("ver")
+ac.set_fail_transitions()
+re =ac.search_in("whatever, err ... , wherever")
+print(re)
 #print(ac.t)            
                 
                     

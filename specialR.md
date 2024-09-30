@@ -324,3 +324,45 @@ https://leetcode.cn/contest/weekly-contest-406/problems/minimum-cost-for-cutting
 ## 绝对值计算
 
 algorithm/mathA/最大曼哈顿距离/manhatton-Chebyshev.py
+
+
+## 用math.log计算整数会出错
+contest/00000c397d130/c412/q3/t3.py
+https://leetcode.cn/contest/weekly-contest-412/problems/final-array-state-after-k-multiplication-operations-ii/submissions/
+
+print(pow(3,18))
+print(math.log(387420489//3,3))
+print(math.log(387420489/3,3.0))
+print(math.log(pow(3,18),3.0)) # 18
+print(math.log(pow(3,18)//3,3)) # 16.999999999999996
+
+tao@MacBook-Pro code % /usr/local/bin/python3 "/Users/tao/software/code/contest/00000c397d130/c412/q3/t3 copy.py"
+387420489
+16.999999999999996
+16.999999999999996
+18.0
+16.999999999999996
+
+math.log 会出现精度问题，需要用算法实现log整数计算
+
+logls= [pow(mul,i) for i in range(40)]
+#print(logls)
+def getLog(a):
+    return bisect_left(logls,a)
+
+## Use INF
+
+class Solution:
+    def maxScore(self, a: List[int], b: List[int]) -> int:
+        dp=[-10**10]*5  ##Not working https://leetcode.cn/contest/weekly-contest-415/problems/maximum-multiplication-score/description/
+        dp[0] = 0
+        for c in b:
+            for j in range(4,0,-1):
+                dp[j] = max(dp[j],dp[j-1]+ a[j-1]*c)
+        return dp[-1]
+
+## 等价代换 求 K = N(n>=k) - N(n>=(k+1)) 用双指针解决
+
+algorithm/array/countSubArrayNumbers/count-of-substrings-containing-every-vowel-and-k-consonants-ii/count-of-substrings-containing-every-vowel-and-k-consonants-ii.py
+/Users/tao/software/code/algorithm/array/countSubArrayNumbers/index.md
+

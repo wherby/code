@@ -1,5 +1,8 @@
 # https://cp-algorithms.com/string/z-function.html
-# Use zfunction2 for concise
+# Use zfunction2 for concise  <+ wrong version
+# this version correct
+# Verified in https://leetcode.cn/contest/weekly-contest-415/problems/minimum-number-of-valid-strings-to-form-target-ii/submissions/564938556/
+
 def calculate_z_array(s):
     N = len(s)
     Z = [0] * N
@@ -24,6 +27,6 @@ def calculate_z_array(s):
         #print(i,L,R,Z)
     return Z
 
-a = "aabxaabxaabx"
+a = "ccacc#cccaaaacba"
 za =calculate_z_array(a)
 print(za)
