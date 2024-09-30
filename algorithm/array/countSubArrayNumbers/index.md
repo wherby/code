@@ -1,5 +1,5 @@
 
-
+## 双指针解决至少问题，如果其他情况也可以用至少问题转移到对应的问题
 
 
 ## 求subarray的数量 都用slidwindow， 比如求所有subarray 的 uniqueness
