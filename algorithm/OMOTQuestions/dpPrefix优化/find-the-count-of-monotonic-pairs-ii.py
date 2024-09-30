@@ -1,15 +1,7 @@
+# https://leetcode.cn/contest/weekly-contest-410/problems/find-the-count-of-monotonic-pairs-ii/description/
+
 from typing import List, Tuple, Optional
 
-from collections import defaultdict,deque
-from functools import cache
-import heapq
-from heapq import heappop,heappush 
-from sortedcontainers import SortedDict,SortedList
-
-from bisect import bisect_right,insort_left,bisect_left
-from queue import Queue,LifoQueue,PriorityQueue
-import math
-INF  = math.inf
 import sys
 sys.setrecursionlimit(10000000)
 
@@ -38,5 +30,5 @@ class Solution:
 
 
 ls = [1000]*2000
-re =Solution().countOfPairs( [3,21])
+re =Solution().countOfPairs( ls)
 print(re)
