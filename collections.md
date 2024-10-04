@@ -301,9 +301,11 @@ print(acc3)
 #[0, 1, 4, 10, 20]
 ```
 
-##  defaultdict of defaultdict 
+##  defaultdict of defaultdict  #defaultdict
 https://stackoverflow.com/questions/5029934/defaultdict-of-defaultdict
 dic2=defaultdict(lambda: defaultdict(int))
+
+defaultdict(lambda:-10*10)
 
 ## defaultdict with sortedList for key pair 
 contest\00000c275d69\c303\q3\t3.3.py

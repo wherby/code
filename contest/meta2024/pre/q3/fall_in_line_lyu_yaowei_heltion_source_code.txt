@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#ifndef ONLINE_JUDGE
+#include "debug.hpp"
+#else
+#define debug(...) (void)0
+#endif
+
+using i64 = int64_t;
+using f128 = float128_t;
+
+int main() {
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int t;
+  cin >> t;
+  for (int ti = 1; ti <= t; ti += 1) {
+    int n;
+    cin >> n;
+    vector<pair<i64, i64>> p(n);
+    for (auto& [x, y] : p) cin >> x >> y;
+    mt19937_64 mt(random_device{}());
+    uniform_int_distribution uid(0, n - 1);
+    int step = 100;
+    i64 ans = n;
+    for (int _ = 0; _ < step; _ += 1) {
+      int i = 0, j = 0;
+      while (i == j) {
+        i = uid(mt);
+        j = uid(mt);
+      }
+      i64 pans = n;
+      for (auto [x, y] : p) {
+        i64 c = (p[i].first - x) * (p[j].second - y) - (p[i].second - y) * (p[j].first - x);
+        if (c == 0) pans -= 1;
+      }
+      ans = min(ans, pans);
+    }
+    println("Case #{}: {}", ti, ans);
+  }
+}
