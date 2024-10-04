@@ -1,3 +1,7 @@
+## set recursion size for stack
+import sys
+sys.setrecursionlimit(10000000)
+
 ## [Applications of Depth First Search](https://cp-algorithms.com/graph/depth-first-search.html)
     Find any path in the graph from source vertex  to all vertices.
 
