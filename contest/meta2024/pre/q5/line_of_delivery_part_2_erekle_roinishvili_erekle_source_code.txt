@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int INF = 1e8;
+
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
+    int T; cin >> T;
+    for (int tt = 1; tt <= T; ++tt) {
+        // stones will always end up in index order n, n-1, ..., 1
+        int n, g; cin >> n >> g;
+        vector<int> e(n);
+        for (int &x : e) cin >> x;
+
+        vector<int> s(n);
+        // // set of p - i, where p is the position on the number line and i is one plus the number of rocks before it
+        // ordered_set s; // actually we'll store values as p-i+iteration so we do not have to decrement them all every time
+        // // the set is of pairs just so it behaves as a multiset (second value is simply iteration in which it was added)
+        // for (int iteration = 0; iteration < n; ++iteration) {
+        //     int energy = e[iteration];
+
+        //     int i = s.order_of_key({energy+iteration, INF}); // first stone not hit (energy + i_stone < p_stone)
+        //     ++i; // make one-based
+        //     // now the new stone will replace stone i at index i
+        //     int p = energy + (i-1); // position of new stone
+
+        //     s.insert({p - i + (iteration+1), iteration}); // ready for next iteration
+        //     // but this simply cancels to energy + iteration
+        // }
+
+        for (int iteration = 0; iteration < n; ++iteration) {
+            int energy = e[iteration];
+            s[iteration] = energy + iteration;
+        }
+        sort(s.begin(), s.end());
+
+        // get sorted final positions
+        vector<int> positions(n);
+        for (int i = 1; i <= n; ++i) {
+            // int v = s.find_by_order(i-1)->first;
+            int v = s[i-1];
+            // this is p - i + iteration, iteration is n
+            int p = v + i - n;
+            positions[i-1] = p;
+        }
+        
+        pair<int, int> best{INF, 0}; // distance, index
+        for (int i = 0; i < n; ++i) best = min(best, {abs(positions[i]-g), n-i});
+        cout << "Case #" << tt << ": " << best.second << ' ' << best.first << '\n';
+    }
+    return 0;
+}

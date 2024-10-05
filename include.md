@@ -126,7 +126,15 @@ class Solution:
     def repairCars(self, ranks: List[int], cars: int) -> int:
         s = lambda x: sum(int(math.sqrt((x//r))) for r in ranks)
         return bisect_left(range(min(ranks) * cars * cars),cars,key=s)
-
+        
+# https://leetcode.cn/problems/minimum-time-to-complete-trips/?envType=daily-question&envId=2024-10-05
+from bisect import bisect_right,insort_left,bisect_left
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        def verify(mid):
+            return sum([mid//a for a in time])>=totalTrips
+        return bisect_left(range(10**14),True, key= verify)
+### using range(10**19) will cauese isuue "OverflowError: Python int too large to convert to C ssize_t" https://bugs.python.org/issue41860
 
 ### 返回时候需要对l的值进行判断
 https://leetcode.cn/contest/weekly-contest-325/problems/take-k-of-each-character-from-left-and-right/

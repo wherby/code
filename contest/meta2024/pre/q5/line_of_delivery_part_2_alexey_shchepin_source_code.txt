@@ -1,0 +1,181 @@
+module Seq = struct
+  type prio = int
+
+  type t =
+    | Leaf
+    | Node of int * int * prio * int * t * t
+
+  let empty = Leaf
+
+  let mknode v = Node (v, 0, Random.bits (), 1, Leaf, Leaf)
+
+  let prio_compare (x : prio) y = compare x y
+
+  let add x =
+    function
+    | Leaf -> Leaf
+    | Node (v, s, p, cnt, left, right) ->
+       Node (v, s + x, p, cnt, left, right)
+
+  let push =
+    function
+    | Leaf -> Leaf
+    | Node (v, 0, p, cnt, left, right) as node -> node
+    | Node (v, s, p, cnt, left, right) ->
+       Node (v + s, 0, p, cnt, add s left, add s right)
+
+  let get_count =
+    function
+    | Leaf -> 0
+    | Node (_v, _s, _p, cnt, _left, _right) -> cnt
+
+  let update =
+    function
+    | Leaf -> Leaf
+    | Node (v, s, p, cnt, left, right) ->
+       Node (v, s, p,
+             1 + get_count left + get_count right, left, right)
+
+  let rec merge left right =
+    match push left, push right with
+    | Leaf, Leaf -> Leaf
+    | _, Leaf -> left
+    | Leaf, _ -> right
+    | Node (vl, sl, pl, cntl, leftl, rightl),
+      Node (vr, sr, pr, cntr, leftr, rightr) ->
+       if prio_compare pl pr > 0
+       then update (Node (vl, sl, pl, cntl,
+			  leftl,
+			  merge rightl right))
+       else update (Node (vr, sr, pr, cntr,
+			  merge left leftr,
+			  rightr))
+
+  (*
+    let rec split tree x =
+    match push tree with
+    | Leaf -> (Leaf, Leaf)
+    | Node (st, v, s, p, rev, left, right) ->
+    let sl = get_sum left in
+    if x <=/ sl then (
+    let (left', right') = split left x in
+    (left',
+    update (Node (st, v, s, p, rev, right', right)))
+    ) else (
+    let (left', right') = split right x in
+    (update (Node (st, v, s, p, rev, left, left')),
+    right')
+    )
+   *)
+
+  let rec split tree x =
+    match push tree with
+    | Leaf -> (Leaf, Leaf)
+    | Node (v, s, p, cnt, left, right) ->
+       if x < v then (
+	 let (left', right') = split left x in
+	 (left',
+	  update (Node (v, s, p, cnt, right', right)))
+       ) else (
+	 let (left', right') = split right x in
+	 (update (Node (v, s, p, cnt, left, left')),
+	  right')
+       )
+
+  (*
+  let rec split_left tree =
+    match push tree with
+    | Leaf -> (Leaf, Leaf)
+    | Node (st, v, s, p, rev, Leaf, right) ->
+       (Node (st, v, s, p, rev, Leaf, Leaf), right)
+    | Node (st, v, s, p, rev, left, right) ->
+       let (left', right') = split_left left in
+       (left',
+	update (Node (st, v, s, p, rev, right', right)))
+
+  let rec split_right tree =
+    match push tree with
+    | Leaf -> (Leaf, Leaf)
+    | Node (st, v, s, p, rev, left, Leaf) ->
+       (left, Node (st, v, s, p, rev, Leaf, Leaf))
+    | Node (st, v, s, p, rev, left, right) ->
+       let (left', right') = split_right right in
+       (update (Node (st, v, s, p, rev, left, left')),
+	right')
+
+  let rec count =
+    function
+    | Leaf -> 0
+    | Node (_st, _v, _s, _p, _rev, left, right) ->
+    1 + count left + count right
+   *)
+
+  let rec iter f tree =
+    match push tree with
+    | Leaf -> ()
+    | Node (v, _s, _p, _cnt, left, right) ->
+       iter f left;
+       f v;
+       iter f right
+end
+
+
+let _ =
+  Random.self_init ();
+  let sb = Scanf.Scanning.stdin in
+  let cases = Scanf.bscanf sb "%d " (fun s -> s) in
+    for ca = 1 to cases do
+      let n = Scanf.bscanf sb "%d " (fun s -> s) in
+      let g = Scanf.bscanf sb "%d " (fun s -> s) in
+      let a = Array.make n 0 in
+      for i = 0 to n - 1 do
+        a.(i) <- Scanf.bscanf sb "%d " (fun s -> s);
+      done;
+      let t = ref Seq.empty in
+      for i = 0 to n - 1 do
+        let x = a.(i) in
+        let l = ref (x - 1) in
+        let r = ref 2000000 in
+        while !l < !r - 1 do
+          let m = (!l + !r) / 2 in
+          let is_left =
+            let (t1, t2) = Seq.split !t m in
+            let c = Seq.get_count t1 in
+            (*Printf.eprintf "qaz %d %d\n" m c;*)
+            if x + c < m
+            then false
+            else if x + c > m
+            then true
+            else (
+              let (_, t') = Seq.split t1 (m - 1) in
+              t' <> Seq.empty
+            )
+          in
+          if is_left
+          then l := m
+          else r := m
+        done;
+        (*Seq.iter (fun x -> Printf.eprintf "zxc %d\n" x;) !t;
+        Printf.eprintf "qwe %d %d\n" i !r;*)
+        let (t1, t2) = Seq.split !t !r in
+        let t1 = Seq.add (-1) t1 in
+        let t1 = Seq.merge t1 (Seq.mknode !r) in
+        t := Seq.merge t1 t2;
+      done;
+      if n = 1
+      then Printf.printf "Case #%d: %d %d\n%!" ca 1 (abs (g - a.(0)))
+      else (
+        let idx = ref 0 in
+        let b = ref [] in
+        Seq.iter
+          (fun x ->
+            (*Printf.eprintf "asd %d\n" x;*)
+            b := (abs (x - g), n - 1 - !idx) :: !b;
+            incr idx;
+          ) !t;
+        let b = Array.of_list !b in
+        Array.sort compare b;
+        let (d, idx) = b.(0) in
+        Printf.printf "Case #%d: %d %d\n%!" ca (idx + 1) d;
+      )
+    done

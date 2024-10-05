@@ -1,0 +1,50 @@
+import io,os
+input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+
+
+
+
+def main():
+    
+    n,g = map(int,input().split())
+    arr = []
+
+    for i in range(n):
+        x = int(input())
+        arr.append(x+i)
+
+    arr.sort()
+
+
+    for i in range(n-2,-1,-1):
+        arr[i] -= n - 1 - i
+
+
+    
+
+    minimum = 10**18
+
+    ans = -1
+
+    for i in range(n-1,-1,-1):
+        index = n - i
+        if abs(arr[i]-g) < minimum:
+            minimum = abs(arr[i]-g)
+            ans = index
+
+
+   
+    print(f"Case #{t}: {ans} {minimum}")        
+
+    
+
+
+
+
+
+
+T = int(input())
+t = 1
+while t <= T:
+    main()
+    t += 1

@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#ifndef ONLINE_JUDGE
+#include "debug.hpp"
+#else
+#define debug(...) (void)0
+#endif
+
+using i64 = int64_t;
+using f128 = float128_t;
+
+int main() {
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int t;
+  cin >> t;
+  for (int ti = 1; ti <= t; ti += 1) {
+    int n, g;
+    cin >> n >> g;
+    vector<int> e(n);
+    for (int& ei : e) cin >> ei;
+    for (int i = 0; i < n; i += 1) e[i] += i;
+    ranges::sort(e);
+    int ans = numeric_limits<int>::max(), ans_i = 0;
+    for (int i = 0; i < n; i += 1) {
+      int pans = abs(e[i] - n + 1 + i - g);
+      if (pans <= ans) {
+        ans = pans;
+        ans_i = n - i;
+      }
+    }
+    println("Case #{}: {} {}", ti, ans_i, ans);
+  }
+}

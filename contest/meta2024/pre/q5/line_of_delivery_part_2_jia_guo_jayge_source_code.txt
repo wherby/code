@@ -1,0 +1,262 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ull = unsigned long long;
+using ll = long long;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vvi = vector<vi>;
+using vvl = vector<vl>;
+
+#define all(x) begin(x), end(x)
+#define rall(x) (x).rbegin(), (x).rend() 
+ 
+#define rep(i,a) repp(i,0,a)
+#define repp(i,a,b) for (int i = (a); i < (b); ++i)
+#define reppp(i, a, b, d) for (int i = (a); (d) > 0 ? i < (b) : i > (b); i += (d))
+
+#ifndef ONLINE_JUDGE
+#define debug(x) (cout<<(#x)<<':'<<(x)<<'\n')
+#else
+#define debug(x)
+#endif
+
+template <typename T1, typename T2>
+std::ostream& operator<<(std::ostream& os, const std::pair<T1, T2>& p) {
+    os << "(" << p.first << ", " << p.second << ")";
+    return os;
+}
+
+template <typename T, std::size_t N>
+std::ostream& operator<<(std::ostream& os, const std::array<T, N>& arr) {
+    os << "[ ";
+    for (const auto& item : arr) os << item << " ";
+    os << "]";
+    return os;
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
+    os << "[ ";
+    for (const auto& item : v) os << item << " ";
+    os << "]";
+    return os;
+}
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::set<T>& s) {
+    os << "[ ";
+    for (const auto& item : s) os << item << " ";
+    os << "]";
+    return os;
+}
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::multiset<T>& s) {
+    os << "[ ";
+    for (const auto& item : s) os << item << " ";
+    os << "]";
+    return os;
+}
+template <typename K, typename V>
+std::ostream& operator<<(std::ostream& os, const std::map<K, V>& m) {
+    os << "[ ";
+    for (const auto& pair : m) os << "[" << pair.first << "] = " << pair.second << ", ";
+    os << "]";
+    return os;
+}
+
+struct RandomNumberGenerator {
+    std::mt19937 mt;
+
+    RandomNumberGenerator()
+        : mt(std::chrono::steady_clock::now().time_since_epoch().count()) {}
+    RandomNumberGenerator(int seed)
+        : mt(seed) {}
+
+    // Generates a random integer in the range [a, b).
+    int randint(int a, int b) {
+        std::uniform_int_distribution<int> dist(a, b - 1);
+        return dist(mt);
+    }
+
+    // Generates a random integer in the range [0, b).
+    int randint(int b) {
+        return randint(0, b);
+    }
+
+    // Shuffles the elements of a vector.
+    template <typename T>
+    void shuffle(std::vector<T>& v) {
+        std::shuffle(v.begin(), v.end(), mt);
+    }
+
+    // Generates a random prime number in the range [a, b).
+    int randprime(int a, int b) {
+        int n = randint(a, b);
+        int prime = findNextPrime(n);
+        if (prime >= b) {
+            return -1;
+        }
+        return prime;
+    }
+
+private:
+    bool isprime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    int findNextPrime(int n) {
+        while (!isprime(n)) {
+            n++;
+        }
+        return n;
+    }
+};
+RandomNumberGenerator rng;
+struct Node {
+    Node* ch[2] = {nullptr, nullptr};
+    int prio;
+    int val;
+    int sz;
+    int tag;
+    Node(int val): prio(rng.randint(1 << 30)), sz(1), val(val), tag(0) {} 
+};
+
+void pull(Node* cur) {
+    cur->sz = 1;
+    for(int i = 0; i < 2; i++) {
+        if(cur->ch[i]) cur->sz += cur->ch[i]->sz;
+    }
+}
+
+void apply(Node* cur, int v) {
+    cur->tag += v;
+    cur->val += v;
+}
+
+void push(Node* cur) {
+    if(cur->tag) {
+        for(int i = 0; i < 2; i++) {
+            if(cur->ch[i]) apply(cur->ch[i], cur->tag);
+        }
+    }
+    cur->tag = 0;
+}
+
+pair<Node*, Node*> split(Node*cur, int left_size) {
+    if(cur == nullptr) return make_pair(nullptr, nullptr);
+    push(cur);
+    Node* res_left, * res_right;
+    int sz_left_child = cur->ch[0]? cur->ch[0]->sz: 0;
+    if(left_size <= sz_left_child) {
+        auto [left, right] = split(cur->ch[0], left_size);
+        cur->ch[0] = right;
+        res_left = left;
+        res_right = cur;
+    } else {
+        auto [left, right] = split(cur->ch[1], left_size - sz_left_child - 1);
+        cur->ch[1] = left;
+        res_left = cur;
+        res_right = right;
+    }
+    pull(cur);
+    return make_pair(res_left, res_right);
+}
+
+Node* merge(Node* left, Node* right) {
+    if(left == nullptr) return right;
+    if(right == nullptr) return left;
+    Node* res;
+    push(left); 
+    push(right);
+    if(left->prio < right->prio) {
+        left->ch[1] = merge(left->ch[1], right); 
+        res = left;
+    } else {
+        right->ch[0] = merge(left, right->ch[0]);
+        res = right;
+    }
+    pull(res);
+    return res;
+}
+
+void dfs(Node* cur, vector<int>& a) {
+    if(cur == nullptr) return;
+    push(cur);
+    dfs(cur->ch[1], a);
+    a.push_back(cur->val);
+    dfs(cur->ch[0], a);
+}
+
+
+void solve() {
+    int n, g; cin >> n >> g;
+    vi e(n); 
+    cin >> e[0]; 
+    auto rt = new Node(e[0]);
+    repp(i,1,n) {
+        cin >> e[i];
+        auto [t1, t2] = split(rt, 1);
+        int mi = t1->val;
+        rt = merge(t1, t2);
+        if(mi > e[i]) {
+            rt = merge(new Node(e[i]), rt);
+        } else {
+            auto ok = [&](int x) {
+                int final_e = e[i] + x - 1;
+                auto [t1, t2] = split(rt, x - 1);
+                auto [t3, t4] = split(t2, 1);
+                int tmp = t3->val;
+                rt = merge(merge(t1, t3), t4);
+                return tmp <= final_e;
+            };
+
+            int lo = 1, hi = i;
+            while(lo < hi) {
+                int md = (lo + hi + 1) >> 1;
+                if(ok(md)) lo = md;
+                else hi = md - 1;
+            }
+            auto [t1, t2] = split(rt, lo);
+            apply(t1, -1);
+            rt = merge(merge(t1, new Node(e[i] + lo)), t2);
+        }
+    }
+    vector<int> a;
+    dfs(rt, a);
+    int mi = numeric_limits<int>::max();
+    for(auto x: a) {
+        mi = min(mi, abs(g - x));
+    }
+    rep(i,n) {
+        if(abs(g - a[i]) == mi) {
+            cout << i + 1 << " " << mi << "\n"; return;
+        }
+    } 
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ifstream inputFile("line_of_delivery_part_2_input.txt");
+    ofstream outputFile("D2.txt");
+    cin.rdbuf(inputFile.rdbuf());
+    cout.rdbuf(outputFile.rdbuf());
+    
+    int t; cin >> t;
+    for(int i = 1; i <= t; i++) {
+        cout << "Case #" << i << ": ";
+        solve();
+    }
+}
+
+
+
+
