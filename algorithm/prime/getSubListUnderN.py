@@ -20,4 +20,5 @@ def getSubListUnderN(n):
 
 d = getSubListUnderN(100000)
 print(d[100])
+print(d[102])
     

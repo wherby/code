@@ -9,6 +9,6 @@ def get_prime(n):
             visited[j] =1
     return res
 
-re =get_prime(1000000)
+re =get_prime(10000000)
 print(re[:10])
 print(len(re))

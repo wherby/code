@@ -366,3 +366,7 @@ class Solution:
 algorithm/array/countSubArrayNumbers/count-of-substrings-containing-every-vowel-and-k-consonants-ii/count-of-substrings-containing-every-vowel-and-k-consonants-ii.py
 /Users/tao/software/code/algorithm/array/countSubArrayNumbers/index.md
 
+## 反向思考
+
+algorithm/反向思考改变求职区域
+
