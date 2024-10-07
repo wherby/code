@@ -370,3 +370,9 @@ algorithm/array/countSubArrayNumbers/count-of-substrings-containing-every-vowel-
 
 algorithm/反向思考改变求职区域
 
+
+
+## sort by function need to return 1,0,-1
+algorithm/greedy/最大字典序列组合
+
+https://stackoverflow.com/questions/79058530/python-sort-lib-different-behavior-with-different-comparing-functions-some-comp

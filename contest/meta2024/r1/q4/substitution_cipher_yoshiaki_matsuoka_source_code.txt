@@ -1,0 +1,302 @@
+#ifdef MAIN_IMPL
+
+namespace{
+
+const LL MOD = 998244353;
+
+void prepare(){
+	
+}
+void add(LL &x, LL y){
+	x += y;
+	if(x >= MOD){ x -= MOD; }
+}
+
+string solve(){
+	string s;
+	int k;
+	cin >> s >> k;
+	--k;
+	int n = s.size();
+	s += '_';
+
+	string one;
+	for(char c : s){
+		one += c == '?' ? '1' : c;
+	}
+	
+	vint must(n + 2);
+	must[n] = 8;
+	vll dp(n + 2);
+	dp[n] = 1;
+	for(int i = n - 1; i >= 0; --i){
+		if(one[i] != '0'){
+			if(must[i + 1]){
+				must[i] |= 1;
+				add(dp[i], dp[i + 1]);
+			}
+			int t = (one[i] - '0') * 10 + (one[i + 1] - '0');
+			if(t <= 26 && must[i + 2]){
+				must[i] |= 2;
+				add(dp[i], dp[i + 2]);
+			}
+		}
+	}
+	
+	vector<array<int,10>> cands(n + 2);
+	for(int i = n - 1; i >= 0; --i){
+		for(int d = 0; d <= 9; ++d){
+			if(s[i] != '?' && d != s[i] - '0'){ continue; }
+			if(s[i] == '?' && d == 0){ continue; }
+			for(int p = 0; p <= 9; ++p){
+				if(i > 0 && must[i - 1] & 2 && (p == 0 || p * 10 + d > 26)){
+					continue;
+				}
+				cands[i][p] |= 1 << d;
+			}
+		}
+	}
+	vector<array<int,10>> numpt(n + 2);
+	fill(ALL(numpt[n]), 1);
+	for(int i = n - 1; i >= 0; --i){
+		for(int d = 0; d <= 9; ++d){
+			for(int p = 0; p <= 9; ++p){
+				if(cands[i][p] >> d & 1){
+					int &r = numpt[i][p];
+					r = min(r + numpt[i + 1][d], k + 9);
+				}
+			}
+		}
+	}
+	
+dbg((0));
+dbg((must));
+dbg((cands));
+dbg((numpt));
+	
+	string ans(n, '_');
+	int prv = 0;
+	for(int i = 0; i < n; ++i){
+		for(int d = 9; ; --d){
+			assert(d >= 0);
+			if(!(cands[i][prv] >> d & 1)){ continue; }
+			int w = numpt[i + 1][d];
+			if(k >= w){
+				k -= w;
+			}
+			else{
+				ans[i] = d + '0';
+				prv = d;
+				break;
+			}
+		}
+	}
+
+	/*
+	vint spl(n + 1);
+	spl[0] = spl[n] = 1;
+	for(int i = 1; i < n; ++i){
+		if(spl[i] == '0'){
+			spl[i - 1] = 1;
+			spl[i + 1] = 1;
+		}
+	}
+	
+	vint cands(n + 1);
+	REP(i, n){
+		if(s[i] != '?'){ cands[i] = 1 << (s[i] - '0'); }
+		else{ cands[i] = 1022; }
+	}
+	REP(i, n){
+		if(s[i] == '?' && !spl[i + 1]){
+			
+		}
+	}
+	*/
+	
+	return ans + " " + to_string(dp[0]);
+}
+
+void main2(){
+	prepare();
+
+	string str = "_";
+	getline(cin, str);
+	int T = strtol(str.c_str(), 0, 10);
+	for(int cnum = 1; cnum <= T; ++cnum){
+		fprintf(stderr, "%4d / %d\n", cnum, T);
+		cout << "Case #" << cnum << ": " << flush;
+		auto ans = solve();
+		cout << ans << endl;
+	}
+}
+
+}
+
+#else // MAIN_IMPL
+
+#include <cstdlib>
+#include <cmath>
+#include <climits>
+#include <cfloat>
+#include <map>
+#include <utility>
+#include <set>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <sstream>
+#include <deque>
+#include <complex>
+#include <stack>
+#include <queue>
+#include <cstdio>
+#include <cctype>
+#include <cstring>
+#include <ctime>
+#include <iterator>
+#include <bitset>
+#include <numeric>
+#include <list>
+#include <iomanip>
+#include <cassert>
+
+#if __cplusplus >= 201103L
+#include <array>
+#include <tuple>
+#include <initializer_list>
+#include <unordered_set>
+#include <unordered_map>
+#include <forward_list>
+#include <random>
+
+using namespace std;
+
+
+#define cauto const auto&
+#define ALL(v) begin(v),end(v)
+#else
+#define ALL(v) (v).begin(),(v).end()
+#endif
+
+#define REP(i,n) for(LL i=0;i<LL(n);++i)
+#define UPTO(i,f,t) for(LL i=f;i<=LL(t);++i)
+#define DOWNTO(i,f,t) for(LL i=f;i>=LL(t);--i)
+#define RALL(v) (v).rbegin(),(v).rend()
+#define tget(t,i) get<i>(t)
+
+#define VV(...) VV<__VA_ARGS__>
+
+#if __cplusplus >= 201402L
+#define lambda(e) ([&](const auto &_){ return (e); })
+#define lambda2(e) ([&](const auto &_a, const auto &_b){ return (e); })
+#endif
+
+namespace{
+typedef long long LL;
+typedef pair<int,int> pii;
+typedef pair<LL,LL> pll;
+
+typedef vector<int> vint;
+typedef vector<vector<int> > vvint;
+typedef vector<long long> vll, vLL;
+typedef vector<vector<long long> > vvll, vvLL;
+
+
+template <class T>
+void initvv(vector<vector<T> > &v, int a, int b, const T &t = T()){
+	v.assign(a, vector<T>(b, t));
+}
+template<class T>inline bool chmin(T&x, const T&y){if(y<x){x=y;return true;}return false;}
+template<class T>inline bool chmax(T&x, const T&y){if(x<y){x=y;return true;}return false;}
+template<class F,class T>void convert(const F &f, T &t){stringstream ss;ss << f;ss >> t;}
+template <class Con>
+string concat(const Con &c, const string &spr){
+	stringstream ss;typename Con::const_iterator it=c.begin(),en=c.end();
+	bool fst=true;for(;it!=en;++it){if(!fst){ss<<spr;}fst = false;ss << *it;}
+	return ss.str();
+}
+template<class B>void yesno(B b){cout<<(b?"Yes\n":"No\n");}
+
+template <class Con, class Fun>
+vector<typename Con::value_type> cfilter(const Con &c, Fun f) {
+	vector<typename Con::value_type>ret;
+	typename Con::const_iterator it=c.begin(),en=c.end();
+	for(;it!=en;++it){if(f(*it)){ret.emplace_back(*it);}}
+	return ret;
+}
+#if __cplusplus >= 201103L
+template <class Con, class Fun>
+auto cmap(const Con &c, Fun f) -> vector<decltype(f(*c.begin()))> {
+	vector<decltype(f(*c.begin()))> ret;
+	ret.reserve(c.size());for(const auto&x:c){ret.emplace_back(f(x));}
+	return ret;
+}
+
+template <class T>using VV=std::vector<vector<T>>;
+#endif
+
+void main2();
+}
+
+
+#ifdef DBG
+#define DBG_CAT(a,b) DBG_CAT2(a,b)
+#define DBG_CAT2(a,b) a##b
+#define dbg(vals) cerr<<"Line "<<__LINE__ DBG_CAT(DBG_OUT1 vals,END)
+#define DBG_OUT1(val) <<", "<<#val<<"="<<dbg_conv_0(val) DBG_OUT2
+#define DBG_OUT2(val) <<", "<<#val<<"="<<dbg_conv_0(val) DBG_OUT1
+#define DBG_OUT1END <<endl
+#define DBG_OUT2END DBG_OUT1END
+
+template<class T>void dbg_conv(const T&,stringstream&);
+template<class T,size_t N>void dbg_conv(const T(&)[N],stringstream&);
+template<class T,class U>void dbg_conv(const pair<T,U>&,stringstream&);
+template<class T>void dbg_conv(const vector<T>&,stringstream&);
+template<class T>void dbg_conv(const set<T>&,stringstream&);
+template<class T,class U>void dbg_conv(const map<T,U>&,stringstream&);
+
+#if __cplusplus >= 201103L
+template<class T,size_t N>void dbg_conv(const array<T,N>&,stringstream&);
+template<class... Types>void dbg_conv(const tuple<Types...>&t,stringstream&ss);
+
+template<size_t Idx,size_t N,class tp,bool last=Idx==N>struct tuple_conv_helper{static void conv(
+const tp&t,stringstream&ss){ss<<",";dbg_conv(get<Idx>(t),ss);tuple_conv_helper<Idx+1,N,tp>::conv(t,ss);}};
+template<size_t Idx,size_t N,class tp>struct tuple_conv_helper<Idx,N,tp,true>{static void conv(const tp&,stringstream&){}};
+template<class... Types>void dbg_conv(const tuple<Types...>&t,stringstream&ss){
+ss<<"(";dbg_conv(get<0>(t),ss);tuple_conv_helper<1,sizeof...(Types),tuple<Types...>>::conv(t,ss);ss<<")";}
+
+template<class T,size_t N>void dbg_conv(const array<T,N>&v,stringstream&ss){
+ss<<"[";const char*spl="";for(size_t i=0;i<N;++i){ss<<spl;dbg_conv(v[i],ss);spl=",";}ss<<"]";}
+#endif
+
+template<class T>void dbg_conv(const T&t,stringstream&ss){ss<<t;}
+template<class T,size_t N>void dbg_conv(const T(&v)[N],stringstream&ss){
+ss<<"[";const char*spl="";for(size_t i=0;i<N;++i){ss<<spl;dbg_conv(v[i],ss);spl=",";}ss<<"]";}
+template<class T,class U>void dbg_conv(const pair<T,U>&p,stringstream&ss){ss<<"(";dbg_conv(p.first,ss);ss<<",";dbg_conv(p.second,ss);ss<<")";}
+template<class T>void dbg_conv(const vector<T>&v,stringstream&ss){ss<<"[";const char*spl="";
+for(typename vector<T>::const_iterator i=v.begin(),e=v.end();i!=e;++i){ss<<spl;dbg_conv(*i,ss);spl=",";}ss<<"]";}
+template<class T>void dbg_conv(const set<T>&v,stringstream&ss){ss<<"{";const char*spl="";
+for(typename set<T>::const_iterator i=v.begin(),e=v.end();i!=e;++i){ss<<spl;dbg_conv(*i,ss);spl=",";}ss<<"}";}
+template<class T,class U>void dbg_conv(const map<T,U>&v,stringstream&ss){ss<<"{";const char*spl="";
+for(typename map<T,U>::const_iterator i=v.begin(),e=v.end();i!=e;++i){ss<<spl;dbg_conv(i->first,ss);ss<<":";dbg_conv(i->second,ss);spl=",";}ss<<"}";}
+
+template<class T>string dbg_conv_0(const T&t){stringstream ss;ss.flags(cerr.flags());dbg_conv(t,ss);return ss.str();}
+#else
+#define dbg(ignored) cerr
+#endif
+
+
+int main() {
+	ios::sync_with_stdio(false); cin.tie(0);
+	cout << fixed << setprecision(10);
+	cerr << fixed << setprecision(4);
+	main2();
+}
+
+#define MAIN_IMPL
+#include __FILE__
+#endif
