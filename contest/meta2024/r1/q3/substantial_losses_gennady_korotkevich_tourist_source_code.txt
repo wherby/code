@@ -1,0 +1,32 @@
+/**
+ *    author:  tourist
+ *    created: 05.10.2024 10:14:03
+**/
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int tt;
+  cin >> tt;
+  for (int qq = 1; qq <= tt; qq++) {
+    cout << "Case #" << qq << ": ";
+    int64_t w, g, l;
+    cin >> w >> g >> l;
+    int64_t a = 2 * l + 1;
+    int64_t b = w - g;
+    const int64_t md = 998244353;
+    a %= md;
+    b %= md;
+    cout << a * b % md << '\n';
+  }
+  return 0;
+}

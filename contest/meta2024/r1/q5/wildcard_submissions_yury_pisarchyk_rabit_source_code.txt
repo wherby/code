@@ -1,0 +1,52 @@
+// g++ -O2 -Wl,--stack,1000000000
+#include <bits/stdc++.h>
+using namespace std;
+const int MX=27,md=998244353;
+int t,tt,n,ans,len[MX];
+char s[MX][105],st[MX][105];
+void rec(int l, int cnt, int prv, int lst, int mn) {
+  if (l==n) {
+    if (cnt==0) return;
+    int cur=1,tot=1;
+    for (int j=0; j<mn; j++) {
+      if (prv>=0 && st[prv][j]==-1) {
+        st[lst][j]=-1;
+        break;
+      }
+      bool ok=true;
+      char was=(prv>=0)?st[prv][j]:0;
+      char ch=s[lst][j];
+      if (ch!='?') {
+        if (was) {
+          if (ch!=was) ok=false;
+        } else was=ch;
+      }
+      if (!ok) {
+        st[lst][j]=-1;
+        break;
+      }
+      st[lst][j]=was;
+      if (was==0) cur=(cur*26LL)%md;
+      if ((tot+=cur)>=md) tot-=md;
+    }
+    if (cnt&1) ans=(ans+tot)%md; else ans=(ans+md-tot)%md;
+    return;
+  }
+  rec(l+1,cnt,prv,lst,mn);
+  rec(l+1,cnt+1,lst,l,min(mn,len[l]));
+}
+int main() {
+  scanf("%d",&tt);
+  for (t=1; t<=tt; t++) {
+    scanf("%d",&n);
+    for (int i=0; i<n; i++) {
+      scanf("%s",s[i]);
+      len[i]=strlen(s[i]);
+    }
+    ans=0;
+    rec(0,0,-1,-1,111);
+    printf("Case #%d: %d\n",t,ans);
+    fprintf(stderr, "Case #%d\n", t);
+  }
+  return 0;
+}

@@ -1,0 +1,52 @@
+#include<iostream>
+#include<cassert>
+using namespace std;
+const int mod=998244353;
+int N;
+string S[25];
+int dp[1<<25];
+int ap[1<<25];
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int T;cin>>T;
+	for(int ccc=1;ccc<=T;ccc++)
+	{
+		cin>>N;
+		int len=0;
+		for(int i=0;i<N;i++)
+		{
+			cin>>S[i];
+			len=max(len,(int)S[i].size());
+		}
+		long long ans=1;
+		for(int i=0;i<1<<N;i++)dp[i]=__builtin_parity(i)?1:mod-1;
+		ap[0]=0;
+		for(int j=0;j<len;j++)
+		{
+			for(int i=0;i<N;i++)
+			{
+				if(S[i].size()<=j)ap[1<<i]=3;
+				else
+				{
+					if(S[i][j]=='?')ap[1<<i]=0;
+					else ap[1<<i]=1<<S[i][j]-'A';
+				}
+			}
+			for(int i=1;i<1<<N;i++)if(dp[i])
+			{
+				int r=i&-i;
+				int t=ap[i]=ap[i^r]|ap[r];
+				if((t&-t)!=t)dp[i]=0;
+				else
+				{
+					if(!ap[i])dp[i]=(long long)dp[i]*26%mod;
+					ans+=dp[i];
+				}
+			}
+			ans%=mod;
+		}
+		cout<<"Case #"<<ccc<<": "<<ans<<endl;
+	}
+}

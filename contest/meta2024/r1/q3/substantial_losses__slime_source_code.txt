@@ -1,0 +1,87 @@
+#pragma GCC optimize("Ofast","unroll-all-loops","fast-math","no-stack-protector")
+#include <bits/stdc++.h>
+using namespace std;
+#define fi first
+#define se second
+#if 1
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '['; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "]";}
+void _print() {cerr << endl << flush;}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#define DEBUG(x...) cerr << "*["<<__LINE__<<"]\t"<< #x << " = "; _print(x)
+template<class T>
+istream& operator>>(istream& is, vector<T>& v) {
+	int n; is>>n; v.resize(n);
+	for(auto &i:v) is>>i;
+	return is;
+}
+template<class T1,class T2>
+istream& operator>>(istream& is, pair<T1,T2>& p) {
+	is>>p.fi>>p.se;
+	return is;
+}
+template<class T>
+ostream& operator<<(ostream& os, const vector<T>& v) {
+	for(const auto &i:v) os<<i<<' ';
+	return os;
+}
+template<class T1,class T2>
+ostream& operator<<(ostream& os, const pair<T1,T2>& p) {
+	os<<p.fi<<' '<<p.se; return os;
+}
+#endif
+ 
+#define ll long long
+#define mp make_pair
+#define pb push_back
+#define vi vector<ll>
+#define pi pair<int, int>
+#define mod 998244353
+template<typename T> bool chkmin(T &a, T b){return (b < a) ? a = b, 1 : 0;}
+template<typename T> bool chkmax(T &a, T b){return (b > a) ? a = b, 1 : 0;}
+ll ksm(ll a, ll b) {if (b == 0) return 1; ll ns = ksm(a, b >> 1); ns = ns * ns % mod; if (b & 1) ns = ns * a % mod; return ns;}
+
+const int maxn = 1e7 + 5;
+struct frac {
+	ll a, b;
+
+	frac(ll a, ll b) : a(a), b(b) {}
+	bool operator<(const frac &f) const {
+		return a * f.b < b * f.a;
+	}
+};
+vi prms;
+int bpr[maxn];
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+
+    int T;
+    cin >> T;
+    for (int i = 1; i <= T; i++) {
+        ll G, W, L;
+        cin >> W >> G >> L;
+        ll ans = (2 * L + 1) % mod;
+        ans = ans * ((W - G) % mod) % mod;
+        if (ans < 0) ans += mod;
+        cout << "Case #" << i << ": " << ans << endl;
+	}
+    return 0;
+}

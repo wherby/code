@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int solve(){
+    long long w,g,l;
+    cin>>w>>g>>l;
+    constexpr int P=998244353;
+    return ((l*2+1)%P)*((w-g)%P)%P;
+}
+
+int main(){
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++){
+        cout<<"Case #"<<i<<": "<<solve()<<'\n';
+    }
+}
