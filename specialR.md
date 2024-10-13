@@ -376,3 +376,14 @@ algorithm/反向思考改变求职区域
 algorithm/greedy/最大字典序列组合
 
 https://stackoverflow.com/questions/79058530/python-sort-lib-different-behavior-with-different-comparing-functions-some-comp
+
+
+## 对顶堆
+algorithm/advancedDS/对顶堆/doubleHeap.py
+
+https://leetcode.cn/problems/find-x-sum-of-all-k-long-subarrays-ii/description/
+
+## DFS timeout 
+using DP: algorithm/OMOTQuestions/OTForDFS/递推才能过DFSTimeout
+add  dfs.cache_clear() will fix 
+https://leetcode.cn/contest/weekly-contest-419/problems/count-the-number-of-winning-sequences/submissions/572319909/

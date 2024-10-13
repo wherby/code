@@ -1,5 +1,5 @@
 # https://leetcode.cn/problems/minimum-substring-partition-of-equal-character-frequency/submissions/559179066/?envType=daily-question&envId=2024-08-28
-
+# 通过 
 from functools import cache
 from collections import defaultdict,deque
 import sys
@@ -15,7 +15,7 @@ class Solution:
 
         @cache
         def dfs(idx):
-            print(idx)
+            #print(idx)
             if idx ==-1: 
                 return 0
             ret = 10**10 

@@ -1,5 +1,5 @@
 # https://leetcode.cn/problems/minimum-substring-partition-of-equal-character-frequency/submissions/559179066/?envType=daily-question&envId=2024-08-28
-
+# 超出时间限制 因为 verify的时候多用了时间
 from functools import cache
 
 class Solution:
