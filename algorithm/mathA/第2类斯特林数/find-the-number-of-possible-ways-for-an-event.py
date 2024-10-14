@@ -1,4 +1,4 @@
-
+# https://leetcode.cn/problems/find-the-number-of-possible-ways-for-an-event/description/
 mod = 10**9+7
 MX =1001
 s = [[0]*MX for _ in range(MX)]

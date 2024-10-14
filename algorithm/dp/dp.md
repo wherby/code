@@ -2,6 +2,24 @@
 contest/acf/test/q1/q1.py
 
 
+## DP 方向问题
+如果知道边界情况的时候，就能确定dp的方向
+
+比如扔鸡蛋，【# dfs(i,j) 表示用i次扔和j个鸡蛋能测试多少层楼】 这里只有每次一次之后 不同情况的i,j减少，同时 
+```python
+if i ==0 or j ==0:
+    return 0 
+```
+的边界情况
+algorithm/dp/扔鸡蛋/s1.py
+
+如果是计算第2类斯特林数的情况，把N个人分成M组 [# (i,j)表示第i个人的时候，由(i-1,j-1)情况再加一个新组和(i-1,j)情况加入已有的j组两个情况转化而来]，这时候只能从(i,j)是由什么状态转化而来递推更方便
+```
+for i in range(1,MX):
+    for j in range(1,MX):
+        s[i][j] = (s[i-1][j-1] + j * s[i-1][j]) % mod 
+```
+algorithm/mathA/第2类斯特林数/find-the-number-of-possible-ways-for-an-event.py
 
 ## 2D dp 物品可以直接先放入DP 再计算
 https://leetcode.cn/contest/weekly-contest-298/problems/selling-pieces-of-wood/
@@ -43,3 +61,4 @@ class Solution:
                     dp[i][j] = min(dp[i-1][j] + (floor[i] =="1"),dp[i-carpetLen][j-1])
        # print(dp)
         return min(dp[n-1])
+
