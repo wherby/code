@@ -1,5 +1,5 @@
 #pragma GCC optimize("Ofast","unroll-all-loops","fast-math","no-stack-protector")
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
 #define fi first
 #define se second

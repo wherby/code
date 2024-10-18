@@ -62,3 +62,15 @@ class Solution:
        # print(dp)
         return min(dp[n-1])
 
+
+
+## DP 技巧
+
+把DP所有情况计算完成，然后去掉不合法的情况
+
+https://www.facebook.com/codingcompetitions/hacker-cup/2024/round-1/problems/D?source=facebook
+contest/meta2024/r1/q4/substitution_cipher__slime_source_code.cpp
+
+
+https://leetcode.cn/problems/count-the-number-of-inversions/solutions/2953751/python3javacgotypescript-yi-ti-yi-jie-do-73li/?envType=daily-question&envId=2024-10-17
+algorithm/dp/反向dp/count-the-number-of-inversions/index.py

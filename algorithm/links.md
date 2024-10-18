@@ -25,4 +25,9 @@ https://oi-wiki.org/string/ac-automaton/
 https://github.com/liupengsay/PyIsTheBestLang
 
 
+## Lib checker
+https://judge.yosupo.jp/
+
+
+
 

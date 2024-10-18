@@ -1,5 +1,5 @@
 #pragma GCC optimize("O2")
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 const bool FILEMODE = 1;
@@ -39,10 +39,8 @@ void sub(int& x, int y) {
 
 int main () {
   ios_base::sync_with_stdio(0); cin.tie(0);
-  if (FILEMODE) {
-    freopen("in", "r", stdin);
-    freopen("out", "w", stdout);
-  }
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 
   int T;
   cin >> T;
