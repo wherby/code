@@ -1,3 +1,4 @@
+# Compare function
 from functools import cmp_to_key
 def compare(a,b):
     if (a+b)==(b+a):return 0

@@ -387,3 +387,7 @@ https://leetcode.cn/problems/find-x-sum-of-all-k-long-subarrays-ii/description/
 using DP: algorithm/OMOTQuestions/OTForDFS/递推才能过DFSTimeout
 add  dfs.cache_clear() will fix 
 https://leetcode.cn/contest/weekly-contest-419/problems/count-the-number-of-winning-sequences/submissions/572319909/
+
+
+## 可以被计算的放在函数外面 否则可能超时
+https://leetcode.cn/contest/weekly-contest-420/problems/minimum-division-operations-to-make-array-non-decreasing/submissions/
