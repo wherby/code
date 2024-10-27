@@ -1,0 +1,272 @@
+/*
+    author:  Maksim1744
+    created: 19.10.2024 21:22:51
+*/
+
+use std::collections::{BTreeSet, HashMap, HashSet, VecDeque};
+
+use rlib_io::*;
+
+#[derive(Copy, Clone, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
+struct State {
+    i: usize,
+    last: i32,
+    len: i32,
+    cnt: i32,
+}
+
+fn calc_min_f(mut w: Vec<i32>) -> i32 {
+    w.sort();
+    let n = w.len();
+    let mut dp = vec![1e9 as i32; n + 1];
+    dp[0] = 0;
+    for i in 0..n {
+        if i >= 1 {
+            dp[i + 1] = dp[i + 1].min(dp[i - 1] + w[i] - w[i - 1]);
+        }
+        if i >= 2 {
+            dp[i + 1] = dp[i + 1].min(dp[i - 2] + w[i] - w[i - 2]);
+        }
+    }
+    dp[n]
+}
+
+fn calc_real_f(w: &[i32], c: &[i32]) -> i32 {
+    let mut by_c: HashMap<i32, Vec<usize>> = HashMap::new();
+    let n = w.len();
+    for i in 0..n {
+        by_c.entry(c[i]).or_default().push(i);
+    }
+
+    assert!(w.iter().copied().min().unwrap() >= 1);
+    assert!(w.iter().copied().collect::<HashSet<_>>().len() == n);
+
+    let mut ans = 0;
+    for (_, poss) in by_c.iter() {
+        assert!(poss.len() == 2 || poss.len() == 3);
+        let min = poss.iter().copied().map(|i| w[i]).min().unwrap();
+        let max = poss.iter().copied().map(|i| w[i]).max().unwrap();
+        ans += max - min;
+    }
+    ans
+}
+
+fn solve(cin: &mut Reader, cout: &mut Writer, _test: usize) {
+    make_output_macro!(cin, cout);
+
+    let n: usize = cin.read();
+    let mut w: Vec<i32> = cin.read_vec(n);
+    let c: Vec<i32> = cin.read_vec(n);
+
+    // if _test != 2 {
+    //     outln!("");
+    //     return;
+    // }
+
+    let mut by_c: HashMap<i32, Vec<usize>> = HashMap::new();
+    let mut last_shift = 1500;
+    for i in 0..n {
+        by_c.entry(c[i]).or_default().push(i);
+    }
+
+    let mut segs: Vec<((i32, i32), i32)> = Vec::new();
+
+    for (c, poss) in by_c.iter() {
+        let mut v = Vec::new();
+        for &i in poss.iter() {
+            if w[i] != -1 {
+                v.push(w[i]);
+            }
+        }
+        // dbg!(c, &v);
+        if poss.len() > 3 {
+            outln!("No");
+            return;
+        }
+        v.sort();
+        if v.is_empty() {
+            for &i in poss.iter() {
+                w[i] = last_shift;
+                last_shift += 1;
+            }
+            last_shift += 20;
+            continue;
+        }
+
+        segs.push(((v[0], *v.last().unwrap()), *c));
+    }
+
+    segs.sort();
+    // dbg!(&segs);
+    for w in segs.windows(2) {
+        if w[0].0 .1 >= w[1].0 .0 {
+            outln!("No");
+            return;
+        }
+    }
+
+    if segs.is_empty() {
+        outln!("Yes");
+        outln!(w);
+        let u = calc_real_f(&w, &c);
+        let v = calc_min_f(w.clone());
+        assert_eq!(u, v);
+        return;
+    }
+
+    let mut par: HashMap<State, (State, i32)> = HashMap::new();
+    let mut how: HashMap<State, [i32; 3]> = HashMap::new();
+    let mut q: VecDeque<State> = VecDeque::new();
+    let zero_state = State {
+        i: usize::MAX,
+        last: -1000,
+        len: 1,
+        cnt: 2,
+    };
+    q.push_back(zero_state);
+    par.insert(zero_state, (zero_state, 1e9 as i32));
+    while let Some(state) = q.pop_front() {
+        // dbg!(state);
+        if state.i == segs.len() - 1 {
+            let mut cur = state;
+            while cur.i != usize::MAX {
+                let mut avail = how[&cur].iter().copied().filter(|&x| x != -1).collect::<BTreeSet<_>>();
+                let c = segs[cur.i].1;
+                for &i in by_c[&c].iter() {
+                    avail.remove(&w[i]);
+                }
+                for &i in by_c[&c].iter() {
+                    if w[i] == -1 {
+                        w[i] = *avail.iter().next().unwrap();
+                        avail.remove(&w[i]);
+                    }
+                }
+                cur = par[&cur].0;
+            }
+            outln!("Yes");
+            outln!(w);
+            let u = calc_real_f(&w, &c);
+            let v = calc_min_f(w.clone());
+            assert_eq!(u, v);
+            return;
+        }
+
+        let next_i = state.i.wrapping_add(1);
+        let c = segs[next_i].1;
+        let (curl, curr) = segs[next_i].0;
+        let wh = &by_c[&c];
+        let prev_par = par[&state];
+        let prev_bal = prev_par.1;
+        // dbg!(prev_bal);
+        let mut add_state = |next_state: State, bal: i32, v: [i32; 3]| {
+            if let Some(p) = par.get(&next_state) {
+                if bal > p.1 {
+                    par.insert(next_state, (state, bal));
+                    how.insert(next_state, v);
+                }
+            } else {
+                par.insert(next_state, (state, bal));
+                how.insert(next_state, v);
+                q.push_back(next_state);
+            }
+        };
+        let limit = if next_i + 1 == segs.len() { 510 } else { segs[next_i + 1].0 .0 - 1 };
+        if wh.len() == 2 {
+            let mut upd = |l: i32, r: i32| {
+                assert!(l < r);
+                if prev_bal + (l - state.last) < 0 {
+                    return;
+                }
+                let new_bal = prev_bal + (l - state.last) - (r - l);
+                let new_bal = new_bal.min((l - state.last) - (r - l));
+                let next_state = State {
+                    i: next_i,
+                    last: r,
+                    len: r - l,
+                    cnt: 2,
+                };
+                add_state(next_state, new_bal, [l, r, -1]);
+            };
+            if curl != curr {
+                upd(curl, curr);
+            } else {
+                for second in (state.last + 1).max(1)..=limit {
+                    let l = curl.min(second);
+                    let r = curl.max(second);
+                    if l == r {
+                        continue;
+                    }
+                    upd(l, r);
+                }
+            }
+        } else if wh.len() == 3 {
+            let mut upd = |l: i32, m: i32, r: i32| {
+                assert!(l < m);
+                assert!(m < r);
+                if prev_bal + (l - state.last) - (m - l) < 0 {
+                    return;
+                }
+                if (l - state.last) - (m - l) < 0 {
+                    return;
+                }
+                let new_bal = -(r - m);
+                let next_state = State {
+                    i: next_i,
+                    last: r,
+                    len: r - m,
+                    cnt: 3,
+                };
+                add_state(next_state, new_bal, [l, m, r]);
+            };
+            if curl != curr {
+                let mut mid = None;
+                for &i in by_c[&c].iter() {
+                    if w[i] == -1 {
+                        break;
+                    } else if curl < w[i] && w[i] < curr {
+                        mid = Some(w[i]);
+                        break;
+                    }
+                }
+                if let Some(mid) = mid {
+                    upd(curl, mid, curr);
+                } else {
+                    for mid in (state.last + 1).max(1)..=limit {
+                        if mid == curl || mid == curr {
+                            continue;
+                        }
+                        let l = curl.min(mid);
+                        let r = curr.max(mid);
+                        let m = curl + curr + mid - l - r;
+                        upd(l, m, r);
+                    }
+                }
+            } else {
+                for a in (state.last + 1).max(1)..=limit {
+                    for b in a + 1..=limit {
+                        if a == curl || b == curl {
+                            continue;
+                        }
+                        let l = a.min(curl);
+                        let r = b.max(curr);
+                        let m = a + b + curl - l - r;
+                        upd(l, m, r);
+                    }
+                }
+            }
+        } else {
+            unreachable!();
+        }
+    }
+    outln!("No");
+}
+
+fn main() {
+    make_io!(cin, cout);
+    let tests: usize = cin.read();
+    for test in 1..=tests {
+        eprintln!("Solving {}/{}", test, tests);
+        out!(format!("Case #{}: ", test));
+        solve(&mut cin, &mut cout, test);
+    }
+}

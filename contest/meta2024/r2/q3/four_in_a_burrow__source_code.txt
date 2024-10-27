@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <omp.h>
+
+char compute(char s[10][10], int dp[7][7][7][7][7][7][7]) {
+    int cur=0;
+    int i,j,k,l,p;
+    for(i=0;i<7;i++){
+        //puts(s[i]);
+    }
+    //puts("");
+    int a,b,c,d,e,f,g,h,t;
+    for(a=0;a<=6;a++){
+    for(b=0;b<=6;b++){
+    for(c=0;c<=6;c++){
+    for(d=0;d<=6;d++){
+    for(e=0;e<=6;e++){
+    for(f=0;f<=6;f++){
+    for(g=0;g<=6;g++){
+        int t = a+b+c+d+e+f+g;
+        if(!t){
+            dp[a][b][c][d][e][f][g] = 1;
+            continue;
+        }
+        auto F = [=](int x, int y) {
+            int sel = x==0 ? a : x==1 ? b : x==2 ? c : x==3 ? d : x==4 ? e : x==5 ? f : g;
+            if(y >= sel) return 'X';
+            else return s[x][y];
+        };
+
+        auto same = [](char a,char b,char c,char d) {
+            return a!='X'&&a==b&&a==c&&a==d;
+        };
+        int done = 0;
+        int done_prev = 0;
+        for(i=0;i<4;i++){
+            for(j=0;j<6;j++){
+                if(same(F(i,j),F(i+1,j),F(i+2,j),F(i+3,j)))
+                    done|=(F(i,j) == 'C' ? 4 : 8);
+            }
+        }
+        for(i=0;i<7;i++){
+            for(j=0;j<3;j++){
+                if(same(F(i,j),F(i,j+1),F(i,j+2),F(i,j+3))) 
+                    done|=(F(i,j) == 'C' ? 4 : 8);
+            }
+        }
+        for(i=0;i<4;i++){
+            for(j=0;j<3;j++){
+                if(same(F(i,j),F(i+1,j+1),F(i+2,j+2),F(i+3,j+3))) 
+                    done|=(F(i,j) == 'C' ? 4 : 8);
+            }
+        }
+        for(i=0;i<4;i++){
+            for(j=3;j<6;j++){
+                if(same(F(i,j),F(i+1,j-1),F(i+2,j-2),F(i+3,j-3)))
+                    done|=(F(i,j) == 'C' ? 4 : 8);
+            }
+        }
+        bool valid = false;
+        for(h=0;h<7;h++){
+            if(h==0&&a==0) continue;
+            if(h==1&&b==0) continue;
+            if(h==2&&c==0) continue;
+            if(h==3&&d==0) continue;
+            if(h==4&&e==0) continue;
+            if(h==5&&f==0) continue;
+            if(h==6&&g==0) continue;
+            int sel = h==0 ? a : h==1 ? b : h==2 ? c : h==3 ? d : h==4 ? e : h==5 ? f : g;
+            if(t%2&&s[h][sel-1]=='F') continue;
+            if(t%2==0&&s[h][sel-1]=='C') continue;
+            int v = dp[a-(h==0)][b-(h==1)][c-(h==2)][d-(h==3)][e-(h==4)][f-(h==5)][g-(h==6)];
+            if(v & 1){
+                valid = true;
+                done_prev |= v &~ 1;
+            }
+        }
+
+        if(valid && !done_prev && done){
+            dp[a][b][c][d][e][f][g] = 1 | done;
+        } else if(valid && done_prev && done){
+            dp[a][b][c][d][e][f][g] = 1 | done_prev;
+        } else if(valid){
+            dp[a][b][c][d][e][f][g] = 1;
+        }
+    }}}}}}}
+    if(dp[6][6][6][6][6][6][6]==13) return '?';
+    if(dp[6][6][6][6][6][6][6]==5) return 'C';
+    if(dp[6][6][6][6][6][6][6]==9) return 'F';
+    if(dp[6][6][6][6][6][6][6]==1) return '0';
+    return '0';
+}
+char S[90][10][10];
+int DP[90][7][7][7][7][7][7][7];
+char results[90];
+int main(){
+    char s[6][8];
+    int T;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++) {
+        for(int k=0; k<7;k++) S[i][k][6]=0;
+        for(int j = 0; j < 6; j++) {
+            scanf("%s",s[j]);
+            for(int k=0; k<7;k++){
+                S[i][k][5-j] = s[j][k];
+
+            }
+        }   
+    }
+
+   // #pragma omp parallel for
+    for (int i = 0; i < T; ++i) {
+        results[i] = compute(S[i], DP[i]); 
+    }
+
+    std::ofstream outFile("pb_output.txt");
+    for (int i = 0; i < T; i++) {
+        outFile << "Case #" << (i+1) << ": " << results[i] << "\n";
+    }
+    outFile.close();
+
+    return 0;
+}

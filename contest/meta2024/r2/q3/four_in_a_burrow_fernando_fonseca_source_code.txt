@@ -1,0 +1,303 @@
+#ifdef LOCAL
+#define _GLIBCXX_DEBUG 1
+#define dbg(...) cerr << "LINE(" << __LINE__ << ") -> [" << #__VA_ARGS__ << "]: [", DBG(__VA_ARGS__)
+#else
+#define dbg(...) 0
+#endif
+
+#if 0
+    #include <ext/pb_ds/assoc_container.hpp>
+    #include <ext/pb_ds/tree_policy.hpp>
+ 
+    template<class T>
+    using ordered_set = __gnu_pbds::tree<T, __gnu_pbds::null_type, std::less<T>, __gnu_pbds::rb_tree_tag,
+        __gnu_pbds::tree_order_statistics_node_update>;
+#endif
+
+#include <vector> 
+#include <list> 
+#include <map> 
+#include <set> 
+#include <queue>
+#include <stack> 
+#include <bitset> 
+#include <algorithm> 
+#include <numeric> 
+#include <utility> 
+#include <sstream> 
+#include <iostream> 
+#include <iomanip> 
+#include <cstdio> 
+#include <cmath> 
+#include <cstdlib> 
+#include <ctime> 
+#include <cstring>
+#include <random>
+#include <chrono>
+#include <cassert>
+#include <future>
+
+using namespace std;
+ 
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define sz(x) (int)(x).size()
+#define all(x) begin(x), end(x)
+#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
+#define F0R(i,a) FOR(i,0,a)
+#define REP(i,n) for(int (i)=0;(i)<(int)(n);(i)++)
+
+#define each(a,x) for (auto& a: x)
+#define tcT template<class T
+#define tcTU tcT, class U
+#define tcTUU tcT, class ...U
+template<class T> using V = vector<T>; 
+template<class T, size_t SZ> using AR = array<T,SZ>;
+
+typedef string str;
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+ 
+template<typename T, typename U> T &ctmax(T &x, const U &y){ return x = max<T>(x, y); }
+template<typename T, typename U> T &ctmin(T &x, const U &y){ return x = min<T>(x, y); }
+ 
+mt19937 rng((unsigned)chrono::steady_clock::now().time_since_epoch().count());
+ 
+#define ts to_string
+str ts(char c) { return str(1,c); }
+str ts(bool b) { return b ? "true" : "false"; }
+str ts(const char* s) { return (str)s; }
+str ts(str s) { return s; }
+str ts(vector<bool> v) { str res = "{"; F0R(i,sz(v)) res += char('0'+v[i]);	res += "}"; return res; }
+template<size_t SZ> str ts(bitset<SZ> b) { str res = ""; F0R(i,SZ) res += char('0'+b[i]); return res; }
+template<class A, class B> str ts(pair<A,B> p);
+template<class T> str ts(T v) { bool fst = 1; str res = "{"; for (const auto& x: v) {if (!fst) res += ", ";	fst = 0; res += ts(x);}	res += "}"; return res;}
+template<class A, class B> str ts(pair<A,B> p) {return "("+ts(p.first)+", "+ts(p.second)+")"; }
+ 
+template<class A> void pr(A x) { cout << ts(x); }
+template<class H, class... T> void pr(const H& h, const T&... t) { pr(h); pr(t...); }
+void ps() { pr("\n"); }
+template<class H, class... T> void ps(const H& h, const T&... t) { pr(h); if (sizeof...(t)) pr(" "); ps(t...); }
+ 
+void DBG() { cerr << "]" << endl; }
+template<class H, class... T> void DBG(H h, T... t) {cerr << ts(h); if (sizeof...(t)) cerr << ", ";	DBG(t...); }
+
+tcTU> void re(pair<T,U>& p);
+tcT> void re(V<T>& v);
+tcT, size_t SZ> void re(AR<T,SZ>& a);
+
+tcT> void re(T& x) { cin >> x; }
+void re(double& d) { str t; re(t); d = stod(t); }
+void re(long double& d) { str t; re(t); d = stold(t); }
+tcTUU> void re(T& t, U&... u) { re(t); re(u...); }
+
+tcTU> void re(pair<T,U>& p) { re(p.first,p.second); }
+tcT> void re(V<T>& x) { each(a,x) re(a); }
+tcT, size_t SZ> void re(AR<T,SZ>& x) { each(a,x) re(a); }
+tcT> void rv(int n, V<T>& x) { x.rsz(n); re(x); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+struct frac {
+    ll num, den;
+    bool operator<(frac ot) {
+        return num*ot.den < den*ot.num;
+    }
+};
+
+int dx[] = {1, 1, 1, 0};
+int dy[] = {-1, 1, 0, 1};
+
+struct testcase {
+    int id;
+    vector<string> board;
+
+    void read(int ID) { // read in test data
+        id=ID;
+        cerr << "read: " << id << endl;
+        board.resize(6);
+        re(board);
+        reverse(all(board));
+    }
+    
+    bool canC = false;
+    bool canF = false;
+
+    
+    int isWin(array<int, 7> state) {
+        bool db = (state == array<int,7>{0, 3, 2, 3, 7, 3, 0});
+        int canWin = 0;
+
+
+        for (int r = 0; r < 6; r++) {
+            for (int c = 0; c < 7; c++) {
+                for (int d = 0; d < 4; d++) {
+                    bool ok = true;
+                    for (int i = 0; i < 4; i++) {
+                        int nx = r + dx[d]*i;
+                        int ny = c + dy[d]*i;
+                        //if (db && r == 0) dbg(r,c,d,i,nx,ny,ok);
+                        if (0 <= ny && ny < 7 && 0 <= nx && nx < state[ny]  && board[nx][ny]==board[r][c]) continue;
+                        else ok = false;
+                    }
+                    //if (db && r == 0) dbg(r, c, d, canWin);
+                    if (ok) {
+                        if (board[r][c]=='C') canWin |= 1;
+                        else canWin |= 2;
+                    }
+                }
+            }
+        }
+
+        return canWin;
+    }
+
+    char ans;
+    void solve() {
+        dbg(board);
+        set< array<int, 7> > seen;
+        queue< array<int, 7> > q;
+
+        q.push( {6, 6, 6, 6, 6, 6, 6} );
+        seen.insert( {6, 6, 6, 6, 6, 6, 6} );
+
+        array<int, 4> seenWin = {0,0,0,0};
+
+        while (!q.empty()) {
+            array<int, 7> cur = q.front();
+            q.pop();
+
+            int cw = isWin(cur);
+            if (!cw) continue;
+            if (seenWin[cw] == 0) {
+                dbg(cur, cw);
+            }
+            seenWin[cw] = true;
+
+
+            int par = 0;
+            for (int x : cur) par += x;
+            par %= 2;
+            char nxt = (par ? 'C' : 'F');
+            //dbg(cur,nxt);
+
+            for (int i = 0; i < 7; i++) {
+                //dbg(i, cur[i], board[cur[i]-1][i]);
+                if (cur[i]>0 && board[cur[i]-1][i] == nxt) {
+                    array<int, 7> curcur = cur;
+                    curcur[i]--;
+
+                    if (!seen.count(curcur)) {
+                        seen.insert(curcur);
+                        q.push(curcur);
+                    }
+                }
+            }
+        }
+
+        if (seenWin[2] && seenWin[1]) ans = '?';
+        else if (seenWin[2]) ans = 'F';
+        else if (seenWin[1]) ans = 'C';
+        else ans = '0';
+    }
+
+    void write() {
+        if(id) cout << '\n';
+        cout << "Case #" << id+1 << ": ";
+        cout << ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+vector<testcase> tests;
+const int PARALLEL=8;
+void paralleltests(int l=0, int r=PARALLEL-1) {
+    if (l==r) {
+        for(int i=l;i<(int)tests.size();i+=PARALLEL) {
+            tests[i].solve();
+        }
+        return;
+    }
+    ll mid = (l+r)/2;
+    auto handle = std::async(launch::async,paralleltests, l,mid);
+    paralleltests(mid+1,r);
+    handle.wait();
+}
+struct timetracker {
+	chrono::microseconds timetaken;
+	std::chrono::steady_clock::time_point begin;
+	void begintimer() {
+		begin = chrono::steady_clock::now();
+	}
+	chrono::microseconds thismovedur() { return chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin); }
+	void endtimer() {
+		timetaken += thismovedur();
+	}
+} TMT;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    TMT.begintimer();
+    int T=8; 
+    cin >> T;
+    tests.resize(T);
+    {
+    int id=0;
+    for(auto& t : tests) t.read(id++);
+    }
+    #ifdef LOCAL
+    for(auto& t : tests) t.solve();
+    #else
+    paralleltests();
+    #endif
+    
+    for(auto& t : tests) {
+        t.write();
+    }
+    TMT.endtimer();
+    cerr << '\n' << TMT.timetaken.count()*1e-6 << " seconds\n";
+}

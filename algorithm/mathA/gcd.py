@@ -1,4 +1,6 @@
 # TDK gcd
+# 如果求多个gcd,把初值设置为0， algorithm/array/不相邻的subsequce/find-the-number-of-subsequences-with-equal-gcd.py 
+# 如果求多个lcm,初始值设置为1,
 def gcd(a,b):
     while b:
         a,b = b,a %b

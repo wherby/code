@@ -1,6 +1,3 @@
-
-
-
 from functools import cache
 g =[]
 
@@ -33,19 +30,39 @@ def getResult(lst,tls):
         if(all(valid(x,y,tls) for x,y in item)):
             a1,a2,a3,a4 = item
             if g[a1[0]][a1[1]] == g[a2[0]][a2[1]] == g[a3[0]][a3[1]] == g[a4[0]][a4[1]]:
+                #print(item)
                 return g[a1[0]][a1[1]]
          
+lst = -1
+
+rets = set([])
 
 @cache
-def dfs(state,lst):
+def dfs(state):
     #print(g)
+    global lst,rets
     ls = []
     for i in range(7):
         ls.append((state>>(i*3) )%8)
     if lst != -1:
         C= getResult(lst, ls)
-        if C:
-            return C
+        nxx =[]
+        for i in range(7):
+            if ls[i] <6:
+                nxx.append(g[ls[i]][i])
+        t = sum(ls)
+        isG = True
+        nxx= list(set(nxx))
+        if len(nxx) > 0:
+            if t%2 ==0:
+                if len(nxx) ==1 and nxx[0]=="F":
+                    isG =False
+            else:
+                if len(nxx) ==1 and nxx[0]=="C":
+                    isG =False
+        if C and isG:
+            rets.add(C)
+            return 
     t = sum(ls)
     if t == 72:
         return "0"
@@ -54,19 +71,21 @@ def dfs(state,lst):
         for i,a in enumerate(ls):
             #print(i,a,g)
             if a <6 and g[a][i] == "C":
-                ret.extend(dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)),i))
+                lst = i
+                dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)))
     else:
         for i,a in enumerate(ls):
             #print(i,a,g)
             if a <6 and g[a][i] == "F":
-                ret.extend(dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)),i))
-    ret = set(ret)
-    return ret
+                lst =i
+                dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)))
 
 
+rets = set([])
 
 def resolve():
-    global g
+    global g,rets
+    rets= set([])
     inp = input()
     g =[]
     for _ in range(6):
@@ -77,7 +96,11 @@ def resolve():
     cnt = 0 
     #print(g)
     #dfs(43)
-    ret = dfs(0,1)
+    lst =-1
+    
+    dfs(0)
+    ret = set(rets)
+    print(ret)
     dfs.cache_clear()
     if len(ret) ==1:
         return list(ret)[0]

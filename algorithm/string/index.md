@@ -18,4 +18,7 @@ https://wherby.github.io/code/string/aho_corasick.html
 
 
 # Manachers 查找一个字符串的子串是否为回文
+
 algorithm/string/manachers/check-if-dfs-strings-are-palindromes.py
+
+用StringHash algorithm/string/manachers/check-if-dfs-strings-are-palindromes3.py

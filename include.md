@@ -18,6 +18,7 @@ from math import gcd
 from heapq import heapify,heappop,heappush 
 
 from math import inf
+from itertools import pairwise
 
 ## accumulation
 from itertools import accumulate
@@ -31,7 +32,7 @@ from sortedcontainers import SortedDict,SortedList
 self.ls =SortedList()
 
 
-from itertools import pairwise
+
 
 
 ## #BS

@@ -1,0 +1,99 @@
+#include<iostream>
+#include<array>
+#include<map>
+#include<cassert>
+using namespace std;
+using dat=array<int,7>;
+string S[6];
+int win;
+char vis[7][7][7][7][7][7][7];
+//map<dat,bool>vis;
+bool dfs(dat a,int t,bool f)
+{
+	if(vis[a[0]][a[1]][a[2]][a[3]][a[4]][a[5]][a[6]]!=0)
+	{
+		return vis[a[0]][a[1]][a[2]][a[3]][a[4]][a[5]][a[6]]==1;
+	}
+	//if(vis.find(a)!=vis.end())return vis[a];
+	auto check=[&](int i0,int j0,int i1,int j1,int i2,int j2,int i3,int j3){
+		if(j0<0||j0>=7)return false;
+		if(j1<0||j1>=7)return false;
+		if(j2<0||j2>=7)return false;
+		if(j3<0||j3>=7)return false;
+		if(i0<0||i0>=a[j0])return false;
+		if(i1<0||i1>=a[j1])return false;
+		if(i2<0||i2>=a[j2])return false;
+		if(i3<0||i3>=a[j3])return false;
+		return S[i0][j0]==S[i1][j1]&&S[i1][j1]==S[i2][j2]&&S[i2][j2]==S[i3][j3];
+	};
+	bool ok=false;
+	bool all=true;
+	for(int i=0;i<7;i++)if(a[i]<6)
+	{
+		all=false;
+		char c=S[a[i]][i];
+		if("CF"[t]!=c)continue;
+		a[i]++;
+		bool w=false;
+		for(int j=0;j<=3;j++)
+		{//j..j+3
+			if(check(a[i]-1,j,a[i]-1,j+1,a[i]-1,j+2,a[i]-1,j+3))
+			{//hor
+				w=true;
+				break;
+			}
+		}
+		{//var
+			if(check(a[i]-1,i,a[i]-2,i,a[i]-3,i,a[i]-4,i))
+			{
+				w=true;
+			}
+		}
+		{//diag
+			for(int j=-3;j<=0;j++)
+			{
+				{
+					int x=a[i]-1+j,y=i+j;
+					if(check(x,y,x+1,y+1,x+2,y+2,x+3,y+3))
+					{
+						w=true;
+						break;
+					}
+				}
+				{
+					int x=a[i]-1+j,y=i-j;
+					if(check(x,y,x+1,y-1,x+2,y-2,x+3,y-3))
+					{
+						w=true;
+						break;
+					}
+				}
+			}
+		}
+		if(dfs(a,1-t,f||w))
+		{
+			ok=true;
+			if(!f&&w)win|=1<<t;
+		}
+		a[i]--;
+	}
+	if(all)ok=true;
+	vis[a[0]][a[1]][a[2]][a[3]][a[4]][a[5]][a[6]]=ok?1:2;
+	return ok;
+}
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int TTT;cin>>TTT;
+	for(int ccc=1;ccc<=TTT;ccc++)
+	{
+		for(int i=0;i<6;i++)cin>>S[5-i];
+		win=0;
+		//vis.clear();
+		for(int a=0;a<7;a++)for(int b=0;b<7;b++)for(int c=0;c<7;c++)for(int d=0;d<7;d++)for(int e=0;e<7;e++)for(int f=0;f<7;f++)for(int g=0;g<7;g++)vis[a][b][c][d][e][f][g]=0;
+		dat t={};
+		dfs(t,0,false);
+		cout<<"Case #"<<ccc<<": "<<"0CF?"[win]<<"\n";
+	}
+}

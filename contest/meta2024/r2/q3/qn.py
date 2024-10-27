@@ -6,6 +6,7 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 filename = "input/four_in_a_burrow_input.txt"
+filename = "input/wrong1.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT

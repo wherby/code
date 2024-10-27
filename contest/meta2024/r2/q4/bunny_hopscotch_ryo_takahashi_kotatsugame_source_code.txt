@@ -1,0 +1,70 @@
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<cassert>
+using namespace std;
+int R,C;
+int B[800][800];
+vector<pair<int,int> >poss[800*800];
+long long ok[888],imos[888];
+int S[801][801];
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int TTT;cin>>TTT;
+	for(int ccc=1;ccc<=TTT;ccc++)
+	{
+		long long K;
+		cin>>R>>C>>K;
+		for(int i=0;i<R*C;i++)poss[i].clear();
+		int md=max(R-1,C-1);
+		for(int d=0;d<=md;d++)ok[d]=imos[d]=0;
+		for(int i=0;i<R;i++)for(int j=0;j<C;j++)
+		{
+			cin>>B[i][j];
+			B[i][j]--;
+			poss[B[i][j]].push_back(make_pair(i,j));
+			for(int d=1;d<=md;d++)
+			{
+				int lx=max(0,i-d),rx=min(R-1,i+d);
+				int ly=max(0,j-d),ry=min(C-1,j+d);
+				ok[d]+=(rx-lx+1)*(ry-ly+1)-1;
+			}
+		}
+		const int W=sqrt(R*C);
+		for(int i=0;i<R*C;i++)if(poss[i].size()<=W)
+		{
+			const int n=poss[i].size();
+			for(int j=0;j<n;j++)for(int k=j+1;k<n;k++)
+			{
+				int dx=abs(poss[i][j].first-poss[i][k].first);
+				int dy=abs(poss[i][j].second-poss[i][k].second);
+				imos[max(dx,dy)]+=2;
+			}
+		}
+		for(int d=1;d<md;d++)imos[d+1]+=imos[d];
+		for(int d=1;d<=md;d++)ok[d]-=imos[d];
+		for(int i=0;i<R*C;i++)if(poss[i].size()>W)
+		{
+			for(int i=0;i<=R;i++)for(int j=0;j<=C;j++)S[i][j]=0;
+			for(auto[x,y]:poss[i])S[x+1][y+1]++;
+			for(int i=0;i<=R;i++)for(int j=0;j<C;j++)S[i][j+1]+=S[i][j];
+			for(int i=0;i<R;i++)for(int j=0;j<=C;j++)S[i+1][j]+=S[i][j];
+			for(auto[x,y]:poss[i])
+			{
+				for(int d=1;d<=md;d++)
+				{
+					int lx=max(0,x-d),rx=min(R-1,x+d)+1;
+					int ly=max(0,y-d),ry=min(C-1,y+d)+1;
+					ok[d]-=S[rx][ry]-S[rx][ly]-S[lx][ry]+S[lx][ly]-1;
+				}
+			}
+		}
+		//for(int d=1;d<=md;d++)cout<<ok[d]<<" ";cout<<endl;
+		assert(K<=ok[md]);
+		int d=1;
+		while(ok[d]<K)d++;
+		cout<<"Case #"<<ccc<<": "<<d<<endl;
+	}
+}

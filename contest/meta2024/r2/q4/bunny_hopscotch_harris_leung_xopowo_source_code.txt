@@ -1,0 +1,87 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define fi first
+#define se second
+typedef long long ll;
+int n,m;
+ll k;
+vector<pair<int,int> >g[805*805];
+int a[805][805];
+int sz;
+int ro[805];
+ll pf[805][805];
+ll res[805];
+void solve(int rr){
+	cin >> n >> m >> k;
+	for(int i=1; i<=n*m ;i++){
+		g[i].clear();
+	}
+	int z=max(n,m);
+	for(int i=0; i<=max(n,m) ;i++){
+		res[i]=0;
+	}
+	for(int i=1; i<=n ;i++){
+		for(int j=1; j<=m ;j++){
+			for(int r=0; r<=z ;r++){
+				int x1=max(i-r,1);
+				int x2=min(i+r,n);
+				int y1=max(j-r,1);
+				int y2=min(j+r,m);
+				res[r]+=1LL*(x2-x1+1)*(y2-y1+1);
+			}
+		}
+	}
+	for(int i=1; i<=n ;i++){
+		for(int j=1; j<=m ;j++){
+			cin >> a[i][j];
+			g[a[i][j]].push_back({i,j});
+		}
+	}
+	for(int i=1; i<=n*m ;i++){
+		if(g[i].empty()) continue;
+		sz=0;
+		for(int j=0; j<g[i].size() ;j++){
+			if(j==0 || g[i][j].fi!=g[i][j-1].fi){
+				ro[++sz]=g[i][j].fi;
+			}
+			pf[sz][g[i][j].se]++;
+		}
+		for(int j=1; j<=sz ;j++){
+			for(int k=1; k<=m ;k++){
+				pf[j][k]=pf[j-1][k]+pf[j][k-1]-pf[j-1][k-1]+pf[j][k];
+			}
+		}
+		int ptr=1;
+		for(auto c:g[i]){
+			while(c.fi!=ro[ptr]) ++ptr;
+			int pl=ptr,pr=ptr;
+			for(int r=0; r<=z ;r++){
+				while(pl>1 && ro[ptr]-ro[pl-1]<=r) --pl;
+				while(pr<sz && ro[pr+1]-ro[ptr]<=r) ++pr;
+				int y1=max(1,c.se-r);
+				int y2=min(m,c.se+r);
+				res[r]-=pf[pr][y2]-pf[pr][y1-1]-pf[pl-1][y2]+pf[pl-1][y1-1];
+			}
+		}
+		for(int j=1; j<=sz ;j++){
+			for(int k=1; k<=m ;k++){
+				pf[j][k]=0;
+			}
+		}
+	}
+	ll ans=0;
+	for(int i=1; i<=z ;i++){
+		if(res[i]<k) ans=i;
+	}
+	cout << "Case #" << rr << ": " << ans+1 << '\n';
+}
+int main(){
+	ios::sync_with_stdio(false);cin.tie(0);
+	freopen("jnput.txt","r",stdin);
+	freopen("jutput.txt","w",stdout);
+	int t;cin >> t;
+	for(int i=1; i<=t ;i++){
+		solve(i);
+	}
+}
+

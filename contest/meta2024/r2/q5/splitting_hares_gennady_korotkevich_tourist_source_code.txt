@@ -1,0 +1,190 @@
+/**
+ *    author:  tourist
+ *    created: 19.10.2024 12:15:16
+**/
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int tt;
+  cin >> tt;
+  for (int qq = 1; qq <= tt; qq++) [&]() -> void {
+    cout << "Case #" << qq << ": ";
+    int n;
+    cin >> n;
+    vector<int> w(n);
+    for (int i = 0; i < n; i++) {
+      cin >> w[i];
+    }
+    vector<int> c(n);
+    for (int i = 0; i < n; i++) {
+      cin >> c[i];
+      --c[i];
+    }
+    const int inf = int(1e6);
+    vector<int> cnt(n);
+    vector<int> low(n, inf);
+    vector<int> high(n, -1);
+    for (int i = 0; i < n; i++) {
+      cnt[c[i]] += 1;
+      if (w[i] != -1) {
+        low[c[i]] = min(low[c[i]], w[i]);
+        high[c[i]] = max(high[c[i]], w[i]);
+      }
+    }
+    vector<int> cols;
+    for (int i = 0; i < n; i++) {
+      if (cnt[i] != 0 && cnt[i] != 2 && cnt[i] != 3) {
+        cout << "No" << '\n';
+        return;
+      }
+      if (high[i] != -1) {
+        cols.push_back(i);
+      }
+    }
+    sort(cols.begin(), cols.end(), [&](int i, int j) {
+      return low[i] < low[j];
+    });
+    int sz = int(cols.size());
+    for (int i = 0; i < sz - 1; i++) {
+      if (high[cols[i]] >= low[cols[i + 1]]) {
+        cout << "No" << '\n';
+        return;
+      }
+    }
+    vector<vector<vector<int>>> options(sz);
+    for (int it = 0; it < sz; it++) {
+      int col = cols[it];
+      vector<int> have;
+      for (int i = 0; i < n; i++) {
+        if (c[i] == col && w[i] != -1) {
+          have.push_back(w[i]);
+        }
+      }
+      sort(have.begin(), have.end());
+      assert(cnt[col] == 2 || cnt[col] == 3);
+      if (cnt[col] == 2) {
+        assert(have.size() == 1 || have.size() == 2);
+        if (have.size() == 1) {
+          options[it].push_back({have[0] - 1, have[0]});
+          options[it].push_back({have[0], have[0] + 1});
+        }
+        if (have.size() == 2) {
+          options[it].push_back(have);
+        }
+      } else {
+        assert(have.size() >= 1 && have.size() <= 3);
+        if (have.size() == 1) {
+          options[it].push_back({have[0] - 2, have[0] - 1, have[0]});
+          options[it].push_back({have[0] - 1, have[0], have[0] + 1});
+          options[it].push_back({have[0], have[0] + 1, have[0] + 2});
+        }
+        if (have.size() == 2) {
+          if (have[1] - have[0] == 1) {
+            options[it].push_back({have[0] - 1, have[0], have[1]});
+            options[it].push_back({have[0], have[1], have[1] + 1});
+          } else {
+            for (int x = have[0] + 1; x <= have[1] - 1; x++) {
+              options[it].push_back({have[0], x, have[1]});
+            }
+          }
+        }
+        if (have.size() == 3) {
+          options[it].push_back(have);
+        }
+      }
+    }
+    typedef tuple<int, int, int> State;
+    vector<map<State, pair<State, int>>> dp(sz + 1);
+    dp[0][{0, inf, inf}] = {{-1, -1, -1}, -1};
+    for (int it = 0; it < sz; it++) {
+      for (auto& [state, val] : dp[it]) {
+        for (int idx = 0; idx < int(options[it].size()); idx++) {
+          auto& opt = options[it][idx];
+          auto [last, f2, f1] = state;
+          if (opt[0] <= last) {
+            continue;
+          }
+          bool fail = false;
+          int f0 = 0;
+          for (int x : opt) {
+            f0 -= x;
+            if (x == opt.back()) {
+              if ((opt.size() == 2 && f2 < f1) || (opt.size() == 3 && f2 > f1)) {
+                fail = true;
+                break;
+              }
+            }
+            int f_new = min(f2, f1) + x;
+            f2 = f1;
+            f1 = f0;
+            f0 = f_new;
+          }
+          if (fail) {
+            continue;
+          }
+          f2 -= f0;
+          f1 -= f0;
+          State new_state = {opt.back(), f2, f1};
+          pair new_val = {state, idx};
+          auto iter = dp[it + 1].find(new_state);
+          if (iter != dp[it + 1].end() && new_val <= iter->second) {
+            continue;
+          }
+          dp[it + 1][new_state] = new_val;
+        }
+      }
+    }
+    if (dp[sz].empty()) {
+      cout << "No" << '\n';
+      return;
+    }
+    auto state = dp[sz].begin()->first;
+    for (int it = sz - 1; it >= 0; it--) {
+      auto [old_state, idx] = dp[it + 1][state];
+      auto& vec = options[it][idx];
+      set<int> s(vec.begin(), vec.end());
+      for (int i = 0; i < n; i++) {
+        if (c[i] == cols[it] && w[i] != -1) {
+          assert(s.find(w[i]) != s.end());
+          s.erase(w[i]);
+        }
+      }
+      for (int i = 0; i < n; i++) {
+        if (c[i] == cols[it] && w[i] == -1) {
+          assert(!s.empty());
+          w[i] = *s.begin();
+          s.erase(s.begin());
+        }
+      }
+      state = old_state;
+    }
+    int ptr = 5000;
+    for (int col = 0; col < n; col++) {
+      if (cnt[col] > 0 && high[col] == -1) {
+        for (int i = 0; i < n; i++) {
+          if (c[i] == col) {
+            assert(w[i] == -1);
+            w[i] = ptr++;
+          }
+        }
+        ptr += 30;
+      }
+    }
+    cout << "Yes" << '\n';
+    for (int i = 0; i < n; i++) {
+      assert(1 <= w[i] && w[i] <= 10000);
+      cout << w[i] << " \n"[i == n - 1];
+    }
+  }();
+  return 0;
+}

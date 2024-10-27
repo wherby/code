@@ -1,0 +1,245 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<cassert>
+using namespace std;
+int N,W[300],C[300];
+vector<int>ws[300];
+int dp[333];
+bool check(const vector<int>&Ws,int need)
+{
+	vector<int>T=Ws;
+	sort(T.begin(),T.end());
+	assert(T==Ws);
+	dp[0]=0;
+	dp[1]=1e9;
+	for(int i=1;i<Ws.size();i++)
+	{
+		dp[i+1]=dp[i-1]+Ws[i]-Ws[i-1];
+		if(i>=2)dp[i+1]=min(dp[i+1],dp[i-2]+Ws[i]-Ws[i-2]);
+	}
+	int ans=dp[Ws.size()];
+	if(ans!=need)
+	{
+		//for(const int v:Ws)cout<<v<<" ";cout<<endl;
+		//cout<<"ans="<<ans<<" need="<<need<<endl;
+	}
+	assert(ans<=need);
+	return ans==need;
+}
+vector<int>solve()
+{
+	cin>>N;
+	for(int i=0;i<N;i++)cin>>W[i];
+	for(int i=0;i<N;i++)
+	{
+		cin>>C[i];
+		C[i]--;
+	}
+	vector<vector<int> >none;
+	vector<pair<int,vector<int> > >ext;
+	{
+		vector<vector<int> >ws(N);
+		for(int i=0;i<N;i++)
+		{
+			ws[C[i]].push_back(W[i]==-1?~i:W[i]);
+		}
+		for(int i=0;i<N;i++)if(!ws[i].empty())
+		{
+			assert(ws[i].size()>=2);
+			if(ws[i].size()>=4)return vector<int>();
+			sort(ws[i].begin(),ws[i].end());
+			if(ws[i].size()==2)
+			{
+				int x=ws[i][0],y=ws[i][1];
+				if(y<0)
+				{
+					none.push_back(ws[i]);
+				}
+				else ext.push_back(make_pair(y,ws[i]));
+			}
+			else
+			{
+				int x=ws[i][0],y=ws[i][1],z=ws[i][2];
+				if(z<0)
+				{
+					none.push_back(ws[i]);
+				}
+				else ext.push_back(make_pair(z,ws[i]));
+			}
+		}
+	}
+	sort(ext.begin(),ext.end());
+	vector<int>ret(W,W+N);
+	vector<int>Ws;
+	int cur=0;
+	for(auto[_,ws]:ext)
+	{
+		sort(ws.begin(),ws.end());
+		const int low=Ws.empty()?1:Ws.back()+1;
+		if(ws.size()==2)
+		{
+			int x=ws[0],y=ws[1];
+			assert(y>0);
+			if(x<0)
+			{
+				vector<int>can;
+				if(y-1>=low)can.push_back(y-1);
+				if(y>=low)can.push_back(y+1);
+				bool ok=false;
+				for(auto nx:can)
+				{
+					vector<int>nWs=Ws;
+					nWs.push_back(nx);
+					nWs.push_back(y);
+					sort(nWs.end()-2,nWs.end());
+					if(check(nWs,cur+1))
+					{
+						ret[~x]=nx;
+						Ws=nWs;
+						ok=true;
+						cur+=1;
+						break;
+					}
+				}
+				if(!ok)return vector<int>();
+			}
+			else
+			{
+				if(x<low)return vector<int>();
+				Ws.push_back(x);
+				Ws.push_back(y);
+				cur+=y-x;
+				if(!check(Ws,cur))return vector<int>();
+			}
+		}
+		else
+		{
+			assert(ws.size()==3);
+			int x=ws[0],y=ws[1],z=ws[2];
+			assert(z>0);
+			if(y<0)
+			{
+				vector<pair<int,int> >can;
+				if(z-2>=low)can.push_back(make_pair(z-2,z-1));
+				if(z-1>=low)can.push_back(make_pair(z-1,z+1));
+				if(z>=low)can.push_back(make_pair(z+1,z+2));
+				bool ok=false;
+				for(auto[nx,ny]:can)
+				{
+					vector<int>nWs=Ws;
+					nWs.push_back(nx);
+					nWs.push_back(ny);
+					nWs.push_back(z);
+					sort(nWs.end()-3,nWs.end());
+					if(check(nWs,cur+2))
+					{
+						ret[~x]=nx;
+						ret[~y]=ny;
+						Ws=nWs;
+						ok=true;
+						cur+=2;
+						break;
+					}
+				}
+				if(!ok)return vector<int>();
+			}
+			else if(x<0)
+			{
+				assert(z-y>=1);
+				vector<int>can;
+				int add;
+				if(z-y==1)
+				{
+					if(y-1>=low)can.push_back(y-1);
+					if(y>=low)can.push_back(z+1);
+					add=2;
+				}
+				else if(y>=low)
+				{
+					for(int t=z-1;t>=y+1;t--)can.push_back(t);
+					add=z-y;
+				}
+				bool ok=false;
+				for(auto nx:can)
+				{
+					vector<int>nWs=Ws;
+					nWs.push_back(nx);
+					nWs.push_back(y);
+					nWs.push_back(z);
+					sort(nWs.end()-3,nWs.end());
+					if(check(nWs,cur+add))
+					{
+						ret[~x]=nx;
+						Ws=nWs;
+						ok=true;
+						cur+=add;
+						break;
+					}
+				}
+				if(!ok)return vector<int>();
+			}
+			else
+			{
+				if(x<low)return vector<int>();
+				Ws.push_back(x);
+				Ws.push_back(y);
+				Ws.push_back(z);
+				cur+=z-x;
+				if(!check(Ws,cur))return vector<int>();
+			}
+		}
+	}
+	{
+		int low=Ws.empty()?1:Ws.back()+1;
+		int pos=10000;
+		for(vector<int>idx:none)
+		{
+			if(idx.size()==2)
+			{
+				int x=~idx[0],y=~idx[1];
+				ret[x]=pos;
+				ret[y]=pos-1;
+				pos-=3;
+				Ws.push_back(ret[x]);
+				Ws.push_back(ret[y]);
+				cur+=1;
+			}
+			else
+			{
+				assert(idx.size()==3);
+				int x=~idx[0],y=~idx[1],z=~idx[2];;
+				ret[x]=pos;
+				ret[y]=pos-1;
+				ret[z]=pos-2;
+				pos-=4;
+				Ws.push_back(ret[x]);
+				Ws.push_back(ret[y]);
+				Ws.push_back(ret[z]);
+				cur+=2;
+			}
+		}
+		assert(low<=pos);
+	}
+	sort(Ws.begin(),Ws.end());
+	assert(check(Ws,cur));
+	return ret;
+}
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int TTT;cin>>TTT;
+	for(int ccc=1;ccc<=TTT;ccc++)
+	{
+		vector<int>ret=solve();
+		cout<<"Case #"<<ccc<<": ";
+		if(ret.empty())cout<<"No"<<endl;
+		else
+		{
+			cout<<"Yes\n";
+			for(int i=0;i<ret.size();i++)cout<<ret[i]<<(i+1==ret.size()?"":" ");
+			cout<<endl;
+		}
+	}
+}

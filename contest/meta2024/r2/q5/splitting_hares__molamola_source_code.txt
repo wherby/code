@@ -1,0 +1,198 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using FL = long double;
+using ll = long long;
+const ll mod = 1e9 + 7;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+#define Fi first
+#define Se second
+#define rep(i, n) for(int (i)=0;(i)<(n);(i)++)
+#define szz(x) ((x).size())
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+
+using vi = vector<int>;
+
+int dp[510][1010];
+vi prv[510][1010];
+int N, C[310], W[310];
+const int INF = 1e7;
+const int ERR = 1e9;
+
+void solve() {
+	scanf("%d", &N);
+	for(int i=1;i<=N;i++) scanf("%d", W + i);
+	for(int i=1;i<=N;i++) scanf("%d", C + i);
+	vector<pii> vc[310];
+	for(int i=1;i<=N;i++) {
+		vc[C[i]].pb({W[i], i});
+	}
+	for(int i=1;i<=N;i++) sort(all(vc[i]));
+	vector <int> all_v;
+	vector <pair<pii, int>> segs;
+	for(int i=1;i<=N;i++) {
+		if(szz(vc[i]) >= 4) {
+			puts("No");
+			return;
+		}
+		int mn = 1e9, mx = -1;
+		for(auto [w, _] : vc[i]) {
+			if(w == -1) continue;
+			mx = max(mx, w);
+			mn = min(mn, w);
+		}
+		if(mx == -1) {
+			all_v.pb(i);
+		}
+		else {
+			segs.pb({{mn, mx}, i});
+		}
+	}
+	sort(all(segs));
+	int m = szz(segs);
+	rep(i, m) rep(j, i) {
+		auto [l1, r1] = segs[i].Fi;
+		auto [l2, r2] = segs[j].Fi;
+		if(max(l1, l2) <= min(r1, r2)) {
+			puts("No");
+			return;
+		}
+	}
+
+	auto app = [&](int pval, const vector <int> &v1) {
+		int m = szz(v1);
+		int val[4][2];
+		val[0][0] = 0;
+		val[0][1] = pval;
+		for(int i=1;i<=m;i++) {
+			int x = v1[i-1];
+			val[i][0] = val[i-1][1] + x;
+			val[i][1] = min(val[i-1][0] - x, val[i-1][1]);
+		}
+		if(val[m][0] != v1[m-1] - v1[0]) return ERR;
+		return val[m][1] - val[m][0];
+	};
+
+	rep(i, 510) rep(j, 1010) {
+		dp[i][j] = -INF;
+		prv[i][j].clear();
+	}
+
+	auto upd = [&](int i, int j, int val, const vector <int> &pr) {
+		if(dp[i][j] < val) {
+			dp[i][j] = val;
+			prv[i][j] = pr;
+		}
+	};
+	dp[0][0] = INF;
+	for(int i=0;i<m;i++) {
+		for(int j=0;j<1010;j++) {
+			if(dp[i][j] == -INF) continue;
+			int color = segs[i].Se;
+			int L = szz(vc[color]);
+			if(L == 2) {
+				int x = vc[color][0].Fi;
+				int y = vc[color][1].Fi;
+				if(x == -1) {
+					if(y-1 > j) {
+						int v = app(dp[i][j], {y-1, y});
+						if(v != ERR) upd(i + 1, y, v, {j, y-1});
+					}
+					if(y > j) {
+						int v = app(dp[i][j], {y, y+1});
+						if(v != ERR) upd(i + 1, y + 1, v, {j, y + 1});
+					}
+				}
+				else {
+					if(x > j) {
+						int v = app(dp[i][j], {x, y});
+						if(v != ERR) upd(i+1, y, v, {j});
+					}
+				}
+			}
+			else {
+				int x = vc[color][0].Fi;
+				int y = vc[color][1].Fi;
+				int z = vc[color][2].Fi;
+				if(y == -1) {
+					if(z-2 > j) {
+						int v = app(dp[i][j], {z-2, z-1, z});
+						if(v != ERR) upd(i + 1, z, v, {j, z-2, z-1});
+					}
+					if(z-1 > j) {
+						int v = app(dp[i][j], {z-1, z, z+1});
+						if(v != ERR) upd(i + 1, z + 1, v, {j, z-1, z+1});
+					}
+					if(z > j) {
+						int v = app(dp[i][j], {z, z+1, z+2});
+						if(v != ERR) upd(i + 1, z + 2, v, {j, z+1, z+2});
+					}
+				}
+				else if(x == -1) {
+					if(y-1 > j) {
+						int v = app(dp[i][j], {y-1, y, z});
+						if(v != ERR) upd(i + 1, z, v, {j, y-1});
+					}
+					if(y > j) {
+						int v = app(dp[i][j], {y, z, z+1});
+						if(v != ERR) upd(i + 1, z+1, v, {j, z+1});
+						for(int t=y+1;t<z;t++) {
+							v = app(dp[i][j], {y, t, z});
+							if(v != ERR) upd(i + 1, z, v, {j, t});
+						}
+					}
+				}
+				else {
+					int v = app(dp[i][j], {x, y, z});
+					if(v != ERR) upd(i+1, z, v, {j});
+				}
+			}
+		}
+	}
+
+	int mid = -1;
+	rep(i, 1010) if(dp[m][i] != -INF) {
+		mid = i;
+	}
+
+	if(mid == -1) {
+		puts("No");
+	}
+	else {
+		for(int i=m;i;i--) {
+			auto pv = prv[i][mid];
+			int color = segs[i-1].Se;
+			int p = 1;
+			rep(a, szz(vc[color])) {
+				if(vc[color][a].Fi == -1) {
+					W[vc[color][a].Se] = pv[p++];
+				}
+			}
+			mid = pv[0];
+		}
+
+		int v = 1010;
+		for(int e : all_v) {
+			for(auto [_, wi] : vc[e]) {
+				W[wi] = ++v;
+			}
+			v += 10;
+		}
+
+		puts("Yes");
+		for(int i=1;i<=N;i++) printf("%d ", W[i]);
+		puts("");
+	}
+}
+
+int main() {
+	int T = 1; scanf("%d", &T);
+	for(int tc=1;tc<=T;tc++) {
+		fprintf(stderr, "! %d\n", tc);
+		printf("Case #%d: ", tc);
+		solve();
+	}
+	return 0;
+}

@@ -1,0 +1,122 @@
+/**
+ *    author:  tourist
+ *    created: 19.10.2024 10:50:51
+**/
+#undef _GLIBCXX_DEBUG
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+
+template <typename T>
+class FenwickTree2D {
+ public:
+  vector<vector<T>> fenw;
+  int n, m;
+
+  FenwickTree2D() : n(0), m(0) {}
+  FenwickTree2D(int n_, int m_) : n(n_), m(m_) {
+    fenw.resize(n);
+    for (int i = 0; i < n; i++) {
+      fenw[i].resize(m);
+    }
+  }
+
+  void Modify(int i, int j, T v) {
+    assert(0 <= i && i < n && 0 <= j && j < m);
+    int x = i;
+    while (x < n) {
+      int y = j;
+      while (y < m) {
+        fenw[x][y] += v;
+        y |= y + 1;
+      }
+      x |= x + 1;
+    }
+  }
+
+  T Query(int i, int j) {
+    assert(0 <= i && i <= n && 0 <= j && j <= m);
+    T v{};
+    int x = i;
+    while (x > 0) {
+      int y = j;
+      while (y > 0) {
+        v += fenw[x - 1][y - 1];
+        y &= y - 1;
+      }
+      x &= x - 1;
+    }
+    return v;
+  }
+};
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  int tt;
+  cin >> tt;
+  for (int qq = 1; qq <= tt; qq++) {
+    cout << "Case #" << qq << ": ";
+    int r, c;
+    int64_t k;
+    cin >> r >> c >> k;
+    vector a(r, vector<int>(c));
+    for (int i = 0; i < r; i++) {
+      for (int j = 0; j < c; j++) {
+        cin >> a[i][j];
+        --a[i][j];
+      }
+    }
+    vector<vector<pair<int, int>>> by_a(r * c);
+    for (int i = 0; i < r; i++) {
+      for (int j = 0; j < c; j++) {
+        by_a[a[i][j]].emplace_back(i, j);
+      }
+    }
+    FenwickTree2D<int> fenw(r, c);
+    for (int i = 0; i < r; i++) {
+      for (int j = 0; j < c; j++) {
+        fenw.Modify(i, j, +1);
+      }
+    }
+    auto Count = [&](int lim) {
+      int64_t ret = 0;
+      for (auto& vec : by_a) {
+        for (auto& [i, j] : vec) {
+          fenw.Modify(i, j, -1);
+        }
+        for (auto& [i, j] : vec) {
+          int ia = max(0, i - lim);
+          int ja = max(0, j - lim);
+          int ib = min(r, i + 1 + lim);
+          int jb = min(c, j + 1 + lim);
+          ret += fenw.Query(ib, jb) - fenw.Query(ia, jb) - fenw.Query(ib, ja) + fenw.Query(ia, ja);
+        }
+        for (auto& [i, j] : vec) {
+          fenw.Modify(i, j, +1);
+        }
+      }
+      return ret;
+    };
+    int low = 0, high = max(r, c) + 2;
+    while (low + 1 < high) {
+      int mid = (low + high) >> 1;
+      if (Count(mid) >= k) {
+        high = mid;
+      } else {
+        low = mid;
+      }
+    }
+    assert(high < max(r, c));
+    cout << high << '\n';
+    debug(qq, tt, clock());
+  }
+  return 0;
+}

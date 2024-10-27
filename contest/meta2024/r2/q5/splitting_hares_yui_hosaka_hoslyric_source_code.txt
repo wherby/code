@@ -1,0 +1,317 @@
+import std.conv, std.functional, std.range, std.stdio, std.string;
+import std.algorithm, std.array, std.bigint, std.bitmanip, std.complex, std.container, std.math, std.mathspecial, std.numeric, std.regex, std.typecons;
+import core.bitop;
+import core.thread;
+
+class EOFException : Throwable { this() { super("EOF"); } }
+string[] tokens;
+string readToken() { for (; tokens.empty; ) { if (stdin.eof) { throw new EOFException; } tokens = readln.split; } auto token = tokens.front; tokens.popFront; return token; }
+int readInt() { return readToken.to!int; }
+long readLong() { return readToken.to!long; }
+
+string COLOR(string s = "") { return "\x1b[" ~ s ~ "m"; }
+
+bool chmin(T)(ref T t, in T f) { if (t > f) { t = f; return true; } else { return false; } }
+bool chmax(T)(ref T t, in T f) { if (t < f) { t = f; return true; } else { return false; } }
+
+int binarySearch(alias pred, T)(in T[] as) { int lo = -1, hi = cast(int)(as.length); for (; lo + 1 < hi; ) { const mid = (lo + hi) >> 1; (unaryFun!pred(as[mid]) ? hi : lo) = mid; } return hi; }
+int lowerBound(T)(in T[] as, T val) { return as.binarySearch!(a => (a >= val)); }
+int upperBound(T)(in T[] as, T val) { return as.binarySearch!(a => (a > val)); }
+
+
+// T: signed integer
+// ans[k]: max sum at k non-adjacent indexes  (0 <= k <= ceil(|as|/2))
+// ans: concave
+T[] maxNonAdj(T)(const(T[]) as) {
+  import std.container : Array, BinaryHeap;
+  import std.typecons : Tuple;
+  const n = cast(int)(as.length);
+  auto del = new bool[n + 2];
+  auto lef = new int[n + 2], rig = new int[n + 2];
+  foreach (i; 0 .. n + 2) {
+    lef[i] = i - 1;
+    rig[i] = i + 1;
+  }
+  auto ds = new T[n + 2];
+  alias Entry = Tuple!(T, "val", int, "pos");
+  BinaryHeap!(Array!Entry, "a.val < b.val") que;
+  del[0] = del[n + 1] = true;
+  foreach (i; 1 .. n + 1) que.insert(Entry(ds[i] = as[i - 1], i));
+  auto ans = new T[(n + 1) / 2 + 1];
+  for (int k = 0; !que.empty; ) {
+    const i = que.front.pos;
+    que.removeFront;
+    if (!del[i]) {
+      ans[k + 1] = ans[k] + ds[i];
+      ++k;
+      const l = lef[i], r = rig[i];
+      if (1 <= l) {
+        rig[lef[l]] = i;
+        lef[i] = lef[l];
+      }
+      if (r <= n) {
+        lef[rig[r]] = i;
+        rig[i] = rig[r];
+      }
+      if (!del[l] && !del[r]) {
+        que.insert(Entry(ds[i] = ds[l] + ds[r] - ds[i], i));
+      } else {
+        del[i] = true;
+      }
+      del[l] = del[r] = true;
+    }
+  }
+  return ans;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+class Solver : core.thread.Thread {
+  int caseId;
+  this(int caseId_) {
+    caseId = caseId_;
+    super(&main);
+  }
+  void main() {
+    try {
+      run;
+      stderr.writefln("DONE  Case #%s", caseId);
+    } catch (Throwable e) {
+      stderr.writefln("ERROR Case #%s: %s", caseId, e.msg);
+    } finally {
+      stderr.flush;
+    }
+  }
+  
+  int N;
+  int[] W;
+  int[] C;
+  int[] ans;
+  
+  void input() {
+    N = readInt;
+    W = new int[N]; foreach (u; 0 .. N) W[u] = readInt;
+    C = new int[N]; foreach (u; 0 .. N) C[u] = readInt - 1;
+  }
+  
+  void run() {
+    auto uss = new int[][N];
+    foreach (u; 0 .. N) uss[C[u]] ~= u;
+    alias Entry = Tuple!(int[], "ws", int, "c");
+    Entry[] es;
+    int[] easy;
+    foreach (c; 0 .. N) {
+      const us = uss[c];
+      if (us.length == 0) continue;
+      if (us.length == 1) assert(false);
+      if (us.length >= 4) return;
+      int[] ws;
+      foreach (u; us) if (~W[u]) ws ~= W[u];
+      ws.sort;
+      if (ws.length) {
+        es ~= Entry(ws.dup, c);
+      } else {
+        easy ~= c;
+      }
+    }
+    es.sort;
+    const esLen = cast(int)(es.length);
+    debug {
+      writeln("es = ", es);
+      writeln("easy = ", easy);
+    }
+    
+    auto sol = new int[][esLen];
+    if (esLen) {
+      enum INF = 1001001001;
+      alias State = Tuple!(int, "w", int, "x", int, "y");
+      enum BAD = State(-1, -1, -1);
+      State go(State s, bool chosen, int w) {
+        if (!(s.w < w)) return BAD;
+        const d = w - s.w;
+        int x = INF, y = INF;
+        if (chosen) {
+          chmin(x, s.y + d);
+        } else {
+          if (s.x < 0) return BAD;
+          if (s.y < 0) return BAD;
+          chmin(y, s.x - d);
+          chmin(x, 0);
+          chmin(y, 0);
+        }
+        return State(w, x, y);
+      }
+      
+      const lim = W.maxElement + 5;
+      alias Prv = Tuple!(int, "w", int, "x", int[], "ws");
+      auto dp = new int[][][](esLen + 1, lim + 1, lim + 1 + lim);
+      auto prv = new Prv[][][](esLen + 1, lim + 1, lim + 1 + lim);
+      foreach (i; 0 .. esLen + 1) foreach (w; 0 .. lim + 1) {
+        dp[i][w][] = -INF;
+        prv[i][w][] = Prv(-1, -1, null);
+      }
+      foreach (i; 0 .. esLen) {
+        void check(const(int[]) ws) {
+          // debug writefln("[check] i = %s, ws = %s", i, ws);
+          if (!(1 <= ws[0])) return;
+          if (i) {
+            foreach (w; 0 .. ws[0]) foreach (x; -lim .. +lim + 1) {
+              const y = dp[i][w][lim + x];
+              if (y > -INF) {
+                State s = State(w, x, y);
+                foreach (j; 0 .. cast(int)(ws.length)) {
+                  s = go(s, (j == 0), ws[j]);
+                  if (s == BAD) break;
+                }
+                if (s != BAD) {
+                  if (chmax(dp[i + 1][s.w][lim + min(s.x, lim)], s.y)) {
+                    prv[i + 1][s.w][lim + min(s.x, lim)] = Prv(w, x, ws.dup);
+                  }
+                }
+              }
+            }
+          } else {
+            State s = State(ws[0], INF, INF);
+            foreach (j; 1 .. cast(int)(ws.length)) {
+              s = go(s, false, ws[j]);
+              if (s == BAD) break;
+            }
+            if (s != BAD) {
+              if (chmax(dp[i + 1][s.w][lim + min(s.x, lim)], s.y)) {
+                prv[i + 1][s.w][lim + min(s.x, lim)] = Prv(-2, -2, ws.dup);
+              }
+            }
+          }
+        }
+        const ws = es[i].ws;
+        const us = uss[es[i].c];
+        if (us.length == 2) {
+          if (ws.length == 1) {
+            check([ws[0] - 1, ws[0]]);
+            check([ws[0], ws[0] + 1]);
+          } else if (ws.length == 2) {
+            check(ws);
+          } else {
+            assert(false);
+          }
+        } else if (us.length == 3) {
+          if (ws.length == 1) {
+            check([ws[0] - 2, ws[0] - 1, ws[0]]);
+            check([ws[0] - 1, ws[0], ws[0] + 1]);
+            check([ws[0], ws[0] + 1, ws[0] + 2]);
+          } else if (ws.length == 2) {
+            check([ws[0] - 1, ws[0], ws[1]]);
+            check([ws[0], ws[1], ws[1] + 1]);
+            foreach (w; ws[0] + 1 .. ws[1]) check([ws[0], w, ws[1]]);
+          } else if (ws.length == 3) {
+            check(ws);
+          } else {
+            assert(false);
+          }
+        } else {
+          assert(false);
+        }
+      }
+      
+      foreach (w; 0 .. lim + 1) foreach (x; -lim .. +lim + 1) if (dp[esLen][w][lim + x] > -INF) {
+        foreach_reverse (i; 0 .. esLen) {
+          const p = prv[i + 1][w][lim + x];
+          assert(p.ws);
+          sol[i] = p.ws.dup;
+          w = p.w;
+          x = p.x;
+        }
+        goto found;
+      }
+      return;
+     found:
+    }
+    debug writeln("sol = ", sol);
+    
+    ans = W.dup;
+    foreach (i; 0 .. esLen) {
+      int[] rem = sol[i].dup;
+      foreach (u; uss[es[i].c]) if (~W[u]) {
+        assert(rem.count(W[u]));
+        const pos = rem.lowerBound(W[u]);
+        rem = rem[0 .. pos] ~ rem[pos + 1 .. $];
+      }
+      foreach (u; uss[es[i].c]) if (!~W[u]) {
+        ans[u] = rem[0];
+        rem = rem[1 .. $];
+      }
+      assert(!rem.length);
+    }
+    
+    int w = 1000;
+    foreach (c; easy) {
+      const us = uss[c];
+      foreach (j; 0 .. cast(int)(us.length)) {
+        ans[us[j]] = w + j;
+      }
+      w += 30;
+    }
+    
+    judge;
+  }
+  
+  void judge() {
+    int[] weights = ans.dup;
+    weights.sort;
+    int[] diffs;
+    foreach (i; 2 .. N - 1) diffs ~= weights[i] - weights[i - 1];
+    const res = maxNonAdj(diffs);
+    const expected = (weights.maxElement - weights.minElement) - res.maxElement;
+    
+    auto wss = new int[][N];
+    foreach (u; 0 .. N) wss[C[u]] ~= ans[u];
+    int actual;
+    foreach (c; 0 .. N) if (wss[c]) {
+      assert(wss[c].length != 1, format("FAIL color %s has weights %s", c, wss[c]));
+      actual += (wss[c].maxElement - wss[c].minElement);
+    }
+    assert(expected == actual, format("FAIL expected = %s, actual = %s", expected, actual));
+  }
+  
+  void output() {
+    if (ans) {
+      stdout.writefln("Case #%s: Yes", caseId);
+      foreach (u; 0 .. N) {
+        if (u) write(" ");
+        write(ans[u]);
+      }
+      writeln;
+    } else {
+      stdout.writefln("Case #%s: No", caseId);
+    }
+    stdout.flush;
+  }
+}
+
+void main(string[] args) {
+  
+  
+  const numCases = readInt;
+  if (1 < args.length) {
+    const numThreads = args[1].to!int;
+    for (int caseIdL = 1, caseIdR; caseIdL <= numCases; caseIdL = caseIdR) {
+      caseIdR = min(caseIdL + numThreads, numCases + 1);
+      stderr.writefln("PARALLEL Case #[%s, %s]", caseIdL, caseIdR - 1);
+      stderr.flush;
+      auto solvers = new Solver[caseIdR - caseIdL];
+      foreach (caseId; caseIdL .. caseIdR) {
+        solvers[caseId - caseIdL] = new Solver(caseId);
+      }
+      foreach (solver; solvers) { solver.input; solver.start; }
+      foreach (solver; solvers) { solver.join; solver.output; }
+    }
+  } else {
+    foreach (caseId; 1 .. numCases + 1) {
+      auto solver = new Solver(caseId);
+      solver.input;
+      solver.main;
+      solver.output;
+    }
+  }
+}
