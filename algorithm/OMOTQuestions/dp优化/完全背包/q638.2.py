@@ -1,0 +1,24 @@
+# https://leetcode.cn/problems/shopping-offers/solutions/?envType=daily-question&envId=2024-11-03
+from typing import List, Tuple, Optional
+from functools import cache
+class Solution:
+    def shoppingOffers(self, price: List[int], special: List[List[int]], needs: List[int]) -> int:
+        m = len(special)
+        n = len(needs)
+        @cache
+        def dfs(i,state):
+            if i == m:
+                return sum([state[j] *c for j,c in enumerate(price)])
+            ret =10**10
+            for k in range(11):
+                ls2 = special[i][:n]
+                c = special[i][-1]
+                if all([a>=b*k for a,b in zip(state,ls2)]):
+                    ns = [a- b*k for a,b in zip(state,ls2)]
+                    ns =tuple(ns)
+                    ret = min(ret,dfs(i+1,ns) + k*c)
+            return ret
+        return dfs(0,tuple(needs))
+        
+re = Solution().shoppingOffers(price = [2,3,4], special = [[1,1,0,4],[2,2,1,9]], needs = [1,2,1])
+print(re)

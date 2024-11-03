@@ -23,3 +23,10 @@ class Solution:
 
 a.bit_length() 得到最高位
 
+
+##  bit count 
+https://leetcode.cn/problems/number-of-bit-changes-to-make-two-integers-equal/?envType=daily-question&envId=2024-11-02
+class Solution:
+    def minChanges(self, n: int, k: int) -> int:
+        return -1 if n &k != k else (n^k).bit_count()
+
