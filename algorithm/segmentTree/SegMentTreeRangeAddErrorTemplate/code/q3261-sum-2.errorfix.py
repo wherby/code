@@ -1,6 +1,4 @@
-# Verified
-# https://leetcode.cn/contest/weekly-contest-336/problems/minimum-time-to-complete-all-tasks/
-
+# https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -94,9 +92,9 @@ class segment_tree:
             self.__pushDown(root,l,r)
             return 
         mid = (l+r) >>1
-        if L <= mid:
+        if not(l >R or mid<l):
             self.__update(L,R,l,mid,2*root+1,delta)
-        if R >= mid +1:
+        if not(mid+1 >R or r <L):
             self.__update(L,R,mid+1,r,2*root+2,delta)
         self.__pushUp(root)
 
@@ -158,67 +156,32 @@ class segment_tree:
     def __bound(self,l,r):
         return r-l +1 -self.querySetValue(l,r)
         
-        
-# class Solution:
-#     def findMinimumTime(self, tasks: List[List[int]]) -> int:
-#         ls=[0]*2002
-#         sg =segment_tree(ls)
-#         tasks.sort(key=lambda x: x[1])
-#         for s,e,c in tasks:
-#             val = sg.querySetValue(s,e)
-#             #print(val,s,e)
-#             if val >=c:continue
-#             id = sg.bound(c-val,s,e)
-#             sg.updateRangeSetValue(id,e,1)
-#             #print(s,e,c,id,sg.querySetValue(0,2000),sg.querySetValue(9,15))
-#             #print(s,e,c,id)
-#             #print(sg.tree[0])
-#         return sg.query(0,2000)
-        
-        
-        
-            
-        
-        
-        
-
-
-
-
-
-# #re =Solution().findMinimumTime(tasks = [[1,10,7],[4,11,1],[3,19,7],[10,15,2]])
-# re =Solution().findMinimumTime([[14,17,2],[2,15,11],[5,18,2]])
-# print(re)
-
 
 class Solution:
-    def sumCounts(self, nums: List[int]) -> int:
-        mod = 10**9+7
-        dic ={}# defaultdict(lambda:-1)
-        n = len(nums)
-        sm =0
-        sg = segment_tree([0]*n)
-        acc = 0
-        for i,a in enumerate(nums):
-            k= dic.get(a,-1)
-            c = sg.query(k+1,i)
-            sg.updateRange(k+1,i,1)
-            b = sg.query(k+1,i)
-            acc +=c+b 
-            sm +=acc
-            
-            sm%=mod
-            dic[a] =i
-            #print(dic[a],b,c,sm,dic,a,k+1,i,"AA",sg)
-            
-        
-        return (sm+mod)%mod
+    def countKConstraintSubstrings(self, s: str, k: int, queries: List[List[int]]) -> List[int]:
+        dic= defaultdict(list)
+        for i,(a,b) in enumerate(queries):
+            dic[b].append((i,a))
+        ls =[0]*2
+        l = 0
+        s = [int(a) for a in s]
+        m = len(queries)
+        ret = [-1]*m
+        n = len(s)
+        seg = segment_tree([0]*n)
+        #print(dic)
+        for i,a in enumerate(s):
+            ls[a] +=1
+            while ls[0] > k and ls[1] > k:
+                ls[s[l]] -=1
+                l +=1
+            #print(l,i,ls)
+            seg.updateRange(l,i,1)
+            for idx,b in dic[i]:
 
-#2,2,1,1
-#16 + 9+ 4+1 =30
+                ret[idx] = seg.query(b,i)
+               
+        return ret
 
-
-
-re =Solution().sumCounts( [1,2,1])
-# result should be 15
+re =Solution().countKConstraintSubstrings(s = "010101", k = 1, queries = [[0,5],[1,4],[2,3]])
 print(re)
