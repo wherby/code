@@ -1,8 +1,9 @@
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
-# Range update min-max
-
+# https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/
+# Range update  sum question 
+# will Time out using algorithm/segmentTree/segTreeWIthRange/q3261.py will pass
+# https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/submissions/580201592/?envType=daily-question&envId=2024-11-13
 from typing import List, Tuple, Optional
-
+from collections import defaultdict,deque
 
 class SegmentTree:
     # merge(left, right): function used to merge the two halves
@@ -36,23 +37,27 @@ class SegmentTree:
         self._build_util(0, len(a)-1, 0, a)
 
     def _query_util(self, i, l, r, L, R):
+        self.__pushDown(i,l,r)
         if L<=l<=r<=R:
             return self.tree[i]
         if l>R or r<L:
             return self.basev
-        self.__pushDown(i,L,R)
+        
         return self.merge( self._query_util( 2*i+1, l, (l+r)//2, L, R ),
                           self._query_util( 2*i+2, (l+r)//2+1, r, L, R ) )
+    
     def __pushDown(self,i,l,r):
-        if self.lazy[i]:
-            self.lazy[2*i+1]= self.lazy[2*i+2] =True
-            self.tracted[2*i+1] += self.tracted[i]
-            self.tracted[2*i+2] += self.tracted[i]
-            self.lazy[i] = False
+        if self.lazy[i] :
             ## need to be changed
-            self.tree[i*2+1] += self.tracted[i]
-            self.tree[i*2+2] += self.tracted[i]
+            self.tree[i] += (r-l+1)*self.tracted[i]
+            if l !=r:
+                self.lazy[2*i+1]= self.lazy[2*i+2] =True
+                self.tracted[2*i+1] += self.tracted[i]
+                self.tracted[2*i+2] += self.tracted[i]
+  
+            self.lazy[i] = False
             self.tracted[i]  =0
+            
             
     def query(self, l, r):
         return self._query_util( 0, 0, self.n-1, l, r )
@@ -77,41 +82,58 @@ class SegmentTree:
         self.tree[root] = self.merge(self.tree[2*root+1],self.tree[2*root+2])        
 
     def __updateRange(self,L,R,l,r,root,delta):
+
+        
+        self.__pushDown(root,l,r)
         if L <=l <=r<=R:
             self.lazy[root] = True
             self.tracted[root] += delta
             ## need to change
-            self.tree[root] +=delta
+            #self.tree[root] +=delta
+            self.__pushDown(root,l,r)
             return 
-        self.__pushDown(root,l,r)
+        if l>R or r<L:
+            return
         mid = (l+r) >>1
-        if L <= mid:
-            self.__updateRange(L,R,l,mid,2*root+1,delta)
-        if R >= mid +1:
-            self.__updateRange(L,R,mid+1,r,2*root+2,delta)
+        # if not(l >R or mid<l) :
+        #     self.__updateRange(L,R,l,mid,2*root+1,delta)
+
+        # if not(mid+1 >R or r <L):
+        #     self.__updateRange(L,R,mid+1,r,2*root+2,delta)
+        self.__updateRange(L,R,l,mid,2*root+1,delta)
+        self.__updateRange(L,R,mid+1,r,2*root+2,delta)
+        #self.tree[root] = self.merge(self.tree[2*root+1],self.tree[2*root+2])
         self.__pushUp(root)
-            
 
-from collections import defaultdict,deque
 class Solution:
-    def minCost(self, nums: List[int], k: int) -> int:
-        ans = 0 
-        last = defaultdict(int)
-        last2 = defaultdict(int)
-        n = len(nums)
-        st = SegmentTree([0]*n*2, merge=min)
-        for i,x in enumerate(nums,1):
-            st.updateRange(i,i,ans)
-            st.updateRange(last[x]+1,i,-1)
-            if last[x]:
-                st.updateRange(last2[x]+1,last[x],1)
-            ans = k + st.query(1,i)
-            last2[x] = last[x]
-            last[x] = i 
-        #print(ans)
-        return ans +len(nums)
+    def countKConstraintSubstrings(self, s: str, k: int, queries: List[List[int]]) -> List[int]:
+        dic= defaultdict(list)
+        for i,(a,b) in enumerate(queries):
+            dic[b].append((i,a))
+        ls =[0]*2
+        l = 0
+        s = [int(a) for a in s]
+        m = len(queries)
+        ret = [-1]*m
+        n = len(s)
+        seg = SegmentTree([0]*n)
+        #print(dic)
+        for i,a in enumerate(s):
+            ls[a] +=1
+            while ls[0] > k and ls[1] > k:
+                ls[s[l]] -=1
+                l +=1
+            #print(l,i,ls)
+            seg.updateRange(l,i,1)
+            # ss=[]
+            # for j in range(5):
+            #     ss.append(seg.query(j,j))
+            # print(ss)
+            for idx,b in dic[i]:
 
+                ret[idx] = seg.query(b,i)
+               
+        return ret
 
-re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
-#re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
+re =Solution().countKConstraintSubstrings(s = "010101", k = 1, queries = [[0,5],[1,4],[2,3]])
 print(re)

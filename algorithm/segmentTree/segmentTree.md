@@ -3,6 +3,9 @@
 
 ##
 
+## Range update question
+Range update sum Verification :
+https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/
 
 
 ## SegmentTree usage
