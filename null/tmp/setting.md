@@ -29,3 +29,7 @@ syd.mscchat.com
 
 
 
+syd1.mscchat.com
+
+/root/cert/syd1.mscchat.com.cer
+/root/cert/syd1.mscchat.com.key
