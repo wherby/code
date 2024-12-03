@@ -18,3 +18,5 @@
 .conda/*
 .venv/*
 **/__pycache__
+
+localtmp

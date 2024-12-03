@@ -391,3 +391,11 @@ https://leetcode.cn/contest/weekly-contest-419/problems/count-the-number-of-winn
 
 ## 可以被计算的放在函数外面 否则可能超时
 https://leetcode.cn/contest/weekly-contest-420/problems/minimum-division-operations-to-make-array-non-decreasing/submissions/
+
+
+## 找不到方向
+如果找不到方向，就按照树的遍历方式解决
+algorithm/dp/树上dp/maximize-sum-of-weights-after-edge-removals.py
+
+Given a row's x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area. 【https://igotanoffer.com/blogs/tech/google-interview-questions】
+如过图没有方向，则设置从上到下的遍历解决方向问题（矩形没有底边的时候，可以遍历设置底边）
