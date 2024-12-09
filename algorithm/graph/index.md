@@ -28,3 +28,9 @@ algorithm\graph\reverseGraph\multiSourcePath.py
 https://oi-wiki.org/graph/bcc/
 https://blog.51cto.com/u_15127597/3992474
 
+
+## mincost
+
+在增广路径的时候，会出现负边，所以需要删除对应的visit节点
+algorithm/graph/flow/mincost/abc373_g.2.py
+#### Dijstr 在增广路径的时候有负边，需要更新visit
