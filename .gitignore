@@ -6,7 +6,7 @@
 .idea
 
 .tmp/*
-
+**/.tmp
 **/target/
 **/*.exe
 **/*.cfg
