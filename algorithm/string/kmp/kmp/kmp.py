@@ -36,8 +36,8 @@ print(re)
 
 # compress the string, find the stortest component to compress origin string 
 #
-#
-a = "abcabcabcabc"
+# 求最小循环子串
+a = "abcabcabcabcabc"
 next = prefix_function(a)
 print(next)
 n = len(a)

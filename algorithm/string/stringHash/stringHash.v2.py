@@ -1,7 +1,9 @@
 # from ./pic/stringHash.png
 # Add Random https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-ii/solutions/2917929/ac-zi-dong-ji-pythonjavacgo-by-endlessch-hcqk/
+# Fix from algorithm/string/stringHash/wrongVersion/stringHash.v2 .wrong.py
+
 from random import randint
-BASE = randint(8 * 10 ** 8, 9 * 10 ** 8)
+MOD = randint(8 * 10 ** 8, 9 * 10 ** 8)
 class StringHash:
     def __init__(self,s1):
         n =len(s1)
@@ -10,11 +12,11 @@ class StringHash:
         
         self.mod = 2<<64
         for i in range(n):
-            self.hls[i+1] = (self.hls[i]*BASE +(ord(s1[i]) - ord('a')+1))%self.mod
-            self.pls[i+1] = (self.pls[i]*BASE)%self.mod
+            self.hls[i+1] = (self.hls[i]*131 +(ord(s1[i]) - ord('a')+1))%MOD
+            self.pls[i+1] = (self.pls[i]*131)%MOD
     
     def query(self,left,right):
-        return (self.hls[right]- (self.hls[left]*self.pls[right-left]) % self.mod) % self.mod
+        return (self.hls[right]- (self.hls[left]*self.pls[right-left]) % MOD) % MOD
     
 
 sh = StringHash("abcdefg")

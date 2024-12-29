@@ -27,6 +27,6 @@ def calculate_z_array(s):
         #print(i,L,R,Z)
     return Z
 
-a = "ccacc#cccaaaacba"
+a = "ccacc#cccaccaaacba"
 za =calculate_z_array(a)
 print(za)
