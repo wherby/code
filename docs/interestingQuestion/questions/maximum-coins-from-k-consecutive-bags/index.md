@@ -1,0 +1,2 @@
+
+这个题目用segmentTree会OT,但是数据是非常好的 segmentTree测试工具

@@ -1,6 +1,7 @@
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
+# Wrong ans for https://leetcode.cn/contest/weekly-contest-431/problems/maximum-coins-from-k-consecutive-bags/submissions/591207377/
 from typing import List, Tuple, Optional
 
 
@@ -42,9 +43,9 @@ class SegmentTree:
     def _update(self, L: int, R: int, l: int, r: int, root: Node, delta: bool) -> None:
         if L <= l <= r <= R:
             # applied the delta to current node to update value and set lazy flag
-            root.isTracked += delta
+            root.isTracked += delta  
             root.lazy = True
-            root.value +=delta
+            root.value +=delta*(r-l+1) ## need change if not sum
             return
 
         self._pushDown(root)
@@ -87,25 +88,27 @@ class SegmentTree:
             root.isTracked =0
             
 
-from collections import defaultdict,deque
 class Solution:
-    def minCost(self, nums: List[int], k: int) -> int:
-        ans = 0 
-        last = defaultdict(int)
-        last2 = defaultdict(int)
-        st = SegmentTree(merge=min)
-        for i,x in enumerate(nums,1):
-            st.update(i,i,ans)
-            st.update(last[x]+1,i,-1)
-            if last[x]:
-                st.update(last2[x]+1,last[x],1)
-            ans = k + st.query(1,i)
-            last2[x] = last[x]
-            last[x] = i 
-        #print(ans)
-        return ans +len(nums)
+    def maximumCoins(self, coins: List[List[int]], k: int) -> int:
+        coins.sort()
+        sgt = SegmentTree(ret=0)
+        for f,t,c in coins:
+            sgt.update(f,t,c)
+        
+        ret = 0
+        for f,t,c in coins:
+            t1 = f+k-1
+            ret = max(ret,sgt.query(f,t1))
+            #print(sgt.query(f,t1),f,t1)
+            f1 =t-k+1
+            ret = max(ret,sgt.query(f1,t))
+        return ret
+            
 
 
-#re =Solution().minCost(nums = [1,2,1,2,1,3,3], k = 2)
-re =Solution().minCost(nums = [1,2,1,2,1], k = 5)
-print(re)
+
+
+
+#re =Solution().maximumCoins(coins = [[30,49,12]], k = 28)
+re =Solution().maximumCoins(coins =[[21,23,10],[43,45,12],[1,11,1],[48,50,6],[14,16,11],[19,20,14],[29,33,18]], k = 28)
+print(re,187)

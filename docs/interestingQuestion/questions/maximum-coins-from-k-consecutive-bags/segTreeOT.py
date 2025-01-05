@@ -1,10 +1,10 @@
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
-# fix from algorithm/segmentTree/动态开点/wrongDS/[LatestV]DynamicSegTreeWithFunction2 copy 3.py
-# https://leetcode.cn/contest/weekly-contest-431/problems/maximum-coins-from-k-consecutive-bags/submissions/591207377/
 from typing import List, Tuple, Optional
 
+
+import math
+INF  = math.inf
+
+from typing import Optional
 
 class Node:
     __slots__ = ('isTracked','value', 'lazy', 'left', 'right')
@@ -53,7 +53,7 @@ class SegmentTree:
             self._pushDown(root,l,r)
             return
 
-        #self._pushDown(root,l,r)
+        self._pushDown(root,l,r)
         mid = (l + r) >> 1
         #if L <= mid:
         self._update(L, R, l, mid, root.left, delta)
@@ -62,10 +62,10 @@ class SegmentTree:
         self._pushUp(root)
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) :
-        self._pushDown(root,l,r)
+        self._pushDown(root,l,r) #should be placed here
         if L <= l <= r <= R:
             return root.value
-
+        #self._pushDown(root,l,r)  # If pushdown move to after return ,there is bug 
         
         mid = (l + r) >> 1
         ## ## need to be changed, how to merge left,right value 
@@ -103,7 +103,7 @@ class SegmentTree:
 class Solution:
     def maximumCoins(self, coins: List[List[int]], k: int) -> int:
         coins.sort()
-        sgt = SegmentTree(ret=0)
+        sgt = SegmentTree()
         for f,t,c in coins:
             sgt.update(f,t,c)
         
@@ -119,8 +119,13 @@ class Solution:
 
 
 
+re =Solution().maximumCoins(coins = [[8,10,1],[1,3,2],[5,6,4]], k = 4)
+print(re,10)
 
+from input import coins,k
+re =Solution().maximumCoins(coins,k)
+print(re)
 
 #re =Solution().maximumCoins(coins = [[30,49,12]], k = 28)
 re =Solution().maximumCoins(coins =[[21,23,10],[43,45,12],[1,11,1],[48,50,6],[14,16,11],[19,20,14],[29,33,18]], k = 28)
-print(re,187)
+print(re)

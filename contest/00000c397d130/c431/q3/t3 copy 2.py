@@ -1,8 +1,16 @@
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
-# https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
-# fix from algorithm/segmentTree/动态开点/wrongDS/[LatestV]DynamicSegTreeWithFunction2 copy 3.py
-# https://leetcode.cn/contest/weekly-contest-431/problems/maximum-coins-from-k-consecutive-bags/submissions/591207377/
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+from bisect import bisect_right,insort_left,bisect_left
+from queue import Queue,LifoQueue,PriorityQueue
+import math
+INF  = math.inf
+
 from typing import List, Tuple, Optional
 
 
@@ -53,7 +61,7 @@ class SegmentTree:
             self._pushDown(root,l,r)
             return
 
-        #self._pushDown(root,l,r)
+        self._pushDown(root,l,r)
         mid = (l + r) >> 1
         #if L <= mid:
         self._update(L, R, l, mid, root.left, delta)
@@ -99,6 +107,7 @@ class SegmentTree:
             root.value +=root.isTracked *(r-l+1)
             root.isTracked =0
             
+            
 
 class Solution:
     def maximumCoins(self, coins: List[List[int]], k: int) -> int:
@@ -123,4 +132,4 @@ class Solution:
 
 #re =Solution().maximumCoins(coins = [[30,49,12]], k = 28)
 re =Solution().maximumCoins(coins =[[21,23,10],[43,45,12],[1,11,1],[48,50,6],[14,16,11],[19,20,14],[29,33,18]], k = 28)
-print(re,187)
+print(re)

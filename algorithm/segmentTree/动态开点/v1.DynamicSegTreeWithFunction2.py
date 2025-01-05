@@ -87,7 +87,7 @@ class SegmentTree:
                 root.left.isTracked = root.left.isTracked +root.isTracked
                 root.right.isTracked = root.right.isTracked+root.isTracked
             root.lazy = False
-            root.value += root.isTracked
+            root.value += root.isTracked*(r-l+1) # Need to change when apply another op
             root.isTracked =0
             
 

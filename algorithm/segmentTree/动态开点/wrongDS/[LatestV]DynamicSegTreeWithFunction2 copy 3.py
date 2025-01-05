@@ -1,8 +1,7 @@
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/solution/by-endlesscheng-05s0/
 # https://leetcode.cn/problems/minimum-cost-to-split-an-array/submissions/
-# fix from algorithm/segmentTree/动态开点/wrongDS/[LatestV]DynamicSegTreeWithFunction2 copy 3.py
-# https://leetcode.cn/contest/weekly-contest-431/problems/maximum-coins-from-k-consecutive-bags/submissions/591207377/
+# Wrong ans for https://leetcode.cn/contest/weekly-contest-431/problems/maximum-coins-from-k-consecutive-bags/submissions/591207377/
 from typing import List, Tuple, Optional
 
 
@@ -53,7 +52,7 @@ class SegmentTree:
             self._pushDown(root,l,r)
             return
 
-        #self._pushDown(root,l,r)
+        self._pushDown(root,l,r)
         mid = (l + r) >> 1
         #if L <= mid:
         self._update(L, R, l, mid, root.left, delta)
@@ -62,11 +61,10 @@ class SegmentTree:
         self._pushUp(root)
 
     def _query(self, L: int, R: int, l: int, r: int, root: Node) :
-        self._pushDown(root,l,r)
         if L <= l <= r <= R:
             return root.value
 
-        
+        self._pushDown(root,l,r)
         mid = (l + r) >> 1
         ## ## need to be changed, how to merge left,right value 
         ## set the initial res value for merge
