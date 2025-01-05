@@ -175,3 +175,9 @@ ans =  dfs(zero,one,0)%mod
 dfs.cache_clear()
 
 如果不清楚cache， 会超出内存错误 https://leetcode.cn/problems/student-attendance-record-ii/submissions/
+
+
+## DP返回选择值
+
+求最小选择的时候，把状态和值一起作为比较的参数，可以减少复杂度
+algorithm/dp/dp保留选择排序

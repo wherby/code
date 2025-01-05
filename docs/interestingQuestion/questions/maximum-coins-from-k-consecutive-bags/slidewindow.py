@@ -10,12 +10,13 @@ class Solution:
                 while coins[l][1]<b-k+1:
                     acc -= (coins[l][1] - coins[l][0] +1) *coins[l][2]
                     l +=1
+                # 部分值先不移除，只计算，每次移除整块值
                 partialV = max(0,(b-k +1 -coins[l][0])) * coins[l][2]
                 ans = max(ans,acc -partialV)
             return ans
         
         ans = maxResultOnRight(coins)
-
+        # 镜像操作，用右对齐求左对齐
         for a in coins:
             a[0],a[1] = -a[1],-a[0]
         ans = max(ans, maxResultOnRight(coins[::-1]))
