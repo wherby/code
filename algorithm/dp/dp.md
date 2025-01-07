@@ -74,3 +74,13 @@ contest/meta2024/r1/q4/substitution_cipher__slime_source_code.cpp
 
 https://leetcode.cn/problems/count-the-number-of-inversions/solutions/2953751/python3javacgotypescript-yi-ti-yi-jie-do-73li/?envType=daily-question&envId=2024-10-17
 algorithm/dp/反向dp/count-the-number-of-inversions/index.py
+
+
+## DP 单调转移 <-前后状态单调性
+状态具有单调性
+algorithm/dp/dp保留选择排序
+dp[i+1][j] = min(dp[i][j],(s1-c,sorted(ids + [idx])))
+
+## 值域DP,利用单调性累积  <-属性单调性，按照属性单调性的方向求值累积
+algorithm/dp/值域DP/longest-subsequence-with-decreasing-adjacent-difference
+用数组代替dictionary 可以提高速度  https://leetcode.cn/problems/longest-subsequence-with-decreasing-adjacent-difference/submissions/
