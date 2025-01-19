@@ -4,6 +4,14 @@
 #   File "c:\Users\where\Documents\github\code\algorithm\mathA\combination.py", line 8, in getComb
 #     if self.comb[m][n] !=0:
 # IndexError: list index out of range
+
+# RecursionError: maximum recursion depth exceeded
+# need set import sys;sys.setrecursionlimit(1500000)
+# Will time out in https://leetcode.cn/contest/weekly-contest-433/problems/maximum-and-minimum-sums-of-at-most-size-k-subsequences/submissions/594159310/
+# The quick version will pass : algorithm/mathA/combinationQuickerVersion
+
+import sys
+sys.setrecursionlimit(1500000)
 class Comb():
     def __init__(self,m,n) -> None:
         self.comb =[[0]*(n+1) for i in range(m+1)]
@@ -23,6 +31,6 @@ class Comb():
 
 
 comb = Comb(10000,1000)
-re = comb.getComb(100,400)
+re = comb.getComb(10000,400)
 print(re)
 #print(comb) 

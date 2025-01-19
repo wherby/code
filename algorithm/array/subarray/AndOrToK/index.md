@@ -4,6 +4,8 @@
 ## OR
 子数组or 利用了每个数字加入之后，以这个数字结尾的子数组的or的状态一定只有32个（数字位数决定）这一性质可以进行递推dp
 algorithm\array\subarray\AndOrToK\find-subarray-with-bitwise-or-closest-to-k copy.py
+algorithm/array/subarray/AndOrToK/shortest-subarray-with-or-at-least-k-ii.2.py
+
 
 ## And
 algorithm\array\subarray\AndOrToK\number-of-subarrays-with-and-value-of-k.py
