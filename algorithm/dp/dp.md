@@ -84,3 +84,7 @@ dp[i+1][j] = min(dp[i][j],(s1-c,sorted(ids + [idx])))
 ## 值域DP,利用单调性累积  <-属性单调性，按照属性单调性的方向求值累积
 algorithm/dp/值域DP/longest-subsequence-with-decreasing-adjacent-difference
 用数组代替dictionary 可以提高速度  https://leetcode.cn/problems/longest-subsequence-with-decreasing-adjacent-difference/submissions/
+
+## 选择连续区域，状态机dp
+
+https://leetcode.cn/problems/maximum-frequency-after-subarray-operation/solutions/3057702/mei-ju-zhuang-tai-ji-dp-by-endlesscheng-qpt0/
