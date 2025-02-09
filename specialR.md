@@ -403,3 +403,7 @@ Given a row's x cols binary matrix filled with 0's and 1's, find the largest rec
 ## 交叉子序列
 求交叉子序列的时候，可以交换顺序变成顺序子序列，然后计算 algorithm/array/选择交叉子序列
 https://leetcode.cn/contest/weekly-contest-430/problems/count-special-subsequences/description/
+
+
+## 在区间内一定需要至少k个数，在滑动窗口的时候可以记录i-k+1个数字的位置作为左端点判定
+contest/00000c397d130/c435/q4/t4 copy.py
