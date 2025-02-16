@@ -62,6 +62,10 @@ while left +1 < right:
         right = mid 
 return left
 
+### 浮点数二分
+如果写成这样，要注意浮点数精度为10**15 15位有效数字作业， 如果l的整数部分为 10**12 则会死循环，更稳妥的方式是直接设置循环次数，或者变成整数二分 再转化为浮点数
+while l + 10**(-6) <r: # 可能死循环，
+
 #### ！！！如果2分开区间，right的值是需要不能取的值
 https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/?envType=daily-question&envId=2024-09-12
 class Solution:
