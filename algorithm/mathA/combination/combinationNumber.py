@@ -17,7 +17,7 @@ def comb2(n,m):
     return cnt
 
 print(comb2(100,2))
-
+#print(comb2(10**5,10**5//2)) # Can't use for 10**5
 ## Using Lib
 import math
 print(math.comb(100,2))

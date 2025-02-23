@@ -1,0 +1,45 @@
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+from bisect import bisect_right,insort_left,bisect_left
+from queue import Queue,LifoQueue,PriorityQueue
+import math
+INF  = math.inf
+
+
+
+class Solution:
+    def hasSameDigits(self, s: str) -> bool:
+        s = [int(a) for a in s]
+        s1,s2 = s[:-1],s[1:]
+        n= len(s1)
+        t = (n+1)//2
+        ls1=[]
+        for i in range(t):
+            ls1.append((s1[i] + s1[-1-i] -s2[i]-s2[-1-i])%10)
+        acc = 0 
+        for i,a in enumerate(ls1):
+            if a !=0:
+                acc += a*math.comb(n-1,i)
+        return acc %10 ==0
+
+
+
+
+
+re =Solution().hasSameDigits("059223162476909414787217368465718889720070329493800526721646241144650386182915621907231953557681242064182905239381861256480822308801745728716464165805416272563074544781706952551993233233441914762054761669477046604260289688651191958433480070003587023200105113105431268932582314103774297291977036873970402534522915576764583200175755147667814674754512504911569655037494222537756410610151191257150195557437349822009352297672631564482185262565187532385279714260044303857829021469873315780358707063556775718248201658447824815265573818347949428248619384219498719969693539037903024755075964220907437734386614616595870073534174014967983825396")
+print(re)
+
+# 1,1,1,1,1
+#  2 2 2 2
+#   4 4 4
+#    8 8
+
+# 1,2,3,4
+#  3 5 7 
+#   8 12
