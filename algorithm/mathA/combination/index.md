@@ -26,7 +26,7 @@ s[i][j]表示第i个人的时候有j个箱子的数量(默认箱子是一样的)
 
 
 ## Comb
-
+如果mod数字是质数，则正常计算，如果是合数，就用algorithm/mathA/combination/combinationMod10 拆合数因子，或者Lucas定理
 阶乘预处理，
 C(n,k) = n! /(k!)*(n-k)!  
 
