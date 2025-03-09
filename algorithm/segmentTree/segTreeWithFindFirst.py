@@ -144,22 +144,22 @@ class Solution:
         st = SegmentTree(op=max, e=-inf, a=baskets)
         n = len(baskets)
         
-        print("minright： 最左一个符合条件的")
+        print("minright：idx 开始 最左一个符合条件的")
         for f in fruits:
             k = st.min_right(0,lambda x :x>=f)
             print(k,f,)
-        print("maxright：从左到右找到最后一个符合条件的，下一个(右一个)是第一次不符合")
+        print("maxright：从左 idx 开始 到右找到最后一个符合条件的，下一个(右一个)是第一次不符合")
         for f in fruits:
-            k = st.max_right(0,lambda x :x<f)
+            k = st.max_right(4,lambda x :x<f)
             print(k,f,"<")
         for f in fruits:
             k = st.max_right(0,lambda x :x<=f)
             print(k,f,"<=")
-        print("minleft:从右到左找到最后一个符合条件的，左一个是不符合")
+        print("minleft:从右idx到左找到最后一个符合条件的，左一个第一个是不符合")
         for f in fruits:
             k = st.min_left(n-1,lambda x :x<=f)
             print(k,f,)
-        print("maxleft: 最右第一个符合条件的")
+        print("maxleft: 从idx开始最右第一个符合条件的")
         for f in fruits:
             k = st.max_left(n-1,lambda x :x>=f)
             print(k,f,"maxleft")

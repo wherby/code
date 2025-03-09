@@ -23,7 +23,7 @@ class Solution:
                     break
             if fd == False:
                 cnt +=1
-            print(baskets)
+            
         return cnt
 
 
