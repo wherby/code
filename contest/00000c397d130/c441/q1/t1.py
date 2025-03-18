@@ -12,16 +12,7 @@ import math
 INF  = math.inf
 
 class Solution:
-    def totalNumbers(self, digits: List[int]) -> int:
-        cnt = 0
-        st =set()
-        for i,a in enumerate(digits):
-            for j,b in enumerate(digits):
-                for k,c in enumerate(digits):
-                    if a >0 and c%2 ==0 and i!=j and i!=k and j!=k:
-                        st.add((a,b,c))
-        return len(st)
-
+    pass
 
 
 
