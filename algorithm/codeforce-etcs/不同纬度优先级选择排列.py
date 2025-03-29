@@ -1,6 +1,7 @@
 
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/03/0322/solution/cf332c.md
 # https://codeforces.com/problemset/problem/332/C
+# 不同纬度的优先级有先后顺序，先算第一优先级，gray 方向的所有可能值，然后用余下的做第二优先级计算
 from cflibs import *
 
 def main():
