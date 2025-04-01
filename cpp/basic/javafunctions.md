@@ -15,4 +15,6 @@ char[] s = S.toCharArray();
 int n = s.length;
 
 int cnt = (int) s.chars().distinct().count();
+
+(int) s.chars().filter(c -> c == letter).count() * 100 / s.length();
 ```

@@ -18,4 +18,8 @@ st.size();
 int n = s.size();
 
 int cnt = unordered_set(s.begin(), s.end()).size();
+
+
+ranges::count(s, letter) * 100 / s.size()
+
 ```

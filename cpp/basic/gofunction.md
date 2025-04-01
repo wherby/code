@@ -22,3 +22,10 @@ for _, c := range s {
 return len(set)
 
 ```
+
+## String
+
+```go
+strings.Count(s, string(letter)) * 100 / len(s)
+
+```

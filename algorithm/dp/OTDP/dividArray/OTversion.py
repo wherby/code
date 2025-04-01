@@ -1,5 +1,6 @@
 from typing import List, Tuple, Optional
 from functools import cache
+
 class Solution:
     def minimumCost(self, nums: List[int], cost: List[int], kk: int) -> int:
         pls = [0]
