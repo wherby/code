@@ -14,3 +14,10 @@ abs(i/m - i%m) 的分布是服从 2*（m-x) 的分布， x表示两者的abs的�
 ## 按照堆栈的状态 构造新的序列
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0403/solution/cf911e.md
 https://codeforces.com/problemset/problem/911/E
+
+
+## 序列构造法
+构造满足条件的下一个状态，同时上一个状态也可以递推出来
+https://codeforces.com/problemset/problem/715/A
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0405/solution/cf715a.md
+
