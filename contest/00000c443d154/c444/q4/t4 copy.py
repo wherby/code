@@ -24,7 +24,7 @@ class LRUCache:
         self.m = {}
         self.capacity = capacity
         self.h = Node(-1,-1)
-        self.t = Node(-1,-1)
+        self.t = Node(capacity,capacity)
         self.h.next = self.t
         self.t.prev = self.h
 
@@ -74,36 +74,50 @@ class Solution:
             return 0
         if len(nums) ==2 and nums[0] > nums[1]:
             return 1
-        nums.append(10**20)
         n = len(nums)
+        ssl =SortedList([])
         for i in range(n-1):
-            sl.add((nums[i] + nums[i+1], i,i+1))
-        pre =LRUCache(n+1)
+            sl.add((nums[i] + nums[i+1], i,i+2))
+            ssl.add(i)
+        pre =LRUCache(n)
         for i in range(n):
             pre.put(i,i)
-
+        #print(ssl)
         cnt =0
         dic ={}
-        while sl[0][1] != 0:
-            #print(sl)
-            a,b,c =sl[0]
-            sl.remove((a,b,c))
-            if pre.m[b].prev.key !=c or nums[b] + nums[c] !=a  :
-                # c= pre.m[b].prev.k
-                # sl.add((nums[c] + nums[b],b,c))
-                continue
-            nums[b]=nums[b]+nums[c]
-            dic[c] =1
-            cnt +=1
-            pre.remove(pre.m[c])
-            c = pre.m[b].prev.key
-            sl.add((nums[b] + nums[c],b,c))
-            d = pre.m[b].next.key
-            if d != -1:
-                sl.add((nums[d]+nums[b],d,b))
-            #print(sl,nums)
+        while len(sl) >0:
+            print(sl,ssl)
+            while sl[0][1] != ssl[0]:
+                #print(sl)
+                a,b,d =sl[0]
+                sl.remove((a,b,d))
+                if b in dic or pre.m[b].prev.prev.key !=d  :
+                    # c= pre.m[b].prev.k
+                    # sl.add((nums[c] + nums[b],b,c))
+                    continue
+                c=pre.m[b].prev.key
+                nums[b]=nums[b]+nums[c]
+                cnt +=1
+                pre.remove(pre.m[c])
+                if c != n-1:
+                    ssl.remove(c)
+                dic[c] =1
+                nums[c] = -10000000
+                c = pre.m[b].prev.key
+                if pre.m[b].prev.prev != None:
+                    d = pre.m[b].prev.prev.key
+                    sl.add((nums[b] + nums[c],b,d))
+                d = pre.m[b].next.key
+                if d != n:
+                    if pre.m[b].prev.prev != None:
+                        e = pre.m[b].prev.prev.key
+                        sl.add((nums[d]+nums[b],d,e))
+                print(sl,nums)
+            sl.remove(sl[0])
+            ssl.remove(ssl[0])
+        print(sl)
         return cnt
 
 
-re =Solution().minimumPairRemoval([2,2,-1,3,-2,2,1,1,1,0,-1])
+re =Solution().minimumPairRemoval([-2,1,2,-1,-1,-2,-2,-1,-1,1,1])
 print(re)

@@ -21,3 +21,7 @@ https://codeforces.com/problemset/problem/911/E
 https://codeforces.com/problemset/problem/715/A
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0405/solution/cf715a.md
 
+
+## 二进制进位bit count 
+https://codeforces.com/problemset/problem/1938/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0407/solution/cf1938c.md
