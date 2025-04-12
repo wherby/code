@@ -25,3 +25,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/
 ## 二进制进位bit count 
 https://codeforces.com/problemset/problem/1938/C
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0407/solution/cf1938c.md
+
+# 反向编码 algorithm/codeforce-etcs/反向编码.py
+https://codeforces.com/problemset/problem/442/A
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0409/solution/cf442a.md
