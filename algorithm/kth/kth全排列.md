@@ -64,6 +64,7 @@ for i in range(m):
 ```
 
 通过试填法得出:
-C(a1+b1+c1,a1) + C(b1+c1,b1) + C(c1,c1) = C(a1+b1+c1-1,a1-1) +C(a1+b1+c1-1,b1-1) +C(a1+b1+c1-1,c1-1) ??
+C(a1+b1+c1,a1) + C(b1+c1,b1) + C(c1,c1) = P(a1+b1+c1-1,a1-1) +P(a1+b1+c1-1,b1-1) +P(a1+b1+c1-1,c1-1) ??
 
+test 证明  algorithm/kth/test.py
 
