@@ -29,3 +29,9 @@ return len(set)
 strings.Count(s, string(letter)) * 100 / len(s)
 
 ```
+
+## Map
+
+cnt := map[int]int{}
+pairs += cnt[x]
+cnt[x]++

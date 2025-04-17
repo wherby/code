@@ -1,9 +1,11 @@
-# Verified https://leetcode.cn/problems/shortest-path-in-a-weighted-tree/submissions/622045108/
-
+#   https://leetcode.cn/problems/shortest-path-in-a-weighted-tree/submissions/622045108/
+# Not verified for funcitonal segment tree which maybe used to handle max min value beside sum in paths
 
 from typing import List, Tuple
 
 # Python 实现带权路径和查询的可变重链剖分(HLD)
+# HLD 通过两次dfs 把树上的点按照链的访问顺序【pos】重排到一维空间，再用线段树等处理 
+# 对于线段路径的权重，可以通过权重下放的方式把权重放在低位节点上
 
 from collections import defaultdict
 
@@ -98,17 +100,17 @@ class HLDWithSegmentTree:
         while self.chain[u] != self.chain[v]:
             if self.depth[self.head[u]] > self.depth[self.head[v]]:
                 # 处理u到head[u]的路径
-                res += self.segment_tree.query_sum(self.pos[self.head[u]], self.pos[u])
+                res += self.segment_tree.query(self.pos[self.head[u]], self.pos[u])
                 u = self.parent[self.head[u]]
             else:
                 # 处理v到head[v]的路径
-                res += self.segment_tree.query_sum(self.pos[self.head[v]], self.pos[v])
+                res += self.segment_tree.query(self.pos[self.head[v]], self.pos[v])
                 v = self.parent[self.head[v]]
         
         # 处理最后一条链
         if self.depth[u] > self.depth[v]:
             u, v = v, u
-        res += self.segment_tree.query_sum(self.pos[u], self.pos[v])
+        res += self.segment_tree.query(self.pos[u], self.pos[v])
         return res
     
     def update_node_value(self, u, new_value):
@@ -137,47 +139,58 @@ class HLDWithSegmentTree:
         return self.size[u]
 
 
+from math import ceil, log2
+
 class SegmentTree:
-    def __init__(self, data):
-        self.n = len(data)
-        self.size = 1
-        while self.size < self.n:
-            self.size <<= 1
-        self.tree = [0] * (2 * self.size)
-        # 初始化叶子节点
-        for i in range(self.n):
-            self.tree[self.size + i] = data[i]
-        # 构建内部节点
-        for i in range(self.size - 1, 0, -1):
-            self.tree[i] = self.tree[2 * i] + self.tree[2 * i + 1]
+    # merge(left, right): function used to merge the two halves
+    # basef(value): function applied on individual values
+    # basev: identity for merge function, merger(value, basev) = value 
+    # update(node_value, old, new): function to update the nodes
+    def __init__(self, array, merge=lambda x,y:x+y, basev = 0, basef=lambda x:x):
+        self.merge = merge
+        self.basef = basef
+        self.basev = basev
+        self.n = len(array)
+        self.array = array
+        self.tree = [0] * ( 2**ceil(log2(len(array))+1) - 1 )
+        self.build(array)
     
-    def update(self, pos, value):
-        """更新位置pos的值为value"""
-        pos += self.size
-        self.tree[pos] = value
-        pos >>= 1
-        while pos >= 1:
-            new_val = self.tree[2 * pos] + self.tree[2 * pos + 1]
-            if self.tree[pos] == new_val:
-                break
-            self.tree[pos] = new_val
-            pos >>= 1
-    
-    def query_sum(self, l, r):
-        """查询区间[l, r]的和"""
-        res = 0
-        l += self.size
-        r += self.size
-        while l <= r:
-            if l % 2 == 1:
-                res += self.tree[l]
-                l += 1
-            if r % 2 == 0:
-                res += self.tree[r]
-                r -= 1
-            l >>= 1
-            r >>= 1
-        return res
+    def __str__(self):
+        return ' '.join([str(x) for x in self.tree])
+
+    def _build_util(self, l, r, i, a):
+        if(l==r):
+            self.tree[i] = self.basef(a[l])
+            return self.tree[i]
+        mid = (l+r)//2
+        self.tree[i] = self.merge(self._build_util(l,mid, 2*i+1, a), self._build_util(mid+1, r, 2*i+2, a))
+        return self.tree[i]
+
+    def build(self, a):
+        self._build_util(0, len(a)-1, 0, a)
+
+    def _query_util(self, i, ln, rn, l, r):
+        if ln>=l and rn<=r:
+            return self.tree[i]
+        if ln>r or rn<l:
+            return self.basev
+        return self.merge( self._query_util( 2*i+1, ln, (ln+rn)//2, l, r ), self._query_util( 2*i+2, (ln+rn)//2+1, rn, l, r ) )
+
+    def query(self, l, r):
+        return self._query_util( 0, 0, self.n-1, l, r )
+
+    def _update_util(self, i, ln, rn, x, v):
+        if x>=ln and x<=rn:
+            if ln != rn:
+                self._update_util( 2*i+1, ln, (ln+rn)//2, x, v )
+                self._update_util( 2*i+2, (ln+rn)//2 + 1, rn, x, v )
+                self.tree[i] = self.merge(self.tree[2*i+1], self.tree[2*i+2])
+            else:
+                self.tree[i] = self.basef(v)
+
+    def update(self, x, v):
+        self._update_util( 0, 0, self.n-1, x, v )   
+        self.array[x] =v    
 
 
 

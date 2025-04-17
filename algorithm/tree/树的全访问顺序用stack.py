@@ -45,27 +45,31 @@ class Solution:
             g[b].append(a)
             dic[(a,b)] =c 
             dic[(b,a)] =c 
-        ord =[]
+        
         dic2=defaultdict(list)
         depth = [0]*(n+1)
 
-        stk = [1]
-        parent =[-1]*(n+1)
-        while stk:
-            u = stk.pop()
-            if u >= 0:
-                if parent[u] != -1:
-                    depth[u] = depth[parent[u]] +1
-                    ord.append((parent[u],u))
-                stk.append(~u)
-                for v in g[u]:
-                    if parent[u]!=v:
-                        parent[v] = u 
-                        stk.append(v)
-            else:
-                u =~u
-                if parent[u] != -1:
-                    ord.append((u,parent[u]))
+        def getVisitOrd(root):
+            ord =[]
+            stk = [root]
+            parent =[-1]*(n+1)
+            while stk:
+                u = stk.pop()
+                if u >= 0:
+                    if parent[u] != -1:
+                        depth[u] = depth[parent[u]] +1
+                        ord.append((parent[u],u))
+                    stk.append(~u)
+                    for v in g[u]:
+                        if parent[u]!=v:
+                            parent[v] = u 
+                            stk.append(v)
+                else:
+                    u =~u
+                    if parent[u] != -1:
+                        ord.append((u,parent[u]))
+            return ord
+        ord = getVisitOrd(1)
         #print(ord,depth)
         ls=[]
         

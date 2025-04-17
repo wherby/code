@@ -34,3 +34,8 @@ while (!stk.empty() && stk.back() == cur) {
             cur ++;
         }
 ```
+
+## Map 
+
+unordered_map<int, int> cnt;
+pairs += cnt[x]++;

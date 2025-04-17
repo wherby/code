@@ -18,3 +18,9 @@ int cnt = (int) s.chars().distinct().count();
 
 (int) s.chars().filter(c -> c == letter).count() * 100 / s.length();
 ```
+
+## Map
+
+Map<Integer, Integer> cnt = new HashMap<>();
+int c = cnt.getOrDefault(x, 0);
+cnt.put(x, c + 1);
