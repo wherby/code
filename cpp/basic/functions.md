@@ -3,6 +3,14 @@
 # Vector
 ```cpp
 vector ans(m, vector<int>(n));
+
+vector<int> divisors[MX];
+
+
+ranges::sort(nums);
+auto r = upper_bound(nums.begin(), nums.begin() + j, upper - nums[j]);
+auto l = lower_bound(nums.begin(), nums.begin() + j, lower - nums[j]);
+
 ```
 
 # set

@@ -6,6 +6,16 @@ int[][] ans = new int[m][n];
 Set<Integer> st = new HashSet<>();
 st.clear();
 st.add(grid[x][y]);
+
+
+
+List<Integer>[] divisors = new ArrayList[MX];
+Arrays.setAll(divisors, i -> new ArrayList<>());
+
+Arrays.sort(nums);
+int r = lowerBound(nums, j, upper - nums[j] + 1);
+int l = lowerBound(nums, j, lower - nums[j]);
+
 ```
 
 ## String

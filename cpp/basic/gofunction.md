@@ -8,6 +8,16 @@ set := map[int]struct{}{}
 clear(set)
 set[grid[x][y]] = struct{}{}
 topLeft := len(set)
+
+
+var divisors [mx][]int
+
+
+slices.Sort(nums)
+r := sort.SearchInts(nums[:j], upper-x+1)
+l := sort.SearchInts(nums[:j], lower-x)
+
+
 ```
 
 ## String
