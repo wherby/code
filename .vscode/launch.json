@@ -6,10 +6,17 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "${file}"
+            "program": "${file}",
+            "cwd": "${fileDirname}"  // Add this line
         },
-        
-
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}"  // Add this line
+          },
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",

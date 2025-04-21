@@ -7,3 +7,7 @@ https://leetcode.cn/problems/maximize-subarray-sum-after-removing-all-occurrence
 algorithm/segmentTree/segmentTreeNodeWithMerge.2.py
 求不相连的最大值
 algorithm/segmentTree/segmentTreeNodeWithMerge.py
+
+
+# 
+https://leetcode.cn/discuss/post/3583665/fen-xiang-gun-ti-dan-chang-yong-shu-ju-j-bvmv/
