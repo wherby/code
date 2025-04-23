@@ -31,4 +31,16 @@ s[i][j]表示第i个人的时候有j个箱子的数量(默认箱子是一样的)
 C(n,k) = n! /(k!)*(n-k)!  
 
 
+## 重复限制可以通过分析发现这个限制没有作用
+https://codeforces.com/problemset/problem/1277/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0421/solution/cf1277d.md
+
+
+## 构造n*(n-1)//2内的数列和
+https://codeforces.com/problemset/problem/847/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0422/solution/cf847c.md
+
+#
+
+
 
