@@ -2,6 +2,7 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0411/solution/cf212c.md
 # AB =>BA  AA =>AA BA =>BA BB =>BB
 # 当前为A(往右)，则上一个值的上一个状态是A或者B, 如果 ？？
+# 先假设一个状态，循环一周回到这个状态的倍数？
 
 from cflibs import *
 
