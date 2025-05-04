@@ -29,3 +29,28 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/
 # 反向编码 algorithm/codeforce-etcs/反向编码.py
 https://codeforces.com/problemset/problem/442/A
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0409/solution/cf442a.md
+
+# 不同的栈模拟不通的限制
+https://codeforces.com/problemset/problem/845/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0428/solution/cf845d.md
+
+# 分组循环number count
+https://codeforces.com/problemset/problem/367/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0429/solution/cf367b.md
+
+# LIS DP 变形
+https://codeforces.com/problemset/problem/269/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0430/solution/cf269b.md
+
+# DP
+https://codeforces.com/problemset/problem/2073/J
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0430/solution/cf2073j.md
+
+# 平面上三个点的相对位置分类讨论
+https://codeforces.com/problemset/problem/617/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0501/solution/cf617d.md
+
+# 排序的特性 
+https://codeforces.com/problemset/problem/599/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0503/solution/cf599c.md
+
