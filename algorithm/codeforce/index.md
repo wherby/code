@@ -54,3 +54,16 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/
 https://codeforces.com/problemset/problem/599/C
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0503/solution/cf599c.md
 
+# KMP变形与特判
+https://codeforces.com/problemset/problem/631/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0502/solution/cf631d.md
+
+
+# 贪心
+https://codeforces.com/problemset/problem/794/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0506/solution/cf794c.md
+
+# 循环技巧 循环遍历左右的时候有重叠可以用vis来去重
+https://codeforces.com/problemset/problem/653/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0506/solution/cf653c.md
+
