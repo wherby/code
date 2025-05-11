@@ -34,3 +34,9 @@ https://blog.51cto.com/u_15127597/3992474
 在增广路径的时候，会出现负边，所以需要删除对应的visit节点
 algorithm/graph/flow/mincost/abc373_g.2.py
 #### Dijstr 在增广路径的时候有负边，需要更新visit
+
+
+## DAG 
+DAG 图不能直接使用dfs visit 需要使用拓扑排序visit
+algorithm/dfs/OOM
+
