@@ -1,6 +1,7 @@
 
 
-## 
+## Conda install 
+conda search python
 
 conda create -n python310 pip python=3.10
 

@@ -1,5 +1,6 @@
 # https://codeforces.com/problemset/problem/208/C
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0513/solution/cf208c.md
+# 寻找经过某点的最短路径数量 -》 从起始点 和结束点 求最短路径，用queue记录 访问顺序，再在最短路径上做dp计数
 
 from cflibs import *
 def main():

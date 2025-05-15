@@ -1,10 +1,12 @@
-# https://leetcode.cn/problems/subtree-inversion-sum/solutions/3673852/shu-xing-dppythonjavacgo-by-endlesscheng-pjwg/
 from typing import List, Tuple, Optional
 
+from collections import defaultdict,deque
 from functools import cache
 
 import math
 INF  = math.inf
+import sys
+sys.setrecursionlimit(100000)
 
 class Solution:
     def subtreeInversionSum(self, edges: List[List[int]], nums: List[int], k: int) -> int:
@@ -25,8 +27,10 @@ class Solution:
             
         dfs2(0,-1)
         #print(g2)
-        @cache
+        mem = {}
         def dfs(a,ds,acc):
+            if (a,ds,acc) in mem:
+                return mem[(a,ds,acc)]
             ret = -10**10
             tmp= 0
             if ds ==0:
@@ -40,13 +44,13 @@ class Solution:
             for b in g2[a]:
                 tmp += dfs(b,max(ds-1,0),acc)
             ret = max(ret,tmp)
+            mem[(a,ds,acc)] =ret
             return ret
         ret= dfs(0,0,1)
-        dfs.cache_clear()
         return ret
 
 
-
-from input import edges,nums,k
-re =Solution().subtreeInversionSum( edges , nums , k )
+# re =Solution().subtreeInversionSum( edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], nums = [4,-8,-6,3,7,-2,5], k = 2)
+from input import edges,nums,k 
+re = Solution().subtreeInversionSum(edges,nums,k)
 print(re)

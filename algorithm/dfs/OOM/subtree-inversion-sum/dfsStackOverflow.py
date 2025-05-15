@@ -1,9 +1,8 @@
+# https://leetcode.cn/problems/subtree-inversion-sum/solutions/3673852/shu-xing-dppythonjavacgo-by-endlesscheng-pjwg/
 # Fatal Python error: _Py_CheckRecursiveCall: Unrecoverable stack overflow (used 3929 kB) in comparison
 # Python runtime state: initialized
-
 from typing import List, Tuple, Optional
 
-from collections import defaultdict,deque
 from functools import cache
 
 import math
@@ -51,7 +50,7 @@ class Solution:
         return ret
 
 
-# re =Solution().subtreeInversionSum( edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], nums = [4,-8,-6,3,7,-2,5], k = 2)
-from input import edges,nums,k 
-re = Solution().subtreeInversionSum(edges,nums,k)
+
+from input import edges,nums,k
+re =Solution().subtreeInversionSum( edges , nums , k )
 print(re)

@@ -1,6 +1,5 @@
-# Fatal Python error: _Py_CheckRecursiveCall: Unrecoverable stack overflow (used 3929 kB) in comparison
-# Python runtime state: initialized
-
+# OT https://leetcode.cn/problems/subtree-inversion-sum/submissions/630002542/
+# Not stable
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -26,12 +25,14 @@ class Solution:
                 if b ==p:continue
                 cd.append(b)
                 dfs2(b,a)
-            g2[a] = list(cd)
+            g2[a] = cd
             
         dfs2(0,-1)
         #print(g2)
-        @cache
+        mem = {}
         def dfs(a,ds,acc):
+            if (a,ds,acc) in mem:
+                return mem[(a,ds,acc)]
             ret = -10**10
             tmp= 0
             if ds ==0:
@@ -45,9 +46,9 @@ class Solution:
             for b in g2[a]:
                 tmp += dfs(b,max(ds-1,0),acc)
             ret = max(ret,tmp)
+            mem[(a,ds,acc)] =ret
             return ret
         ret= dfs(0,0,1)
-        dfs.cache_clear()
         return ret
 
 
