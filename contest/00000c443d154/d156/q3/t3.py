@@ -10,8 +10,8 @@ from bisect import bisect_right,insort_left,bisect_left
 from queue import Queue,LifoQueue,PriorityQueue
 import math
 INF  = math.inf
-
-class Solution:
+import abc
+class Solution(abc.ABC):
     def maxWeight(self, n: int, edges: List[List[int]], k: int, t: int) -> int:
         g = [[] for _ in range(n)]
         ind = [0]*n 
@@ -44,3 +44,8 @@ class Solution:
 re =Solution().maxWeight( n = 3, edges = [[0,1,6],[1,2,8]], k = 1, t = 6)
 re =Solution().maxWeight(  n = 3, edges = [[0,1,1],[1,2,2]], k = 2, t = 4)
 print(re)
+c = Solution()
+print(dir(c))
+print(c.__class__)
+print(dir(Solution))
+print(Solution.__mro__)

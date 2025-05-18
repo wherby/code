@@ -13,14 +13,14 @@ INF  = math.inf
 
 
 class Solution:
-    pass
+    def smallestIndex(self, nums: List[int]) -> int:
+        ret = -1 
+        for i,a in enumerate(nums):
+            c = sum([int(b) for b in str(a)])
+            if c == i:
+                return i 
+        return ret
 
-
-A ="BUUBDLA PSSPABUAEBXO"
-A= [ord(a) -ord("A") for a in A]
-ls=[chr(ord('A') +(a+26)%27) for a in A]
-
-print(ls)
 
 
 
