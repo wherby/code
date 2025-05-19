@@ -1,4 +1,8 @@
-# 
+# include lib
+
+import sys
+sys.path.append("..")
+from cflibs.cflibs import *
 
 
 ## 矩形越界图形边界处理

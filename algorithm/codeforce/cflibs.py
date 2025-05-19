@@ -20,7 +20,7 @@ from math import inf
 from itertools import pairwise
 
 # Visit my repo: https://github.com/Yawn-Sean/Daily_CF_Problems
-
+mod =10**9+7
 
 standard_input, packages, output_together = 1, 1, 0
 dfs, hashing, read_from_file = 0, 0, 0
