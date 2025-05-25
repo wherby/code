@@ -17,3 +17,21 @@ f[k](n+1) = C(n+1,0) + C(n+1,1) +...C(n+1,k)
 https://leetcode.cn/circle/discuss/DW1adK/ 
 
 ![pic](Screenshot%202025-01-19%20at%2019.48.44.png)
+
+# 奇偶项和相等
+algorithm/mathA/combination特性/鸡偶项和.py
+
+```python
+cmb = Factorial(10000)
+@cache
+def getI(mx):
+    ret = 0
+    for i in range(1,mx+1,2):
+        ret += cmb.comb(mx,i)
+        ret = ret%MOD 
+    return ret
+
+for i in range(1,10000):
+    if getI(i)!=pow(2,i-1,MOD):
+        print(getI(i),  pow(2,i-1,MOD))
+```

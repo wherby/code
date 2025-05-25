@@ -155,3 +155,6 @@ get_subsums = lambda nums: functools.reduce(lambda s, x: s | {x + ts for ts in s
 >>> from math import comb
 >>> comb(10,3)
 120
+
+# use default max will timeout, need to use function max
+https://leetcode.cn/problems/maximum-profit-from-trading-stocks-with-discounts/submissions/632329149/
