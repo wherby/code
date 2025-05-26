@@ -1,6 +1,7 @@
 # https://leetcode.cn/problems/maximum-profit-from-trading-stocks-with-discounts/description/3
 # dp 表示子节点的状态，0表示没使用半价，1表示使用半价
 # dp2表示转移矩阵， 0 的状态也是没有使用半价，1表示使用半价，但是如果不够，则其中节点的状态是由子节点的不使用半价得到的，因为父节点没有购买
+#TIPS# 为什么用两个DP矩阵，因为DP表示子节点的状态merge，从子节点到根节点，这时候是状态转移，则需要另一个矩阵DP2计算所有可能的状态转移函数
 from typing import List, Tuple, Optional
 
 
