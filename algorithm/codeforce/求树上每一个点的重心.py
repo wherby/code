@@ -1,5 +1,8 @@
 # https://codeforces.com/problemset/problem/685/B
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0505/solution/cf685b.md
+# 求树上每个节点的重心，首先使用BFS获取访问顺序
+# 使用递归方法，在访问顺序逆序处理，如果没有子树则重心在自身，否则，根节点的重心一定是最大子树的重心到根的路径上
+# #TAG#TREE#重心
 
 import sys
 sys.path.append("..")
