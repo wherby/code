@@ -87,3 +87,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/
 # k次循环数组找符合尾数的数字
 https://codeforces.com/problemset/problem/327/C
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0515/solution/cf327c.md
+
+# 分类讨论条件
+https://codeforces.com/problemset/problem/65/A
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0602/solution/cf65a.md
