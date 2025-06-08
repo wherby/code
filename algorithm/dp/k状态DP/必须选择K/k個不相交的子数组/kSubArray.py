@@ -1,4 +1,7 @@
 # https://leetcode.cn/contest/weekly-contest-388/problems/maximum-strength-of-k-disjoint-subarrays/
+# 这里k个数组是不用把所有数组都选择完，所以 dp1[i] = max(dp1[i], dp0[i]) 
+# dp0表示未断开的的i个子数组，则由 dp0[i] 和dp1[i-1]转移过来
+# 对于新的数字，dp0[i] += (1 if i % 2 else -1) * num * (k - i + 1) 是直接分解得到当前元素的贡献
 from typing import List, Tuple, Optional
 from math import inf
 
