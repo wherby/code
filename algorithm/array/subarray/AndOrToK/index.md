@@ -23,4 +23,8 @@ contest\00000c397d130\d134\q4
 
 https://leetcode.cn/problems/number-of-subarrays-with-and-value-of-k/solutions/2833497/jian-ji-xie-fa-o1-kong-jian-pythonjavacg-u7fv/
 
+## LogTrick 
+对于子数组特性具有单调性，则可以使用logtrick, 从当前点到以前的各个可能值域进行合并
+algorithm/array/subarray/AndOrToK/logTrickForGCD.py
+
 
