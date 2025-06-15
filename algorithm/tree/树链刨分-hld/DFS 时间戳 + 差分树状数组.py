@@ -1,5 +1,5 @@
 # 求和的时候可以用这种解法， 求最大最小值则不可以
-
+from typing import List, Tuple, Optional
 
 class FenwickTree:
     def __init__(self, n: int):
