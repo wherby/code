@@ -9,6 +9,7 @@ from queue import Queue,LifoQueue,PriorityQueue
 from bisect import bisect_right,insort_left,bisect_left
 
 from itertools import chain,product
+from itertools import permutations
 from collections import Counter
 from functools import lru_cache
 from functools import cache

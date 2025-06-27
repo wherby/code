@@ -28,58 +28,69 @@ class Solution:
             return time[0]*mul[0]
         if k ==1:
             return -1
-
-
         timedic= {}
+        stdic = {}
         for j in range(1,k+1):
+            ls = []
             st  = allState(j,n)        
             for s1 in st:
                 mx = 0
+                acc = 0
                 for i in range(n):
                     if (1<<i)& s1:
                         mx = max(mx,time[i])
+                        acc += time[i]
                 timedic[s1] = mx 
-        visit = defaultdict(lambda:10**10)
+                ls.append((mx,s1))
+            ls.sort()
+            #print(ls)
+            stdic[j] = [a[1] for a in ls]
+        #print(stdic)
+        visit={}
 
-        stack =[(0,(1<<n)-1, True,0)]
-        mn =10**10
-        while stack:
-            cst,state,Forward,m1 = heappop(stack)
+
+        @cache
+        def dfs(state,Forward,m1):
+            #print(state,Forward,m1)
+
+            if (state,Forward, m1) not in visit:
+                visit[(state,Forward,m1)] =1 
+            else:
+                return 10**10 
             if state ==0:
-                return cst
-            #$print(stack)
-            if cst > visit[(state,Forward,m1)]:
-                continue
-            visit[(state,Forward,m1)] =cst
+                return 0 
+            ret = 10**10
             if Forward:
                 for j in range(1,k+1):
-                    st = allState(j,n)
+                    st = stdic[j]
                     for s1 in st:
                         if s1 & state == s1:
                             t1 = timedic[s1]
-                            nm1 = (m1+ int(t1* mul[m1])%m)%m
-                            if cst+ t1*mul[m1] < visit[(state -s1,False,nm1)]:
-                                visit[(state -s1,False,nm1)] =cst+ t1*mul[m1]
-                                heappush(stack,(cst+ t1*mul[m1],state -s1,False,nm1) )
+                            ret = min(ret,t1* mul[m1] + dfs(state -s1,False,(m1+ int(t1* mul[m1])%m)%m))
             else:
-                for j in range(1,k+1):
-                    st = allState(j,n)
+                for j in range(1,2):
+                    st = stdic[j]
                     for s1 in st:
                         if s1| state== state+ s1:
                             t1 = timedic[s1]
-                            nm1= (m1+ int(t1* mul[m1])%m)%m
-                            if cst+ t1*mul[m1] < visit[(state +s1,True,nm1)]:
-                                visit[(state +s1,True,nm1)] =cst+ t1*mul[m1]
-                                heappush(stack,(cst+ t1*mul[m1],state +s1,True,nm1) )
-        #print(visit)
-        return mn
+                            ret = min(ret,t1* mul[m1] + dfs(state +s1,True,(m1+ int(t1* mul[m1])%m)%m))
+            #print(state)
+            return ret
+
+
+        ret=dfs((1<<n)-1,True,0)
+        dfs.cache_clear()
+        return ret
+            
 
 
 
 
 
-#re =Solution().minTime( n = 3, k = 2, m = 4, time = [68,26,46], mul = [0.82,1.46,1.55,1.93])
+re =Solution().minTime( n = 3, k = 2, m = 4, time = [68,26,46], mul = [0.82,1.46,1.55,1.93])
 #re =Solution().minTime( n = 2, k = 2, m = 4, time = [40,1], mul = [1.82,1.59,1.11,1.84])
-re =Solution().minTime( n = 11, k = 5, m = 3, time = [1,3,5,7,9,11,13,15,17,19,21], mul = [1.5,1.8,0.7])
+re =Solution().minTime( n =4, k = 2, m = 5, time = [9,53,25,96], mul = [1.81,1.88,1.65,1.39,0.96])
+re =Solution().minTime( n =3, k = 2, m = 3, time = [84,98,67], mul =[1.98,0.54,0.76])
+re =Solution().minTime( n =3, k = 2, m = 2, time = [77,48,39], mul =[0.72,0.97])
 print(re)
 

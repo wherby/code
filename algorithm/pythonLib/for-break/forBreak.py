@@ -1,4 +1,7 @@
 #https://leetcode.cn/problems/Jf1JuT/solution/wai-xing-wen-zi-dian-by-leetcode-solutio-to66/
+from collections import defaultdict,deque
+from typing import List, Tuple, Optional
+from itertools import pairwise
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         inD ={}
