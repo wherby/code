@@ -20,3 +20,5 @@
 **/__pycache__
 
 localtmp
+
+catalog/*

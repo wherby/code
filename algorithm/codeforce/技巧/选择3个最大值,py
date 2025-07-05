@@ -1,0 +1,52 @@
+# https://codeforces.com/problemset/problem/358/C
+# https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/07/0702/solution/cf358c.md
+# 在一个循环中维护3个最大值的选择
+# 构造操作的时候因为deck最灵活，所以把最大值放前面，其他不是最大值的都放deck后面
+
+import sys
+sys.path.append("..")
+from cflibs.cflibs import *
+def main():
+    q = II()
+    cur = []
+    outs = []
+
+    v1, v2, v3 = 0, 0, 0
+
+    for _ in range(q):
+        x = II()
+        
+        if x:
+            if x > v1:
+                v1, v2, v3 = x, v1, v2
+            elif x > v2:
+                v2, v3 = x, v2
+            elif x > v3:
+                v3 = x
+            cur.append(x)
+        else:
+            tmp = []
+            for v in cur:
+                if v == v1:
+                    outs.append('pushStack')
+                    tmp.append('popStack')
+                    v1 = 0
+                elif v == v2:
+                    outs.append('pushQueue')
+                    tmp.append('popQueue')
+                    v2 = 0
+                elif v == v3:
+                    outs.append('pushFront')
+                    tmp.append('popFront')
+                    v3 = 0
+                else:
+                    outs.append('pushBack')
+            
+            if tmp: outs.append(f"{len(tmp)} {' '.join(tmp)}")
+            else: outs.append('0')
+            cur.clear()
+
+    for v in cur:
+        outs.append('pushStack')
+
+    print('\n'.join(outs))
