@@ -11,3 +11,9 @@ algorithm/segmentTree/segmentTreeNodeWithMerge.py
 
 # 
 https://leetcode.cn/discuss/post/3583665/fen-xiang-gun-ti-dan-chang-yong-shu-ju-j-bvmv/
+
+# 线段树OT 考虑SparseTable
+algorithm/segmentTree/quickVersion/SparseTable.py
+https://leetcode.cn/contest/biweekly-contest-160/problems/minimum-stability-factor-of-array/description/
+
+[Use SpareTree to Speed up query for [l,r] query, only could be applied to [max, min, gcd] function can't be appied to [sum,xor,..]](../OMOTQuestions/segmentTreeQueryTimeOut/minimum-stability-factor-of-array/stTableAC.py)

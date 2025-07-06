@@ -334,6 +334,9 @@ ABC = ['abcdefghijklmnopqrstuvwxyz']
 
 from string import ascii_lowercase   [contest/00000c275d69/c297/q4/t44.py]
 
+isalnum() method: This method is part of Python's string manipulation capabilities.
+Alphanumeric characters: These include letters (a-z, A-Z) and numbers (0-9).
+
 ## set ops
 
 >>> a = {1, 2, 3, 4}
