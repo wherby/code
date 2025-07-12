@@ -36,6 +36,10 @@ Use heapq instead of PriorityQueue to avoid OT https://docs.python.org/zh-cn/3/l
 https://docs.python.org/zh-cn/3.6/library/bisect.html
 bisect.bisect_left(a, x, lo=0, hi=len(a))
 
+## 查找start_day 这个值在 end_day 排序的event队列的位置，二分最大值是i 
+p = bisect_left(events, start_day, hi=i, key=lambda e: e[1])  # hi=i 表示二分上界为 i（默认为 n）
+
+
 ## print queue
 print(list(q.queue)) //https://stackoverflow.com/questions/54656387/printing-contents-of-a-queue-in-python
 
