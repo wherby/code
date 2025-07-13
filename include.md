@@ -99,6 +99,20 @@ contest/00000c397d130/c415/q3/t3.binarySearch.py
             check = lambda sz: sub_hash(i, i + sz + 1) not in sets[sz]
             sz = bisect_left(range(min(n - i, max_len)), True, key=check)
 ```
+```python # if True in begin ,then reverse https://leetcode.cn/problems/maximum-matching-of-players-with-trainers
+class Solution:
+    def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
+        players.sort()
+        trainers.sort()
+        l = 0
+        r = min(len(players),len(trainers))
+
+        def verify(mid):
+            pl = players[:mid]
+            tl = trainers[-mid:]
+            return not all(p<=t for p,t in zip(pl,tl))
+        return bisect_left(range(r+1),True,key =verify)-1
+```
 
 
 ``` python
