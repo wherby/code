@@ -134,6 +134,10 @@ format 补0
 >>> [1,2,3,2,3,5].count(2)
 2
 
+>>> a =1023
+>>> a.bit_count()
+10
+
 # deep copy
 import copy
 copy.deepcopy(board)  # deep copy

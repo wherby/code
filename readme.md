@@ -83,6 +83,8 @@ x = [[] for i in range(n+1)]
 # char isalpha
 e.isalpha() 
 e.isdigit()
+isalnum() method: This method is part of Python's string manipulation capabilities.
+Alphanumeric characters: These include letters (a-z, A-Z) and numbers (0-9).
 
 
 ## setup env:
