@@ -4,9 +4,8 @@
 # 在预处理的时候，按照最终选择？从大到小改，先选 一半出来
 # 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, k = MII()
     nums = LII()

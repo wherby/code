@@ -3,9 +3,8 @@
 # 求一颗树上访问K个节点的最短路径，是从最长路径上选择一个点M，然后在这个点到根的路径遍历一次，其他点遍历两次这样就会获得最短路径
 # 如何确定哪些边是一次，哪些边是两次？ 在dfs里的遍历是往下遍历，就是两次，在外面从M到树根的遍历就是1次，而且用cnt控制达到k个点的时候就不会往下遍历
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     t = II()
     outs = []

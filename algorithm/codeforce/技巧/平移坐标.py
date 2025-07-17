@@ -1,9 +1,8 @@
 # https://codeforces.com/problemset/problem/435/C
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0531/solution/cf435c.md
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     nums = [0] + LII()

@@ -3,9 +3,8 @@
 
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     n =   II()
     cnt = [0] * 8

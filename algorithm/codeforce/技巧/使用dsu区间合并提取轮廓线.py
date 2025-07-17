@@ -3,9 +3,8 @@
 # 使用区间合并DSU 从大到小，每次合并都是外轮廓线
 # 利用每个点的高度变化，画出轮廓线
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     delta = random.getrandbits(30)
 

@@ -5,9 +5,8 @@
 # 使用lca 记录所有路径使用差分得到路径 ，并且记录每个节点的上行下行标记来累积计算
 # dfs 访问形成的que反向实现路径积分
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     us = []

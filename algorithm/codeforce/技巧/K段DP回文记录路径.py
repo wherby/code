@@ -3,9 +3,8 @@
 # 最小分割回文，记录dp路径
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     s = [ord(c) for c in I()]
     k = II()

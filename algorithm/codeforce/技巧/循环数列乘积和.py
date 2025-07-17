@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0611/solution/cf228d.md
 # 循环队列状态可控，就按照各种情况推演所有可能的状态，然后用前缀和更新的结构解决
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     nums = LII()

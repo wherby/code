@@ -1,10 +1,13 @@
 # https://codeforces.com/problemset/problem/260/D
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0626/solution/cf260d.md
+# 树上的点的所有边权和记录在点上，树上的点分别为黑白色标记， 树上每条边都是不同的颜色， 把边移除，然后恢复边权满足条件
 # 已知点的周围边权值。构造一个树图
+# 解法是在两个不同的类中各自选一个来连接，其边权是两者最小值，再更新；类似某种图遍历
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+
+from cflibs import *
+
 def main():
     n = II()
     p0 = []
@@ -29,3 +32,5 @@ def main():
             p0.append((v0 - v1) * n + idx0)
 
     print('\n'.join(ans))
+
+main()

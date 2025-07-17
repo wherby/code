@@ -1,9 +1,8 @@
 # https://codeforces.com/problemset/problem/625/A
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/07/0703/solution/cf625a.md
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     a = II()

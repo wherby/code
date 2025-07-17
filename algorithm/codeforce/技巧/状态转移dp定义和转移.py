@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0527/solution/cf73c.md
 # 定义了do(x,k) 为末状态最后一个字母为x并且消耗k个转换的状态 ，则在求下一个状态的转移时候，需要写转移方程每个可能的状态计算
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     s, k = LI()
 

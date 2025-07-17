@@ -3,9 +3,8 @@
 # 如果一个记录了pre 的数组， 怎么找到所有的链尾， 用 note 数组标记链尾值，如果pre出现了这个节点，这个节点就不是链尾，标记完之后剩下的节点就是链尾
 # 链的合并，就是背包dp
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, pos = MII()
     pos -= 1

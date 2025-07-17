@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/07/0712/solution/cf305c.md
 # 求 n个升序的二进制置位数的和的 表达
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     nums = LII()

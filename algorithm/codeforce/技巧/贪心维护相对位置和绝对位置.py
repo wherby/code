@@ -4,9 +4,8 @@
 # 用dfs维护相对位置的距离，用cur维护当前已经处理了多少个左端点
 # 用 i 记录当前循环里的绝对位置idx，
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     ls = []

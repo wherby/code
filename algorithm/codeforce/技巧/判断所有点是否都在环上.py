@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0628/solution/cf741a.md
 # 判定图上所有的点都在环上
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 
 
 def main():

@@ -4,9 +4,8 @@
 # 通过stack 存了所有可能小于等于m-1的candidate， 如果stack里面不为空， 则是大于m-1的组合，则大大配对就是最大的组合
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
     nums1 = LII()

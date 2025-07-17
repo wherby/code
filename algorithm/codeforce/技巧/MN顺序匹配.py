@@ -4,9 +4,8 @@
 # 【顺序贪心匹配】
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
     heads = LII()

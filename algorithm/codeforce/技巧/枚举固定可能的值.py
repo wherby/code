@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0602/solution/cf529b.md
 # 这里求H 的可能值，可以用所有可能的H测试，先求在H固定的时候不得不选择倒转的值，然后贪婪求W最小的选择
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 
 def main():
     n = II()

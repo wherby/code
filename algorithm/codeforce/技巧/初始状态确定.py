@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0627/solution/cf1255c.md
 # 从链条里取得初始状态，需要先获取两个链接点，第二个点通过遍历所有的key值找到
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
 

@@ -3,9 +3,8 @@
 # 试填每个联通区域的某一个值，并且记录所有影响的值，如果失败则恢复原始值
 # 因为数据范围是10**6， 则可以枚举 10**3 用除数枚举另一半可能性
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
 

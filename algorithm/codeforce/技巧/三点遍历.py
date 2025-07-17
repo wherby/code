@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0612/solution/cf1453c.md
 # 要求三个点的最大值，其中一个点可以任意选，如果求另一条边的最大值，不是遍历两点，而是用当前点和最大最小边界构成
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     t = II()
     outs = []

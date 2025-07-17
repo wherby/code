@@ -11,9 +11,8 @@
 # 所以所有的前逻辑节点被访问，才能解锁下一层的列节点，上一层的列节点解锁了，就可以解锁当层的逻辑节点
 # 所以当前列的所有的列节点和逻辑节点都被访问，就会解锁下一列的逻辑列节点和列节点，完成拓扑遍历
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
     grid = [LII() for _ in range(n)]

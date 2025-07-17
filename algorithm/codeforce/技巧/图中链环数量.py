@@ -1,9 +1,8 @@
 # https://codeforces.com/problemset/problem/1833/E
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/07/0705/solution/cf1833e.md
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     t = II()
     outs = []

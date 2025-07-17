@@ -3,9 +3,8 @@
 # 求矩形中最大的固定矩形的最小坐标位置
 # 其中对于x0,y0的讨论
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m, x, y, a, b = MII()
     g = math.gcd(a, b)

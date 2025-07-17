@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0624/solution/cf1945f.md
 # 对于从小到大的时候，需要不断删除candidate的情况，反向操作，从大到小获取candidate
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 
 def main():
     t = II()

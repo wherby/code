@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0620/solution/cf183c.md
 # 有向图一次遍历求出所有环的大小
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
     path = [[] for _ in range(n)]

@@ -1,9 +1,10 @@
 # https://codeforces.com/problemset/problem/373/B
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0524/solution/cf373b.md
 # 这里求剩余数字用 v-m ,在有剩余的时候添加到m中实现下限进位操作
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+
+
+import init_setting
+from cflibs import *
 def main():
     w, m, k = MII()
 

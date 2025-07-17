@@ -3,9 +3,8 @@
 # 在一个循环中维护3个最大值的选择
 # 构造操作的时候因为deck最灵活，所以把最大值放前面，其他不是最大值的都放deck后面
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     q = II()
     cur = []

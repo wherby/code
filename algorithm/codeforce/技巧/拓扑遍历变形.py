@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0616/solution/cf1949c.md
 # 题目的实质是一个拓扑遍历, 用heap的方式使得最小的子节点先被merge
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     path = [[] for _ in range(n)]

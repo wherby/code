@@ -3,9 +3,8 @@
 # 原题中和式包含了在区域中 A(ij)*Idx(ij)， 可以通过xy分解为和x,y相关的前缀和
 # 求区域中所以点的和式，需要定义（x,y)求和式，再合并到区域里
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     t = II()
     outs = []

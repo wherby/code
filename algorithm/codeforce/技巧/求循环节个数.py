@@ -2,9 +2,9 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0524/solution/cf582c.md
 # 这里求满足条件的子数组在循环数组的个数， 用满足调节的数字标记1， 然后用最大计数计算从循环节里能达到的长度，且max是n，最后计算对应长度为m时候，有多少个起点能满足
 # #TAG#循环数组#
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+
+import init_setting
+from cflibs import *
 def main():
     n = II()
     nums = LII()

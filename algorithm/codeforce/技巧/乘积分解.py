@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0610/solution/cf2044f.md
 # 求一个大的数是两个数的乘积，则可以用sqrt的时间计算，用分解因素的办法遍历
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 
 def main():
     n, m, q = MII()

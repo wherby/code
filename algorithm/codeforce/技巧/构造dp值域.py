@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0623/solution/cf132c.md
 # 因为有左右两个方向，则把起始点放在n,用编码把2维空间压缩到1维。然后用第二维表示方向
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     s = I()
     k = II()

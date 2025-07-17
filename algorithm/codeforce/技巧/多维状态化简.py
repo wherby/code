@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0625/solution/cf1098b.md
 # 原题变成行或者列两个数字交叉判定，但是如何选择两个数字也会有很多种不同的方式，用i,j构造不同的选择，用flg确定行和列，用c1,,c2确定选择两个数字的先后
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     d = {}
     d['A'] = 0

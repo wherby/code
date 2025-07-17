@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0529/solution/cf253d.md
 # 这里使用矩形遍历， 在遍历的同时使用tmp记录每个字母所对应的合格前缀和
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     fin = open('input.txt', 'r')
     fout = open('output.txt', 'w')

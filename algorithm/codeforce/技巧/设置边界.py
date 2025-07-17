@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0529/solution/cf747e.md
 # 如果用stack记录每个节点的子节点数目剩余，为0的时候就pop，在根节点的时候，根节点没办法pop，则把根节点设置大值则可以变成一致性操作
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     s = I().split(',')
     n = len(s)

@@ -3,9 +3,8 @@
 # 因为点和图的领边是可以被遍历的，用二分求取下一个路径的时间，完成最短路
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, t = MII()
 
