@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0616/solution/cf254c.md
 # 获取替换之后的最小字典序，如果是大的就延迟做，如果小就尽快做，延迟的贪心是选择最后需要被替换的数量
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     fin = open('input.txt', 'r')
     input = lambda: fin.readline().strip()
