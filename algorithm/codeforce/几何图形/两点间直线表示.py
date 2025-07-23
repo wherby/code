@@ -6,9 +6,8 @@
 # 因为是每个整数点上可以看到的最多鸟的数量，所以截距是整数的时候，选择最多的那条
 # int(sqrt( (1+2+...+i) *2 )) == i 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 
 def main():
     n, m = MII()

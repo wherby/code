@@ -5,9 +5,8 @@
 # 如果两个圆的半径差大于两个圆心距离，则两个圆必定不相交 【外离】
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     x1, y1, r1, R1 = MII()
     x2, y2, r2, R2 = MII()

@@ -3,9 +3,8 @@
 # 判定同行/列 是否分离
 # 判定不同行列的转折点是否为黑色
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     n, m = MII()
     grid = [[1 if c == 'B' else 0 for c in I()] for _ in range(n)]
