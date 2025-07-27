@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0604/solution/cf39e.md
 # 求各个边界情况，然后往中心推演。 由于平局是独立的情况，所以在从边界往中心推导的时候，只要不是平局就可以反转。
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     a, b, n = MII()
 

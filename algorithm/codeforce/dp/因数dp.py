@@ -2,9 +2,8 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0628/solution/cf283d.md
 # 分基数和偶数 有不同的dp逻辑， 用2分解之后，奇数偶数的情况统一
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     n = II()
 

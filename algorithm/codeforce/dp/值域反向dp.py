@@ -1,7 +1,10 @@
 # https://codeforces.com/problemset/problem/685/A
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/05/0522/solution/cf685a.md
 # 因为m,n的值域很大， 但是数字的表现空间很小7! 所以在数字的表现空间进行dp
-from cflibs import *
+
+
+import init_setting
+from lib.cflibs import *
 def main():
     def f(x):
         ans = [0] * 128

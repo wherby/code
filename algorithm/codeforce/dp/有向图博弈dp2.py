@@ -4,9 +4,8 @@
 # 可以通过得到访问顺序的逆向，确定被转移的状态一定是已经被确定的
 # 然后用访问顺序再DP得到所有可能的值
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 def main():
     n, m = MII()
     path = [[] for _ in range(n)]

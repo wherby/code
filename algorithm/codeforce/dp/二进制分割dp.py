@@ -5,9 +5,8 @@
 # 因为前面一部分不算，所有每个位置都可以 dp[0][0] += 1
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from lib.cflibs import *
 # Submission link: https://codeforces.com/problemset/submission/757/312871611
 def main():
     n = II()

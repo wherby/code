@@ -12,7 +12,9 @@
     #         dp[j] = ndp[j]
     #         ndp[j] = 0
 
-from cflibs import *
+    
+import init_setting
+from lib.cflibs import *
 def main():
     n, m, k = MII()
 
