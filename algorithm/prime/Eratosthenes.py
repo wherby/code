@@ -1,4 +1,5 @@
 # O(NloglogN) 效率接近线筛
+# return a set collection
 def get_prime(n):
     visited=[0]*(n+2)
     res =[]
@@ -7,8 +8,8 @@ def get_prime(n):
         res.append(i)
         for j in range(i,n+1,i):
             visited[j] =1
-    return res
+    return set(res)
 
 re =get_prime(10000000)
-print(re[:10])
+print(list(re)[:10])
 print(len(re))

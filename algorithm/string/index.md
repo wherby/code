@@ -25,3 +25,7 @@ algorithm/string/manachers/check-if-dfs-strings-are-palindromes.py
 
 # 对于反转操作的中心扩展法
 https://leetcode.cn/problems/minimum-steps-to-convert-string-with-operations/solutions/3695734/hua-fen-xing-dp-tan-xin-pythonjavacgo-by-17kb/
+
+
+# LCS 变形
+[变化字符串最大化子序列数目](../技巧/寻找子序列)
