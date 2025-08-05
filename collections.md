@@ -62,7 +62,7 @@ cnt =collections.Counter(a % 3 for a in stones)
 
 # reduce
 functools.reduce(fadd,arr1) 
-
+reduce(xor, derived) == 0
 
 # TDK bfs
 q=[]

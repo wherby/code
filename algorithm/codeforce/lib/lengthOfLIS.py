@@ -1,6 +1,6 @@
 # LIS Longest increase sequence
 from bisect import bisect_right,insort_left,bisect_left
-def lis(ls):
+def lengthOfLIS(ls):
     ans = []
     for x in ls:
         if not ans or ans[-1]<x:
@@ -10,6 +10,6 @@ def lis(ls):
             ans[i] = x 
         #print(ans,x)
     return len(ans)
-
-ls = [1,4,2,3,5,11,9,7,8,12]
-print(lis(ls))
+if __name__ =="__main__":
+    ls = [1,4,2,3,5,11,9,7,8,12]
+    print(lengthOfLIS(ls))

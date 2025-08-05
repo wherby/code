@@ -8,3 +8,8 @@
 # Xor 模版
 
 [Xor 其他应用](../../mathA/xor模板/xor.md)
+
+
+# [smallest-subarrays-with-maximum-bitwise-or ](LogTrick和其他写法)
+
+利用dp的思想，每个num[i]记录后面的数字对i开始的子数组影响，影响的次数一定会小于32次，用while控制向前传递的条件，只有影响了后一位才能影响前一位
