@@ -14,6 +14,12 @@ https://cp-algorithms.com/data_structures/fenwick.html
 p = fen_cnt.bisect_min_larger(k)
 if p < M: ans += fen_tot.sum(p) - (fen_cnt.sum(p) - k) * p
 else: ans += fen_tot.sum(M - 1)
-···
+```
 
 [使用fenwickTree求解前k个物品的最小和](../../codeforce/技巧/利用FenwickTree来求k个物品的最小和.py)
+
+
+# 处理二维数点问题，解决区间内有多少个包含区间的计算问题
+
+[二维数点问题，解决区间内有多少个包含区间的计算问题](../../codeforce/技巧/二维数点区间包含数点问题.py)
+
