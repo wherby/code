@@ -1,4 +1,5 @@
-
+# 梯形用斜率和截距分组， 相同斜率的情况下， 不同截距的组合可以构成
+# 但是里面会多计算平行四边形的情况， 平行四边形用中点和斜率分组，相同中点的不同斜率的组合能构成平行四边形
 from typing import List, Tuple, Optional
 from collections import defaultdict,deque
 from math import inf

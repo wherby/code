@@ -30,3 +30,11 @@ class Solution:
     def minChanges(self, n: int, k: int) -> int:
         return -1 if n &k != k else (n^k).bit_count()
 
+# 最低位
+选取最低位,去除最低位
+>>> a = 14
+>>> a&(-a)
+2
+>>> a&(a-1)
+12
+
