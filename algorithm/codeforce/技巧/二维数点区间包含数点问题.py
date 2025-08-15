@@ -11,15 +11,16 @@
 
 import init_setting
 from cflibs import *
-from lib.fenwicktree import *
+from lib.fenwicktree0based import *
 def main():
     t = II()
     outs = []
     
     for _ in range(t):
         n = II()
+        print(n)
         perm = LGMI()
-        
+        print(perm)
         ans = [0] * n    
         fen = FenwickTree(2 * n)
         
@@ -30,7 +31,7 @@ def main():
         for i in range(n - 1, -1, -1):
             v = perm[i] if perm[i] >= i else perm[i] + n
             ans[perm[i]] = v - i - fen.sum(v)
-            #print(i,v, v-i, fen.sum(v))
+            print(i,v, v-i, fen.sum(v))
             fen.add(v, 1)
     
         outs.append(' '.join(map(str, ans)))
@@ -39,3 +40,9 @@ def main():
 
 main()
 
+# 如果输入是下面，而且fenwicktree采用了1-index的视线则会无限循环
+# 2
+# 5
+# 1 2 3 4 5
+# 6
+# 2 1 4 6 5 3
