@@ -1,4 +1,38 @@
-#https://leetcode-cn.com/problems/s5kipK/
+#https://leetcode-cn.com/problems/s5kipK/ 
+# https://leetcode-cn.com/contest/season/2022-spring/problems/EJvmW4/
+# tarjan 算法
+# g.cnt表示了 定点数 + 块的数量 -1
+# g.cnt 的作用
+# 初始值：g.cnt 初始化为 self.V - 1（即原图顶点数减 1）。
+# 递增规则：每当发现一个新的 双连通分量（Block） 时，g.cnt 会 +1，并赋予这个 Block 一个唯一的编号。
+# 最终值：算法结束时，g.cnt 的值等于 原图顶点数 + 双连通分量数 - 1。
+# 
+# 0 — 1 — 2 — 3
+#  \     /
+#    — 4
+# graph = Graph(5)
+# graph.addEdge(0, 1)
+# graph.addEdge(1, 2)
+# graph.addEdge(2, 3)
+# graph.addEdge(2, 4)
+# graph.addEdge(4,0)
+# graph.tarjan(0)  # Builds the block-cut tree
+# print(graph.T)   # Block-cut tree adjacency list
+# [[6], [6], [5, 6], [5], [6], [3, 2], [4, 2, 1, 0], [], [], []]
+# graph.T表示 0-N-1： 前N个节点，对应节点属于第几个block, N-2N 表示图中形成的SSC 
+# 对于节点， 如果 len(g.T[i]) ==1 表示 这个点只属于一个SSC 不在区域的边界上
+
+# 缩点逻辑： 每个点如果只属于一个SSC，则它不属于边界点，是属于”叶子“边界节点，选取这个SSC的所有叶子节点的最小值的同时，减少SSC的度
+# if deg[i] ==1:  # if deg[i] !=1 说明这个点是强连通区域的边界点
+#                 for a in g.T[i]:
+#                     ww[a] = min(ww[a],cost[i])
+#                     deg[a] -=1
+# 如果SSC所有的”叶子“节点都移除之后，只有了一个入度，说明了这个SSC也是缩点形成的树的叶子节点：
+# for i in range(n,g.cnt+1):
+#     if deg[i]==1:
+#         ans += ww[i]
+#         mx = max(mx,ww[i])
+
 from collections import defaultdict
 class Graph:
     def __init__(self, vertices,g=None):
@@ -65,13 +99,14 @@ class Solution(object):
         deg =[0 for _ in range(g.cnt+1)]
         for i in range(g.cnt+1):
             deg[i] = len(g.T[i])
-        print(deg,g.T)
+        print(deg,g.T,g.cnt)
         for i in range(n):
-            if deg[i] ==1:
+            if deg[i] ==1:  # if deg[i] !=1 说明这个点是强连通区域的边界点
                 for a in g.T[i]:
                     ww[a] = min(ww[a],cost[i])
                     deg[a] -=1
         mx,ans =0,0
+        print(deg)
         for i in range(n,g.cnt+1):
             if deg[i]==1:
                 ans += ww[i]
@@ -83,3 +118,18 @@ class Solution(object):
 #re = Solution().minimumCost(cost = [1,2,3,4],roads = [[0,1],[0,2],[0,3]])
 re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])
 print(re)
+
+# 0 — 1 — 2 — 3
+#  \     /
+#    — 4
+graph = Graph(5)
+graph.addEdge(0, 1)
+graph.addEdge(1, 2)
+graph.addEdge(2, 3)
+graph.addEdge(2, 4)
+graph.addEdge(4,0)
+graph.tarjan(0)  # Builds the block-cut tree
+print(graph.T)   # Block-cut tree adjacency list
+# [[6], [6], [5, 6], [5], [6], [3, 2], [4, 2, 1, 0], [], [], []]
+# graph.T表示 0-N-1： 前N个节点，对应节点属于第几个block, N-2N 表示图中形成的SSC 
+# 对于节点， 如果 len(g.T[i]) ==1 表示 这个点只属于一个SSC 不在区域的边界上

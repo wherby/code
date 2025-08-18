@@ -1,6 +1,12 @@
 # https://leetcode.cn/problems/s5kipK/solutions/1439095/python-tarjanqiu-by-981377660lmt-ahyj/
 # https://www.cnblogs.com/DWVictor/p/11348042.html
 # https://kirainmoe.com/blog/post/tarjan-algorithm-learning-note/
+
+# 算法	  适用图类型	连通分量类型	输出结构
+# getSCC	有向图	强连通分量（SCC）	SCCGroupById
+# getVBCC	无向图	点双连通分量（VBCC）	VBCCGroupById
+# getEBCC	无向图	边双连通分量（EBCC）	EBCCGroupById
+
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque
@@ -293,3 +299,46 @@ class Tarjan:
 #链接：https://leetcode.cn/problems/s5kipK/solutions/1439095/python-tarjanqiu-by-981377660lmt-ahyj/
 #来源：力扣（LeetCode）
 #著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+from collections import defaultdict
+
+# 初始化图和节点数量
+n = 5
+adjMap = defaultdict(set)
+edges = [(0, 1), (1, 2), (2, 0), (1, 3), (3, 4), (4, 1)]
+for u, v in edges:
+    adjMap[u].add(v)
+    adjMap[v].add(u)
+
+# 计算点双连通分量 对点的区域区分
+vbcc_count, vbcc_group, vbcc_id = Tarjan.getVBCC(n, adjMap)
+print("VBCC数量:", vbcc_count)
+print("VBCC分组:", vbcc_group)
+print("节点所属VBCC:", vbcc_id)
+
+# 因为输入的是无向图，所以所有的点都只有一个SSC 
+SCCId, SCCGroupById, SCCIdByNode= Tarjan.getSCC(n,adjMap)
+print("SCCId:",SCCId, )
+print("SCCGroupById:",SCCGroupById)
+print("SCCIdByNode:",SCCIdByNode)
+
+
+# 0 — 1 — 2 — 3
+#  \     /
+#    — 4
+
+n = 5
+adjMap = defaultdict(set)
+edges = [(0, 1), (1, 2), (2, 4), (4, 0), (2, 3)]
+for u, v in edges:
+    adjMap[u].add(v)
+    adjMap[v].add(u)
+
+
+cuttingPoint, cuttingEdge = Tarjan.getCuttingPointAndCuttingEdge(n,adjMap)
+print(cuttingPoint, cuttingEdge)
+
+# EBCC 对边的区域区分
+EBCCId, EBCCGroupById, EBCCIdByEdge = Tarjan.getEBCC(n,adjMap)
+print(EBCCId, EBCCGroupById, EBCCIdByEdge)

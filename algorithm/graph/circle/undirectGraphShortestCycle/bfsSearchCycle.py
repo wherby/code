@@ -1,5 +1,6 @@
 # https://leetcode.cn/circle/discuss/3Cqiwp/
 # https://leetcode.cn/problems/shortest-cycle-in-a-graph/
+# BFS求取最小的环，遍历所有点，一定有起点是在环上
 from typing import List, Tuple, Optional
 from collections import deque
 from math import inf
@@ -30,3 +31,5 @@ class Solution:
         return ans if ans < inf else -1
 
 
+re = Solution().findShortestCycle(n = 7, edges = [[0,1],[1,2],[2,0],[3,4],[4,5],[5,6],[6,3]])
+print(re)

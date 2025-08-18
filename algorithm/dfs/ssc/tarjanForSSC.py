@@ -75,4 +75,18 @@ for i in range(5):
         g.tarjan(i)
 print(g.T)
 print(g.cnt)
-                    
+
+# 0 — 1 — 2 — 3
+#  \     /
+#    — 4
+# graph = Graph(5)
+# graph.addEdge(0, 1)
+# graph.addEdge(1, 2)
+# graph.addEdge(2, 3)
+# graph.addEdge(2, 4)
+# graph.addEdge(4,0)
+# graph.tarjan(0)  # Builds the block-cut tree
+# print(graph.T)   # Block-cut tree adjacency list
+# [[6], [6], [5, 6], [5], [6], [3, 2], [4, 2, 1, 0], [], [], []]
+# graph.T表示 0-N-1： 前N个节点，对应节点属于第几个block, N-2N 表示图中形成的SSC 
+# 对于节点， 如果 len(g.T[i]) ==1 表示 这个点只属于一个SSC 不在区域的边界上 

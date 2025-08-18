@@ -85,3 +85,15 @@ class Solution(object):
 #re = Solution().minimumCost(cost = [1,2,3,4],roads = [[0,1],[0,2],[0,3]])
 re = Solution().minimumCost(cost = [1,2,3,4,5,6],roads = [[0,1],[0,2],[1,3],[2,3],[1,2],[2,4],[2,5]])
 print(re)
+
+
+graph = Graph(5)
+graph.addEdge(0, 1)
+graph.addEdge(1, 2)
+graph.addEdge(2, 3)
+graph.addEdge(2, 4)
+graph.addEdge(4,0)
+graph.tarjan(0)  # Builds the block-cut tree
+print(graph.T)   # Block-cut tree adjacency list
+# [[6], [6], [5, 6], [5], [6], [3, 2], [4, 2, 1, 0], [], [], []]
+# graph.T表示 0-N-1： 前N个节点，对应节点属于第几个block, N-2N 表示图中形成的SSC 
