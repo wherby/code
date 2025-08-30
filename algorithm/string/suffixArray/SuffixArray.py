@@ -77,7 +77,7 @@ def getOrd(ret):
 
 s1 = "aaabacdbac"
 s2 = "abaab"
-s3 ="abaab$"
+s3 ="qqqqqqqqqqzrzrrzrzrrzrrzrzrrzrzrrzttttttttttttttttttttttttttttttttttttttttttttttttttttttqncpqzcxpbwa"
 re =SuffixArraySort(s3)
 print(re)
 re2 = getSortedArrayList(s2)

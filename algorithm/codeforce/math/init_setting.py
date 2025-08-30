@@ -1,10 +1,6 @@
 import sys,os
 parent_directory_concise= os.path.dirname(os.path.abspath(__file__))
-for i in range(0):
+for i in range(1):
     parent_directory_concise = os.path.dirname(parent_directory_concise)
 sys.path.append(parent_directory_concise)
 print("init_setting and python path added...")
-
-filename = parent_directory_concise+"/input/input.txt"
-f=open(filename,'r')
-sys.stdin=f

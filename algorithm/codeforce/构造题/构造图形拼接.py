@@ -4,9 +4,8 @@
 # 所以构造的时候，先构造2个联通区域， 如果向右和向下不能构造出联通区域，则向上，向左找到联通区域进行合并，如果找不到，则不满足条件
 #
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
     grid = [[-1 if c == '#' else -2 for c in I()] for _ in range(n)]

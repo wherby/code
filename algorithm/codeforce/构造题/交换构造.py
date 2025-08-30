@@ -1,9 +1,8 @@
 # https://codeforces.com/problemset/problem/266/C
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/06/0605/solution/cf266c.md
 # 要把1都移动到对角线下，则可以递归解决问题
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     xs = []

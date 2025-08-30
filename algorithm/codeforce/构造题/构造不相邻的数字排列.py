@@ -3,9 +3,8 @@
 # 构造不相邻的数字排列，用奇偶性分为黑白方块，大小数分别放不同颜色的方块
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n, m = MII()
 

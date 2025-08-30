@@ -3,9 +3,8 @@
 # 这只是构造一个最大可能的方式，但是可能构造的数据不成功？？
 
 
-import sys
-sys.path.append("..")
-from cflibs.cflibs import *
+import init_setting
+from cflibs import *
 def main():
     n = II()
     nums = LII()

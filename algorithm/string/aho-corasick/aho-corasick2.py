@@ -42,9 +42,9 @@ class AHOCorasick:
                 self.t[v].link =0
             else:
                 self.t[v].link = self.go(self.go_link(self.t[v].p),self.t[v].pch)
-        # In go_link will add leaf check
-        if self.t[self.t[v].link].leaf == True:
-            print("aaa")
+        # # In go_link will add leaf check
+        # if self.t[self.t[v].link].leaf == True:
+        #     print("aaa")
         return self.t[v].link
 
     def go(self,v,ch):
