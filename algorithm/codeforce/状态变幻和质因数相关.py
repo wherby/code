@@ -1,6 +1,8 @@
 # https://codeforces.com/problemset/problem/490/D
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0422/solution/cf490d.md
-
+# 有两个变换一个是 /3 *2 一个是 /2， 使用最小变换，使得两个面积相等
+# 因为 /3*2 会减少3的因数增加2的因数，所以优先选择
+# 如果 3,2 因子都匹配完成，剩余不相等，则不能完成操作
 from cflibs import *
 def main():
     a1, b1 = MII()

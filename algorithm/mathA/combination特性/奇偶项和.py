@@ -1,4 +1,8 @@
 # https://leetcode.cn/contest/biweekly-contest-157/problems/number-of-ways-to-assign-edge-weights-ii/submissions/632173479/?slug=number-of-ways-to-assign-edge-weights-ii&region=local_v2
+# N个数字选择1或者2 构成的数字的排列是奇数的个数为 2**(N-1) 
+# DP[n][1] = DP[n-1][1] + DP[n-1][0]
+# Dp[n][0] = DP[n-1][0] + DP[n-1][1]
+# 奇数个数和偶数个数相等，而所以得全排列为 2**N 
 from typing import List, Tuple, Optional
 
 from collections import defaultdict,deque

@@ -1,3 +1,4 @@
+# [lib] [lib.py]
 # Only precomute will pass
 # https://leetcode.cn/contest/weekly-contest-374/problems/count-the-number-of-infection-sequences/submissions/
 # contest\00000c361d112\c374\q4\t4 copy.py

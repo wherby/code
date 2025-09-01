@@ -1,3 +1,4 @@
+# 利用构成公倍数的元素个数的奇偶性，生成容斥列表
 from typing import List, Tuple, Optional
 import math
 
@@ -12,6 +13,7 @@ class Solution:
     def findKthSmallest(self, coins: List[int], k: int) -> int:
         l,r = 0, 10**20
         ls = getKEle(coins)
+        print(ls)
         def verify(mid):
             return sum([mid//a*acc for a,acc in ls]) >=k
         while l<r:

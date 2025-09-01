@@ -1,6 +1,7 @@
 # https://codeforces.com/problemset/problem/1423/B
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0428/solution/cf1423b.md
 from cflibs import *
+
 def main():
     n, m = MII()
 
