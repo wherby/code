@@ -40,7 +40,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/
 https://codeforces.com/problemset/problem/847/C
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/0422/solution/cf847c.md
 
-#
-
+# N 个人放置M个位置的环形位置中
+[圆桌排列座位](../../codeforce/数论/排列组合.py)
 
 

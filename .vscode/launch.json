@@ -7,7 +7,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "${file}",
-            "cwd": "${fileDirname}"  // Add this line
+            "cwd": "${fileDirname}"
         },
         {
             "name": "Python: Current File",
@@ -15,8 +15,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "cwd": "${fileDirname}"  // Add this line
-          },
+            "cwd": "${fileDirname}"
+        },
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
