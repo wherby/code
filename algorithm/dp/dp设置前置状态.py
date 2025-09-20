@@ -12,6 +12,11 @@
 #             对于当前点，通过已经记录s[i]分割的点的记录，转移到下一个值
 #             看似只分析了 i-1,i， dp[i - 1] > saved_ans[s[i - 1]] 这里已经保证了分割的成立
 
+# 状态转移：先用save_ans 记录最大值，更新dp, 然后用dp 更新 save_ans, 
+# “先用save_ans 记录最大值，更新dp” 这时候，dp记录当前点作为终点的值
+# “然后用dp 更新 save_ans” 则是用i-1作为分段起点 的时候最多值
+# 在循环中同时完成两段dp的更新
+
 import init_setting
 from codeforce.lib.cflibs import *
 def main():
