@@ -4,4 +4,4 @@ for i in range(1):
     parent_directory_concise = os.path.dirname(parent_directory_concise)
 sys.path.append(parent_directory_concise)
 
-print("init_setting and python path added...")
+#print("init_setting and python path added...")
