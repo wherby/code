@@ -1,6 +1,8 @@
 # https://codeforces.com/problemset/problem/1991/E
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/08/0826/solution/cf1991e.md
-
+# 这个问题首先判断原图是否能被二分染色，
+# 然后根据图的特点，选择alice 和bob 
+# 在扮演bob的时候。 把1映射到0set,把2映射到1set,如果0set用完了， 来1，3 则选择3，使用1set
 
 import init_setting
 from cflibs import *

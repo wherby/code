@@ -1,3 +1,4 @@
+# will pass https://leetcode.com/problems/number-of-zigzag-arrays-ii/submissions/
 from typing import List, Tuple, Optional
 from collections import Counter
 MOD = 1_000_000_007
