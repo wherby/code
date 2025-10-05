@@ -4,7 +4,7 @@ https://leetcode.com/contest/weekly-contest-469/problems/number-of-zigzag-arrays
 
 使用矩阵运算的时候，由于各个点有不同的方向，A状态运算矩阵之后变成B状态，这时候就不能继续使用相同矩阵
 
-## 原始问题
+## 矩阵扩展法
 按照一般的做法，元素问题有M个点，每个点都有两个运动方向，所以把矩阵扩展到2*M阶矩阵，然后做矩阵乘法，这时由于矩阵扩展2倍，导致矩阵运算增加8倍运算量
 [使用矩阵扩展解决方向问题](qickerVersion.py)
 
