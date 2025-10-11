@@ -5,8 +5,8 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/four_in_a_burrow_input2.txt"
-#filename = "input/wrong3f.txt"
+filename = "input/four_in_a_burrow_input.txt"
+filename = "input/wrong0000.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -19,12 +19,14 @@ else:
 
 
 from functools import cache
+
+from collections import defaultdict,deque
 g =[]
-
-
 dirs= []
 ds = [(0,1),(1,0),(1,-1),(1,1)]
-
+rst = defaultdict(int)
+rdic ={"C":1,"F":2}
+gp = defaultdict(list)
 @cache
 def getAllDir(x,y):
     ls = []
@@ -37,6 +39,7 @@ def getAllDir(x,y):
                 t.append((nx,ny))
             ls.append(t)
     return ls
+#print(getAllDir(3,3))
 
 def valid(x,y,tls):
     #print(x,y,tls)
@@ -50,80 +53,82 @@ def getResult(lst,tls):
         if(all(valid(x,y,tls) for x,y in item)):
             a1,a2,a3,a4 = item
             if g[a1[0]][a1[1]] == g[a2[0]][a2[1]] == g[a3[0]][a3[1]] == g[a4[0]][a4[1]]:
-                #print(item)
-                return g[a1[0]][a1[1]]
+                return rdic[g[a1[0]][a1[1]]]
+    return 0
          
-lst = -1
-
-rets = set([])
 
 @cache
 def dfs(state):
     #print(g)
-    global lst,rets
     ls = []
     for i in range(7):
         ls.append((state>>(i*3) )%8)
-    if lst != -1:
-        C= getResult(lst, ls)
-        nxx =[]
-        for i in range(7):
-            if ls[i] <6:
-                nxx.append(g[ls[i]][i])
-        t = sum(ls)
-        isG = True
-        nxx= list(set(nxx))
-        if len(nxx) > 0:
-            if t%2 ==0:
-                if len(nxx) ==1 and nxx[0]=="F":
-                    isG =False
-            else:
-                if len(nxx) ==1 and nxx[0]=="C":
-                    isG =False
-        if C and isG:
-            rets.add(C)
-            return 
+    # if lst != -1:
+    #     C= getResult(lst, ls)
+    #     if C:
+    #         return C
     t = sum(ls)
+    #print(t,ls,state)
     if t == 72:
         return "0"
-    ret =[]
     if t%2 ==0:
         for i,a in enumerate(ls):
             #print(i,a,g)
             if a <6 and g[a][i] == "C":
-                lst = i
-                dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)))
+                nls = list(ls)
+                nls[i]=a+1
+                nstate = (state |(7<<(i*3)) ) - ((7- a-1)<<(i*3))
+                gp[state].append(nstate)
+                rst[nstate] = getResult(i,nls)
+                if rst[nstate] ==0:
+                    dfs(nstate)
     else:
         for i,a in enumerate(ls):
             #print(i,a,g)
             if a <6 and g[a][i] == "F":
-                lst =i
-                dfs((state |(7<<(i*3)) ) - ((7- a-1)<<(i*3)))
+                nls = list(ls)
+                nls[i]=a+1
+                nstate = (state |(7<<(i*3)) ) - ((7- a-1)<<(i*3))
+                rst[nstate] = getResult(i,nls)
+                gp[state].append(nstate)
+                if rst[nstate] ==0:
+                    dfs(nstate)
+acc = 0
+@cache 
+def dfs2(state):
+    global acc 
+    acc = acc|rst[state]
+    for b in gp[state]:
+        dfs2(b)
 
-
-rets = set([])
-
+ps = {}
 def resolve():
-    global g,rets
-    rets= set([])
+    global g,ps,acc,rst,gp
+    rst = defaultdict(int)
+    gp = defaultdict(list)
+    
+    acc =0
     inp = input()
     g =[]
     for _ in range(6):
         ls = input()
         ls = [a for a in ls]
-        g.append(ls)
+        g.append(list(ls))
     g = g[::-1]
-    cnt = 0 
-    #print(g)
-    #dfs(43)
-    lst =-1
-    
     dfs(0)
-    ret = set(rets)
     dfs.cache_clear()
-    if len(ret) ==1:
-        return list(ret)[0]
-    if len(ret) ==2:
+    dfs2(0)
+    dfs2.cache_clear()
+    print(gp[1542])
+    #print(acc)
+    # for k,v in rst.items():
+    #     if v ==1:
+    #         print((k,v))
+    if acc == 1:
+        return "C"
+    elif acc ==2:
+        return "F"
+    elif acc ==3:
         return "?"
     return "0"
 
@@ -133,3 +138,4 @@ def op(caseidx):
 
 for i in range(int(input())):
     op(i)
+

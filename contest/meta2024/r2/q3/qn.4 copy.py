@@ -1,8 +1,27 @@
+# 
+import os
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
+filename = "input/four_in_a_burrow_input.txt"
+#filename = "input/wrong0000.txt"
+f=open(filename,'r')
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import sys
+
+if  "f" in locals():
+    sys.stdin = f
+else:
+    inputA=sys.stdin
+
+
 from functools import cache
 
 from collections import defaultdict,deque
 g =[]
-dirs= []
 ds = [(0,1),(1,0),(1,-1),(1,1)]
 rst = defaultdict(int)
 rdic ={"C":1,"F":2}
@@ -36,17 +55,14 @@ def getResult(lst,tls):
                 return rdic[g[a1[0]][a1[1]]]
     return 0
          
-mxt= 0
 @cache
 def dfs(state):
     #print(g)
-    global mxt
     # if lst != -1:
     #     C= getResult(lst, ls)
     #     if C:
     #         return C
     t = sum(state)
-    mxt= max(t,mxt)
     #print(t,ls,state)
     cnt = 0
     if t == 42:
@@ -91,12 +107,10 @@ def dfs2(state):
     for b in gp[state]:
         dfs2(b)
 
-ps = {}
 def resolve():
-    global g,ps,acc,rst,gp
+    global g,acc,rst,gp
     rst = defaultdict(int)
     gp = defaultdict(list)
-    
     acc =0
     inp = input()
     g =[]
@@ -128,3 +142,10 @@ def op(caseidx):
 
 for i in range(int(input())):
     op(i)
+
+# CxxF
+# CxxF
+# CxxF
+# CxxC
+# FxFC
+# CxFCF

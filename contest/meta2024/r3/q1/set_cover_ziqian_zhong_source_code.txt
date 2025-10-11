@@ -1,0 +1,125 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define all(x) x.begin(),x.end()
+#define SZ 3000555
+int T,n,k;
+typedef long long ll;
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+char g[2505][2505];
+struct Col {
+int minx,miny,maxx,maxy;
+void reset() {
+    minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+}
+void add(int x,int y) {
+    minx=min(minx,x);
+    miny=min(miny,y);
+    maxx=max(maxx,x);
+    maxy=max(maxy,y);
+}
+ll area() {
+    return 1ll*max(maxx-minx+1,0)*max(maxy-miny+1,0);
+}
+}O,OQ;
+void populate() {
+    O.reset(); OQ.reset();
+    for(int i=1;i<=n;++i) {
+        for(int j=1;j<=n;++j) {
+            if(g[i][j]=='1') {
+                O.add(i,j);
+                OQ.add(i,j);
+            }
+            if(g[i][j]=='?') OQ.add(i,j);
+        }
+    }
+}
+ll work() {
+    populate();
+    vector<pii> cool;
+    for(int i=1;i<=n;++i) {
+        int mx=-2e9,mi=2e9;
+        for(int j=1;j<=n;++j) {
+            if(g[i][j]=='?') mx=max(mx,j),mi=min(mi,j);
+        }
+        if(mx>0) {
+            cool.pb({i,mi});
+            cool.pb({i,mx});
+        }
+    }
+    ll ans=O.area();
+    // cerr<<ans<<"HAH\n";
+    if(k==1) {
+        for(auto [x,y]:cool) {
+            auto G=O;
+            G.add(x,y);
+            // cerr<<G.minx<<"~"<<G.miny<<" "<<G.maxx<<"~"<<G.maxy<<"\n";
+            ans=max(ans,G.area());
+        }
+    }
+    if(k==2) {
+        for(auto [x1,y1]:cool) {
+            for(auto [x2,y2]:cool) {
+                auto G=O;
+                G.add(x1,y1); G.add(x2,y2);
+                ans=max(ans,G.area());
+            }
+        }
+    }
+    if(k==3) {
+        for(auto [x1,y1]:cool) {
+            auto G=O;
+            G.add(x1,y1);
+            G.maxx=OQ.maxx;
+            G.maxy=OQ.maxy;
+            ans=max(ans,G.area());
+        }
+    }
+    return ans;
+}
+void flipy() {
+    for(int i=1;i<n+1-i;++i)
+        for(int j=1;j<=n;++j)
+            swap(g[j][i],g[j][n+1-i]);
+}
+void flipx() {
+    for(int i=1;i<n+1-i;++i)
+        for(int j=1;j<=n;++j)
+            swap(g[i][j],g[n+1-i][j]);
+}
+void sol() {
+    scanf("%d%d",&n,&k);
+    for(int i=1;i<=n;++i) scanf("%s",g[i]+1);
+    populate();
+    if(k>=4) {
+        ll ans=OQ.area();
+        printf("%lld\n",ans);
+        return;
+    }
+    if(k==0) {
+        ll ans=O.area();
+        printf("%lld\n",ans);
+        return;
+    }
+    ll ans=work();
+    // cerr<<ans<<"++\n";
+    flipy();
+    ans=max(ans,work());
+    flipx();
+    ans=max(ans,work());
+    flipy();
+    ans=max(ans,work());
+    printf("%lld\n",ans);
+    cerr<<"EZ "<<n<<" "<<ans<<"\n";
+}
+int main() {
+    scanf("%d",&T);
+    for(int t=1;t<=T;++t) {
+        printf("Case #%d: ",t);
+        sol();
+    }
+}
+
+// g++ B.cpp -o B -Wl,-stack_size -Wl,20000000

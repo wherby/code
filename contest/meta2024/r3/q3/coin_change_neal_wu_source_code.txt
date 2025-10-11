@@ -1,0 +1,198 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <chrono>
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <random>
+#include <set>
+#include <vector>
+using namespace std;
+
+// http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html
+template<class Fun> class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+
+
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename... Args> ostream& operator<<(ostream& os, const tuple<Args...>& t) { os << '('; apply([&os](const Args&... args) { size_t n = 0; ((os << args << (++n != sizeof...(Args) ? ", " : "")), ...); }, t); return os << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+
+void dbg_out() { cerr << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+#ifdef NEAL_DEBUG
+#define dbg(...) cerr << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+#else
+#define dbg(...)
+#endif
+
+long double harmonic(int64_t n) {
+    static const int PRECOMPUTE = 1e5;
+    static vector<long double> H(PRECOMPUTE + 1, 0);
+
+    if (H[1] < 1) {
+        for (int x = 1; x <= PRECOMPUTE; x++)
+            H[x] = H[x - 1] + 1.0L / x;
+    }
+
+    if (n <= PRECOMPUTE)
+        return H[n];
+
+    // https://en.wikipedia.org/wiki/Harmonic_number#Calculation
+    const long double EULER_MASCHERONI = 0.57721566490153286060L;
+    return log((long double) n) + EULER_MASCHERONI + 1 / (2.0L * n) - 1 / (12.0L * n * n);
+}
+
+int64_t floor_div(int64_t a, int64_t b) {
+    return a / b - ((a ^ b) < 0 && a % b != 0);
+}
+
+int64_t ceil_div(int64_t a, int64_t b) {
+    return a / b + ((a ^ b) > 0 && a % b != 0);
+}
+
+template<typename T>
+void sort_unique(vector<T> &v) {
+    sort(v.begin(), v.end());
+    v.erase(unique(v.begin(), v.end()), v.end());
+}
+
+
+const int BINARY_SEARCH_ITERS = 100;
+const int64_t LOOP_CUTOFF = int64_t(1e9);
+const long double EPS = 1e-15;
+
+long double expected_coins(long double x, int D, int P) {
+    return D / (x + (1 - x) * min((D - 1) * 0.01L * P, 1.0L));
+}
+
+long double expected_coins_sum(int64_t N, int64_t a, int64_t b, int D, int P) {
+    // cerr << D << ": " << a << ' ' << b << endl;
+
+    if ((D - 1) * P >= 100)
+        return D * (b - a + 1);
+
+    long double success = (D - 1) * P * 0.01L;
+    long double sum = 0;
+
+    if (b - a <= LOOP_CUTOFF) {
+        for (int64_t k = a; k <= b; k++)
+            sum += 1 / (N * success + (1 - success) * k);
+
+        sum *= D * N;
+        return sum;
+    }
+
+    while (a <= b && a <= LOOP_CUTOFF) {
+        sum += 1 / (N * success + (1 - success) * a);
+        a++;
+    }
+
+    sum *= D * N;
+
+    if (a <= b)
+        sum += D * N / (1 - success) * (log(N * success + (1 - success) * b) - log(N * success + (1 - success) * a));
+
+    return sum;
+}
+
+long double cross_over(int D0, int D1, int P) {
+    assert(D0 < D1);
+    long double low = 0, high = 1;
+
+    for (int iter = 0; iter < BINARY_SEARCH_ITERS; iter++) {
+        long double mid = (low + high) / 2;
+
+        if (expected_coins(mid, D0, P) < expected_coins(mid, D1, P))
+            high = mid;
+        else
+            low = mid;
+    }
+
+    return low;
+}
+
+long double solve(int64_t N, int P) {
+    if (P == 0)
+        return N * harmonic(N);
+
+    vector<int> D_options = {1};
+    int D100 = int(ceil_div(100, P)) + 1;
+    D_options.push_back(D100 - 1);
+    D_options.push_back(D100);
+    sort_unique(D_options);
+    int n = int(D_options.size());
+    vector<long double> cross(n - 1);
+
+    for (int i = 0; i < n - 1; i++)
+        cross[i] = cross_over(D_options[i], D_options[i + 1], P);
+
+    // cerr << D_options << endl;
+    // cerr << cross << endl;
+
+    if (n >= 3 && cross[0] <= cross[1] + EPS) {
+        D_options.erase(D_options.begin() + 1);
+        cross = {cross_over(D_options[0], D_options[1], P)};
+        n--;
+    }
+
+    while (n >= 2 && cross.back() < EPS) {
+        D_options.pop_back();
+        cross.pop_back();
+        n--;
+    }
+
+    // cerr << D_options << endl;
+    // cerr << cross << endl;
+    cross.push_back(0);
+    long double ans = 0;
+    int64_t current = N;
+
+    for (int i = 0; i < n; i++) {
+        // remaining / N < cross[i]
+        // remaining < N * cross[i]
+        int64_t down_to = int64_t(ceil(N * cross[i]));
+        down_to = max(down_to, INT64_C(1));
+        ans += expected_coins_sum(N, down_to, current, D_options[i], P);
+        current = down_to - 1;
+
+        if (current <= 0)
+            break;
+    }
+
+    return ans;
+}
+
+void run_case(int test_case) {
+    int64_t N;
+    int P;
+    cin >> N >> P;
+    cout << "Case #" << test_case << ": " << solve(N, P) << '\n';
+    cout << flush;
+}
+
+int main() {
+    cout << setprecision(15);
+    cerr << setprecision(15);
+
+    int tests;
+    cin >> tests;
+
+    for (int tc = 1; tc <= tests; tc++) {
+        run_case(tc);
+        cout << flush;
+    }
+}

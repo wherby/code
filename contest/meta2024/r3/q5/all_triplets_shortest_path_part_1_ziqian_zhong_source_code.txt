@@ -1,0 +1,116 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define all(x) x.begin(),x.end()
+#define SZ 3000555
+typedef long long ll;
+typedef pair<int,int> pii;
+typedef long double ld;
+#define fi first
+#define pb push_back
+#define se second
+// int T; ll n,p;
+// ld f(ll u) {
+//     return (100-min((u-1)*p,100LL))/100.;
+// }
+// ld ff(ld u,ld x) {
+//     return u/(1-f(u)*x/n);
+// }
+// /*
+// (u*n)/(n-f(u)*x)
+// (u*n)/f(u)/(n/f(u)-x)
+// */
+// ld su(ld l,ll c) {
+//     const ll CAP=100000000;
+//     // cerr<<l<<" "<<c<<"\n";
+//     ld ans=0;
+//     for(int i=0;i<c&&i<CAP;++i)
+//         ans+=1./(l+i);
+//     l+=CAP; c-=CAP;
+//     if(c>0) {
+//         // cerr<<l<<"~"<<l+c-1<<"\n";
+//         auto F=[&](ld x) {
+//             return logl(x)+1/(2*x);//-1/(12*x*x)+1/(120*x*x*x*x);
+//         };
+//         ans+=F(l+c-1)-F(l-1);
+//     }
+//     return ans;
+// }
+// void sol() {
+//     scanf("%lld%lld",&n,&p);
+//     int cu=1;
+//     ll cx=0;
+//     ld ans=0;
+//     while(cx<n) {
+//         int nu=cu+1;
+//         ll L=cx,R=n;
+//         while(L<R) {
+//             ll mid=(L+R)>>1;
+//             if(ff(nu,mid)<ff(cu,mid)) R=mid;
+//             else L=mid+1;
+//         }
+//         if(cx<L) {
+//             int u=cu;
+//             if(f(u)==0) ans+=u*(L-cx);
+//             else {
+                
+//             ans+=(u*(ld)n)/f(u)*su(n/f(u)-(L-1),L-cx);
+//             }
+//         }
+//         cx=L;
+//         cu=nu;
+//     }
+//     printf("%.10Lf\n",ans);
+// }
+// int main() {
+//     scanf("%d",&T);
+//     for(int t=1;t<=T;++t) {
+//         printf("Case #%d: ",t);
+//         sol();
+//     }
+// }
+#define SZ 1000000
+// int ff[SZ];
+// int gf(int x) {
+//     return ff[x]?ff[x]=gf(ff[x]):x;
+// }
+// int dist[10][10];
+// int f[10][10];
+// int fa[SZ];
+vector<int> edg[SZ];
+int n,fa[SZ],ans=1;
+void dfs(int x,int fa=0) {
+    ::fa[x]=fa;
+    if(fa) {
+        if(fa>x) {
+            ans&=edg[x].size()==1;
+            ans&=::fa[fa]==1;
+            ans&=edg[1].size()==1;
+        }
+    }
+    for(int y:edg[x]) {
+        if(y==fa) continue;
+        dfs(y,x);
+    }
+}
+void sol() {
+    cin>>n; ans=1;
+    for(int i=1;i<=n;++i) fa[i]=0,edg[i].clear();
+    for(int i=1;i<n;++i) {
+        int u,v;
+        cin>>u>>v;
+        edg[u].pb(v);
+        edg[v].pb(u);
+    }
+    dfs(1);
+    if(ans) puts("Lucky");
+    else puts("Wrong");
+}
+int main() {
+    int T; cin>>T;
+    for(int t=1;t<=T;++t) {
+        printf("Case #%d: ",t);
+        sol();
+    }
+}
+// g++ B.cpp -o B -Wl,-stack_size -Wl,20000000

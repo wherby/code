@@ -1,0 +1,105 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define pb push_back
+#define all(x) x.begin(),x.end()
+#define SZ 3000555
+int T,n;
+vector<int> ch[SZ];
+string sb[SZ],sx[SZ];
+typedef long long ll;
+int si[SZ],m;
+char buf[100];
+typedef pair<int,int> pii;
+#define fi first
+#define se second
+struct trk {
+unordered_map<int,int> cc;
+priority_queue<pii> pq;
+void clear() {
+    while(!pq.empty()) pq.pop();
+    cc.clear();
+}
+void add(int x,int y) {
+    pq.push({-(cc[x]+=y),-x});
+}
+int least_common() {
+    while(!pq.empty()) {
+        auto [x,y]=pq.top();
+        x=-x; y=-y;
+        if(cc[y]!=x||!x) {
+            pq.pop();
+            continue;
+        }
+        return y;
+    }
+    return 0;
+}
+}U;
+int A[SZ],D[SZ],sz[SZ],son[SZ];
+void dfs(int x) {
+    A[x]=U.least_common();
+    U.add(si[x],1);
+    sz[x]=1;
+    for(int y:ch[x]) {
+        dfs(y);
+        sz[x]+=sz[y];
+        if(sz[y]>sz[son[x]]) son[x]=y;
+    }
+    U.add(si[x],-1);
+}
+void edt(int x,int y) {
+    U.add(si[x],y);
+    for(int yy:ch[x]) edt(yy,y);
+}
+void dsu(int x,bool keep) {
+    for(int y:ch[x]) if(y!=son[x]) dsu(y,0);
+    if(son[x]) dsu(son[x],1);
+    for(int y:ch[x]) if(y!=son[x]) edt(y,1);
+    D[x]=U.least_common();
+    if(!keep) for(int y:ch[x]) edt(y,-1);
+    else U.add(si[x],1);
+}
+void sol() {
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++) ch[i].clear(),son[i]=sz[i]=0;
+    for(int i=1;i<=n;++i) {
+        int x; scanf("%d%s",&x,buf);
+        sb[i]=buf; sx[i]=buf;
+        if(x!=-1) ch[x].pb(i);
+    }
+    sort(sx+1,sx+n+1);
+    m=unique(sx+1,sx+n+1)-sx-1;
+    for(int i=1;i<=n;++i) {
+        si[i]=lower_bound(sx+1,sx+m+1,sb[i])-sx;
+    }
+    U.clear();
+    dfs(1);
+    // cerr<<"E\n";
+    U.clear();
+    dsu(1,0);
+    // for(int i=1;i<=n;++i) cout<<A[i]<<' ';
+    // cout<<endl;
+    // for(int i=1;i<=n;++i) cout<<D[i]<<' ';
+    // cout<<endl;
+    ll hsh=0;
+    for(int i=1;i<=n;++i) {
+        hsh = hsh * (m+1) + A[i];
+        hsh %= 998244353;
+        hsh = hsh * (m+1) + D[i];
+        hsh %= 998244353;
+    }
+    hsh = (hsh % 998244353 + 998244353) % 998244353;
+    printf("%d\n",int(hsh));
+    for(int i=1;i<=n;++i) ch[i].clear();
+    cerr<<"E"<<n<<endl;
+    fflush(stdout);
+}
+int main() {
+    scanf("%d",&T);
+    for(int t=1;t<=T;++t) {
+        printf("Case #%d: ",t);
+        sol();
+    }
+}
+
+// g++ B.cpp -o B -Wl,-stack_size -Wl,20000000
