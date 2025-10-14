@@ -20,3 +20,19 @@ class Solution:
             if customfunction.f(x, y) == z:
                 ans.append([x, y])
         return ans
+
+# 区间求和
+
+class ExamTracker:
+
+    def __init__(self):
+        self.a = []
+        self.s = [0]
+        
+    def record(self, time: int, score: int) -> None:
+        self.a.append(time)
+        self.s.append(self.s[-1]+score)
+    def totalScore(self, startTime: int, endTime: int) -> int:
+        s = self.s
+        l,r=bisect_left(self.a,startTime),bisect_right(self.a,endTime)
+        return s[r]-s[l]

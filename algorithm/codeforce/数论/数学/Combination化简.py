@@ -1,6 +1,12 @@
 # https://codeforces.com/gym/104380/problem/R
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/10/1010/solution/cf104380r.md
 # Combination 组合计算化简？
+# 想象杨辉三角  
+#  C(x,y) = C(x-1,y-1) + C(x-1,y)
+# 所以用下一层的 C(x,y) A=<y<=B   : F(x)
+# 推导 上一层的 C(x-1,y) A<=y<=B   :F(x-1)
+# F(x) = 2*F(x-1) +C(x-1.A-1) - C(x-1,B)
+# F(x-1) = (F(x) - C(x-1,A-1) + C(x-1,B))//2
 
 
 

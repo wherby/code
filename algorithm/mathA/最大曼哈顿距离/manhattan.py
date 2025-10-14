@@ -39,6 +39,7 @@ class Solution:
         ps2 =points[:b] + points[b+1:]
         for ps in ps1,ps2:
             mx,ret = maxManhattan(ps)
+            print(mx,ret)
             if mx <res:
                 res =mx
         return res
