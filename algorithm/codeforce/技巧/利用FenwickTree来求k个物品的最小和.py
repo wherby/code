@@ -4,7 +4,7 @@
 
 import init_setting
 from cflibs import *
-from lib.fenwicktree import FenwickTree
+from lib.fenwicktreeOneBased import FenwickTree
 def main():
     n, k, m = MII()
     changed = [[] for _ in range(n + 1)]

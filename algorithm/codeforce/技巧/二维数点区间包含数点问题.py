@@ -11,7 +11,7 @@
 
 import init_setting
 from cflibs import *
-from lib.fenwicktree0based import *
+from lib.fenwicktree import *
 def main():
     t = II()
     outs = []

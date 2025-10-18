@@ -12,7 +12,7 @@
 #.    是 sum(right) - sum(left) 则 fen_pre.rsum(idx, n) 在idx点上的积累  是0 因为idx点上的值会被减去 ，   fen_suf.rsum(0, idx) 在 idx点上积累也是0 因为 fen_suf.add(idx + 1, x * rev_pows[idx] % mod)
 import init_setting
 from cflibs import *
-from lib.fenwicktree0based import FenwickTree
+from lib.fenwicktree import FenwickTree
 def main():
     mod = 10 ** 9 + 7
     
