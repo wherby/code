@@ -1,0 +1,109 @@
+#include <bits/stdc++.h>
+using namespace std;
+using i64 = int64_t;
+struct Node {
+  int p;
+  array<int, 26> c;
+  Node(int p) : p(p) { c.fill(-1); }
+};
+int main() {
+  cin.tie(nullptr)->sync_with_stdio(false);
+  int t;
+  cin >> t;
+  for (int ti = 1; ti <= t; ti += 1) {
+    cout << "Case #" << ti << ": ";
+    int n;
+    cin >> n;
+    vector<Node> nodes(1, -1);
+    vector<string> w(n);
+    vector<int> id(n);
+    vector<vector<pair<int, int>>> comp;
+    for (int i = 0; i < n; i += 1) {
+      cin >> w[i];
+      ranges::reverse(w[i]);
+      int& p = id[i];
+      int len = 0;
+      for (char c : w[i]) {
+        int d = c - 'a';
+        if (nodes[p].c[d] == -1) {
+          nodes[p].c[d] = nodes.size();
+          nodes.emplace_back(p);
+        }
+        p = nodes[p].c[d];
+        len += 1;
+        while (len >= ssize(comp)) { comp.push_back({}); }
+        comp[len].emplace_back(i, p);
+      }
+    }
+    i64 ans = 0;
+    int q;
+    cin >> q;
+    vector<vector<pair<int, int>>> queries(comp.size());
+    for (int i = 0, a, b, k; i < q; i += 1) {
+      cin >> a >> b >> k;
+      a -= 1;
+      b -= 1;
+      if (k < ssize(queries)) { queries[k].emplace_back(a, b); }
+    }
+    for (int i = 1; i < ssize(queries); i += 1) {
+      if (not queries[i].empty()) {
+        vector<int> p, c;
+        for (auto& [pi, ci] : comp[i]) {
+          p.push_back(pi);
+          c.push_back(ci);
+        }
+        map<int, int> mp;
+        for (int ci : c) {
+          if (not mp.contains(ci)) { mp[ci] = mp.size(); }
+        }
+        for (int& ci : c) { ci = mp[ci]; }
+        vector<int> a, b;
+        for (auto& [ai, bi] : queries[i]) {
+          ai = ranges::lower_bound(p, ai) - p.begin();
+          bi = ranges::upper_bound(p, bi) - p.begin();
+          if (ai < bi) {
+            a.push_back(ai);
+            b.push_back(bi - 1);
+          }
+        }
+        int n = c.size(), m = mp.size(), q = a.size(),
+            sn = max((int)sqrt(n), 1);
+        vector<int> order(q);
+        iota(order.begin(), order.end(), 0);
+        ranges::sort(order, {},
+                     [&](int i) { return pair(a[i] / sn, b[i]); });
+        vector<int> cnt(m), cnt2(n + 1);
+        cnt2[0] = m;
+        int cl = 0, cr = -1;
+        for (int i : order) {
+          while (cl > a[i]) {
+            cl -= 1;
+            cnt[c[cl]] += 1;
+            cnt2[cnt[c[cl]]] += 1;
+          }
+          while (cr < b[i]) {
+            cr += 1;
+            cnt[c[cr]] += 1;
+            cnt2[cnt[c[cr]]] += 1;
+          }
+          while (cl < a[i]) {
+            cnt2[cnt[c[cl]]] -= 1;
+            cnt[c[cl]] -= 1;
+            cl += 1;
+          }
+          while (cr > b[i]) {
+            cnt2[cnt[c[cr]]] -= 1;
+            cnt[c[cr]] -= 1;
+            cr -= 1;
+          }
+          int pans = m;
+          for (int i = 1; i <= pans; i += 1) {
+            pans = min(pans, cnt2[i] + i - 1);
+          }
+          ans += pans;
+        }
+      }
+    }
+    cout << ans << "\n";
+  }
+}

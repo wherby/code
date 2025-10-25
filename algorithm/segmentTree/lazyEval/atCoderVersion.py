@@ -28,9 +28,11 @@ class LazySegmentTree:
             self.lz[k] = self.composition(f, self.lz[k])
 
     def push(self, k):
-        self.all_apply(2 * k, self.lz[k])
-        self.all_apply(2 * k + 1, self.lz[k])
-        self.lz[k] = self.id
+        # 减少push 递归
+        if self.lz[k] != self.id:
+            self.all_apply(2 * k, self.lz[k])
+            self.all_apply(2 * k + 1, self.lz[k])
+            self.lz[k] = self.id
 
     def build(self, v):
         assert len(v) <= self.n
@@ -90,6 +92,8 @@ class LazySegmentTree:
     #     for i in range(1, self.log + 1):
     #         self.update(p >> i)
 
+   # (2) It applies a[i] = f(a[i]) for all i = l..r-1. 左闭右开区间
+   # f 可以是delta值，也可以是function，看 mapping 怎么写
     def apply(self, l, r, f):
         assert 0 <= l <= r <= self.n
         if l == r:
@@ -120,6 +124,7 @@ class LazySegmentTree:
             if (r >> i) << i != r:
                 self.update((r - 1) >> i)
 
+    # maxright: 从l 开始向右查询，找到第一个不符合g的
     def max_right(self, l, g):
         assert 0 <= l <= self.n
         assert g(self.e)

@@ -1,0 +1,143 @@
+#include <bits/stdc++.h>
+
+using i64 = long long;
+
+constexpr int L = 3E6 + 2;
+
+int trie[L][26];
+int tot;
+
+int newNode() {
+    int x = ++tot;
+    std::fill(trie[x], trie[x] + 26, 0);
+    return x;
+}
+
+void solve() {
+    int N;
+    std::cin >> N;
+    
+    tot = 0;
+    newNode();
+    std::vector<std::string> W(N);
+    std::vector<std::vector<int>> nd(N);
+    int maxlen = 0;
+    for (int i = 0; i < N; i++) {
+        std::cin >> W[i];
+        std::reverse(W[i].begin(), W[i].end());
+        maxlen = std::max(maxlen, int(W[i].size()));
+        nd[i].resize(W[i].size() + 1);
+        int p = 1;
+        nd[i][0] = p;
+        for (int j = 0; j < W[i].size(); j++) {
+            int x = W[i][j] - 'a';
+            if (!trie[p][x]) {
+                trie[p][x] = newNode();
+            }
+            p = trie[p][x];
+            nd[i][j + 1] = p;
+        }
+    }
+    std::vector<std::vector<int>> p(maxlen + 1);
+    for (int i = 0; i < N; i++) {
+        for (int j = 1; j <= W[i].size(); j++) {
+            p[j].push_back(i);
+        }
+    }
+    
+    int Q;
+    std::cin >> Q;
+    
+    std::vector<std::vector<std::pair<int, int>>> qry(maxlen + 1);
+    
+    for (int i = 0; i < Q; i++) {
+        int A, B, K;
+        std::cin >> A >> B >> K;
+        A--;
+        if (K <= maxlen) {
+            qry[K].emplace_back(A, B);
+        }
+    }
+    i64 sum = 0;
+    
+    std::vector<int> siz(tot + 1);
+    std::vector<int> cnt(N + 1);
+    
+    for (int k = 1; k <= maxlen; k++) {
+        if (qry[k].empty()) {
+            continue;
+        }
+        
+        for (auto &[l, r] : qry[k]) {
+            l = std::lower_bound(p[k].begin(), p[k].end(), l) - p[k].begin();
+            r = std::lower_bound(p[k].begin(), p[k].end(), r) - p[k].begin();
+        }
+        const int n = p[k].size();
+        const int q = qry[k].size();
+        assert(n > 0);
+        const int B = n / std::sqrt(q) + 1;
+        std::sort(qry[k].begin(), qry[k].end(),
+            [&](auto &a, auto &b) {
+                if (a.first / B != b.first / B) {
+                    return a.first < b.first;
+                }
+                return a.second < b.second;
+            });
+        int L = 0, R = 0;
+        
+        auto add = [&](int i, int x = 1) {
+            i = p[k][i];
+            i = nd[i][k];
+            cnt[siz[i]]--;
+            siz[i] += x;
+            cnt[siz[i]]++;
+        };
+        
+        for (auto [l, r] : qry[k]) {
+            while (R < r) {
+                add(R++);
+            }
+            while (L > l) {
+                add(--L);
+            }
+            while (R > r) {
+                add(--R, -1);
+            }
+            while (L < l) {
+                add(L++, -1);
+            }
+            int tot = -cnt[0];
+            assert(tot <= N);
+            int ans = tot;
+            for (int i = 1; i <= ans; i++) {
+                tot -= cnt[i];
+                ans = std::min(ans, tot + i);
+            }
+            sum += ans;
+        }
+        
+        for (auto i : p[k]) {
+            i = nd[i][k];
+            cnt[siz[i]]--;
+            siz[i] = 0;
+            cnt[0]++;
+        }
+    }
+    
+    std::cout << sum << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
+    int T;
+    std::cin >> T;
+    
+    for (int i = 1; i <= T; i++) {
+        std::cout << "Case #" << i << ": ";
+        solve();
+    }
+    
+    return 0;
+}

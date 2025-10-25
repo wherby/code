@@ -21,3 +21,9 @@ https://leetcode.cn/contest/biweekly-contest-160/problems/minimum-stability-fact
 
 # Quick version
 quick version will AC for some scenario. for query/update will not run recursion. 
+
+# min-max lazy segtree
+[atcoder functional version may timeout ](lazyEval/accoderusage)
+[min-max segment tree with find first from left ](lazyEval/accoderusage/noUseFunctional.py)
+[min-max segment tree with find last from right](lazyEval/accoderusage/findFirstAndLast.py)
+

@@ -27,4 +27,4 @@ def comb2(n,m, mod= 10**9+7):
 
 print(comb2(10000,200))
 import math # use default lib
-print(math.comb(10000,200)%mod)
+print(math.comb(10**15,200)%mod)

@@ -6,7 +6,7 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 filename = "input/input00.txt"
-# filename = "input/warm_up_input.txt"
+filename = "input/crash_course_input.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -18,7 +18,7 @@ else:
     inputA=sys.stdin
 
 
-FILEDEBUG=False
+FILEDEBUG=True
 
 if FILEDEBUG:
     import sys
@@ -30,18 +30,21 @@ if FILEDEBUG:
 
 def resolve():
     isG = False
-    N,K = list(map(lambda x: int(x),input().split()))
-    ls =[]
+    N, = list(map(lambda x: int(x),input().split()))
+    ls =input().split()[0]
+    a,b =0,0
+    state = 0
     for i in range(N):
-        inp = int(input())
-        ls.append(inp)
-    mn = min(ls)
-    if K >= mn*(2* max((N-1),1)-1):
-        isG = True
-    if isG:
-        return "YES"
-    else:
-        return "NO"
+        if ls[i] == "A":
+            if state <0:
+                state = 0
+            state +=1
+        else:
+            state -=1
+    return "Alice" if state>0 else "Bob"
+
+ # AAABABBBBBAAAABBAAABB   
+    
 
 def op(caseidx):
     cnt = resolve()

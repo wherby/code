@@ -1,0 +1,616 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <chrono>
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <random>
+#include <set>
+#include <vector>
+using namespace std;
+
+// http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html
+template<class Fun> class y_combinator_result {
+    Fun fun_;
+public:
+    template<class T> explicit y_combinator_result(T &&fun): fun_(std::forward<T>(fun)) {}
+    template<class ...Args> decltype(auto) operator()(Args &&...args) { return fun_(std::ref(*this), std::forward<Args>(args)...); }
+};
+template<class Fun> decltype(auto) y_combinator(Fun &&fun) { return y_combinator_result<std::decay_t<Fun>>(std::forward<Fun>(fun)); }
+
+
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+
+void dbg_out() { cerr << endl; }
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+#ifdef NEAL_DEBUG
+#define dbg(...) cerr << '[' << __FILE__ << ':' << __LINE__ << "] (" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
+#else
+#define dbg(...)
+#endif
+
+template<const unsigned &MOD>
+struct _m_uint {
+    unsigned val;
+
+    _m_uint(int64_t v = 0) {
+        if (v < 0) v = v % MOD + MOD;
+        if (v >= MOD) v %= MOD;
+        val = unsigned(v);
+    }
+
+    _m_uint(uint64_t v) {
+        if (v >= MOD) v %= MOD;
+        val = unsigned(v);
+    }
+
+    _m_uint(int v) : _m_uint(int64_t(v)) {}
+    _m_uint(unsigned v) : _m_uint(uint64_t(v)) {}
+
+    explicit operator unsigned() const { return val; }
+    explicit operator int64_t() const { return val; }
+    explicit operator uint64_t() const { return val; }
+    explicit operator double() const { return val; }
+    explicit operator long double() const { return val; }
+
+    _m_uint& operator+=(const _m_uint &other) {
+        val = val < MOD - other.val ? val + other.val : val - (MOD - other.val);
+        return *this;
+    }
+
+    _m_uint& operator-=(const _m_uint &other) {
+        val = val < other.val ? val + (MOD - other.val) : val - other.val;
+        return *this;
+    }
+
+    static unsigned fast_mod(uint64_t x, unsigned m = MOD) {
+#if !defined(_WIN32) || defined(_WIN64)
+        return unsigned(x % m);
+#endif
+        // Optimized mod for Codeforces 32-bit machines.
+        // x must be less than 2^32 * m for this to work, so that x / m fits in an unsigned 32-bit int.
+        unsigned x_high = unsigned(x >> 32), x_low = unsigned(x);
+        unsigned quot, rem;
+        asm("divl %4\n"
+            : "=a" (quot), "=d" (rem)
+            : "d" (x_high), "a" (x_low), "r" (m));
+        return rem;
+    }
+
+    _m_uint& operator*=(const _m_uint &other) {
+        val = fast_mod(uint64_t(val) * other.val);
+        return *this;
+    }
+
+    _m_uint& operator/=(const _m_uint &other) {
+        return *this *= other.inv();
+    }
+
+    friend _m_uint operator+(const _m_uint &a, const _m_uint &b) { return _m_uint(a) += b; }
+    friend _m_uint operator-(const _m_uint &a, const _m_uint &b) { return _m_uint(a) -= b; }
+    friend _m_uint operator*(const _m_uint &a, const _m_uint &b) { return _m_uint(a) *= b; }
+    friend _m_uint operator/(const _m_uint &a, const _m_uint &b) { return _m_uint(a) /= b; }
+
+    _m_uint& operator++() {
+        val = val == MOD - 1 ? 0 : val + 1;
+        return *this;
+    }
+
+    _m_uint& operator--() {
+        val = val == 0 ? MOD - 1 : val - 1;
+        return *this;
+    }
+
+    _m_uint operator++(int) { _m_uint before = *this; ++*this; return before; }
+    _m_uint operator--(int) { _m_uint before = *this; --*this; return before; }
+
+    _m_uint operator-() const {
+        return val == 0 ? 0 : MOD - val;
+    }
+
+    friend bool operator==(const _m_uint &a, const _m_uint &b) { return a.val == b.val; }
+    friend bool operator!=(const _m_uint &a, const _m_uint &b) { return a.val != b.val; }
+    friend bool operator<(const _m_uint &a, const _m_uint &b) { return a.val < b.val; }
+    friend bool operator>(const _m_uint &a, const _m_uint &b) { return a.val > b.val; }
+    friend bool operator<=(const _m_uint &a, const _m_uint &b) { return a.val <= b.val; }
+    friend bool operator>=(const _m_uint &a, const _m_uint &b) { return a.val >= b.val; }
+
+    static const int SAVE_INV = int(1e6) + 5;
+    static _m_uint save_inv[SAVE_INV];
+
+    static void prepare_inv() {
+        // Ensures that MOD is prime, which is necessary for the inverse algorithm below.
+        for (int64_t p = 2; p * p <= MOD; p += p % 2 + 1)
+            assert(MOD % p != 0);
+
+        save_inv[0] = 0;
+        save_inv[1] = 1;
+
+        for (int i = 2; i < SAVE_INV; i++)
+            save_inv[i] = save_inv[MOD % i] * (MOD - MOD / i);
+    }
+
+    _m_uint inv() const {
+        if (save_inv[1] == 0)
+            prepare_inv();
+
+        if (val < SAVE_INV)
+            return save_inv[val];
+
+        _m_uint product = 1;
+        unsigned v = val;
+
+        do {
+            product *= MOD - MOD / v;
+            v = MOD % v;
+        } while (v >= SAVE_INV);
+
+        return product * save_inv[v];
+    }
+
+    _m_uint pow(int64_t p) const {
+        if (p < 0)
+            return inv().pow(-p);
+
+        _m_uint a = *this, result = 1;
+
+        while (p > 0) {
+            if (p & 1)
+                result *= a;
+
+            p >>= 1;
+
+            if (p > 0)
+                a *= a;
+        }
+
+        return result;
+    }
+
+    friend ostream& operator<<(ostream &os, const _m_uint &m) {
+        return os << m.val;
+    }
+};
+
+template<const unsigned &MOD> _m_uint<MOD> _m_uint<MOD>::save_inv[_m_uint<MOD>::SAVE_INV];
+
+uint64_t random_address() { char *p = new char; delete p; return uint64_t(p); }
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count() * (random_address() | 1));
+
+// P = 2^32 - 13337 is a safe prime: both P and (P - 1) / 2 are prime.
+const unsigned HASH_P = unsigned(-13337);
+using hash_int = _m_uint<HASH_P>;
+
+const uint64_t HASH_P2 = uint64_t(HASH_P) * HASH_P;
+const int HASH_COUNT = 2;
+
+// Avoid multiplication bases near 0 or P - 1.
+uniform_int_distribution<unsigned> MULT_DIST(unsigned(0.1 * HASH_P), unsigned(0.9 * HASH_P));
+const hash_int HASH_MULT[] = {MULT_DIST(rng), MULT_DIST(rng)};
+const hash_int HASH_INV[] = {1 / HASH_MULT[0], 1 / HASH_MULT[1]};
+
+vector<hash_int> hash_pow[] = {{1}, {1}};
+
+const int INF = int(1e9) + 5;
+
+template<typename T_string = string>
+struct string_hash {
+    static const bool BUILD_REVERSE = false;
+
+    static uint64_t hash(const T_string &str) {
+        uint64_t result = 0;
+
+        for (int h = 0; h < HASH_COUNT; h++) {
+            uint64_t value = 1;
+
+            for (const auto &x : str)
+                value = (uint64_t(HASH_MULT[h]) * value + x) % HASH_P;
+
+            result += value << (32 * h);
+        }
+
+        return result;
+    }
+
+    T_string str;
+    vector<hash_int> _prefix[HASH_COUNT];
+    vector<hash_int> _inv_prefix[HASH_COUNT];
+
+    string_hash() {
+        build({});
+    }
+
+    string_hash(const T_string &_str) {
+        build(_str);
+    }
+
+    int length() const {
+        return int(_prefix[0].size()) - 1;
+    }
+
+    template<typename T_char>
+    void add_char(const T_char &c) {
+        str.push_back(c);
+
+        for (int h = 0; h < HASH_COUNT; h++) {
+            _prefix[h].push_back(HASH_MULT[h] * _prefix[h].back() + c);
+
+            if (hash_pow[h].size() < _prefix[h].size())
+                hash_pow[h].push_back(HASH_MULT[h] * hash_pow[h].back());
+
+            if (BUILD_REVERSE)
+                _inv_prefix[h].push_back((_inv_prefix[h].back() + c) * HASH_INV[h]);
+        }
+    }
+
+    void pop_char() {
+        str.pop_back();
+
+        for (int h = 0; h < HASH_COUNT; h++) {
+            _prefix[h].pop_back();
+
+            if (BUILD_REVERSE)
+                _inv_prefix[h].pop_back();
+        }
+    }
+
+    void build(const T_string &_str) {
+        str = {};
+        str.reserve(_str.size());
+
+        for (int h = 0; h < HASH_COUNT; h++) {
+            hash_pow[h].reserve(_str.size() + 1);
+            _prefix[h] = {0};
+            _prefix[h].reserve(_str.size() + 1);
+
+            if (BUILD_REVERSE) {
+                _inv_prefix[h] = {0};
+                _inv_prefix[h].reserve(_str.size() + 1);
+            }
+        }
+
+        for (auto &c : _str)
+            add_char(c);
+    }
+
+    uint64_t _single_hash(int h, int start, int end) const {
+        // Convert everything to `uint64_t` for speed. Note: we add hash_pow[length] to fix strings that start with 0.
+        uint64_t power = uint64_t(hash_pow[h][end - start]);
+        return (power + uint64_t(_prefix[h][end]) + HASH_P2 - uint64_t(_prefix[h][start]) * power) % HASH_P;
+    }
+
+    uint64_t substring_hash(int start, int end) const {
+        assert(0 <= start && start <= end && end <= length());
+        return _single_hash(0, start, end) + (HASH_COUNT > 1 ? _single_hash(1, start, end) << 32 : 0);
+    }
+
+    uint64_t complete_hash() const {
+        return substring_hash(0, length());
+    }
+
+    uint64_t _reverse_single_hash(int h, int start, int end) const {
+        // Convert everything to `uint64_t` for speed. Note: we add hash_pow[length] to fix strings that start with 0.
+        uint64_t power = uint64_t(hash_pow[h][end - start]);
+        return (power + uint64_t(_inv_prefix[h][end]) * power + HASH_P - uint64_t(_inv_prefix[h][start])) % HASH_P;
+    }
+
+    uint64_t reverse_substring_hash(int start, int end) const {
+        assert(0 <= start && start <= end && end <= length());
+        return _reverse_single_hash(0, start, end) + (HASH_COUNT > 1 ? _reverse_single_hash(1, start, end) << 32 : 0);
+    }
+
+    uint64_t reverse_complete_hash() const {
+        return reverse_substring_hash(0, length());
+    }
+
+    bool equal(int start1, int start2, int length) const {
+        return substring_hash(start1, start1 + length) == substring_hash(start2, start2 + length);
+    }
+
+    bool is_palindrome(int start, int end) const {
+        return substring_hash(start, end) == reverse_substring_hash(start, end);
+    }
+
+    int compare(int start1, int start2, int max_length = INF) const;
+};
+
+uint64_t concat_hashes(uint64_t hash1, uint64_t hash2, int len2) {
+    if (len2 == 0) return hash1;
+    uint64_t hash1_low = hash1 & unsigned(-1);
+    uint64_t hash2_low = hash2 & unsigned(-1);
+    uint64_t power = uint64_t(hash_pow[0][len2]);
+    uint64_t combined = (hash1_low * power + hash2_low + HASH_P - power) % HASH_P;
+
+    if (HASH_COUNT > 1) {
+        hash1 >>= 32;
+        hash2 >>= 32;
+        power = uint64_t(hash_pow[1][len2]);
+        combined += (hash1 * power + hash2 + HASH_P - power) % HASH_P << 32;
+    }
+
+    return combined;
+}
+
+template<typename T_string>
+int first_mismatch(const string_hash<T_string> &hash1, int start1,
+                   const string_hash<T_string> &hash2, int start2, int max_length = INF) {
+    max_length = min({max_length, hash1.length() - start1, hash2.length() - start2});
+
+    static const int FIRST = 5;
+    int first = min(max_length, FIRST);
+
+    for (int i = 0; i < first; i++)
+        if (hash1.str[start1 + i] != hash2.str[start2 + i])
+            return i;
+
+    if (hash1.substring_hash(start1, start1 + max_length) == hash2.substring_hash(start2, start2 + max_length))
+        return max_length;
+
+    static const int MANUAL = 15;
+    int low = first, high = max_length - 1;
+
+    while (high - low > MANUAL) {
+        int mid = (low + high + 1) / 2;
+
+        if (hash1.substring_hash(start1, start1 + mid) == hash2.substring_hash(start2, start2 + mid))
+            low = mid;
+        else
+            high = mid - 1;
+    }
+
+    for (int i = low; i < high; i++)
+        if (hash1.str[start1 + i] != hash2.str[start2 + i])
+            return i;
+
+    return high;
+}
+
+template<typename T_string>
+int hash_compare(const string_hash<T_string> &hash1, int start1,
+                 const string_hash<T_string> &hash2, int start2, int max_length = INF) {
+    int mismatch = first_mismatch(hash1, start1, hash2, start2, max_length);
+    int length1 = min(hash1.length() - start1, max_length);
+    int length2 = min(hash2.length() - start2, max_length);
+
+    if (mismatch == min(length1, length2))
+        return length1 == length2 ? 0 : (length1 < length2 ? -1 : +1);
+
+    if (hash1.str[start1 + mismatch] == hash2.str[start2 + mismatch])
+        return 0;
+
+    return hash1.str[start1 + mismatch] < hash2.str[start2 + mismatch] ? -1 : +1;
+}
+
+template<typename T_string>
+int string_hash<T_string>::compare(int start1, int start2, int max_length) const {
+    return hash_compare(*this, start1, *this, start2, max_length);
+}
+
+
+using mo_value = int;
+using mo_answer = int;
+
+struct mo_state {
+    const vector<mo_value> &values;
+
+    vector<int> index_freq;
+    vector<int> count_of_size;
+    int s, count_bigger;
+
+    mo_state(const vector<mo_value> &_values, int _s) : values(_values), s(_s) {
+        count_bigger = 0;
+        index_freq.assign(values.size(), 0);
+        count_of_size.assign(values.size() + 1, 0);
+    }
+
+    void add_left(int index) {
+        mo_value x = values[index];
+        count_bigger -= index_freq[x] > s;
+        count_of_size[index_freq[x]]--;
+        index_freq[x]++;
+        count_of_size[index_freq[x]]++;
+        count_bigger += index_freq[x] > s;
+    }
+
+    void add_right(int index) {
+        add_left(index);
+    }
+
+    void remove_left(int index) {
+        mo_value x = values[index];
+        count_bigger -= index_freq[x] > s;
+        count_of_size[index_freq[x]]--;
+        index_freq[x]--;
+        count_of_size[index_freq[x]]++;
+        count_bigger += index_freq[x] > s;
+    }
+
+    void remove_right(int index) {
+        remove_left(index);
+    }
+
+    mo_answer get_answer() const {
+        int ans = s, count = count_bigger;
+
+        for (int i = s; i > 0; i--) {
+            count += count_of_size[i];
+
+            if (count == 0)
+                ans--;
+            else
+                count--;
+        }
+
+        return ans;
+    }
+};
+
+struct mo_query {
+    int start, end, block, index;
+
+    mo_query() : start(0), end(0) {}
+
+    mo_query(int _start, int _end) : start(_start), end(_end) {}
+
+    bool operator<(const mo_query &other) const {
+        if (block != other.block)
+            return block < other.block;
+
+        return block % 2 == 0 ? end < other.end : end > other.end;
+    }
+};
+
+struct mo {
+    int n, s;
+    vector<mo_value> values;
+
+    mo(int _s, const vector<mo_value> &_values) : s(_s), values(_values) {
+        n = int(values.size());
+    }
+
+    void update_state(mo_state &state, const mo_query &first, const mo_query &second) const {
+        if (max(first.start, second.start) >= min(first.end, second.end)) {
+            for (int i = first.start; i < first.end; i++)
+                state.remove_left(i);
+
+            for (int i = second.start; i < second.end; i++)
+                state.add_right(i);
+
+            return;
+        }
+
+        for (int i = first.start - 1; i >= second.start; i--)
+            state.add_left(i);
+
+        for (int i = first.end; i < second.end; i++)
+            state.add_right(i);
+
+        for (int i = first.start; i < second.start; i++)
+            state.remove_left(i);
+
+        for (int i = first.end - 1; i >= second.end; i--)
+            state.remove_right(i);
+    }
+
+    vector<mo_answer> solve(vector<mo_query> queries) const {
+        int block_size = int(1.5 * n / sqrt(max(int(queries.size()), 1)) + 1);
+
+        for (int i = 0; i < int(queries.size()); i++) {
+            queries[i].index = i;
+            queries[i].block = queries[i].start / block_size;
+        }
+
+        sort(queries.begin(), queries.end());
+        mo_state state(values, s);
+        mo_query last_query;
+        vector<mo_answer> answers(queries.size());
+
+        for (mo_query &q : queries) {
+            update_state(state, last_query, q);
+            answers[q.index] = state.get_answer();
+            last_query = q;
+        }
+
+        return answers;
+    }
+};
+
+
+const int K_MAX = int(1e6) + 5;
+
+void run_case(int test_case) {
+    int N;
+    cin >> N;
+    vector<string> W(N);
+
+    for (auto &w : W)
+        cin >> w;
+
+    vector<string_hash<string>> hashers(N);
+
+    for (int i = 0; i < N; i++)
+        hashers[i].build(W[i]);
+
+    vector<int> order_by_size(N);
+    iota(order_by_size.begin(), order_by_size.end(), 0);
+    sort(order_by_size.begin(), order_by_size.end(), [&](int a, int b) -> bool {
+        return W[a].size() > W[b].size();
+    });
+
+    int Q;
+    cin >> Q;
+    array<vector<array<int, 2>>, K_MAX + 1> queries;
+
+    for (int q = 0; q < Q; q++) {
+        int a, b, k;
+        cin >> a >> b >> k;
+        a--;
+        queries[k].push_back({a, b});
+    }
+
+    int64_t ans = 0;
+
+    for (int k = 1; k <= K_MAX; k++) {
+        if (queries[k].empty())
+            continue;
+
+        vector<int> original_index;
+
+        for (int x : order_by_size)
+            if (int(W[x].size()) >= k)
+                original_index.push_back(x);
+            else
+                break;
+
+        sort(original_index.begin(), original_index.end());
+        int n = int(original_index.size());
+
+        vector<int> first_equivalent(n);
+        map<uint64_t, int> hash_to_first;
+
+        for (int i = 0; i < n; i++) {
+            int index = original_index[i];
+            uint64_t hash = hashers[index].substring_hash(hashers[index].length() - k, hashers[index].length());
+
+            if (hash_to_first.find(hash) == hash_to_first.end())
+                hash_to_first[hash] = first_equivalent[i] = i;
+            else
+                first_equivalent[i] = hash_to_first[hash];
+        }
+
+        int s = min(int(sqrt(2 * n)) + 1, n);
+        mo solver(s, first_equivalent);
+        vector<mo_query> mo_queries;
+
+        auto compress_qry_index = [&](int index) -> int {
+            return int(lower_bound(original_index.begin(), original_index.end(), index) - original_index.begin());
+        };
+
+        for (array<int, 2> qry : queries[k])
+            mo_queries.emplace_back(compress_qry_index(qry[0]), compress_qry_index(qry[1]));
+
+        vector<mo_answer> answers = solver.solve(mo_queries);
+        ans += accumulate(answers.begin(), answers.end(), INT64_C(0));
+    }
+
+    cout << "Case #" << test_case << ": " << ans << '\n';
+}
+
+int main() {
+    int tests;
+    cin >> tests;
+
+    for (int tc = 1; tc <= tests; tc++) {
+        run_case(tc);
+        cout << flush;
+    }
+}

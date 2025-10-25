@@ -1,0 +1,126 @@
+/**
+ *    author:  tourist
+ *    created: 07.10.2023 14:23:04       
+**/
+#undef _GLIBCXX_DEBUG
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#ifdef LOCAL
+#include "algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+
+int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int tt;
+  cin >> tt;
+  for (int qq = 1; qq <= tt; qq++) {
+    cout << "Case #" << qq << ": ";
+    int n;
+    cin >> n;
+    vector<string> w(n);
+    for (int i = 0; i < n; i++) {
+      cin >> w[i];
+      reverse(w[i].begin(), w[i].end());
+    }
+    int q;
+    cin >> q;
+    vector<int> ql(q), qr(q), qk(q);
+    map<int, vector<int>> at_q;
+    for (int i = 0; i < q; i++) {
+      cin >> ql[i] >> qr[i] >> qk[i];
+      --ql[i];
+      at_q[qk[i]].push_back(i);
+    }
+    const int ALPHA = 26;
+    vector<vector<int>> trie(1, vector<int>(ALPHA, -1));
+    vector<vector<int>> who(1);
+    vector<int> depth(1, 0);
+    for (int i = 0; i < n; i++) {
+      int t = 0;
+      for (char c : w[i]) {
+        int d = (int) (c - 'a');
+        if (trie[t][d] == -1) {
+          trie[t][d] = (int) trie.size();
+          trie.emplace_back(ALPHA, -1);
+          depth.push_back(depth[t] + 1);
+          who.emplace_back();
+        }
+        t = trie[t][d];
+        who[t].push_back(i);
+      }
+    }
+    map<int, vector<int>> at_d;
+    for (int i = 0; i < (int) trie.size(); i++) {
+      at_d[depth[i]].push_back(i);
+    }
+    vector<pair<int, int>> qs(q);
+    vector<int> cnt(trie.size(), 0);
+    const int MX = 2000;
+    vector<int> cc(MX + 1, 0);
+    vector<int> qres(q);
+    for (auto& p : at_q) {
+      int k = p.first;
+      vector<pair<int, int>> b;
+      for (int vertex : at_d[k]) {
+        for (int u : who[vertex]) {
+          b.emplace_back(u, vertex);
+        }
+      }
+      sort(b.begin(), b.end());
+      int sz = (int) b.size();
+      int bb = max(1, (int) sqrt(sz));
+      for (int qid : p.second) {
+        ql[qid] = (int) (lower_bound(b.begin(), b.end(), make_pair(ql[qid], -1)) - b.begin());
+        qr[qid] = (int) (lower_bound(b.begin(), b.end(), make_pair(qr[qid], -1)) - b.begin());
+        qs[qid] = make_pair(ql[qid] / bb, qr[qid]);
+      }
+      sort(p.second.begin(), p.second.end(), [&](int i, int j) {
+        return qs[i] < qs[j];
+      });
+      int l = 0, r = 0;
+      auto Add = [&](int x) {
+        x = b[x].second;
+        cc[min(cnt[x], MX)] -= 1;
+        cnt[x] += 1;
+        cc[min(cnt[x], MX)] += 1;
+      };
+      auto Remove = [&](int x) {
+        x = b[x].second;
+        cc[min(cnt[x], MX)] -= 1;
+        cnt[x] -= 1;
+        cc[min(cnt[x], MX)] += 1;
+      };
+      for (int qid : p.second) {
+        while (r < qr[qid]) {
+          Add(r++);
+        }
+        while (l > ql[qid]) {
+          Add(--l);
+        }
+        while (r > qr[qid]) {
+          Remove(--r);
+        }
+        while (l < ql[qid]) {
+          Remove(l++);
+        }
+        int res = 0;
+        for (int i = 1; i <= MX; i++) {
+          res = min(i, res + cc[i]);
+        }
+        qres[qid] = res;
+      }
+      while (l < r) {
+        Remove(l++);
+      }
+    }
+    cout << accumulate(qres.begin(), qres.end(), 0LL) << '\n';
+    debug(qq, tt, clock());
+  }
+  return 0;
+}

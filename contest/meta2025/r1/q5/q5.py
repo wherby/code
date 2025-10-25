@@ -6,7 +6,7 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 filename = "input/input00.txt"
-# filename = "input/warm_up_input.txt"
+filename = "input/narrowing_down_input.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -18,7 +18,7 @@ else:
     inputA=sys.stdin
 
 
-FILEDEBUG=False
+FILEDEBUG=True
 
 if FILEDEBUG:
     import sys
@@ -27,21 +27,24 @@ if FILEDEBUG:
     f = open('./out.txt', 'w')
     sys.stdout = f
 
-
+from collections import defaultdict,deque
 def resolve():
-    isG = False
-    N,K = list(map(lambda x: int(x),input().split()))
-    ls =[]
-    for i in range(N):
-        inp = int(input())
-        ls.append(inp)
-    mn = min(ls)
-    if K >= mn*(2* max((N-1),1)-1):
-        isG = True
-    if isG:
-        return "YES"
-    else:
-        return "NO"
+    N, = list(map(lambda x: int(x),input().split()))
+    ls =list(map(lambda x: int(x),input().split()))
+    dic = defaultdict(int)
+    dic[0]=1
+    cur = 0  
+    acc =0
+    ret =0
+    for i,a in enumerate(ls):
+        cur = (i+1)*(i+2) //2
+        #print(cur,i)
+        acc =acc ^ a 
+        ret +=cur - dic[acc]*(dic[acc]+1)//2
+        dic[acc]+=1
+        
+        
+    return ret
 
 def op(caseidx):
     cnt = resolve()

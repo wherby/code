@@ -1,0 +1,105 @@
+#pragma GCC optimize("-Ofast","-funroll-all-loops","-ffast-math")
+#include <bits/stdc++.h>
+#define ll long long
+#define mp make_pair
+#define fi first
+#define se second
+#define pb push_back
+#define vi vector<int>
+#define pi pair<int, int>
+#define mp make_pair
+#define mod 1000000007
+template<typename T> bool chkmin(T &a, T b){return (b < a) ? a = b, 1 : 0;}
+template<typename T> bool chkmax(T &a, T b){return (b > a) ? a = b, 1 : 0;}
+ll ksm(ll a, ll b) {if (b == 0) return 1; ll ns = ksm(a, b >> 1); ns = ns * ns % mod; if (b & 1) ns = ns * a % mod; return ns;}
+using namespace std;
+const int maxn = 4000005;
+struct ST {
+    int l, r;
+    ST *ch[2];
+    pi mn, mx;
+    int lz;
+}p[maxn << 1], *root;
+int x[maxn];
+int stcnt = 0;
+void upd(ST *a) {
+    a->mn = min(a->ch[0]->mn, a->ch[1]->mn);
+    a->mx = max(a->ch[0]->mx, a->ch[1]->mx);
+}
+void bdtree(ST *a, int l, int r) {
+    
+    a->lz = 0;
+    a->l = l, a->r = r;
+    if (l == r) {
+        a->mn = mp(x[l], l);
+        a->mx = mp(x[l], -l);
+        return ;
+    }
+    int mid = (l + r) >> 1;
+    a->ch[0] = &p[++stcnt], a->ch[1] = &p[++stcnt];
+    bdtree(a->ch[0], l, mid);
+    bdtree(a->ch[1], mid + 1, r);
+    upd(a);
+}
+void actlz(ST *a) {
+    a->lz ^= 1;
+    swap(a->mn, a->mx);
+    a->mn.fi = mod - a->mn.fi;
+    a->mx.fi = mod - a->mx.fi;
+    a->mn.se = -a->mn.se;
+    a->mx.se = -a->mx.se;
+}
+void pushdown(ST *a) {
+    if (a->lz) {
+        actlz(a->ch[0]);
+        actlz(a->ch[1]);
+        a->lz = 0;
+    }
+}
+pi qmx(ST *a, int l, int r) {
+    if (a->l == l && a->r == r) return a->mx;
+    int mid = (a->l + a->r) >> 1;
+    pushdown(a);
+    if (r <= mid) return qmx(a->ch[0], l, r);
+    else if (l > mid) return qmx(a->ch[1], l, r);
+    else return max(qmx(a->ch[0], l, mid), qmx(a->ch[1], mid + 1, r));
+}
+void flip(ST *a, int l, int r) {
+    if (a->l == l && a->r == r) {
+        actlz(a);
+        return ;
+    }
+    int mid = (a->l + a->r) >> 1;
+    pushdown(a);
+    if (r <= mid) flip(a->ch[0], l, r);
+    else if (l > mid) flip(a->ch[1], l, r);
+    else flip(a->ch[0], l, mid), flip(a->ch[1], mid + 1, r);
+    upd(a);
+}
+int main() {
+    freopen("x.txt", "r", stdin);
+    freopen("y.txt", "w", stdout);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    for (int cs = 1; cs <= t; cs++) {
+        int n;
+        cin >> n;
+        for (int i = 1; i <= n; i++) cin >> x[i];
+        int q;
+        cin >> q;
+        bdtree(root = &p[++stcnt], 1, n);
+        ll ans = 0;
+        for (int i = 1; i <= q; i++) {
+            int l, r;
+            cin >> l >> r;
+            flip(root, l, r);
+            pi mx = qmx(root, 1, n);
+            ans += abs(mx.se);
+        }
+        // printf("Case #%d: %lld\n", cs, ans);
+        cout << "Case #" << cs << ": " << ans << endl;
+    }
+    return 0;
+}

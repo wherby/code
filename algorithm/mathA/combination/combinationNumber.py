@@ -16,13 +16,20 @@ def comb2(n,m):
         cnt //= i+1
     return cnt
 
+def comb3(n: int, m: int) -> int:
+    m = min(m, n - m)
+    res = 1
+    for i in range(1, m + 1):
+        res = res * (n + 1 - i) // i
+    return res
+
 print(comb2(100,2))
 #print(comb2(10**5,10**5//2)) # Can't use for 10**5
 ## Using Lib
 import math
 print(math.comb(100,2))
 print(comb2(1234,23) == math.comb(1234,23))
-
+print(comb3(1234,23) == math.comb(1234,23))
 # combination number
 #>>> from math import comb
 #>>> comb(10,3)

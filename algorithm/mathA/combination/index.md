@@ -43,4 +43,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/04/
 # N 个人放置M个位置的环形位置中
 [圆桌排列座位](../../codeforce/数论/排列组合.py)
 
+# 两个杨辉倒三角相减的化简
+https://leetcode.cn/problems/check-if-digits-are-equal-in-string-after-operations-ii/solutions/3086169/mo-shu-wei-he-shu-shi-de-zu-he-shu-by-en-8x7t/
+
 

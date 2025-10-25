@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+typedef long long ll;
+const int MAXN = 1000100;
+const ll MOD = 1e9 + 7;
+
+int N, K, D;
+int np[MAXN];
+bool prime[MAXN];
+vector <int> fac[MAXN];
+int sscore[MAXN];
+
+ll fpow[MAXN];
+ll finv[MAXN];
+
+int gcd (int x, int y)
+{
+    if (y == 0) return x;
+    return gcd (y, x % y);
+}
+
+ll cpow (ll x, ll e)
+{
+    if (e == 0) return 1;
+    if (e == 1) return x % MOD;
+
+    ll v = cpow (x, e / 2);
+    v = (v * v) % MOD;
+    if (e & 1) v = (v * x) % MOD;
+    return v;
+}
+
+ll inv (ll x)
+{
+    return cpow (x, MOD - 2);
+}
+
+void gogo()
+{
+    for (int i = 0; i < MAXN; i++)
+        np[i] = 0;
+
+    cin >> N >> K >> D;
+    for (int i = 0; i < N; i++)
+    {
+        int x; cin >> x;
+        x /= gcd (x, D);
+
+        for (int m = 0; m < (1 << (fac[x].size())); m++)
+        {
+            int nv = 1;
+            for (int j = 0; j < fac[x].size(); j++)
+                if (m & (1 << j))
+                    nv *= fac[x][j];
+            np[nv]++;            
+        }
+    }
+
+    ll ans = 0;
+    for (int i = 1; i < MAXN; i++)
+    {
+        if (!np[i] || np[i] < K) continue;
+        // np[i] P K
+        ll res = (fpow[np[i]] * finv[np[i] - K]) % MOD;
+        if (fac[i].size() % 2 == 0)
+            ans = (ans + res) % MOD;
+        else
+            ans = (ans - res) % MOD;
+    }
+    ans = (ans % MOD + MOD) % MOD;
+    cout << ans << "\n";
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+
+    prime[0] = prime[1] = false;
+    for (int i = 2; i < MAXN; i++)
+        prime[i] = true;
+    for (int i = 2; i < MAXN; i++)
+    {
+        if (prime[i])
+        {
+            for (int j = i; j < MAXN; j += i)
+            {
+                fac[j].push_back(i);
+                if (j > i) prime[j] = false;
+            }
+        }
+    }
+
+    fpow[0] = 1;
+    for (int i = 1; i < MAXN; i++)
+        fpow[i] = (i * fpow[i-1]) % MOD;
+    for (int i = 0; i < MAXN; i++)
+        finv[i] = inv (fpow[i]) % MOD;
+
+    ll T; cin >> T;
+    for (ll t = 0; t < T; t++)
+    {
+        cout << "Case #" << t + 1 << ": ";
+        gogo();
+    }
+}

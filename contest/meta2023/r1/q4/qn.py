@@ -7,6 +7,7 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 filename = "input/today_is_gonna_be_a_great_day_input.txt"
+#filename = "input/input00.txt"
 f=open(filename,'r')
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -158,6 +159,7 @@ def resolve():
         #mxv = st.query(0,inp-1)
         #idx = st.queryFirst_Max(0,inp-1,mxv)
         #print(idx,"aaaaa",mxv,l,r,st.query(0,0),st.query(0,1),st.query(0,2))
+        #print(st.toggledValue[0][1])
         ret.append(st.toggledValue[0][1][1]+1)
     #print(ret)
     return sum(ret)
