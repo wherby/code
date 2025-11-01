@@ -28,3 +28,8 @@ def inv2(x):
     return s
 
 print(inv(100),inv2(100))
+
+# 逆元计算 要用pow,不能用math.pow 
+mod = 10 ** 9 + 7
+rev2 = (mod + 1) // 2
+print(rev2,pow(2,-1,mod))

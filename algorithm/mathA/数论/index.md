@@ -6,4 +6,7 @@
 
 
 ## 数论GCD
-[数组中GCD为K的个数](../gcd/数论GCD)
+[数组中GCD为K的子数组长度为m的个数](../gcd/数论GCD)
+
+## 欧几里得
+[扩展欧几里得](../extendedEuclid)
