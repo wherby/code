@@ -3,6 +3,7 @@
 # 二项式定义验证： algorithm/codeforce/数论/test/测试二项式定理.py
 # rev4 这里有模数技巧 “模逆元”  使得 -1 和 -pw2[n-1] 除4 同余 
 # (c0 * (c0 + 1) // 2 + c1 * (c1 + 1) // 2 - c0 * c1 - 1) 把 -1 移到了括号里面
+# 二项式求和乘系数的化简 
 
 import init_setting
 from cflibs import *

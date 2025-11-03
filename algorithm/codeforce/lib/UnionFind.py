@@ -7,6 +7,12 @@ class UnionFind:
         # 集合 i 的代表元是自己
         self._fa = list(range(n))  # 代表元
         self.cc = n  # 连通块个数
+        self.n = n 
+
+    def init(self):
+        self.cc = self.n 
+        self._fa = list(range(self.n)) 
+
 
     # 返回 x 所在集合的代表元
     # 同时做路径压缩，也就是把 x 所在集合中的所有元素的 fa 都改成代表元

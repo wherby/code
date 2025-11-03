@@ -14,6 +14,7 @@
 
 import init_setting
 from cflibs import *
+from lib.combineWithPreCompute import Factorial
 def main():
     mod = 10 ** 9 + 7
     
@@ -29,7 +30,7 @@ def main():
     weight_left = 0
     
     for i in range(l - 1, r):
-        weight_left += f.combi(n - 1, i)
+        weight_left += f.comb(n - 1, i)
         weight_left %= mod
     
     weight_right = weight_left
@@ -39,9 +40,11 @@ def main():
     for i in range(1, n):
         pw2 = pw2 * 2 % mod
         
-        weight_left = (weight_left + f.combi(n - i - 1, l - i - 1) - f.combi(n - i - 1, r - i)) % mod * rev2 % mod
-        weight_right = (weight_right - f.combi(n - i - 1, l - 2) + f.combi(n - i - 1, r - 1)) % mod * rev2 % mod
+        weight_left = (weight_left + f.comb(n - i - 1, l - i - 1) - f.comb(n - i - 1, r - i)) % mod * rev2 % mod
+        weight_right = (weight_right - f.comb(n - i - 1, l - 2) + f.comb(n - i - 1, r - 1)) % mod * rev2 % mod
         
         ans += (weight_left + weight_right) * nums[i] % mod * pw2 % mod
     
     print(ans % mod)
+
+main()
