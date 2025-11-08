@@ -1,3 +1,6 @@
+
+## [贪心试填法选择最小值](../dp/dpWithStatus-Number/倒序贪心寻找下一个符合条件的数字)
+
 ## set recursion size for stack
 import sys
 sys.setrecursionlimit(10000000)

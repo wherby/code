@@ -16,10 +16,14 @@ class DSU:
     def union(self,x,y):
         xr = self.find(x)
         yr = self.find(y)
+        if xr == yr:
+            return False
         if self.rank[xr] <self.rank[yr]:
             xr,yr =yr,xr
         self.p[yr] = xr
         self.rank[xr] += self.rank[yr]
+        return True
+        
     # https://oi-wiki.org/ds/dsu/
     def erase(self,x):
         self.rank[self.find(x)] -=1

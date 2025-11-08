@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+
+using i64 = long long;
+
+constexpr i64 inf = 1E18;
+
+void chmin(i64 &a, i64 b) {
+    a = std::min(a, b);
+}
+
+void solve() {
+    int R, C;
+    std::cin >> R >> C;
+    
+    std::cerr << "R : " << R << ", C : " << C << "\n";
+    
+    std::vector A(R, std::vector<int>(C));
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            std::cin >> A[i][j];
+        }
+    }
+    
+    std::vector f(R, std::vector<i64>(C)), g(f);
+    for (int i = 0; i < R; i++) {
+        for (int j = 0; j < C; j++) {
+            if (i) {
+                f[i][j] = std::max(f[i][j], f[i - 1][j]);
+            }
+            if (j) {
+                f[i][j] = std::max(f[i][j], f[i][j - 1]);
+            }
+            f[i][j] += A[i][j];
+        }
+    }
+    for (int i = R - 1; i >= 0; i--) {
+        for (int j = C - 1; j >= 0; j--) {
+            if (i < R - 1) {
+                g[i][j] = std::max(g[i][j], g[i + 1][j]);
+            }
+            if (j < C - 1) {
+                g[i][j] = std::max(g[i][j], g[i][j + 1]);
+            }
+            g[i][j] += A[i][j];
+        }
+    }
+    
+    std::vector dp1(R, std::vector(C, std::vector(R, inf)));
+    std::vector dp2(R, std::vector(C, std::vector(C, inf)));
+    dp1[0][C - 1][0] = 0;
+    dp2[0][C - 1][C - 1] = 0;
+    
+    for (int i = 0; i < R; i++) {
+        for (int j = C - 1; j >= 0; j--) {
+            for (int x = 0; x <= i; x++) {
+                if (i < R - 1) {
+                    chmin(dp1[i + 1][j][x], std::max(dp1[i][j][x], (j ? f[i][j - 1] : 0) + (j < C - 1 ? g[i][j + 1] : 0)));
+                }
+                if (j) {
+                    chmin(dp2[i][j - 1][j], std::max(dp1[i][j][x], (i < R - 1 ? g[i + 1][j] : 0) +
+                        std::max(x ? f[x - 1][j] : 0, i ? f[i - 1][j - 1] : 0)));
+                }
+            }
+            for (int y = j; y < C; y++) {
+                if (i < R - 1) {
+                    chmin(dp1[i + 1][j][i], std::max(dp2[i][j][y], (j ? f[i][j - 1] : 0) +
+                        std::max(y < C - 1 ? g[i][y + 1] : 0, j < C - 1 ? g[i + 1][j + 1] : 0)));
+                }
+                if (j) {
+                    chmin(dp2[i][j - 1][y], std::max(dp2[i][j][y], (i < R - 1 ? g[i + 1][j] : 0) + (i ? f[i - 1][j] : 0)));
+                }
+            }
+        }
+    }
+    
+    i64 ans = inf;
+    for (int x = 0; x < R; x++) {
+        chmin(ans, dp1[R - 1][0][x]);
+    }
+    for (int y = 0; y < C; y++) {
+        chmin(ans, dp2[R - 1][0][y]);
+    }
+    std::cout << ans << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
+    int T;
+    std::cin >> T;
+    
+    for (int i = 1; i <= T; i++) {
+        std::cerr << "Case #" << i << ": ";
+        std::cout << "Case #" << i << ": ";
+        solve();
+    }
+    
+    return 0;
+}

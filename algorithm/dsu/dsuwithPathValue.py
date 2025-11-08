@@ -17,10 +17,13 @@ class DSU:
     def union(self,x,y):
         px = self.find(x)
         py = self.find(y)
+        if px==py:
+            return False
         self.p[px] =py
         self.d[px] = self.size[py]
         self.size[py] += self.size[px]
-
+        return True
+        
 dsu = DSU(8)
 #0<-2<-1<-3<-4<-5<-6<-7 雖然 union(1,0) 但是2已經在0集合裏面，所以會把1放在後面形成一個鏈條
 # 0<-2

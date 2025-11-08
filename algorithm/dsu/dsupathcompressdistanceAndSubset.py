@@ -16,11 +16,11 @@ class DSU:
     def union(self,x,y):
         m = self.find(x)
         n = self.find(y)
-
+        if m== n:return False
         self.p[m] =n
         self.d[m] = self.rank[n]
         self.rank[n] += self.rank[m]
-
+        return True
 
 dsu  = DSU(100)
 dsu.union(98,92)

@@ -36,3 +36,8 @@ for a,group in groupby(str):
 # o ['o', 'o']
 # d ['d', 'd']
 # e ['e']
+
+# string func
+v="aAa Aa"
+print(v.lower())
+print(v.capitalize())

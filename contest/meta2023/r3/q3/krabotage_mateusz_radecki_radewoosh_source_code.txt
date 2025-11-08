@@ -1,0 +1,184 @@
+//~ while (clock()<=69*CLOCKS_PER_SEC)
+//~ #pragma comment(linker, "/stack:200000000")
+#pragma GCC optimize("O3")
+//~ #pragma GCC target ("avx2")
+//~ #pragma GCC optimize("Ofast")
+//~ #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
+//~ #pragma GCC optimize("unroll-loops")
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace __gnu_pbds;
+using namespace std;
+
+template <typename T>
+using ordered_set =
+    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+#define sim template < class c
+#define ris return * this
+#define dor > debug & operator <<
+#define eni(x) sim > typename \
+  enable_if<sizeof dud<c>(0) x 1, debug&>::type operator<<(c i) {
+sim > struct rge { c b, e; };
+sim > rge<c> range(c i, c j) { return rge<c>{i, j}; }
+sim > auto dud(c* x) -> decltype(cerr << *x, 0);
+sim > char dud(...);
+struct debug {
+#ifdef LOCAL
+~debug() { cerr << endl; }
+eni(!=) cerr << boolalpha << i; ris; }
+eni(==) ris << range(begin(i), end(i)); }
+sim, class b dor(pair < b, c > d) {
+  ris << "(" << d.first << ", " << d.second << ")";
+}
+sim dor(rge<c> d) {
+  *this << "[";
+  for (auto it = d.b; it != d.e; ++it)
+    *this << ", " + 2 * (it == d.b) << *it;
+  ris << "]";
+}
+#else
+sim dor(const c&) { ris; }
+#endif
+};
+#define imie(...) " [" << #__VA_ARGS__ ": " << (__VA_ARGS__) << "] "
+
+#define shandom_ruffle random_shuffle
+
+using ll=long long;
+using pii=pair<int,int>;
+using pll=pair<ll,ll>;
+using vi=vector<int>;
+using vll=vector<ll>;
+const int nax=307;
+const ll inf=1e18;
+
+int n, m;
+
+ll tab[nax][nax];
+
+ll pocz[nax][nax];
+ll kon[nax][nax];
+
+int hasz(vector<pii> &wek)
+{
+	int ret=0;
+	for (int i=0; i+1<(int)wek.size(); i++)
+		if (wek[i].first==wek[i+1].first)
+			ret|=(1<<i);
+	return ret;
+}
+
+int ist(int a, int b)
+{
+	return a>=1 && b>=1 && a<=n && b<=m;
+}
+
+const int d=5;
+int juz[nax][nax][1<<d];
+ll dp[nax][nax][1<<d];
+
+ll rek(vector<pii> wek)
+{
+	while((int)wek.size()>d+1)
+		wek.erase(wek.begin());
+	pii g=wek.back();
+	int ha=hasz(wek);
+	if (juz[g.first][g.second][ha])
+		return dp[g.first][g.second][ha];
+	
+	ll powi=0;
+	vector<pii> pocze, kony;
+	const int lim=1;
+	for (int x=wek[0].first-lim; x<=wek.back().first+lim; x++)
+	{
+		for (int y=wek.back().second-lim; y<=wek[0].second+lim; y++)
+		{
+			if (!ist(x, y))
+				continue;
+			if (x<=wek[0].first && y>=wek[0].second)
+				continue;
+			if (x>=wek.back().first && y<=wek.back().second)
+				continue;
+			int p=1;
+			int k=1;
+			for (pii i : wek)
+			{
+				if (x>=i.first && y>=i.second)
+					p=0;
+				if (x<=i.first && y<=i.second)
+					k=0;
+			}
+			assert(!p || !k);
+			if (p)
+				pocze.push_back({x, y});
+			if (k)
+				kony.push_back({x, y});
+		}
+	}
+	for (pii i : pocze)
+		for (pii j : kony)
+			if (j.first>=i.first && j.second>=i.second)
+				powi=max(powi, pocz[i.first][i.second]+kon[j.first][j.second]);
+	for (pii i : pocze)
+		powi=max(powi, pocz[i.first][i.second]);
+	for (pii j : kony)
+		powi=max(powi, kon[j.first][j.second]);
+	
+	
+	ll ret=powi;
+	
+	if (wek.back()!=pii{n, 1})
+	{
+		ll tu=inf;
+		for (pii i : vector<pii>{{wek.back().first+1, wek.back().second}, {wek.back().first, wek.back().second-1}})
+		{
+			if (ist(i.first, i.second))
+			{
+				auto now=wek;
+				now.push_back(i);
+				tu=min(tu, rek(now));
+			}
+		}
+		ret=max(ret, tu);
+	}
+	juz[g.first][g.second][ha]=1;
+	return dp[g.first][g.second][ha]=ret;
+}
+
+void test()
+{
+	scanf("%d%d", &n, &m);
+	for (int i=0; i<=n+1; i++)
+		for (int j=0; j<=m+1; j++)
+			tab[i][j]=pocz[i][j]=kon[i][j]=0;
+	for (int i=1; i<=n; i++)
+		for (int j=1; j<=m; j++)
+			scanf("%lld", &tab[i][j]);
+	for (int i=1; i<=n; i++)
+		for (int j=1; j<=m; j++)
+			pocz[i][j]=max(pocz[i-1][j], pocz[i][j-1])+tab[i][j];
+	for (int i=n; i; i--)
+		for (int j=m; j; j--)
+			kon[i][j]=max(kon[i+1][j], kon[i][j+1])+tab[i][j];
+	for (int i=1; i<=n; i++)
+		for (int j=1; j<=m; j++)
+			for (int l=0; l<(1<<d); l++)
+				juz[i][j][l]=0;
+	printf("%lld\n", rek({{1, m}}));
+}
+
+int main()
+{
+	int t;
+	scanf("%d", &t);
+	for (int i=1; i<=t; i++)
+	{
+		printf("Case #%d: ", i);
+		test();
+		fflush(stdout);
+	}
+	return 0;
+}

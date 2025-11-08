@@ -1,0 +1,139 @@
+#pragma GCC optimize("-Ofast","-funroll-all-loops","-ffast-math")
+#include <bits/stdc++.h>
+#define ll long long
+#define mp make_pair
+#define fi first
+#define se second
+#define pb push_back
+#define vi vector<int>
+#define pi pair<int, int>
+#define mod 998244353
+template<typename T> bool chkmin(T &a, T b){return (b < a) ? a = b, 1 : 0;}
+template<typename T> bool chkmax(T &a, T b){return (b > a) ? a = b, 1 : 0;}
+ll ksm(ll a, ll b) {if (b == 0) return 1; ll ns = ksm(a, b >> 1); ns = ns * ns % mod; if (b & 1) ns = ns * a % mod; return ns;}
+using namespace std;
+
+const int maxn = 305;
+struct info {
+    ll mx, mans;
+    info() {
+        mx = mans = 0;
+    }
+    void pushr(ll a) {
+        chkmax(mx, a);
+        chkmax(mans, a);
+    }
+    void pushl(ll a) {
+        chkmax(mans, mx + a);
+    }
+};
+ll start_to[maxn][maxn];
+ll to_end[maxn][maxn];
+ll ans[maxn][maxn][2];
+ll a[maxn][maxn];
+#define vl vector<ll>
+ll compute_down(int col, int r1, int r2) {
+    assert(r1 < r2);
+    vl trt(r2 - r1 + 1, 0);
+    vl lto(r2 - r1 + 1, 0);
+    for (int i = r1 + 1; i <= r2; i++)
+        trt[i - r1] = to_end[i][col + 1];
+    chkmax(trt[r2 - r1], to_end[r2 + 1][col]);
+    for (int i = r1; i < r2; i++)
+        lto[i - r1] = start_to[i][col - 1];
+    chkmax(lto[0], start_to[r1 - 1][col]);
+    ll mx = 0;
+    ll ans = 0;
+    for (int i = trt.size() - 1; i >= 0; i--) {
+        chkmax(mx, trt[i]);
+        chkmax(ans, mx + lto[i]);
+    }
+    return ans;
+}
+ll compute_left(int row, int c1, int c2) {
+    assert(c1 < c2);
+    vl trt(c2 - c1 + 1, 0ll);
+    vl lto(c2 - c1 + 1, 0ll);
+    for (int i = c1 + 1; i <= c2; i++)
+        trt[i - c1] = to_end[row + 1][i];
+    chkmax(trt[c2 - c1], to_end[row][c2 + 1]);
+    for (int i = c1; i < c2; i++)
+        lto[i - c1] = start_to[row - 1][i];
+    chkmax(lto[0], start_to[row][c1 - 1]);
+    ll mx = 0;
+    ll ans = 0;
+    for (int i = trt.size() - 1; i >= 0; i--) {
+        chkmax(mx, trt[i]);
+        chkmax(ans, mx + lto[i]);
+    }
+    return ans;
+}
+int main() {
+    // ios::sync_with_stdio(0);
+    // cin.tie(0);
+    freopen("x.txt", "r", stdin);
+    freopen("y.txt", "w", stdout);
+    int t;
+    cin >> t;
+    for (int cs = 1; cs <= t; cs++) {
+        int r, c;
+        cin >> r >> c;
+        memset(a, 0, sizeof(a));
+        memset(start_to, 0, sizeof(start_to));
+        memset(to_end, 0, sizeof(to_end));
+        memset(ans, 0, sizeof(ans));
+        for (int i = 1; i <= r; i++)
+            for (int j = 1; j <= c; j++)
+                cin >> a[i][j];
+        for (int i = 1; i <= r; i++)
+            for (int j = 1; j <= c; j++)
+                start_to[i][j] = max(start_to[i - 1][j], start_to[i][j - 1]) + a[i][j];
+        for (int i = r; i >= 1; i--)
+            for (int j = c; j >= 1; j--)
+                to_end[i][j] = max(to_end[i + 1][j], to_end[i][j + 1]) + a[i][j];
+        for (int i = r; i >= 1; i--)
+            for (int j = 1; j <= c; j++) {
+                if (i == r && j == 1) 
+                    ans[i][j][0] = ans[i][j][1] = 0;
+                else {
+                    ans[i][j][0] = ans[i][j][1] = 1e18;
+                    
+                    // compute tp = 0 (left)
+                    info cur;
+                    cur.pushr(to_end[i][j + 1]);
+                    cur.pushr(to_end[i + 1][j]);
+                    for (int l = j - 1; l >= 1; l--) {
+                        cur.pushl(start_to[i - 1][l]);
+                        ll nans = max(cur.mans, cur.mx + start_to[i][l - 1]);
+                        chkmin(ans[i][j][0], max(ans[i][l][1], nans));
+                        
+                        cur.pushr(to_end[i + 1][l]);
+                        chkmax(cur.mans, to_end[i + 1][l] + start_to[i - 1][l]);
+                    }
+                    // compute tp = 1 (down)
+                    cur = info();
+                    assert(cur.mx == 0);
+                    cur.pushr(start_to[i - 1][j]);
+                    cur.pushr(start_to[i][j - 1]);
+                    for (int l = i + 1; l <= r; l++) {
+                        cur.pushl(to_end[l][j + 1]);
+                        ll nans = max(cur.mans, cur.mx + to_end[l + 1][j]);
+                        chkmin(ans[i][j][1], max(ans[l][j][0], nans));
+                        cur.pushr(start_to[l][j - 1]);
+                        chkmax(cur.mans, start_to[l][j - 1] + to_end[l][j + 1]);
+                    }
+                }
+            }
+        // cout << ans[1][3][0] << ' ' << ans[1][3][1] << ' ' << ans[2][3][0] << endl;
+        cout << "Case #" << cs << ": " << min(ans[1][c][0], ans[1][c][1]) << endl;
+    }
+    return 0;
+}
+/**
+1
+3 3
+1 1 1
+3 3 3
+3 2 1
+
+*/

@@ -40,3 +40,6 @@ algorithm/graph/flow/mincost/abc373_g.2.py
 DAG 图不能直接使用dfs visit 需要使用拓扑排序visit
 algorithm/dfs/OOM
 
+## 求解不等式组的约束 bellman-ford 
+[Bellman-ford求解不等式组](../advancedDS/Bellman-ford约束求解)
+

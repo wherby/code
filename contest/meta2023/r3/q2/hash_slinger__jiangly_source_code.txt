@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+
+using i64 = long long;
+
+void solve() {
+    int N, M;
+    std::cin >> N >> M;
+    
+    std::cerr << "N : " << N << ", M : " << M << "\n";
+    
+    std::vector<int> A(N);
+    for (int i = 0; i < N; i++) {
+        std::cin >> A[i];
+        A[i] %= M;
+    }
+    
+    int K = 2 << std::__lg(M);
+    
+    std::vector<int> dp(K, N + 1);
+    dp[0] = 0;
+    
+    std::vector f(N + 1, std::vector(M, N + 1));
+    
+    std::vector<bool> vis(K);
+    
+    for (int l = 0; l <= N; l++) {
+        f[l][0] = l;
+        int s = 0;
+        for (int r = l + 1; r <= N; r++) {
+            s = (s + A[r - 1]) % M;
+            f[l][s] = std::min(f[l][s], r);
+        }
+    }
+    for (int i = N - 1; i >= 0; i--) {
+        for (int j = 0; j < M; j++) {
+            f[i][j] = std::min(f[i][j], f[i + 1][j]);
+        }
+    }
+    
+    int ans = 0;
+    while (true) {
+        int x = -1;
+        for (int i = 0; i < K; i++) {
+            if (!vis[i] && (x == -1 || dp[x] > dp[i])) {
+                x = i;
+            }
+        }
+        if (x == -1 || dp[x] > N) {
+            break;
+        }
+        vis[x] = true;
+        ans += 1;
+        for (int v = 0; v < M; v++) {
+            dp[x ^ v] = std::min(dp[x ^ v], f[dp[x]][v]);
+        }
+    }
+    std::cout << ans << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
+    int T;
+    std::cin >> T;
+    
+    for (int i = 1; i <= T; i++) {
+        std::cerr << "Case #" << i << ": ";
+        std::cout << "Case #" << i << ": ";
+        solve();
+    }
+    
+    return 0;
+}
