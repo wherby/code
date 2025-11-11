@@ -23,8 +23,12 @@ class FenwickTree:
             
 
     
-ls = [i for i in range(1,20)]
+ls = [i+1 for i in range(1,20)]
+print(ls)
 ft = FenwickTree(ls)
+print(ft.sumTo(0))
+print(ft.sumTo(1))
+print(ft.sumTo(2))
 print(ft.bit)
 last =0
 for i in range(1,20):

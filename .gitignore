@@ -23,3 +23,4 @@ localtmp
 
 catalog/*
 my_output.txt
+**/.env

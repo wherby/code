@@ -1,5 +1,17 @@
-# # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
-# reset basev when for merge =min
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+from bisect import bisect_right,insort_left,bisect_left
+from queue import Queue,LifoQueue,PriorityQueue
+import math
+INF  = math.inf
+
+
 from math import ceil, log2
 
 class segment_tree:
@@ -51,43 +63,30 @@ class segment_tree:
 
     def update(self, x, v):
         self._update_util( 0, 0, self.n-1, x, v )   
-        self.array[x] =v    
+        self.array[x] =v         
 
-    def set(self,x,y):
-        self.update(x,y)
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        n = len(nums)
+        ns = list(set(nums))
+        ns.sort()
+        dic = defaultdict(int)
+        for i,a in enumerate(ns):
+            dic[a] = i 
+        m = len(ns)
+        ft =segment_tree([0]*(m+1),max)
+        mx = 0 
+        for i,a in enumerate(nums):
+            b = dic[a] 
+            tx = ft.query(0,b)
+            ft.update(b,tx+1)
+            mx = max(min(tx+1 ,i+1),mx)
+            print(b,tx,mx)
+        return mx
 
-    def all_prod(self):
-        return self.tree[0] 
 
-if __name__ == '__main__':
-    print("\nRange Sum with 8 node:")
-    # Range Sum
-    st = segment_tree([1,2,3,4,5,6,7,8])
-    print(st)
-    print(st.query(2,4))
-    st.update(3,5)
-    print(st.query(2,4))
 
-    print("\nRange Sum with 9 node:")
-    # Range Sum
-    st = segment_tree([1,2,3,4,5,6,7,8,9])
-    print(st)
-    print(st.query(2,4))
-    st.update(3,5)
-    print(st.query(2,4))
 
-    print("\nRange Max:")
-    # Range Max
-    st = segment_tree([1,2,3,4,5,6,7,8], max, basev=-float('inf'))
-    print(st)
-    print(st.query(2,4))
-    st.update(3,6)
-    print(st.query(2,4))
 
-    print("\nRange Min:")
-    # Range Max
-    st = segment_tree([1,2,3,4,5,6,7,8], min,basev=float('inf'))
-    print(st)
-    print(st.query(2,4))
-    st.update(3,1)
-    print(st.query(2,4))
+re =Solution().longestSubarray( nums = [0,4,2,0,2])
+print(re)

@@ -41,3 +41,11 @@ ft2d.range_add(1,10,10)
 print(ft2d.B1.bit,ft2d.B2.bit)
 print(ft2d.sum(4))
 print(ft2d.sum(19))
+
+
+ls = [i+1 for i in range(1,20)]
+print(ls)
+ft = FenwickTree(ls)
+print(ft.sumTo(0))
+print(ft.sumTo(1))
+print(ft.sumTo(2))
