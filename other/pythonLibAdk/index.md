@@ -1,6 +1,8 @@
 
 
 #  Google adk setup
+https://google.github.io/adk-docs/get-started/python/
+
 https://www.kaggle.com/code/wherby/day-1a-from-prompt-to-action/edit
 pip install google-adk
 

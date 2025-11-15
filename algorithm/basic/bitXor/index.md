@@ -1,5 +1,5 @@
 
-## [Xor subArray](algorithm/array/subarray/AndOrToK)
+## [Xor subArray](../../array/subarray-logTrick)
 
 
 ## Subset Or 之和

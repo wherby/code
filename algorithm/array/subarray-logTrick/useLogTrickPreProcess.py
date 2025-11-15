@@ -66,7 +66,8 @@ class Solution:
                 l = md +1
         return l
 
-from v5input import nums,maxC
+# algorithm/OMOTQuestions/segmentTreeQueryTimeOut/segmentTreePreProcessTimeout/v5input.py
+#from v5input import nums,maxC
 #re = Solution().minStable(nums,maxC)
 re = Solution().minStable([2,4,9,6],1)
 print(re)

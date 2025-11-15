@@ -24,3 +24,5 @@ localtmp
 catalog/*
 my_output.txt
 **/.env
+
+my_agent_data.db
