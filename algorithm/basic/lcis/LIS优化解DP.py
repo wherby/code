@@ -4,6 +4,7 @@
 # L1 从左到右遍历的时候，L2里相同的元素需要从右到左，才能不会有重复的匹配
 # 对于l2里的index 用线段树解决 从状态（0,indx-1) 的转移，使得 index 只使用了最多一次 
 # algorithm/codeforce/dp/LIS优化解DP.py
+# 因为遍历nums1的时候，消耗的是nums2里对应数字的位子，为了使得nums2里每次都最多消耗一个，则需要倒序遍历
 
 import init_setting
 from cflibs import *

@@ -1,0 +1,312 @@
+
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long;
+using ld=long double;
+const ll ILL=2167167167167167167;
+const int INF=2100000000;
+#define rep(i,a,b) for (int i=(int)(a);i<(int)(b);i++)
+#define all(p) p.begin(),p.end()
+template<class T> using _pq = priority_queue<T, vector<T>, greater<T>>;
+template<class T> ll LB(vector<T> &v,T a){return lower_bound(v.begin(),v.end(),a)-v.begin();}
+template<class T> ll UB(vector<T> &v,T a){return upper_bound(v.begin(),v.end(),a)-v.begin();}
+template<class T> bool chmin(T &a,T b){if(a>b){a=b;return 1;}else return 0;}
+template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
+template<class T> void So(vector<T> &v) {sort(v.begin(),v.end());}
+template<class T> void Sore(vector<T> &v) {sort(v.begin(),v.end(),[](T x,T y){return x>y;});}
+bool yneos(bool a,bool upp=0){if(a){cout<<(upp?"YES\n":"Yes\n");}else{cout<<(upp?"NO\n":"No\n");}return a;}
+template<class T> void vec_out(vector<T> &p,int ty=0){
+    if(ty==2){cout<<'{';for(int i=0;i<(int)p.size();i++){if(i){cout<<",";}cout<<'"'<<p[i]<<'"';}cout<<"}\n";}
+    else{if(ty==1){cout<<p.size()<<"\n";}for(int i=0;i<(int)(p.size());i++){if(i) cout<<" ";cout<<p[i];}cout<<"\n";}}
+template<class T> T vec_min(vector<T> &a){assert(!a.empty());T ans=a[0];for(auto &x:a) chmin(ans,x);return ans;}
+template<class T> T vec_max(vector<T> &a){assert(!a.empty());T ans=a[0];for(auto &x:a) chmax(ans,x);return ans;}
+template<class T> T vec_sum(vector<T> &a){T ans=T(0);for(auto &x:a) ans+=x;return ans;}
+int pop_count(long long a){int res=0;while(a){res+=(a&1),a>>=1;}return res;}
+template<class T> bool inside(T l,T x,T r){return l<=x&&x<r;}
+
+
+#include <unistd.h>
+void fhc_solve(auto solve,
+               int num_testcase,
+               int parallel = -1,
+               std::filesystem::path tmpoutdir = std::filesystem::path()) {
+    if (tmpoutdir.empty()) {
+        auto random_name =
+                ("output-" + std::to_string(std::mt19937_64(std::random_device()())()));
+        tmpoutdir = std::filesystem::temp_directory_path() / random_name;
+        std::filesystem::create_directory(tmpoutdir);
+    }
+    if (parallel == -1) {
+        parallel = int(std::thread::hardware_concurrency());
+    }
+
+    std::cerr << "Start FHC solver: tmp = " << tmpoutdir
+              << ", parallel = " << parallel << std::endl;
+
+    std::mutex in_mutex, out_mutex;
+    std::atomic_int next_case_id = 1;
+
+    auto output_path = [&](int case_id) {
+        return tmpoutdir / std::filesystem::path("case_" + std::to_string(case_id) + ".out");
+    };
+
+    auto solve_single = [&](int process_id) {
+        while (true) {
+            in_mutex.lock();
+
+            int case_id = next_case_id++;
+            if (case_id > num_testcase) {
+                in_mutex.unlock();
+                return;
+            }
+
+            {
+                std::lock_guard<std::mutex> lock(out_mutex);
+                std::cerr << "[#" << process_id << "] Start case: " << case_id
+                          << " / " << num_testcase << std::endl;
+            }
+
+            auto start = std::chrono::system_clock::now();
+            solve([&] { in_mutex.unlock(); },
+                  [&](auto f) {
+                      std::lock_guard<std::mutex> lock(out_mutex);
+
+                      int orig_stdout = dup(fileno(stdout));
+                      if (freopen(output_path(case_id).c_str(), "w", stdout) ==
+                          nullptr) {
+                          throw std::runtime_error("freopen failed");
+                      }
+                      std::cout << "Case #" << case_id << ": " << std::flush;
+                      f();
+                      dup2(orig_stdout, fileno(stdout));
+                      close(orig_stdout);
+                  });
+            auto end = std::chrono::system_clock::now();
+
+            {
+                std::lock_guard<std::mutex> lock(out_mutex);
+                auto consumed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+                        .count();
+                std::cerr << "[#" << process_id << "] End case: " << case_id << " ("
+                          << consumed_ms << " ms)" << std::endl;
+            }
+        }
+    };
+
+    std::vector<std::thread> threads;
+    for (int i = 0; i < parallel; i++) {
+        threads.push_back(std::thread([&, i] { solve_single(i); }));
+    }
+    for (int i = 0; i < parallel; i++) {
+        threads[i].join();
+    }
+
+    for (int c = 1; c <= num_testcase; c++) {
+        std::ifstream input(output_path(c));
+        std::cout << input.rdbuf();
+    }
+}
+
+// ここまでライブラリ
+
+
+struct mint{
+    static constexpr int  m = 998244353;
+    int x;
+    mint() : x(0){}
+    mint(long long x_):x(x_ % m){if (x < 0) x += m;}
+    int val(){return x;}
+    mint &operator+=(mint b){if ((x += b.x) >= m) x -= m; return *this;}
+    mint &operator-=(mint b){if ((x -= b.x) < 0) x += m; return *this;}
+    mint &operator*=(mint b){x= (long long)(x) * b.x % m; return *this;}
+    mint pow(long long e) const {
+        mint r = 1,b =*this;
+        while (e){
+            if (e & 1) r *= b;
+            b *= b;
+            e >>= 1;
+        }
+        return r;
+    }
+    mint inv(){return pow(m - 2);}
+    mint &operator/=(mint b){return *this *= b.pow(m - 2);}
+    friend mint operator+(mint a, mint b){return a += b;}
+    friend mint operator-(mint a, mint b){return a -= b;}
+    friend mint operator/(mint a, mint b){return a /= b;}
+    friend mint operator*(mint a, mint b){return a *= b;}
+    friend bool operator==(mint a, mint b){return a.x == b.x;}
+    friend bool operator!=(mint a, mint b){return a.x != b.x;}
+};
+
+
+using namespace std;
+
+
+void solve(auto input_end, auto output) {
+    // input
+
+    string L, R;
+    int K;
+    cin >> L >> R >> K;
+
+    input_end();
+    reverse(all(R));
+    R += '0';
+    rep(i, 0, R.size()){
+        if (R[i] == '9'){
+            R[i] = '0';
+        }
+        else{
+            R[i]++;
+            break;
+        }
+    }
+    if (R.back() == '0') R.pop_back();
+    reverse(all(R));
+    auto to_mint = [&](string S) -> mint {
+        mint tmp = 0;
+        for (auto c : S){
+            tmp *= 10;
+            tmp += c - '0';
+        }
+        return tmp;
+    };
+    auto f = [&](string S) -> mint {
+        // |S| が K 以上だとだめ
+        mint ans = 0;
+        if ((int)S.size() >= K){
+            string nS(K, '0');
+            nS[0] = '1';
+            ans += to_mint(S);
+            ans -= to_mint(nS);
+            S = nS;
+        }
+        int st = 1;
+        mint ans2 = 0;
+        vector<mint> dp(1 << (K - 1));
+        vector<mint> n_dp(1 << (K - 1));
+        rep(d, 0, S.size()){
+            ans2 *= 10;
+            rep(i, 0, 1 << (K - 1)) if (dp[i].val()){
+                int nx = i * 2 + 1;
+                rep(j, 0, 10){
+                    if (nx & 1){
+                        ans2 += dp[i];
+                    }
+                    else{
+                        n_dp[nx / 2] += dp[i];
+                    }
+                    nx *= 2;
+                    if (nx & (1 << K)) nx -= (1 << K), nx++;
+                }
+                dp[i] = 0;
+            }
+            // 1 ~ 9 を足せる
+            if (d == 0){
+                int lim = 10;
+                if (d == 0) lim = S[d] - '0';
+                int nx = 1;
+                rep(j, 1, lim){
+                    nx *= 2;
+                    if (nx & (1 << K)) nx -= (1 << K), nx++;
+                    if (nx & 1){
+                        ans2 += 1;
+                    }
+                    else{
+                        n_dp[nx / 2] += 1;
+                    }
+                }
+            }
+            // st から遷移
+            if (d != 0){
+                if (st != -1){
+                    int nx = st;
+                    rep(j, 0, S[d] - '0'){
+                        if (nx & 1){
+                            ans2 += 1;
+                        }
+                        else{
+                            n_dp[nx / 2] += 1;
+                        }
+                        nx *= 2;
+                        if (nx & (1 << K)) nx -= (1 << K), nx++;
+                    }
+                    if (nx & 1){
+                        nx = -1;
+                    }
+                    else nx++;
+                    st = nx;
+                }
+                else{
+                    ans2 += S[d] - '0';
+                }
+            }
+            else{
+                st = 1 + (1 << ((S[d] - '0') % K));
+                if (st == 2) st = -1;
+            }
+            swap(n_dp, dp);
+        }
+        // i = 0, ... , 10^{|S| - 1} - 1を別で処理
+        for (auto &x : dp) x = 0;
+        for (auto &x : n_dp) x = 0;
+        dp[0] = 1;
+        ans += ans2;
+        ans2 = 0;
+        if (true) rep(d, 1, S.size()) {
+            ans2 *= 10;
+            rep(i, 0, 1 << (K - 1)) if (dp[i].val()) {
+                int nx = i * 2 + 1;
+                rep(j, 0, 10) {
+                    if (j + d != 1) {
+                        if (nx & 1) {
+                            ans2 += dp[i];
+                        } else {
+                            n_dp[nx / 2] += dp[i];
+                        }
+                    }
+                    nx *= 2;
+                    if (nx & (1 << K)) nx -= (1 << K), nx++;
+                }
+                dp[i] = 0;
+            }
+            swap(n_dp, dp);
+            ans += ans2;
+        }
+        else{
+            int l = 1, r = 1;
+            rep(rp, 1, S.size()) r *= 10;
+            rep(i, l, r){
+                vector<int> p = {0};
+                int tmp = i;
+                while (tmp){
+                    p.push_back((p.back() + tmp % 10) % K);
+                    tmp /= 10;
+                }
+                So(p);
+                rep(j, 1, p.size()) if (p[j] == p[j - 1]){
+                    ans += 1;
+                    break;
+                }
+            }
+        }
+        return ans;
+    };
+    auto ans = (f(R) - f(L)).val();
+
+    // output
+    output([&]{
+        cout << ans << endl;
+        cout << flush;
+    });
+};
+
+int main() {
+    int t;
+    cin >> t;
+    fhc_solve([&](auto i, auto o){ solve(i, o); }, t);
+    return 0;
+}

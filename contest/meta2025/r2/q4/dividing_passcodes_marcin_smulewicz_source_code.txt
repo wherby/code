@@ -1,0 +1,224 @@
+#pragma GCC optimize("O3")
+#include <bits/stdc++.h>
+// #include <ext/pb_ds/assoc_container.hpp>
+// using namespace __gnu_pbds;
+// gp_hash_table<int, int> mapka;
+
+using namespace std;
+#define PB push_back
+#define MP make_pair
+#define LL long long
+#define int LL
+#define FOR(i,a,b) for(int i = (a); i <= (b); i++)
+#define RE(i,n) FOR(i,1,n)
+#define REP(i,n) FOR(i,0,(int)(n)-1)
+#define R(i,n) REP(i,n)
+#define VI vector<int>
+#define PII pair<int,int>
+#define LD long double
+#define FI first
+#define SE second
+#define st FI
+#define nd SE
+#define ALL(x) (x).begin(), (x).end()
+#define SZ(x) ((int)(x).size())
+
+template<class C> void mini(C &a4, C b4) { a4 = min(a4, b4); }
+template<class C> void maxi(C &a4, C b4) { a4 = max(a4, b4); }
+
+template<class T> ostream &operator<<(ostream&, vector<T>);
+template<class L, class R> ostream &operator<<(ostream &os, pair<L,R> P) {
+  return os << "(" << P.st << "," << P.nd << ")";
+}
+template<class T> ostream &operator<<(ostream& os, vector<T> V) {
+  os << "["; for (auto vv : V) os << vv << ","; return os << "]";
+}
+
+template<class TH> void _dbg(const char *sdbg, TH h){ cerr<<sdbg<<'='<<h<<endl; }
+template<class TH, class... TA> void _dbg(const char *sdbg, TH h, TA... a) {
+  while(*sdbg!=',')cerr<<*sdbg++;
+  cerr<<'='<<h<<','; _dbg(sdbg+1, a...);
+}
+
+#ifdef LOCAL
+#define debug(...) _dbg(#__VA_ARGS__, __VA_ARGS__)
+#else
+#define debug(...) (__VA_ARGS__)
+#define cerr if(0)cout
+#endif
+
+
+#ifndef LOCAL
+#define WATKI 23
+counting_semaphore<WATKI> SEM(WATKI);
+#define cout OUTPUT
+#endif
+#define cin cin_nietu
+
+
+const int P =  998244353;
+void add(int &a,int b){
+  a += b;
+  if(a >= P)
+    a -= P;
+}
+void sub(int &a,int b){
+  a -= b;
+  if(a < 0)
+    a += P;
+}
+int mul(int a,int b){
+  return a * b % P;
+}
+struct Sol{
+#ifndef LOCAL  
+  stringstream OUTPUT;
+#endif
+  int CASE;
+  string l,r;
+  int k;
+  
+  vector<int> cyf;
+  vector<int> modk;
+  vector<int> pam1;
+  int MASK;
+  int all(int il,int bt){
+    if(il == 0)return 1;
+    int &res = pam1[bt];
+    if(res != -1)return res;
+    res = 0;
+    for(int i = 1; i <= 9; i++){
+      int pom = (bt << modk[i]) | (bt >> (k - modk[i]));
+      if(pom & 1)continue;
+      pom &= MASK;
+      pom++;
+      add(res, all(il - 1, pom));
+    }
+    return res;
+  }
+  
+  vector<int> pam2;
+  int mniej(int id,int bt){
+    if(id == SZ(cyf))return 1;
+    int &res = pam2[bt];
+    if(res != -1)return res;
+    res = 0;
+    for(int i = 1; i <= cyf[id]; i++){
+      int pom = (bt << modk[i]) | (bt >> (k - modk[i]));
+      if(pom & 1)continue;
+      pom &= MASK;
+      pom++;
+      if(i == cyf[id]){
+        add(res,  mniej(id + 1, pom));
+      }else{
+        add(res, all(SZ(cyf) - id - 1, pom));
+      }
+    }
+    return res;
+  }
+  void clear(vector<int> &x){
+    for(auto &el:x)el = -1;
+  }
+  int licz(string x){
+    MASK = (1 << k) - 1;
+    R(i,10){
+      modk.PB(i % k);
+    }
+    if(SZ(x) > 26){
+      x = string(26,'9');
+    }
+    cyf.resize(SZ(x));
+    R(i,SZ(x)){
+      cyf[i] = x[i] - '0';
+    }
+    int res = 0;
+    R(i,SZ(x))if(i >= 1){
+      clear(pam1);
+      add(res, all(i, 1));
+    }
+    clear(pam1);
+    clear(pam2);
+    add(res, mniej(0, 1));
+    return res;
+  }
+  
+  int zmoduluj(string &x){
+    int res = 0;
+    for(auto el:x){
+      res = mul(res, 10);
+      add(res, el - '0');
+    }
+    return res;
+  }
+  
+  void run(){
+    pam1.resize(1 << k, -1);
+    pam2.resize(1 << k, -1);
+    cout << "Case #" << CASE + 1 << ": ";
+    
+    int res = zmoduluj(r);
+    sub(res,zmoduluj(l));
+    add(res, 1);
+    
+    
+    sub(res,licz(r));
+    int i = SZ(l) - 1;
+    while(l[i] == '0'){
+      l[i] = '9';
+      i--;
+    }
+    l[i]--;
+    if(l[0] == '0')l = l.substr(1);
+    // debug(l);
+    if(SZ(l))
+      add(res, licz(l));
+    cout << res << "\n";
+    
+    
+#ifndef LOCAL
+    SEM.release();
+#endif
+  }
+#undef cin
+#ifndef LOCAL
+#undef cout
+#endif
+#define cout cout_nietu
+  void input(){
+    cin >> l >> r >> k;
+  }
+#undef cout
+};
+
+int32_t main() {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cout << fixed << setprecision(11);
+  cerr << fixed << setprecision(6);
+  int t;
+  cin >> t;
+  vector<Sol> sols(t);
+  R(i,t){
+    sols[i].CASE = i;
+    sols[i].input();
+#ifdef LOCAL
+    sols[i].run();
+#else
+#undef cerr
+    sols[i].OUTPUT << fixed << setprecision(11);
+    cerr << "START: " << i << endl;
+    SEM.acquire();
+    thread tt(&Sol::run, &sols[i]);
+    tt.detach();
+#endif
+  }
+#ifndef LOCAL
+  R(i,WATKI){
+    cerr << "RUNNING: " << WATKI - i << endl;
+    SEM.acquire();
+  }
+  R(i,t){
+    cout << sols[i].OUTPUT.str();
+  }
+#endif
+}

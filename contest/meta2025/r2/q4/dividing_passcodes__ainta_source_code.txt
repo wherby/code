@@ -1,0 +1,192 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define rng(i,a,b) for(int i=int(a);i<=int(b);i++)
+#define rep(i,b) rng(i,0,b-1)
+#define gnr(i,b,a) for(int i=int(b);i>=int(a);i--)
+#define per(i,b) gnr(i,b-1,0)
+#define pb push_back
+#define eb emplace_back
+#define fi first
+#define se second
+#define bg begin()
+#define ed end()
+#define all(x) x.bg,x.ed
+#define si(x) int(x.size())
+template<class t> using vc=vector<t>;
+template<class t> using vvc=vc<vc<t>>;
+typedef long long ll;
+using pii=pair<int,int>;
+using vi=vc<int>;
+using uint=unsigned;
+using ull=unsigned long long;
+using pil=pair<int,ll>;
+using pli=pair<ll,int>;
+using pll=pair<ll,ll>;
+using t3=tuple<int,int,int>;
+using t4=tuple<int,int,int,int>;
+
+template <uint MD> struct ModInt {
+    using M = ModInt;
+    uint v;
+    ModInt(ll _v = 0) { set_v(_v % MD + MD); }
+    M& set_v(uint _v) {
+        v = (_v < MD) ? _v : _v - MD;
+        return *this;
+    }
+    explicit operator bool() const { return v != 0; }
+    M operator-() const { return M() - *this; }
+    M operator+(const M& r) const { return M().set_v(v + r.v); }
+    M operator-(const M& r) const { return M().set_v(v + MD - r.v); }
+    M operator*(const M& r) const { return M().set_v(ull(v) * r.v % MD); }
+    M operator/(const M& r) const { return *this * r.inv(); }
+    M& operator+=(const M& r) { return *this = *this + r; }
+    M& operator-=(const M& r) { return *this = *this - r; }
+    M& operator*=(const M& r) { return *this = *this * r; }
+    M& operator/=(const M& r) { return *this = *this / r; }
+    bool operator==(const M& r) const { return v == r.v; }
+    M pow(ll n) const {
+        M x = *this, r = 1;
+        while (n) {
+            if (n & 1) r *= x;
+            x *= x;
+            n >>= 1;
+        }
+        return r;
+    }
+    M inv() const { return pow(MD - 2); }
+    friend ostream& operator<<(ostream& os, const M& r) { return os << r.v; }
+};
+using Mint = ModInt<998244353>;
+
+#define N_ 501000
+
+char L[2222], R[2222];
+Mint DD[1<<26], SSS[26], SS2[26][26];
+int K;
+bool Nxt(ll mask, int cur, int& res){
+    long long mm = (mask << cur) | (1 << cur);
+    if((mm>>K)&1) return false;
+    int lower = (mm & ((1<<K)-1));
+    int upper = ((mm>>K) & ((1<<K)-1));
+    if(lower&upper) return false;
+    res = (lower|upper);
+    return true;
+}
+Mint Get(char *p, int is_r){
+    int n = strlen(p);
+    Mint s=0, R=0;
+    reverse(p,p+n);
+    per(i,n){
+        int x = p[i]-'0';
+        s=s*10+x;
+    }
+    if(! is_r) s-=1;
+    if(n<=24){
+        rng(i,1,n-1) R += SS2[K][i];
+        int mask = 0, ss = 0;
+        per(i,n){
+            int x = p[i]-'0';
+            rng(j,1,x-1){
+                int cur = j % K;
+                if(!cur)continue;
+                int tp;
+                if(Nxt(mask, cur, tp)){
+
+                    if(i==0){
+                        R+=1;
+                       // printf("%d ??\n",j);
+                        continue;
+                    }
+
+                    int u = (1<<(K-1))-1;
+                    rep(k,K){
+                        if((tp>>k)&1){
+                            u ^= (1<<(K-1-k));
+                        }
+                    }
+                    int tt = u;
+                    while(tt){
+                        if(__builtin_popcount(tt) == i){
+                            R += DD[(1<<K) + tt];
+                          //  printf("o %d %d\n",tt,DD[(1<<K) + tt].v);
+                        }
+                        
+                        tt=(tt-1)&u;
+                    }
+                }
+            }
+            int nmask;
+            if(x%K && Nxt(mask, x%K, nmask)){
+                //printf("%d %d\n",mask,nmask);
+                mask = nmask;
+                if(i==0 && is_r) R+=1;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    else{
+        R = SSS[K];
+    }
+    fprintf(stderr,"!! %d %d\n",s.v,R.v);
+    return s-R;
+}
+void Solve(){
+    scanf("%s",L);
+    scanf("%s",R);
+    scanf("%d",&K);
+
+    printf("%d\n",(Get(R, 1) - Get(L, 0)).v);
+}
+Mint D[1<<24][25];
+
+void init(int K){
+    rep(i,(1<<(K-1)))rep(j,K)D[i][j]=0;
+    rng(i,1,9){
+        int t=i%K;
+        if(t) D[1<<(t-1)][t]+=1;
+    }
+    rep(i,(1<<(K-1))){
+        rng(j,1,K-1){
+            if(D[i][j]){
+                rng(k,1,9){
+                    int z = (j+k)%K;
+                    if(z && !((i>>(z-1))&1)){
+                        D[i|(1<<(z-1))][z] += D[i][j];
+                    }
+                }
+            }
+            DD[(1<<K) + i] += D[i][j];
+            SSS[K] += D[i][j];
+            SS2[K][__builtin_popcount(i)] += D[i][j];
+        }
+    }
+}
+int main(){
+    rng(i,2,25){
+        init(i);
+        fprintf(stderr,"%d done\n",i);
+    }
+    int TC=1;
+    scanf("%d",&TC);
+    rng(T,1,TC){
+        printf("Case #%d: ",T);
+        fprintf(stderr,"TC %d\n",T);
+        Solve();
+    }
+    return 0;
+}
+
+/*
+Case #1: 1
+Case #2: 4
+Case #3: 2025
+Case #4: 66132213
+Case #5: 613508061
+Case #6: 846
+Case #7: 160919757
+Case #8: 299008940
+Case #9: 616836429
+*/

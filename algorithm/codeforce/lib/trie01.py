@@ -1,4 +1,5 @@
 # algorithm/codeforce/数论/数学/xor反向求值.py
+# Tre01 可以查询当前数字和树里的数字最大和最小的xor结果
 import math
 
 class Trie01:

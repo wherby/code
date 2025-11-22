@@ -30,3 +30,6 @@ def getMlengthGcd(ls,m,queries):
 https://leetcode.cn/problems/count-ways-to-choose-coprime-integers-from-rows/solutions/3815551/liang-chong-fang-fa-dong-tai-gui-hua-bei-4djl/
 
 [倍数容斥](mlengthGcdSubArray倍数容斥.py)
+
+## gcd 容斥和 裴蜀定理 
+[gcd倍数容斥和 裴蜀定理 ](../../../../contest/meta2023/r2/q5/qn.py)

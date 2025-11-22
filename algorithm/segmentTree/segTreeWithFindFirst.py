@@ -1,3 +1,5 @@
+# https://codeforces.com/gym/105698/problem/G
+# algorithm/codeforce/简单/线段树记录影响区间端点py
 from typing import List, Tuple, Optional
 from math import inf
 
@@ -79,29 +81,55 @@ class SegmentTree:
             i += 1
             if i & -i == i:
                 return self.n - 1
-    # min_left(self, j, check_func): Finds the minimum index i such that check_func returns True for the range [i, j).
-    def min_left(self, j, check_func):
+    
+    ## The following function has bug :
+    # min_left(self, j, check_func): Finds the minimum index i such that check_func returns True for the range [i, j).  
+    # def min_left(self, j, check_func):
 
-        j += self.offset
-        if not check_func(self.x[j]):
-            return -1
-        val_r = self.e
+    #     j += self.offset
+    #     if not check_func(self.x[j]):
+    #         return -1
+    #     val_r = self.e
+    #     while True:
+    #         j += 1
+    #         j = j // (j & -j) - 1
+    #         temp = self.op(self.x[j], val_r)
+    #         if not check_func(temp):
+    #             while j < self.offset:
+    #                 j = (j << 1) + 1
+    #                 temp = self.op(self.x[j], val_r)
+    #                 if check_func(temp):
+    #                     j -= 1
+    #                     val_r = temp
+    #             return j + 1 - self.offset
+    #         val_r = temp
+    #         if j & -j == j:
+    #             return 0
+    #         j -= 1
+
+    # Fixed version 
+    def min_left(self, r, g):
+        assert 0 <= r <= self.n
+        assert g(self.e)
+        if r == 0:
+            return 0
+        r += self.offset
+        sm = self.e
         while True:
-            j += 1
-            j = j // (j & -j) - 1
-            temp = self.op(self.x[j], val_r)
-            if not check_func(temp):
-                while j < self.offset:
-                    j = (j << 1) + 1
-                    temp = self.op(self.x[j], val_r)
-                    if check_func(temp):
-                        j -= 1
-                        val_r = temp
-                return j + 1 - self.offset
-            val_r = temp
-            if j & -j == j:
+            r -= 1
+            while r > 1 and r % 2:
+                r >>= 1
+            if not g(self.op(self.x[r], sm)):
+                while r < self.offset:
+                    r = 2 * r + 1
+                    if g(self.op(self.x[r], sm)):
+                        sm = self.op(self.x[r], sm)
+                        r -= 1
+                return r + 1 - self.offset
+            sm = self.op(self.x[r], sm)
+            #print(sm,"sm",self.d[r],r)
+            if (r & -r) == r:
                 return 0
-            j -= 1
 
     def min_right(self, i, check_func):
 
@@ -142,29 +170,34 @@ class SegmentTree:
 class Solution:
     def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
         st = SegmentTree(op=max, e=-inf, a=baskets)
+        st2 = SegmentTree(op=min, e=inf, a=baskets)
         n = len(baskets)
-        
+        print(baskets)
         print("minright：idx 开始 最左一个符合条件的")
         for f in fruits:
             k = st.min_right(0,lambda x :x>=f)
-            print(k,f,)
+            print(k , " index of baskets >= ", f)
+        print(baskets)
         print("maxright：从左 idx 开始 到右找到最后一个符合条件的，下一个(右一个)是第一次不符合")
         for f in fruits:
             k = st.max_right(4,lambda x :x<f)
             print(k,f,"<")
+        print(baskets)
         for f in fruits:
             k = st.max_right(0,lambda x :x<=f)
             print(k,f,"<=")
-        print("minleft:从右idx到左找到最后一个符合条件的，左一个第一个是不符合")
+        print(baskets)
+        print("minleft:从右idx到左找到最后一个符合条件的，左一个第一个是不符合， 因为这里设置了e值，所以 min_left 不鞥查出 ")
         for f in fruits:
-            k = st.min_left(n-1,lambda x :x<=f)
-            print(k,f,)
+            k = st.min_left(n,lambda x :x<=f)
+            print(k,f,"<=",n)
+        print(baskets)
         print("maxleft: 从idx开始最右第一个符合条件的")
         for f in fruits:
             k = st.max_left(n-1,lambda x :x>=f)
             print(k,f,"maxleft")
-
-re =Solution().numOfUnplacedFruits(fruits = [4,2,5,6,1,0], baskets = [1,3,5,4,2,5,4,5,4,2,1])
+if __name__ == '__main__':
+    re =Solution().numOfUnplacedFruits(fruits = [4,2,5,6,1,0], baskets = [1,3,5,4,2,5,4,5,4,2,1])
 
 
 # Class Overview
