@@ -243,6 +243,6 @@ def resolve():
 def op(caseidx):
     cnt = resolve()
     print("Case #"+str(caseidx+1)+": "+str(cnt))
-if __name__ == '__main__':
-    for i in range(int(input())):
-        op(i)
+
+for i in range(int(input())):
+    op(i)

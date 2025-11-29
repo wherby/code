@@ -39,7 +39,7 @@ class FenwickTree:
         return index + 1
 
     def rsum(self, left: int, right: int) :
-        assert 0 <= left <= right <= self.size
+        #assert 0 <= left <= right <= self.size
         if left > right:
             return 0
         if left == 0:

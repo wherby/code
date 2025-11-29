@@ -33,3 +33,7 @@ https://leetcode.cn/problems/count-ways-to-choose-coprime-integers-from-rows/sol
 
 ## gcd 容斥和 裴蜀定理 
 [gcd倍数容斥和 裴蜀定理 ](../../../../contest/meta2023/r2/q5/qn.py)
+
+
+## SOS DP 
+[SOS DP](../../../dp/SOSDP)

@@ -58,6 +58,7 @@ class LazySegmentTree:
             self.push(p >> i)
         return self.d[p]
 
+    # return [l,r)
     def prod(self, l, r):
         assert 0 <= l <= r <= self.n
         if l == r:

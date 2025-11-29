@@ -1,4 +1,5 @@
 # https://www.facebook.com/codingcompetitions/hacker-cup/2023/round-1/problems/D?source=facebook
+# 线段树懒标记
 import os
 
 abspath = os.path.abspath(__file__)

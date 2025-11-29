@@ -4,7 +4,7 @@ from typing import List, Tuple, Optional
 from math import inf
 
 class SegmentTree:
-    def __init__(self, op=max, e=lambda: -float("inf"), a=[]):
+    def __init__(self, op=max, e=-float("inf"), a=[]):
 
         self.n = n = len(a)
         self.op, self.e = op, e
