@@ -4,7 +4,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 FILEDEBUG=False
 
@@ -15,7 +15,6 @@ if  "f" in locals():
     sys.stdin = f
 else:
     inputA=sys.stdin
-
 
 ls = []
 try:
@@ -28,14 +27,35 @@ except Exception as e:
     print(f"An error occurred: {e}")
 
 
+def getSameK(a,b,k):
+    toLen = len(str(b))//k
+    ret = set([])
+    for i in range(1, 10**toLen):
+        ii = str(i)*k
+        ii  = int(ii)
+        if a<=ii<=b:
+            ret.add(ii)
+    return ret
+
+def getSame(a,b):
+    blen = len(str(b))
+    res = set()
+    for k in range(2,blen+1):
+        t1 = getSameK(a,b,k)
+        res =res | t1 
+    return sum(res)
 
 def solve():
-    ls = []
-    for _ in range(5):
-        ls.append(input())
+    global ls
+    ls = ls[0].split(",")
     lss = []
-    print(ls)
-    
+    sm =0
+    for a in ls:
+        x,y = a.split("-")
+        lss.append([int(x),int(y)])
+    for a,b in lss:
+        sm += getSame(a,b)
+    print(sm)
 
 if FILEDEBUG:
     import sys

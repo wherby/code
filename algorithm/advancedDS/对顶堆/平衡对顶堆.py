@@ -1,4 +1,5 @@
 # https://leetcode.cn/contest/weekly-contest-443/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/description/
+# 左边K个
 from typing import List, Tuple, Optional
 
 

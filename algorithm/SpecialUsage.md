@@ -1,4 +1,6 @@
 
+## float 精度误差
+[使用round(a,8) 处理float](geometry/Algebra/两点间的斜率截距/float精度误差.md)
 
 ## BFS use queue
 algorithm/codeforce/bfsUsingQueue.py

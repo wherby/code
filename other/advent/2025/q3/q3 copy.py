@@ -4,7 +4,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 FILEDEBUG=False
 
@@ -15,6 +15,7 @@ if  "f" in locals():
     sys.stdin = f
 else:
     inputA=sys.stdin
+
 
 
 ls = []
@@ -28,13 +29,20 @@ except Exception as e:
     print(f"An error occurred: {e}")
 
 
+def dp(line):
+    dp = [0]*13
+    for a in line:
+        for j in range(12,0,-1):
+            dp[j] = max(dp[j],dp[j-1]*10+ int(a))
+    return dp[-1]
+
 
 def solve():
-    ls = []
-    for _ in range(5):
-        ls.append(input())
-    lss = []
-    print(ls)
+    sm = 0 
+    for line in ls:
+        mx = dp(line)
+        sm += mx
+    print(sm)
     
 
 if FILEDEBUG:

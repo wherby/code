@@ -1,4 +1,4 @@
-# 贝格尔编排法
+# 贝格尔编排法 赛程 编排
 # https://leetcode.cn/problems/generate-schedule/solutions/3781083/gou-zao-by-tsreaper-67y0/
 # 主场队伍 i 需要和客场队伍 (i+1)modn，(i+2)modn，...，(i+n−1)modn 各赛一次，考虑对于固定值 j，把所有 i 和 (i+j)modn 的比赛放在一起按顺序编排。比如 n=5，j=2，
 # 那就是 (0,2)，(1,3)，(2,4)，(3,0)，(4,1)。不难发现相邻比赛之间没有相同队伍，2≤j≤n−2 都可以这样编排。

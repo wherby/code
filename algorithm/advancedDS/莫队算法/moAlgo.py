@@ -26,7 +26,7 @@ class MaxFreq():
 def MoAlgo(nums,query):
     n = len(nums)
     q = len(query)
-    block_size = int(math.sqrt(n)) +1
+    block_size = int(math.sqrt(max(n, len(query)))) +1
 
     qIndex = [(*query,i) for i,query in enumerate(query)]
 

@@ -1,4 +1,5 @@
 # Euler Tour（欧拉序）。它的核心作用是 记录每个节点的访问顺序，并 在回溯时再次记录父节点，从而构建一个 线性序列，用于后续的树查询操作（如子树查询、路径查询、LCA 等）。
+# 注意，一个节点的欧拉序是  [ls[u], rs[u])  所以需要 fen.rsum(ls[u], rs[u] - 1)  实现前闭后开
 class EulerTour:
     def __init__(self,  adj):
         self.n =n= len(adj)

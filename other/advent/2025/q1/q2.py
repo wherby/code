@@ -4,7 +4,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 FILEDEBUG=False
 
@@ -15,7 +15,6 @@ if  "f" in locals():
     sys.stdin = f
 else:
     inputA=sys.stdin
-
 
 ls = []
 try:
@@ -30,12 +29,24 @@ except Exception as e:
 
 
 def solve():
-    ls = []
-    for _ in range(5):
-        ls.append(input())
-    lss = []
-    print(ls)
-    
+    cur =50
+    cnt =0
+    for line in ls:
+        lst = cur
+        num = int(line[1:])
+        cnt += num//100
+        num = num%100
+        if line[0] == "L":
+            cur -= num
+        else:
+            cur += num
+        if (cur <0  and lst != 0) or cur >100:
+            cnt +=1
+        cur = cur%100 
+        if cur ==0:
+            cnt +=1
+       #  print(line, cnt,cur)
+    print(cnt)
 
 if FILEDEBUG:
     import sys

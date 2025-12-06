@@ -164,6 +164,9 @@ class SegmentTree:
 
     def __repr__(self):
         return f"SegmentTree({self.tolist()})"
+#@### alias function
+    def set(self,index,value):
+        self.set_value(index,value)
 
 
 

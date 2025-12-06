@@ -46,3 +46,12 @@ class FenwickTree:
             return self.sum(right)
         
         return self.sum(right) - self.sum(left - 1)
+    
+
+if __name__ == '__main__':
+    ft = FenwickTree(10)
+    ft.add(0,1)
+    ft.add(3,2)
+    print(ft.sum(3))
+    print(ft.rsum(0,3))
+    print(ft.rsum(1,3))

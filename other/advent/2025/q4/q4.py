@@ -4,7 +4,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 FILEDEBUG=False
 
@@ -15,6 +15,8 @@ if  "f" in locals():
     sys.stdin = f
 else:
     inputA=sys.stdin
+
+
 
 
 ls = []
@@ -30,11 +32,25 @@ except Exception as e:
 
 
 def solve():
-    ls = []
-    for _ in range(5):
-        ls.append(input())
-    lss = []
-    print(ls)
+    lss =[]
+    for line in ls:
+        tmp = [0 if a =="." else 1 for a in line]
+        lss.append(tmp )
+    m,n = len(lss),len(lss[0])
+    def getSum(x,y):
+        sm = 0 
+        for i in range(x-1,x+2):
+            for j in range(y-1,y+2):
+                if 0<=i< m and 0<=j<n:
+                    sm += lss[i][j]
+        return sm - lss[x][y]
+    cnt = 0
+    for i in range(m):
+        for j in range(n):
+            if getSum(i,j) <4 and lss[i][j] ==1:
+                cnt +=1
+                #print(i,j)
+    print(cnt)
     
 
 if FILEDEBUG:

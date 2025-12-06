@@ -1,0 +1,110 @@
+# https://codeforces.com/gym/105316/problem/L
+# https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/12/1202/solution/cf105316l.md
+# 利用平衡括号的性质 使用堆栈转换为一颗树， 用 0 号节点作为虚拟节点，因为有可能平衡括号对应多颗树，用一个虚拟节点作为根节点就可以把它变成一颗树
+# ~0 = -1 所以也可以在用0值的时候用 ~0 在栈中表示结束括号的标志
+#print(0,~0,1,~1,2,~2)  #   ~0= -1. ;; 0 -1 1 -2 2 -3
+# 因为对两个括号结合的外部增加值，等效于把增加值标记在两个括号代表点的LCA上做标记
+# 所以求一个值的最终值等于这个值，加上它欧拉序内部的所有值的增加值，而根据欧拉序定义，退出该点的时候不增加序列，所以有效的欧拉序是前闭后开的区间(如果退出点的时候也增加序号的话，就可以双闭区间)
+# 注意，一个节点的欧拉序是  [ls[u], rs[u])  所以需要 fen.rsum(ls[u], rs[u] - 1)  实现前闭后开
+# 原理分析：时间戳的定义和区间范围我们回顾代码中 $ls[u]$ 和 $rs[u]$ 的定义：$ls[u]$（开始时间 / Entry Time）： 节点 $u$ 第一次被访问并入栈的时间戳。$rs[u]$（结束时间 / Exit Time）： 节点 $u$ 完成对其所有子节点的递归访问后，出栈的时间戳。关键性质： 一个节点 $u$ 的子树在时间戳数组上对应的范围是半开半闭区间 $[\mathbf{ls[u]}, \mathbf{rs[u]})$。$[ls[u]$ 是包含的： 这是 $u$ 节点开始处理的时刻。$\mathbf{rs[u]}$ 是不包含的： $rs[u]$ 是时间戳数组上第一个不属于 $u$ 子树的有效时间点。它标志着 $u$ 的子树的结束，但本身属于 $u$ 节点的父节点或下一个兄弟节点的上下文。
+
+import init_setting
+from cflibs import *
+from lib.fenwicktree import FenwickTree
+def main(): 
+    t = II()
+    outs = []
+    
+    for _ in range(t):
+        n, q = MII()
+        s = I()
+        nums = LII()
+        
+        notes = [0] * (2 * n)
+        
+        path = [[] for _ in range(n + 1)]
+        parent = [-1] * (n + 1)
+    
+        stk = [0]
+        pt = 1
+        
+        for i in range(2 * n):
+            if s[i] == '(':
+                parent[pt] = stk[-1]
+                path[stk[-1]].append(pt)
+                stk.append(pt)
+                
+                notes[i] = pt
+                pt += 1
+            else:
+                stk.pop()
+        #print(parent,path)
+        stk = [0]
+        ls = [0] * (n + 1)
+        rs = [0] * (n + 1)
+        tmstamp = 0
+        
+        while stk:
+            u = stk.pop()
+            if u >= 0:
+                ls[u] = tmstamp
+                tmstamp += 1
+                stk.append(~u)
+                for v in path[u]:
+                    stk.append(v)
+            else:
+                rs[~u] = tmstamp
+        #print(ls,rs)
+        fen = FenwickTree(n + 1)
+        
+        depth = [0] * (n + 1)
+        
+        for i in range(1, n + 1):
+            depth[i] = depth[parent[i]] + 1
+        
+        nth_parent = [[-1] * (n + 1) for _ in range(20)]
+        nth_parent[0] = parent
+        
+        for i in range(19):
+            for j in range(n + 1):
+                if nth_parent[i][j] != -1:
+                    nth_parent[i + 1][j] = nth_parent[i][nth_parent[i][j]]
+        
+        def lca(u, v):
+            if depth[u] > depth[v]:
+                u, v = v, u
+            
+            d = depth[v] - depth[u]
+            
+            while d:
+                x = d & -d
+                v = nth_parent[x.bit_length() - 1][v]
+                d -= x
+            
+            if u == v: return u
+            
+            for i in range(19, -1, -1):
+                if nth_parent[i][u] != nth_parent[i][v]:
+                    u = nth_parent[i][u]
+                    v = nth_parent[i][v]
+            
+            return parent[u]
+        
+        for _ in range(q):
+            query = LII()
+            
+            if query[0] == 1:
+                u = notes[query[1] - 1]
+                v = notes[query[3] - 1]
+                val = query[5]
+                l = lca(u, v)
+                fen.add(ls[l], val)
+            else:
+                idx = query[1] - 1
+                u = notes[idx]
+                outs.append(fen.rsum(ls[u], rs[u] - 1) + nums[idx])
+    
+    print('\n'.join(map(str, outs)))
+
+
+main()

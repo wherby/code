@@ -4,7 +4,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-filename = "input/input.txt"
+filename = "input/input00.txt"
 f=open(filename,'r')
 FILEDEBUG=False
 
@@ -17,6 +17,7 @@ else:
     inputA=sys.stdin
 
 
+
 ls = []
 try:
     with open(filename, 'r') as file:
@@ -26,15 +27,22 @@ except FileNotFoundError:
     print(f"Error: The file '{filename}' was not found.")
 except Exception as e:
     print(f"An error occurred: {e}")
-
-
-
+from functools import reduce
 def solve():
-    ls = []
-    for _ in range(5):
-        ls.append(input())
+
     lss = []
-    print(ls)
+    for tmp in ls:
+        lss.append([a for a in tmp.split(" ") if len(a) >0])
+    sm = 0
+    for l1 in zip(*lss):
+        op = l1[-1]
+        t2 = l1[:-1]
+        t2 = [int(a) for a in t2 ]
+        if op == "*":
+            sm += reduce(lambda x,y:x*y,t2)
+        else:
+            sm += reduce(lambda x,y:x+y,t2)
+    print(sm)
     
 
 if FILEDEBUG:
