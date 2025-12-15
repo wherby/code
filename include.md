@@ -200,3 +200,8 @@ dfs.cache_clear()
 
 求最小选择的时候，把状态和值一起作为比较的参数，可以减少复杂度
 algorithm/dp/dp保留选择排序
+
+
+## re 正则匹配
+ https://leetcode.cn/problems/coupon-code-validator ：
+if not code[i] or not re.fullmatch(r'^[a-zA-Z0-9_]+$', code[i]):

@@ -123,6 +123,9 @@ format 补0
 >>> format(n,'.2f')
 '0.10'
 >>>
+>>> a = 1001
+>>> int(bin(a)[2:][::-1],2)
+607
 
 ## count in iterator
 >>> bin(123)      

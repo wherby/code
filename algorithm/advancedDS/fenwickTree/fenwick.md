@@ -27,3 +27,7 @@ else: ans += fen_tot.sum(M - 1)
 如果用0-index的时候引入 1-index 则可能无限循环
 [如果采用错误index实现则会无限循环](../../codeforce/技巧/二维数点区间包含数点问题.py)
 
+
+# 解决SortedList Timeout问题
+如果用SortedList会Timeout
+https://leetcode.com/contest/weekly-contest-479/problems/total-score-of-dungeon-runs/submissions/

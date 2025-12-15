@@ -59,9 +59,8 @@ class SegmentTree:
             r >>= 1
         return self.op(val_l, val_r)
 
-    # max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j).
+    # max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j]. 下一个数字不符合 check_func.
     def max_right(self, i, check_func):
-
         i += self.offset
         if not check_func(self.x[i]):
             return -1
@@ -80,7 +79,7 @@ class SegmentTree:
             val_l = temp
             i += 1
             if i & -i == i:
-                return self.n - 1
+                return self.n-1    # 表示所有的点都符合
     
     ## The following function has bug :
     # min_left(self, j, check_func): Finds the minimum index i such that check_func returns True for the range [i, j).  

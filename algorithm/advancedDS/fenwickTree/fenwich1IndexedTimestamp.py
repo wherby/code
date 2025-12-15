@@ -33,8 +33,8 @@ ls = [i for i in range(1,20)]
 ft = FenwickTree(ls)
 print(ft.bit)
 last =0
-for i in range(1,20):
-    ft.add(i,2)
+# for i in range(1,20):
+#     ft.add(i,2)
 for i in range(1,20):
     t =ft.sumTo(i)
     print(ft.sumTo(i),t-last)
