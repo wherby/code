@@ -167,6 +167,9 @@ class SegmentTree:
     def set(self,index,value):
         self.set_value(index,value)
 
+    def get(self,index):
+        return self.get_value(index)
+
 
 
 class Solution:

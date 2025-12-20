@@ -1,6 +1,9 @@
 ## Algorithms for Competitive Programming- [Divide and Conquer DP](https://cp-algorithms.com/dynamic_programming/divide-and-conquer-dp.html#generic-implementation)
 contest/acf/test/q1/q1.py
 
+## 转移函数定义
+
+参考树上DP： [树上DP](树上dp/先叶子后根/maximum-profit-from-trading-stocks-with-discounts/树上DP.py)
 
 ## DP 方向问题
 如果知道边界情况的时候，就能确定dp的方向

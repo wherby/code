@@ -35,4 +35,5 @@ class Factorial:
     def inv(self, n):
         return self.f[n-1] * self.g[n] % self.MOD
 
-fact = Factorial(MX)
+if __name__ == '__main__':
+    fact = Factorial(MX)
