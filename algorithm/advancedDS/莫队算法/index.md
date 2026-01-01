@@ -1,3 +1,7 @@
+
+## Mo队算法
+维护的是非线性的区域累加和？
+
 # 
 
 【Tips】莫队算法的时候，用 n/sqrt(query) 作为块大小比用 sqrt(n)会更块， 计算分析 ： https://www.bilibili.com/video/BV1p3h3zYEbc/?spm_id_from=333.1387.homepage.video_card.click&vd_source=ca787d3785cbd6247961eba27850fa0c

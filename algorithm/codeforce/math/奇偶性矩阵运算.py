@@ -5,7 +5,7 @@
 
 import init_setting
 from cflibs import *
-from lib.max_pow import *
+from lib.max_pow_mod2 import *
 def main(): 
     n, k = MII()
     grid = [I() for _ in range(n)]

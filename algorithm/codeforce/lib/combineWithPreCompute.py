@@ -34,6 +34,9 @@ class Factorial:
 
     def inv(self, n):
         return self.f[n-1] * self.g[n] % self.MOD
+    
+    def combi_inv(self,n,i):
+        return pow(self.comb(n,i),self.MOD-2,self.MOD)
 
 if __name__ == '__main__':
     fact = Factorial(MX)

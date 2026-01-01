@@ -94,6 +94,7 @@ class LazySegmentTree:
     #         self.update(p >> i)
     
     # (2) It applies a[i] = f(a[i]) for all i = l..r-1.
+    # 跟新的是前闭后开区间 [l,r)
     def apply(self, l, r, f):
         assert 0 <= l <= r <= self.n
         if l == r:
