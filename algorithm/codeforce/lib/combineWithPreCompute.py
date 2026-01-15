@@ -37,6 +37,10 @@ class Factorial:
     
     def combi_inv(self,n,i):
         return pow(self.comb(n,i),self.MOD-2,self.MOD)
+    
+### Alias
+    fac = fact
+
 
 if __name__ == '__main__':
     fact = Factorial(MX)
