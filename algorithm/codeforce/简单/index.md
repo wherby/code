@@ -12,3 +12,8 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/08/
 https://codeforces.com/gym/103855/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/10/1014/solution/cf103855d.md
 删除的时候，影响了K列，则前2一定在以前的k+2列中
+
+
+# bisect 寻找是否有相等数字
+https://codeforces.com/gym/104375/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/01/0116/solution/cf104375d.md

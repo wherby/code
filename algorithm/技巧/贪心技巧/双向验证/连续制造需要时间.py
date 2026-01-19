@@ -1,5 +1,7 @@
 # https://leetcode.cn/problems/find-the-minimum-amount-of-time-to-brew-potions/submissions/?envType=daily-question&envId=2025-10-09
 # 需要手写max解决超时问题
+# 第一次遍历找到dp[i]的左约束，得到最右值的确定值，第2次遍历利用最右值确定前面值的约束
+# 左右约束两次遍历
 from typing import List, Tuple, Optional
 
 class Solution:

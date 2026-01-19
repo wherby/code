@@ -1,0 +1,22 @@
+from typing import List, Tuple, Optional
+class Solution:
+    def maxSideLength(self, mat: List[List[int]], threshold: int) -> int:
+        m,n = len(mat),len(mat[0])
+        pre = [[0]*(n+1) for _ in range(m+1)]
+        for i in range(m):
+            for j in range(n): 
+                pre[i+1][j+1] = pre[i+1][j]+ pre[i][j+1] + mat[i][j] - pre[i][j]
+        def query(x,y,d):
+            a = pre[x+d][y+d]
+            b = pre[x+d][y]
+            c = pre[x][y+d]
+            d = pre[x][y]
+            return a+d -b-c 
+        L = min(m,n)
+        ret =0
+        for l in range(L,0,-1):
+            for i in range(m-l+1):
+                for j in range(n-l+1):
+                    if query(i,j,l) <=threshold:
+                        return l 
+        return ret
