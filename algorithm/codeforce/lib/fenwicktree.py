@@ -46,7 +46,25 @@ class FenwickTree:
             return self.sum(right)
         
         return self.sum(right) - self.sum(left - 1)
-    
+
+# def FenwickTreeArray(arr):
+#     fwt = FenwickTree(len(arr))
+#     for i,a in enumerate(arr):
+#         fwt.add(i,a)
+#     return fwt
+
+# 先转换为1base 然后再转换回去0 based
+def FenwickTreeArray(arr):
+    fwt = FenwickTree(len(arr))
+    fwt.tree = [0] + arr + [0]
+    size = len(arr)
+    for i in range(1, size + 1):
+        j = i + (i & -i)  # 寻找父节点下标
+        if j <= size:
+            fwt.tree[j] += fwt.tree[i]
+    fwt.tree = fwt.tree[1:]
+    return fwt
+
 
 if __name__ == '__main__':
     ft = FenwickTree(10)

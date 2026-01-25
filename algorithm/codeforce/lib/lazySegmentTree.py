@@ -181,6 +181,12 @@ class LazySegmentTree:
             if (r & -r) == r:
                 return 0
 
+## Create lazy segment tree with array
+def LazySegTree(op, e, mapping, composition, id,arr):
+    lst = LazySegmentTree(len(arr),op, e, mapping, composition, id)
+    lst.build(arr)
+    return lst
+
 mod = 10**9+7
 def createMaxMinSegTree(arr)->LazySegmentTree:
     def max_min_op(x, y):
@@ -244,6 +250,12 @@ def resolve():
 def op(caseidx):
     cnt = resolve()
     print("Case #"+str(caseidx+1)+": "+str(cnt))
+
+
+
+
+        
+        
 
 if __name__ == '__main__':
     for i in range(int(input())):

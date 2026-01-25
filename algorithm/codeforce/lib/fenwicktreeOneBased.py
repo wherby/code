@@ -1,8 +1,26 @@
 # 1 based index ,往0 插入则会出错
+# 如果有 array initial 操作，用1 based 更自然，因为 self.tree = [0] + list(size_or_arr) + [0] 这里有了1 的偏移
 class FenwickTree:
-    def __init__(self, size):
-        self.size = size
-        self.tree = [0] * (self.size + 2)  # 1-based indexing
+    def __init__(self, size_or_arr):
+        if isinstance(size_or_arr, int):
+            self.size = size_or_arr
+            self.tree = [0] * (self.size + 2)
+        else:
+            # 1. 记录大小
+            self.size = len(size_or_arr)
+            # 2. 初始化 tree，注意第一个元素（下标0）不用，从下标1开始存入原数组
+            self.tree = [0] + list(size_or_arr) + [0]
+            # 3. 调用线性构建
+            self._build()
+
+    def _build(self):
+        """
+        线性构建方法：每个节点将其前缀和贡献传递给其直接父节点。
+        """
+        for i in range(1, self.size + 1):
+            j = i + (i & -i)  # 寻找父节点下标
+            if j <= self.size:
+                self.tree[j] += self.tree[i]
 
     def add(self, index, delta=1):
         while index <= self.size:
