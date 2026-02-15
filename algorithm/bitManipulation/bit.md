@@ -38,3 +38,5 @@ class Solution:
 >>> a&(a-1)
 12
 
+# 检测mask是否有2个以上BIT置位
+(res_mask & (res_mask - 1)) == 0

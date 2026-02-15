@@ -24,3 +24,6 @@ f[i][j] = f[i][j - 1] ^ f[i + 1][j]
 链接：https://leetcode.cn/problems/maximum-xor-score-subarray-queries/solutions/2899932/qu-jian-dp-tao-qu-jian-dppythonjavacgo-b-w4be/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+[XorTrick](XorTrick.py)
+Xor 操作可以用前缀和抵消，使用时序TireTree 查询
