@@ -129,7 +129,7 @@ class SegmentTree:
             #print(sm,"sm",self.d[r],r)
             if (r & -r) == r:
                 return 0
-
+    # “从左向右找，找到第一个满足条件的索引”
     def min_right(self, i, check_func):
 
         ret = self.max_right(i, lambda x: not check_func(x))
