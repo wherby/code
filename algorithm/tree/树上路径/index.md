@@ -9,3 +9,6 @@ https://leetcode.cn/problems/palindromic-path-queries-in-a-tree/
 ## HLD 
 [HLD 求解路径和](../树链刨分-hld/xor/XorSegTree.py)
 [HLD 获取路径线段](../树链刨分-hld/xor/xorSeg2.py)
+
+## 树上路径点求和
+[树上路径端点求和](路径点求和/路径前缀和差分计算路径积分.py)

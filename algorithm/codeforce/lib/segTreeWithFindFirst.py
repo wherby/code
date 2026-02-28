@@ -1,5 +1,6 @@
 # https://codeforces.com/gym/105698/problem/G
 # algorithm/codeforce/简单/线段树记录影响区间端点py
+# 答案是：对外接口是 0-index，内部存储是 1-index。（外面处理的是0 index的数组，但是内部线段树的root是1）
 from typing import List, Tuple, Optional
 from math import inf
 
@@ -146,6 +147,9 @@ class SegmentTree:
             return j
         return ret - 1
 
+    def all_prod(self):
+        return self.x[1]
+
     def __setitem__(self, k: int, key):
         self.set_value(k, key)
 
@@ -163,6 +167,7 @@ class SegmentTree:
 
     def __repr__(self):
         return f"SegmentTree({self.tolist()})"
+    
 #@### alias function
     def set(self,index,value):
         self.set_value(index,value)
@@ -170,7 +175,17 @@ class SegmentTree:
     def get(self,index):
         return self.get_value(index)
 
-
+class SegTree:
+    def __init__(self, op=max, e=lambda: -float("inf"), n=0):
+        # 内部持有真正的 SegmentTree 实例
+        self.seg = SegmentTree(op, e, [0] * n)
+    
+    def __getattr__(self, name):
+        """
+        当调用的属性或方法在 SegTree 中找不到时，
+        Python 会自动调用这个魔法方法。
+        """
+        return getattr(self.seg, name)
 
 class Solution:
     def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
