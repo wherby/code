@@ -1,6 +1,12 @@
 
 ## 双指针求同向值域
 
+## 双重约束的时候 条件转换
+https://leetcode.cn/problems/count-subarrays-with-k-distinct-integers/solutions/3910806/qia-hao-xing-hua-dong-chuang-kou-pythonj-5mll/
+https://www.bilibili.com/video/BV1V4PMzrEYG/?t=30m56s&vd_source=ca787d3785cbd6247961eba27850fa0c
+区间约束可以转换为坐标系区域讨论，有些区域可能是无效的，值为0，可以简化计算
+[双约束条件](条件转换/等于改大于等于.py)
+[三指针计算双重窗口](条件转换/三指针维护双窗口.py)
 
 ### 求刚好有k个就等价于 求多余k - 多余k+1
 这个题目有两个现在 all(c[a]>0 for a in vowels) 和 c["_"] ==k 所以直接用双指针不能把两个特性（大于和等于）一起计算，
