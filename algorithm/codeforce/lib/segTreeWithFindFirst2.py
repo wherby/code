@@ -1,6 +1,8 @@
 # https://codeforces.com/gym/105698/problem/G
 # algorithm/codeforce/简单/线段树记录影响区间端点py
 # 答案是：对外接口是 0-index，内部存储是 1-index。（外面处理的是0 index的数组，但是内部线段树的root是1）
+# 区别是 返回的值是开区间，可以满足一直向右移动的需要 algorithm/codeforce/技巧/segmentTree/记录退化数字和离线计算.py
+#  # max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j). 第一个数字不符合 check_func.
 from typing import List, Tuple, Optional
 from math import inf
 
@@ -60,11 +62,11 @@ class SegmentTree:
             r >>= 1
         return self.op(val_l, val_r)
 
-    # 这里是闭区间 max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j]. 下一个数字不符合 check_func.
+    # max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j). 第一个数字不符合 check_func.
     def max_right(self, i, check_func):
         i += self.offset
         if not check_func(self.x[i]):
-            return -1     # 这里应该返回i的原始坐标 或者-1？ 或者 i-1-self.offset
+            return i-self.offset     # 这里应该返回i的原始坐标 或者-1？ 或者 i-1-self.offset
         val_l = self.e
         while True:
             i //= i & -i
@@ -76,11 +78,11 @@ class SegmentTree:
                     if check_func(temp):
                         val_l = temp
                         i += 1
-                return i - 1 - self.offset
+                return i  - self.offset
             val_l = temp
             i += 1
             if i & -i == i:
-                return self.n-1    # 表示所有的点都符合
+                return self.n    # 表示所有的点都符合
     
     ## The following function has bug :
     # min_left(self, j, check_func): Finds the minimum index i such that check_func returns True for the range [i, j).  

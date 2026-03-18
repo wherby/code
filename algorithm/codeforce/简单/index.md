@@ -17,3 +17,15 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2025/10/
 # bisect 寻找是否有相等数字
 https://codeforces.com/gym/104375/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/01/0116/solution/cf104375d.md
+
+# 二分
+https://codeforces.com/gym/103503/problem/A
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/0311/solution/cf103503a.md
+
+# 简单构造
+https://codeforces.com/gym/102569/problem/J
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/0314/solution/cf102569j.md
+
+# 数学 放大 缩小的时候的推导
+https://codeforces.com/gym/106430/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/0318/solution/cf106430b.md

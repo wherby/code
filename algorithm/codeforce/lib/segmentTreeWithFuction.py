@@ -59,6 +59,13 @@ class segment_tree:
     def all_prod(self):
         return self.tree[0] 
 
+class SegTree:
+    def __init__(self, merge, basev,array):
+        self.seg = segment_tree(array,merge,basev)
+    
+    def __getattr__(self, name):
+        return getattr(self.seg,name)
+
 if __name__ == '__main__':
     print("\nRange Sum with 8 node:")
     # Range Sum

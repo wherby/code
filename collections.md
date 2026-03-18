@@ -2,7 +2,22 @@
 import collections
 count = collections.Counter(nums)
 from collections import Counter 
+## subtract 是完全减法，如果 Counter(nums1) - Counter(nums2)则只有正数部分，这里其实也可以
+```python
+class Solution:
+    def minCost(self, nums1: List[int], nums2: List[int]) -> int:
+        diff = Counter(nums1)
+        diff.subtract(nums2)
 
+        ans = 0
+        for d in diff.values():
+            if d % 2:
+                return -1
+            if d > 0:
+                ans += d
+        return ans // 2
+链接：https://leetcode.cn/problems/minimum-cost-to-equalize-arrays-using-swaps/solutions/3925649/deng-jie-zhuan-hua-pythonjavacgo-by-endl-hbly/
+```
 # generate bitmap of prime for a 
 primes=[2,3,5,7,11,13,17,19,23,29]
 mask = sum(1 <<i  for i,p in enumerate(primes) if a %p ==0)
