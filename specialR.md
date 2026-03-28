@@ -324,6 +324,7 @@ https://leetcode.cn/contest/weekly-contest-406/problems/minimum-cost-for-cutting
 ## 绝对值计算
 
 algorithm/mathA/最大曼哈顿距离/manhatton-Chebyshev.py
+[绝对值的等价计算](algorithm/codeforce/math/去除绝对值符号.py)
 
 
 ## 用math.log计算整数会出错
