@@ -8,3 +8,7 @@ algorithm\dfs\OMOTQuestions\maximum-total-reward-using-operations-ii
 
 algorithm/OMOTQuestions/行列压缩DP
 行列压缩DP，因为每行，每列都有可能有10**5个元素，所以用元素排序进行DP，避免了每个元素多选的问题，每行，每列 用阶段处理 
+
+
+/Users/tao/software/code/algorithm/OMOTQuestions/OTfor2orderDP
+[使用一维DP数组加速](OTfor2orderDP/为什么把二维变一位会快很多.md)
