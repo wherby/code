@@ -40,6 +40,7 @@ class Factorial:
     
 ### Alias
     fac = fact
+    combi=comb
 
 
 if __name__ == '__main__':

@@ -1,3 +1,8 @@
+在 VS Code 中展开所有折叠代码的快捷键是：
+Windows/Linux: Ctrl + K 然后按 J
+macOS: Cmd + K 然后按 J 
+
+
 一、vs code 的常用快捷键
 1、注释：
 

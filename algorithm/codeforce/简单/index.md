@@ -33,3 +33,9 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/
 # 贪心排序得到最少逆序对
 https://codeforces.com/gym/106433/problem/B
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/0320/solution/cf106433b.md
+
+# 贪心栈求取问题，去掉堆栈 
+https://codeforces.com/gym/106394/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0410/solution/cf106394d.md
+
+

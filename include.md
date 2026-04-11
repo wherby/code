@@ -20,6 +20,7 @@ from heapq import heapify,heappop,heappush
 
 from math import inf
 from itertools import pairwise
+from operator import ior, iand,ixor  # For reduce function
 
 ## accumulation
 from itertools import accumulate
