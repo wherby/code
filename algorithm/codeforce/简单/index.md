@@ -38,4 +38,15 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/03/
 https://codeforces.com/gym/106394/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0410/solution/cf106394d.md
 
+# 匹配循环字符串： 2倍字符串消除循环，使用KMP计算匹配长度
+https://codeforces.com/gym/105501/problem/E
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0417/solution/cf105501e.md
+
+# 三分法求极值，方程组简化
+https://codeforces.com/gym/105446/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0420/solution/cf105446d.md
+
+# 分情况讨论最大值和次大值，还要只有一位的情况
+https://codeforces.com/gym/105264/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0421/solution/cf105264d.md
 
