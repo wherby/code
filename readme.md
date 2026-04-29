@@ -36,6 +36,21 @@ Use heapq instead of PriorityQueue to avoid OT https://docs.python.org/zh-cn/3/l
 https://docs.python.org/zh-cn/3.6/library/bisect.html
 bisect.bisect_left(a, x, lo=0, hi=len(a))
 j = bisect_left(s, low, 0, i + 1)  # 在 [0, i] 中二分. 在[0,i+1) 内寻找
+idx = bisect_right(nums, tar, a, b + 1) - 1 [处理查找区间,如果tar 小于 nums[a]的值，返回a,如果大于nums[b],返回 b+1,最后-1， 这里是对一个前闭后开的区间搜索，b+1是最后可以被插入的index](contest/00000c490d177/d181/q4/t4.py)
+
+def bisect_right(a, x, lo=0, hi=None, *, key=None):
+    """Return the index where to insert item x in list a, assuming a is sorted.
+
+    The return value i is such that all e in a[:i] have e <= x, and all e in
+    a[i:] have e > x.  So if x already appears in the list, a.insert(i, x) will
+    insert just after the rightmost x already there.
+
+    Optional args lo (default 0) and hi (default len(a)) bound the
+    slice of a to be searched.
+
+    A custom key function can be supplied to customize the sort order.
+    """
+
 
 ## 查找start_day 这个值在 end_day 排序的event队列的位置，二分最大值是i 
 p = bisect_left(events, start_day, hi=i, key=lambda e: e[1])  # hi=i 表示二分上界为 i（默认为 n）
