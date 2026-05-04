@@ -50,3 +50,18 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/
 https://codeforces.com/gym/105264/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0421/solution/cf105264d.md
 
+# 贪心分情况讨论
+https://codeforces.com/gym/106507/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0430/solution/cf106507b.md
+
+# 排列分析中位数
+https://codeforces.com/gym/106511/problem/G
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0501/solution/cf106511g.md
+
+# 分情况讨论对称性
+https://codeforces.com/gym/106511/problem/F
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0502/solution/cf106511f.md
+
+# 最多的数码 0 的处理
+https://codeforces.com/gym/106511/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0504/solution/cf106511d.md
