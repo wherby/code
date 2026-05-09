@@ -65,3 +65,15 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/
 # 最多的数码 0 的处理
 https://codeforces.com/gym/106511/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0504/solution/cf106511d.md
+
+# 简单-贪心
+https://codeforces.com/gym/106414/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0507/solution/cf106414d.md
+
+# 分情况讨论 找到不能分割的特殊情况
+https://codeforces.com/gym/106414/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0508/solution/cf106414b.md
+
+# 分析奇偶性
+https://codeforces.com/gym/106414/problem/A
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0509/solution/cf106414a.md
