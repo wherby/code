@@ -55,6 +55,7 @@ mid = (l+r)>>1 不会取到r
 mid =(l+r+1)>>1 不会取到l  如果取到这个值说明是无解情况
 
 [二分最大搜索效率，避免corner攻击](algorithm/codeforce/技巧/二分的另一写法最大搜寻效率.py)
+[反向右区驱动+延迟确认，每次二分稳定去除 (n+1)//2个备选点](algorithm/codeforce/构造题/可能的数字构造查询.py)
 
 ### 二分开区间写法 https://live.bilibili.com/1315966?broadcast_type=0&is_room_feed=1&spm_id_from=333.999.live_users_card.0.click&live_from=86001
 https://leetcode.cn/problems/maximize-score-of-numbers-in-ranges/solutions/2908931/er-fen-da-an-zui-da-hua-zui-xiao-zhi-pyt-twe2/

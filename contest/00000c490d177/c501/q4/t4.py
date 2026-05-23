@@ -1,0 +1,43 @@
+from typing import List, Tuple, Optional
+
+from collections import defaultdict,deque
+from functools import cache
+import heapq
+from heapq import heappop,heappush 
+from sortedcontainers import SortedDict,SortedList
+
+from bisect import bisect_right,insort_left,bisect_left
+from queue import Queue,LifoQueue,PriorityQueue
+import math
+INF  = math.inf
+
+class Solution:
+    def minCost(self, n: int, prices: List[int], roads: List[List[int]]) -> List[int]:
+        g = [[] for _ in range(n)]
+        for a,b,c,t in roads:
+            w = (1+t)*c 
+            g[a].append((b,w))
+            g[b].append((a,w))
+        ret = [10**10]*n 
+        st = []
+        for i in range(n):
+            ret[i] = prices[i]
+            heappush(st,(prices[i],i))
+        
+        while st:
+            c,a = heappop(st)
+            if c > ret[a]:
+                continue
+
+            for b,w in g[a]:
+                if ret[a] + w < ret[b]:
+                    ret[b] = ret[a] + w 
+                    heappush(st,(ret[b],b))
+        return ret
+
+prices = [81,59,57,74,69,45,81,10,77]
+roads = [[2,4,65,7],[8,7,31,9],[6,3,12,1],[7,1,64,9],[2,1,24,8],[5,1,76,8],[7,5,12,7],[8,4,51,4],[7,3,73,6],[2,7,40,6],[3,5,11,4],[3,4,17,4],[1,3,17,1],[4,5,1,1],[1,0,4,7],[3,8,79,6],[6,4,1,2],[2,0,6,7],[0,7,61,6],[4,7,64,5],[3,0,61,4],[0,4,62,3],[1,8,35,4],[8,5,70,5],[2,5,53,8],[5,0,31,9],[6,8,27,9],[2,8,75,5],[6,5,78,6],[1,6,29,2]]
+
+
+re =Solution().minCost(9,prices,roads)
+print(re)

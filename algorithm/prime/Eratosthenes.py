@@ -13,3 +13,4 @@ def get_prime(n):
 re =get_prime(10000000)
 print(list(re)[:10])
 print(len(re))
+print(list(re)[-1])

@@ -181,7 +181,7 @@ class SegTree:
         if arr!=None:
             self.seg = SegmentTree(op,e,arr)
         else:
-            self.seg = SegmentTree(op, e, [0] * n)
+            self.seg = SegmentTree(op, e, [e] * n)
     
     def __getattr__(self, name):
         """

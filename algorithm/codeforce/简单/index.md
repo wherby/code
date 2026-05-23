@@ -77,3 +77,15 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/
 # 分析奇偶性
 https://codeforces.com/gym/106414/problem/A
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0509/solution/cf106414a.md
+
+# 特殊值判断
+https://codeforces.com/gym/106164/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0512/solution/cf106164b.md
+
+# 贪心求解 贪心排序每次增加25花费最小
+https://codeforces.com/gym/106094/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0522/solution/cf106094b.md
+
+# 贪心
+https://codeforces.com/gym/105532/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0523/solution/cf105532d.md

@@ -11,6 +11,8 @@ def prefix_function(s):
         pi[i] = j 
     return pi
 
+# 
+prep = prefix_function
 # pat = "ABABCABAB"
 # next = prefix_function(pat)
 # print(next)

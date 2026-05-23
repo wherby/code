@@ -1,6 +1,7 @@
 # from ./pic/stringHash.png
 # Add Random https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-ii/solutions/2917929/ac-zi-dong-ji-pythonjavacgo-by-endlessch-hcqk/
 # Fix from algorithm/string/stringHash/wrongVersion/stringHash.v2 .wrong.py
+# query(left, right) 实际上是一个前闭后开区间 [left, right)，而不是双闭区间。
 from typing import List, Tuple, Optional
 from random import randint
 from collections import defaultdict,deque

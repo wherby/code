@@ -1,5 +1,6 @@
 # from ./pic/stringHash.png 
 # Verified in contest/00000c397d130/c415/q3/t3.binarySearch.py
+# query(left, right) 实际上是一个前闭后开区间 [left, right)，而不是双闭区间。
 class StringHash:
     def __init__(self,s1):
         n =len(s1)
