@@ -89,3 +89,18 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/
 # 贪心
 https://codeforces.com/gym/105532/problem/D
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0523/solution/cf105532d.md
+维护堆栈
+https://codeforces.com/gym/105315/problem/H
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0527/solution/cf105315h.md
+
+# 差分标记
+https://codeforces.com/gym/105325/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0528/solution/cf105325d.md
+
+# 均匀分布概率使用组合数反推
+https://codeforces.com/gym/106539/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0602/solution/cf106539d.md
+
+# 逆序对检测
+https://codeforces.com/gym/103150/problem/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0603/solution/cf103510c.md

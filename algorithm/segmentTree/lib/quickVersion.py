@@ -1,5 +1,5 @@
 # https://leetcode.cn/contest/weekly-contest-499/problems/maximum-sum-of-alternating-subsequence-with-distance-at-least-k/submissions/721168041/
-# 用模版 op函数会超时，直接实现不用函数调用更快 max 可以用fmax代替更快
+# 用模版 op函数会超时，直接实现不用函数调用更快 max 可以用fmax代替更快 l,r 双闭区间
 
 
 class SegTree:
@@ -11,8 +11,8 @@ class SegTree:
 
     def update(self, idx: int, val: int):
         idx += self.n
-        if self.tree[idx] >= val:
-            return
+        # if self.tree[idx] >= val:  这里只支持变大的操作，如果是只能变大，这样改会更快
+        #     return
         self.tree[idx] = val
         idx >>= 1
         while idx:
