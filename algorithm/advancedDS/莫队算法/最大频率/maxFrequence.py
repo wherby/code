@@ -9,6 +9,8 @@ class MaxFreq():
     def add(self,a):
         if self.dic[a] !=0:
             self.fdict[self.dic[a]].remove(a)
+            if len(self.fdict[self.dic[a]]) ==0:
+                del self.fdict[self.dic[a]]
         self.dic[a] +=1
         self.fdict[self.dic[a]].add(a)
         self.mx = max(self.mx,self.dic[a])

@@ -52,7 +52,7 @@ def CoPrimeQuery(nums,query):
         x = a 
         while x >1:
             f = F[x]
-            if ID[f] != i :  #用ID 的值来记录循环idx,避免记录重复的质数
+            if ID[f] != i :  #用ID 的值来记录循环idx,避免p[i]记录重复的质数
                 ID[f] =  i 
                 p[i].append(f)
             x //=f 

@@ -104,3 +104,19 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/
 # 逆序对检测
 https://codeforces.com/gym/103150/problem/C
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0603/solution/cf103510c.md
+
+# 模拟，贪心模拟，计算的时候累加确定值
+https://codeforces.com/gym/102448/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0608/solution/cf102448d.md
+
+# 二进制选择。零位应该放最低才能保证得到的m是唯一解
+https://codeforces.com/gym/102396/problem/E
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0609/solution/cf102396e.md
+
+# 几何图形求解，遍历加上选取特殊点求解
+https://codeforces.com/gym/104755/problem/F
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0610/solution/cf104755f.md
+
+# 博弈论，逆序对
+https://codeforces.com/gym/103102/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0613/solution/cf103102b.md

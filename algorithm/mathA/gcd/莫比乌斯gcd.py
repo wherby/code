@@ -2,6 +2,7 @@
 # https://leetcode.cn/problems/sorted-gcd-pair-queries/solutions/2940431/jing-dian-shu-lun-jie-fa-onulogufu-za-du-tgr6/
 # 利用莫比乌斯反演， 因为倍数容斥是需要从大到小依次计算
 # 而莫比乌斯函数，则可以通过最终的二项式展开得到的符号，直接计算，求cnt2的时候，每个值与前后无关，可以[并行化]处理
+# algorithm/mathA/gcd/docs/数字自交.md  cnt2[i] -= cnt[i] 的物理意义？ 因为 n 个 0,1 数字组成的组合中 1的个数为奇树和 偶数的组和 个数相等，只有 n==0的时候，才有1余下？ (二项式定理的奇偶子集对等性（或者叫 Mobius 函數的狄利克雷卷积钝化）。)
 from typing import List, Tuple, Optional
 from itertools import accumulate
 from bisect import bisect_right,insort_left,bisect_left
@@ -52,7 +53,7 @@ class Solution:
         for i in range(1,max_val+1):
             for j in range(1,max_val//i+1):
                 cnt2[i] += mu[j] * cnt[i*j]*cnt[i*j]
-            cnt2[i] = cnt2[i]//2 + cnt2[i-1]
+            cnt2[i] = cnt2[i]//2 + cnt2[i-1]  # 计算前缀和
         ans = []
         for q in queries:
             ans.append(bisect_right(cnt2,q))
