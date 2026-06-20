@@ -12,3 +12,5 @@ https://leetcode.cn/problems/palindromic-path-queries-in-a-tree/
 
 ## 树上路径点求和
 [树上路径端点求和](路径点求和/路径前缀和差分计算路径积分.py)
+
+## 树上DP [text](../../dp/树上dp)

@@ -120,3 +120,8 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/
 # 博弈论，逆序对
 https://codeforces.com/gym/103102/problem/B
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0613/solution/cf103102b.md
+
+# Lazy record  
+https://codeforces.com/gym/105079/problem/G
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0618/solution/cf105079g.md
+
