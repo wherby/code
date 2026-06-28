@@ -125,3 +125,6 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/
 https://codeforces.com/gym/105079/problem/G
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/0618/solution/cf105079g.md
 
+# 奇偶性与贡献法
+[奇偶性的贡献法](奇偶性的贡献法.py)
+

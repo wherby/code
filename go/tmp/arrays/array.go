@@ -17,6 +17,17 @@ func main() {
 
 	b = [...]int{1, 2, 3, 4, 5}
 	fmt.Println("dcl:", b)
+	e := b[1:3]
+	fmt.Println("dcl e:", e)
+	e = append(e, 100)
+	e[1] = 101
+	e = append(e, 100)
+	e = append(e, 100)
+	e = append(e, 100)
+	e = append(e, 100)
+	e[3] = 102
+	fmt.Println("dcl e:", e)
+	fmt.Println("dcl:", b)
 
 	b = [...]int{100, 3: 400, 500}
 	fmt.Println("idx:", b)
