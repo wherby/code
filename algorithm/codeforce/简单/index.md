@@ -128,3 +128,16 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/06/
 # 奇偶性与贡献法
 [奇偶性的贡献法](奇偶性的贡献法.py)
 
+# 观察数组交换特征
+https://codeforces.com/gym/103821/problem/D
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0706/solution/cf103821d.md
+
+# 贡献法求解
+https://codeforces.com/gym/103821/problem/M
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0707/solution/cf103821m.md
+
+# 分情况讨论，对于N==2时候怎么处理
+https://codeforces.com/gym/106054/problem/J
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0709/solution/cf106054j.md
+
+
