@@ -61,6 +61,7 @@ class SegmentTree:
         return self.op(val_l, val_r)
 
     # 这里是闭区间 max_right(self, i, check_func): Finds the maximum index j such that check_func returns True for the range [i, j]. 下一个数字不符合 check_func.
+    # 如果需要找到最左不符合 check_func的index,则需要 “+1”返回值  ：algorithm/codeforce/技巧/时间轴标记算法/相对坐标系平移.py
     def max_right(self, i, check_func):
         i += self.offset
         if not check_func(self.x[i]):

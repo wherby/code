@@ -48,6 +48,13 @@
 # 所以二分选出的点满足 num[i]是最小的点， nums[j]是最大的点 满足 nums[i] <=min(nums[i+1:j-1]) and nums[j]>=max(nums[i+1:j-1])
 # nums[i] <=min(nums[i+1:j-1]) 用stk2[-1] 决定，   nums[j]>=max(nums[i+1:j-1]) 由 skt1决定，两者需要求约束的交点，则二分答案
 
+
+## 第一次循环只要 nums[i] >= nums[stk[-1]] 就表示当前值比栈内最小值大，则栈内的这个值在以后的排列中有或者没有的时候排列出的结果是一致的，所以可以pop掉，得到可以影响排序顺序的第一个值
+## 同理从右到左，把右边又或者没有排列都一样的pop掉，
+## 然后这样左右去除的情况有相交的部分，这时需要把重合的部分加回去 ： 
+## 其实应该这样理解，stk2[-1]记录的是比当前值小的右向INDEX的最小值，这时这个INDEX左边的所有INDEX都满足当前值是最小值，这时就需要在这个区间内找到有多少个index可以作为最大值，这就是同时满足边界是最大最小值的个数了 
+##  algorithm/codeforce/技巧/docs/双向Stack计算重合数量.md
+
 import init_setting
 from cflibs import *
 def main():
