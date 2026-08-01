@@ -23,6 +23,11 @@ else: ans += fen_tot.sum(M - 1)
 
 [二维数点问题，解决区间内有多少个包含区间的计算问题](../../codeforce/技巧/二维数点区间包含数点问题.py)
 
+##  维护区域查询 查询区间内包含有多少完整区域的问题，枚举左维护右
+https://codeforces.com/gym/106628/problem/A
+http://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0728/solution/cf106628a.md
+[查询区间内包含有多少完整区域的问题](../../codeforce/技巧/segmentTree/FenwickTree统计区间内完整区域计数.py)
+
 # 注意实现是0-index 还是1-index,
 如果用0-index的时候引入 1-index 则可能无限循环
 [如果采用错误index实现则会无限循环](../../codeforce/技巧/二维数点区间包含数点问题.py)

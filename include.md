@@ -98,6 +98,17 @@ class Solution:
 
 
 ### use lib
+
+#### 二维有序数组的查询 
+[二维有序数组查询](algorithm/技巧/不完整区间查询的讨论/使用SegTree.py)
+对二维有序数组的查询 ：            
+       l = bisect_left(sl0, a, key=lambda x: x[0])
+       r = bisect_right(sl0, b, key=lambda x: x[1]) - 1
+ 如果写成：
+       l = bisect_left(sl0,(a,a))
+       r= bisect_right(sl0,(b,b)) -1
+ 这里是错误的，因为对r的选择上，如果是 （6,10） 查询的b是8 的话，会默认index在(6,10)是包含的，这里就会错误 
+
 [minimum-number-of-valid-strings-to-form-target-ii](https://leetcode.cn/problems/minimum-number-of-valid-strings-to-form-target-ii/solutions/2917929/ac-zi-dong-ji-pythonjavacgo-by-endlessch-hcqk/)
 contest/00000c397d130/c415/q3/t3.binarySearch.py 
 ``` python 

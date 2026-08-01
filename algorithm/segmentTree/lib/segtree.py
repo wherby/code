@@ -118,3 +118,9 @@ class SegTree:
 
     def _update(self, k: int) -> None:
         self._d[k] = self._op(self._d[2 * k], self._d[2 * k + 1])
+
+
+ls = [a for a in range(1,10)]
+sg = SegTree(lambda a,b:a+b,0,ls)
+print(sg.prod(0,0),sg.prod(0,1),sg.prod(1,3))
+#print(sg.prod(3,1))

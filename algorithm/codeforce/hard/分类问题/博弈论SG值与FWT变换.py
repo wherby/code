@@ -2,6 +2,9 @@
 # https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/05/0514/solution/cf106164d.md
 # algorithm/codeforce/docs/博弈论SG值/SG值的计算.md
 # algorithm/codeforce/docs/FWT/FWT.md
+# NIM问题的SG函数，对于每个点可以到达的区域寻找区域内的SG函数的 MEX值， 其实就是对这些区域内的所有值做了状态压缩，如果区域内有SG值等于0 的点，则
+# MEX值就大于0（必胜），否则等于0(必败)， 这就是NIM问题的最原始解答，如果能达到对方必败点则是必胜，否则必败。
+# algorithm/codeforce/docs/博弈论SG值/SG值代表的意义和链式路径压缩.md
 
 
 

@@ -1,3 +1,7 @@
+
+https://codeforces.com/gym/102911/problem/C
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/04/0403/solution/cf102911c.md
+
 # MEX 引入
 MEX 可以使得非连续的空间坍缩成连续空间，这样可以更好处理
 

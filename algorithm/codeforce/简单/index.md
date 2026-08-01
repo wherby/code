@@ -140,4 +140,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/
 https://codeforces.com/gym/106054/problem/J
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0709/solution/cf106054j.md
 
+# 分数表示
+https://codeforces.com/gym/103643/problem/B
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0723/solution/cf103643b.md
 

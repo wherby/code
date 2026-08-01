@@ -34,3 +34,4 @@ quick version will AC for some scenario. for query/update will not run recursion
 [min-max segment tree with find first from left ](lazyEval/accoderusage/noUseFunctional.py)
 [min-max segment tree with find last from right](lazyEval/accoderusage/findFirstAndLast.py)
 
+
