@@ -1,5 +1,7 @@
 # # https://leetcode-cn.com/problems/range-sum-query-mutable/submissions/   verified time cost more than  setmentTreeImpl2.py
 # reset basev when for merge =min
+### alias
+#    prod = query 这里特别注意，prod的区间应该是[l,r) 但是 query的区间是 [l,r],如果使用这里的 prod,则需要注意使用新定义的区间 [l,r]
 from math import ceil, log2
 
 class segment_tree:
@@ -32,7 +34,7 @@ class segment_tree:
 
     def _query_util(self, i, ln, rn, l, r):
         if ln>=l and rn<=r:
-            return self.tree[i]
+            return self.tree[i]   
         if ln>r or rn<l:
             return self.basev
         return self.merge( self._query_util( 2*i+1, ln, (ln+rn)//2, l, r ), self._query_util( 2*i+2, (ln+rn)//2+1, rn, l, r ) )
@@ -59,12 +61,18 @@ class segment_tree:
     def all_prod(self):
         return self.tree[0] 
     
-    ## alias
+    ## alias # 这里 prod的区间是[l,r]
     prod = query
+    
+    # def prod1(self,l,r):
+    #     return self.query(l,r-1)
 
 class SegTree:
     def __init__(self, merge, basev,array):
-        self.seg = segment_tree(array,merge,basev)
+        if type(array) == list:
+            self.seg = segment_tree(array,merge,basev)
+        else:
+            self.seg = segment_tree([basev]*array,merge,basev)
     
     def __getattr__(self, name):
         return getattr(self.seg,name)

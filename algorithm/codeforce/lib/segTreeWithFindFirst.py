@@ -45,7 +45,8 @@ class SegmentTree:
             self.x[i] = self.op(self.x[j], self.x[j + 1])
 
     def prod(self, l, r):
-
+        if l >=r:
+            return self.e
         l += self.offset
         r += self.offset
         val_l, val_r = self.e, self.e

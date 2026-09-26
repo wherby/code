@@ -10,6 +10,8 @@ https://cp-algorithms.com/string/z-function.html
 
 https://leetcode.cn/contest/weekly-contest-415/problems/minimum-number-of-valid-strings-to-form-target-ii/description/
 
+因为是当前字符串与整体字符串匹配的数量，
+如果 z[i] == n - i， 则表示整个字符串是i为周期的循环字符串，有可能循环节不完整 [Z函数的意义](../../codeforce/技巧/string/Z函数的意义.py)
 
 ## questions
 

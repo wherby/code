@@ -34,4 +34,7 @@ quick version will AC for some scenario. for query/update will not run recursion
 [min-max segment tree with find first from left ](lazyEval/accoderusage/noUseFunctional.py)
 [min-max segment tree with find last from right](lazyEval/accoderusage/findFirstAndLast.py)
 
-
+# 使用标记最后数字求取区间内不同数字个数的技巧
+https://www.bilibili.com/video/BV18p846TEwX/?spm_id_from=333.1387.homepage.video_card.click&vd_source=ca787d3785cbd6247961eba27850fa0c
+[使用离线算法，把区间双变量变成单变量比较的算法](../技巧/hash前缀和/hash前缀和.py)
+[把区间查询从双变量变成单变量](../技巧/二维变一维/单方向倍增DP.py)

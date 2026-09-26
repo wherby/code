@@ -1,19 +1,20 @@
 #https://leetcode.com/problems/palindrome-partitioning-ii/submissions/
 #
+def manachers(S):
+    A = "@#" + "#".join(S) + "#$"
+    Z = [0] * len(A)
+    center = right =0
+    for i in range(1,len(A)-1):
+        if i < right:
+            Z[i] = min(right -i,Z[2*center -i]) # Z[2*center -i]是 i 关于center的对称点， 因为在[left, right]上对称，则 对称点的对称性是对称的
+        while A[i + Z[i]+1] == A[i-Z[i]-1]:
+            Z[i] +=1
+        if i + Z[i] > right:
+            center,right = i , i+ Z[i]
+    return Z[2:-2:1]
 class Solution:
     def minCut(self, s: str) -> int:
-        def manachers(S):
-            A = "@#" + "#".join(S) + "#$"
-            Z = [0] * len(A)
-            center = right =0
-            for i in range(1,len(A)-1):
-                if i < right:
-                    Z[i] = min(right -i,Z[2*center -i]) # Z[2*center -i]是 i 关于center的对称点， 因为在[left, right]上对称，则 对称点的对称性是对称的
-                while A[i + Z[i]+1] == A[i-Z[i]-1]:
-                    Z[i] +=1
-                if i + Z[i] > right:
-                    center,right = i , i+ Z[i]
-            return Z[2:-2:1]
+        
     
         re= manachers(s)
         print(re)
@@ -32,5 +33,11 @@ class Solution:
 
 
 s="ccaaaccabacb"
-re = Solution().minCut(s)
-print(re)
+#re = Solution().minCut(s)
+#print(re)
+
+ls = manachers(s)
+for i,a in enumerate(ls):
+    cstart = (i - a+1) // 2
+    cend = (i + a-1) // 2 
+    print(i,a, s[cstart:cend+1])

@@ -144,3 +144,17 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/
 https://codeforces.com/gym/103643/problem/B
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/07/0723/solution/cf103643b.md
 
+
+# DP
+https://codeforces.com/gym/106666/problem/E
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/08/0824/solution/cf106666e.md
+
+
+# 如果用1维记录2维 行或者列满足的坐标？
+https://codeforces.com/gym/106197/problem/I
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/09/0915/solution/cf106197i.md
+
+
+# 逆序对的意义- 让每一对都是逆序对，这样形成的距离就最大
+https://codeforces.com/gym/106706/problem/N
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/09/0916/solution/cf106706n.md
