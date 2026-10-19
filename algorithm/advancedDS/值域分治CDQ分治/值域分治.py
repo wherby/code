@@ -1,5 +1,6 @@
 # https://leetcode.cn/problems/count-shadow-pairs-ii/
 # https://leetcode.cn/problems/count-shadow-pairs-ii/solutions/4027908/zhi-yu-fen-zhi-dan-diao-zhan-shu-zhuang-c4sct/
+# algorithm/advancedDS/值域分治CDQ分治/值域划分CDQ分治.md
 
 from typing import List, Tuple, Optional
 from bisect import bisect_right,insort_left,bisect_left

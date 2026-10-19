@@ -1,6 +1,7 @@
 # https://codeforces.com/gym/105698/problem/G
 # algorithm/codeforce/简单/线段树记录影响区间端点py
 # 答案是：对外接口是 0-index，内部存储是 1-index。（外面处理的是0 index的数组，但是内部线段树的root是1）
+# 这里 max_right 返回的值是闭区间， 一般需要返回值是开区间的是 algorithm/codeforce/lib/segTreeWithFindFirst2.py
 from typing import List, Tuple, Optional
 from math import inf
 

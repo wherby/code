@@ -17,3 +17,6 @@ $$k^E \equiv k^{E \bmod (p - 1)} \pmod p$$
 
 
 # [递推关系的时候递推矩阵的创建](../codeforce/数论/数学/递推矩阵的创建.py)
+
+# 可以使用多项式递推解决快速幂
+[Kitamasa](Kitamasa.md)
