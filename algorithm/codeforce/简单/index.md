@@ -158,3 +158,7 @@ https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/09/
 # 逆序对的意义- 让每一对都是逆序对，这样形成的距离就最大
 https://codeforces.com/gym/106706/problem/N
 https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/09/0916/solution/cf106706n.md
+
+# 贪心
+https://codeforces.com/gym/106782/problem/J
+https://github.com/Yawn-Sean/Daily_CF_Problems/blob/main/daily_problems/2026/10/1029/solution/cf106782j.md
