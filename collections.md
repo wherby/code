@@ -22,6 +22,9 @@ class Solution:
 primes=[2,3,5,7,11,13,17,19,23,29]
 mask = sum(1 <<i  for i,p in enumerate(primes) if a %p ==0)
 
+# enumerate from index 1 
+for i,a in enumerate(arr[1],1):  # 这里必须注意更新起始点
+
 # find index of value in array:
 i = nums.index(1) 
 
